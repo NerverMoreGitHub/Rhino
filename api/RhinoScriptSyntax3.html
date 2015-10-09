@@ -1,0 +1,52 @@
+---
+layout: bootstrap
+---
+<div class="container-fluid" id="rhinoscriptsyntax-api-docs">
+  <div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-2 bs-docs-sidebar">
+      <ul id="sidebar" class="nav nav-stacked fixed">
+        <li class="active">modules
+          <ul class="nav nav-stacked">
+            {% for module in site.data.rhinoscriptsyntax %}
+              <li><a href="#{{ module.module }}">{{ module.module }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- main content -->
+    <div class="col-xs-12 col-md-10">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        {% for module in site.data.rhinoscriptsyntax-structured-docstring %}
+              <div class="panel panel-simple">
+                <p id = "{{ module.ModuleName }}">{{ module.ModuleName }}</p>
+              </div>
+            {% for moduleFunction in module.functions %}
+              <div class="panel panel-simple">
+                <div class="panel-heading" role="tab" id="heading-{{ moduleFunction.Name }}">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{ moduleFunction.Name }}" aria-expanded="true" aria-controls="collapse-{{ moduleFunction.Name }}">
+                    {{ moduleFunction.Name }}
+                  </a>
+                </div>
+                <div id="collapse-{{ moduleFunction.Name }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{ moduleFunction.Name }}">
+                  <div class="panel-body">
+                    <p>{{ moduleFunction.Signature }}</p>
+                    <h5>Parameters:</h5>
+                    <span>{{ moduleFunction.ArgumentDesc }}</span>
+                    <h5>Returns:</h5>
+                    <span>{{ moduleFunction.Returns }}</span>
+                    <h5>Example:</h5>
+                    <pre><code class="python">
+                      {{ moduleFunction.ExampleString }}
+                    </code></pre>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+---
+layout: bootstrap
+---
+<div class="container-fluid" id="rhinoscriptsyntax-api-docs">
+  <div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-2 bs-docs-sidebar">
+      <ul id="sidebar" class="nav nav-stacked fixed">
+        <li class="active">modules
+          <ul class="nav nav-stacked">
+            {% for module in site.data.rhinoscriptsyntax %}
+              <li><a href="#{{ module.module }}">{{ module.module }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="col-xs-12 col-md-10">
+      {% for module in site.data.rhinoscriptsyntax-structured-docstring %}
+        <h4 id = "{{ module.ModuleName }}">{{ module.ModuleName }}</h4>
+        <div class="panel-group" id="accordion-{{ module.ModuleName }}" role="tablist" aria-multiselectable="true">
+            {% for moduleFunction in module.functions %}
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading-{{ moduleFunction.Name }}">
+                  <div class="panel-title"> <!-- was h4 -->
+                    <a role="button" data-toggle="collapse" data-parent="#accordion-{{ module.ModuleName }}" href="#collapse-{{ moduleFunction.Name }}" aria-expanded="true" aria-controls="collapse-{{ moduleFunction.Name }}">
+                      {{ moduleFunction.Name }}
+                    </a>
+                  </div>
+                </div>
+                <div id="collapse-{{ moduleFunction.Name }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{ moduleFunction.Name }}">
+                  <div class="panel-body">
+                    <p>{{ moduleFunction.Signature }}</p>
+                    <p>Parameters:</p>
+                    <span>{{ moduleFunction.ArgumentDesc }}</span>
+                    <p>Returns:</p>
+                    <span>{{ moduleFunction.Returns }}</span>
+                    <p>Example:</p>
+d                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <!--Main Content -->
+    <!--
+    <div class="col-xs-12 col-md-10">
+        <article class="post-content">
+          {% for module in site.data.rhinoscriptsyntax %}
+            <h4 id = "{{ module.module }}">{{ module.module }}</h4>
+              <ul>
+                {% for moduleFunction in module.functions %}
+                  <li><a href="RhinoScriptSyntax/{{ module.module }}-{{ moduleFunction }}.html">{{ moduleFunction }}</a></li>
+                {% endfor %}
+              </ul>
+          {% endfor %}
+        </article>
+    </div>
+    -->
+  </div>
+</div>

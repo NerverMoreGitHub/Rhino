@@ -183,3 +183,22 @@ tbody.index_table tr td{
 @media screen and (max-width: 990px) { .bs-docs-sidebar {
     display: none;
 } }
+
+/*
+##############################################################################
+## RhinoScriptSyntax API docs
+##############################################################################
+*/
+
+#rhinoscriptsyntax-api-docs .panel {
+  margin: 0;
+  background-color: inherit;
+  background-image: none;
+  border-radius: 0;
+  border: 0;
+}
+#rhinoscriptsyntax-api-docs .panel-heading {
+  padding: 0 0 0 10px;
+  border-radius: 0;
+  background-color: inherit;
+}
