@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Scripting Methods for RDK (Windows)</title>
+  <meta name="description" content="Scripting Methods for RDK (Windows)">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/guides/rhinoscript/scripting_methods_for_rdk/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/"><img src="/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/guides/#cpp">C/C++</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#scripting-methods-for-rdk-windows">Scripting Methods for RDK...</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#functions">Functions</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="scripting-methods-for-rdk-windows">Scripting Methods for RDK (Windows)</h1>
+
+<p>This guide enumerates the RhinoScript methods for accessing the RDK.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>To get a scripting object for the Rhino RDK, use the following code:</p>
+
+<pre><code class="language-vbnet">Dim rdk
+Set rdk = Rhino.GetPlugInObject("Renderer Development Kit")
+</code></pre>
+
+<p>Then use the RDK object to access the functions below…</p>
+
+<h2 id="functions">Functions</h2>
+
+<p><code class="highlighter-rouge">FactoryList();</code><br />
+Return a list of RDK’s content factory collection.</p>
+
+<p><strong>Returns:</strong> Array of strings identifying the factory.</p>
+
+<p><code class="highlighter-rouge">ContentList(strContentType)</code><br />
+Returns a list of contents for a certain type: material, texture, environment.</p>
+
+<p><strong>Parameters:</strong> strContentType = Required. String. Type of content: material, texture or environment.<br />
+<strong>Returns:</strong> Array of strings identifying the content. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">DeleteFactory(strFactoryId)</code><br />
+Deletes a content factory by its identifier.</p>
+
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory to delete.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">FactoryKind(strFactoryId)</code><br />
+Returns the kind of the content.</p>
+
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<strong>Returns:</strong> String of the kind of the factory. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">FactoryNewContent(strFactoryId, strParentId)</code><br />
+Create a new content of the specified type.</p>
+
+<p><strong>Parameters:</strong><br />
+strFactoryId = Required. String. The identifier of the factory.<br />
+strParentId = Optional. String. The identifier of the parent content.<br />
+<strong>Returns:</strong> String which identifies new content.   NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">FactoryContentTypeId(strFactoryId)</code><br />
+Returns the identifier of the content type.</p>
+
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<strong>Returns:</strong> String which identifies the factory. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">FactoryContentInternalName(strFactoryId)</code><br />
+Returns the internal name of the content created by specified factory.</p>
+
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<strong>Returns:</strong> String which is the internal name of the factory. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">FactoryRenderEngineId(strFactoryId)</code><br />
+Returns the render engine id of the content that this factory produces.</p>
+
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<strong>Returns:</strong> String which is the identifier of the render engine. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">FactoryPlugInId(strFactoryId)</code><br />
+Returns the plugin id of the plugin that created this factory.</p>
+
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<strong>Returns:</strong> String which is the identifier of the plugin. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">FactoryRebuildCache(strFactoryId)</code><br />
+Rebuild the factory cache. This forces a refresh of cached data such as the factory name.</p>
+
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentRenderEngineId(strContentInstanceID)</code><br />
+Return Render engine identifier.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the identifier of the render engine. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentPlugInId(strContentInstanceID)</code><br />
+Return The plugin id of the plugin that defines this content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the identifier of the plugin. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentTypeId(strContentInstanceID)</code><br />
+Return The unique id of the content type.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the identifier of the content type. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentInternalName(strContentInstanceID)</code><br />
+Return the internal name of the content type.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the internal name of the content. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentTypeName(strContentInstanceID)</code><br />
+Return the name of the content type.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the name of the content type. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentTypeDescription(strContentInstanceID)</code><br />
+Return the description of the content type.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the description of the content type. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentCategory(strContentInstanceID)</code><br />
+Return the category of the content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the category of the content. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentKind(strContentInstanceID)</code><br />
+Return return a string uniquely identifying the kind of the content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the uniquely identifying the kind of the content. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentLibraryFileExtension(strContentInstanceID)</code><br />
+Return the library file extension of the content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the library file extension of the content. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">CurrentContent(strContentInstanceID)</code><br />
+Returns if content is currently selected in thumbnail display.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> Boolean True or false indicating if content is selected. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentInstanceName(strContentInstanceID, strName)</code><br />
+Return content’s name.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strName = Optional. String. Use to set content name.<br />
+<strong>Returns:</strong> String which is the current name of the content. NULL in error conditions.<br />
+<code class="highlighter-rouge">ContentNotes(strContentInstanceID, strNotes, strSendEvent)</code><br />
+Return the content’s notes.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strNotes = Optional. Use to set notes.<br />
+bSendEvent = Optional. Use to update UI.<br />
+<strong>Returns:</strong> String which are the current notes. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentOpenInThumbnailEditor(strContentInstanceID)</code><br />
+Call this method to open the content in the relevant thumbnail editor and select it.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.<br />
+<code class="highlighter-rouge">ContentParameter(strContentInstanceID, strName, varValue)</code><br />
+Returns or modifies a content parameter.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strName = Optional. String. Name of the parameter.<br />
+varValue = Optional. New value of the parameter.<br />
+<strong>Returns:</strong> Array of strings which are the available paramter names when strName not specified. Variant with current value of parameter if strName is specified. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">UngroupContent(strContentInstanceID)</code><br />
+Remove this content tree from any instance group it may be a member of.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentGroupId(strContentInstanceID)</code><br />
+Returns the group id which this content is a member of.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the identifier of the group. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">DeleteContent(strContentInstanceID)</code><br />
+Delete the content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.<br />
+<code class="highlighter-rouge">DuplicateContent(strContentInstanceID)</code><br />
+Duplicate the content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the identifier of the new content. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentParent(strContentInstanceID)</code><br />
+Return parent content or empty string if this is the top level object.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the identifier of parent or empty string if this is the top level object. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentFirstChild(strContentInstanceID)</code><br />
+Return first child of this content or NULL if none.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the identifier of the child. NULL in error conditions or if no child.</p>
+
+<p><code class="highlighter-rouge">ContentNextSibling(strContentInstanceID)</code><br />
+Return first sibling of this content or NULL if none.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the identifier of the first sibling. NULL in error conditions or if no sibling.</p>
+
+<p><code class="highlighter-rouge">ContentTopLevelParent(strContentInstanceID)</code><br />
+Return identifier of top level parent of this content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the identifier of the top level parent. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentReplaceChild(VARIANT vaContentInstance, strOldChild, strNewChild)</code><br />
+Replace a child content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strOldChild = Required. The identifier of the old child.<br />
+strNewChild = Required. The identifier of the new child.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentAddChild(strContentInstanceID, strContent)</code><br />
+Adds another content as a child of this content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strContent = Required. String. The identifier of the child content.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentChildSlotName(strContentInstanceID, strChildSlotName)</code><br />
+Return the child-slot-name of this content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+varChildSlotName = Optional. String. The new child slot name<br />
+<strong>Returns:</strong> String which is current child slot name. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentChildSlotNameFromParamName(strContentInstanceID, strParamName)</code><br />
+Return the child-slot-name corresponding to a parameter name.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strParamName = Required. String. The parameter name of the slot name.<br />
+<strong>Returns:</strong> String which is the current child slot name. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentParamNameFromChildSlotName(strContentInstanceID, strChildSlotName)</code><br />
+Return the parameter name corresponding to a child-slot-name.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strChildSlotName = Required. String. The child slot name.<br />
+<strong>Returns:</strong> String which is the current parameter name of the child slot. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentFindChild(strContentInstanceID, strChildSlotName)</code><br />
+Return the immediate child that has the specified child-slot-name or NULL if none.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strChildSlotName = required. String. The child slot name.<br />
+<strong>Returns:</strong> String which is the identifier of child content. NULL in error conditions.<br />
+<code class="highlighter-rouge">IsContentTypeAcceptableAsChild(strContentInstanceID, strType, strChildSlotName)</code><br />
+Return true only if content type can be accepted as a child in the specified child slot.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strType = Required. String. The identifier of a content type.<br />
+strChildSlotName = Required. String. Name of the child slot.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">IsTypeAcceptableAsChild(strContentInstanceID, strFactory, strChildSlotName)</code><br />
+Return true only if content produced by pFactory can be accepted as a child in the specified child slot.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strFactory = Required. The identifier of the factory.<br />
+strChildSlotName = Required. The name of the child slot.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentGetChildren(strContentInstanceID)</code><br />
+Return all the children of this content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> Array of strings which are the identifier of the child content. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentGetChildSlots(strContentInstanceID)</code><br />
+Return all child slots.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> Array of strings of child slot names. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentFactory(strContentInstanceID)</code><br />
+Return the factory that creates this type of content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is the identifier of the factory. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">FindContentInstance(strContentInstanceID, strInstance)</code><br />
+Searches for the content with the specified instance id.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strInstance = Required. String. The identifier of the instance to search for.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentDestroyChildContent(strContentInstanceID, strPlugIn)</code><br />
+Unlink and destroy all child contents belonging to the specified plugin.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strPlugIn = Required. String. The identifier of the plug-In.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">IsContentCompatible(strContentInstanceID, strRenderEngine)</code><br />
+A content is compatible with a render engine when its RenderEngineId() matches the id of the render engine.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strRenderEngine = Required. String. The identifier of the render engine.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">IsContentUniversal(strContentInstanceID)</code><br />
+A content is universal if it is meant to be used with any render engine.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">IsContentPrivate(strContentInstanceID)</code><br />
+A content is private if it is not intended to show in any editor.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.<br />
+<code class="highlighter-rouge">ContentSaveToFile(strContentInstanceID, strFullPath)</code><br />
+Save the content to a library file.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strFullPath = Required. String. The full path to the library file to be created.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentLoadFromFile(VARIANT vaFullPath)</code><br />
+Load content from a library file.</p>
+
+<p><strong>Parameters:</strong> strFullPath = Required. String. The full path to the library file to be created.<br />
+<strong>Returns:</strong> String which is the identifier of the content. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">IsContentInDocument(strContentInstanceID)</code><br />
+Query whether or not the content is in the document.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentEmbeddedFiles(strContentInstanceID)</code><br />
+Return a semicolon-delimited string of full paths to files used by the content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<strong>Returns:</strong> String which is a semicolon-delimited string of full paths. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentSupportsCommand(strContentInstanceID, strCommand)</code><br />
+Indicates whether or not the content supports a particular command.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strCommand = Required. String. Command identifier.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentExecuteCommand(strContentInstanceID, strCommand)</code><br />
+Executes a command.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+strCommand = Required. String. Command identifier.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunEnableAllowed([optional] VARIANT vaAllowed)</code><br />
+Returns or modifies the sun enable allowed value.</p>
+
+<p><strong>Parameters:</strong> bAllowed = Optional. Boolean. Use to enable/disable this option.<br />
+<strong>Returns:</strong> Boolean which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunEnableOn(bOn)</code><br />
+Returns or modifies the sun ON value.</p>
+
+<p><strong>Parameters:</strong> bOn = Optional. Boolean. Use to enable/disable this option.<br />
+<strong>Returns:</strong> Boolean which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunManualControlAllowed(bAllowed)</code><br />
+Returns or modifies the ManualControlAllowed value.</p>
+
+<p><strong>Parameters:</strong> bAllowed = Optional. Boolean. Use to enable/disable this option.<br />
+<strong>Returns:</strong> Boolean which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunManualControlOn(bManual)</code><br />
+Returns or modifies the ManualControlOn value.</p>
+
+<p><strong>Parameters:</strong> bManual = Optional. Boolean. Use to enable/disable this option.<br />
+<strong>Returns:</strong> Boolean which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunNorth(dblNorth)</code><br />
+Returns or modifies the azimuth corresponding to North.</p>
+
+<p><strong>Parameters:</strong> dblNorth = Optional. Use to set/get north.<br />
+<strong>Returns:</strong> Array which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunVector(vVector)</code><br />
+Return the sun’s direction vector in world space.</p>
+
+<p><strong>Parameters:</strong> vVector = Optional. Array. 3D-Vector<br />
+<strong>Returns:</strong> Array which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunAzimuth(dblAzimuth)</code><br />
+Return the azimuth of the sun in degrees.</p>
+
+<p><strong>Parameters:</strong> dblAzimuth = Optional. Number.<br />
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunAltitude(dblAltitude)</code><br />
+Return the altitude of the sun in degrees.</p>
+
+<p><strong>Parameters:</strong> dblAltitude = Optional. Number.<br />
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunLatitude(dblLatitude)</code><br />
+Return the latitude of the observer.</p>
+
+<p><strong>Parameters:</strong> dblLatitude = Optional. Number.<br />
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunLongitude(dblLongitude)</code><br />
+Return the longitude of the observer.</p>
+
+<p><strong>Parameters:</strong> dblLongitude = Optional. Number.<br />
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunTimeZone(dblHours)</code><br />
+Return the time zone of the observer in hours.</p>
+
+<p><strong>Parameters:</strong> dblHours = Optional. Number.<br />
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunDaylightSavingOn(bOn)</code><br />
+Return true if daylight saving is on.</p>
+
+<p><strong>Parameters:</strong> bOn = Optional. Boolean.<br />
+<strong>Returns:</strong> Boolean which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunDaylightSavingMinutes(intMinutes)</code><br />
+Return the daylight saving of the observer in minutes.</p>
+
+<p><strong>Parameters:</strong> intMinutes = Optional. Number.<br />
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.<br />
+<code class="highlighter-rouge">SunLocalDate(intDate)</code><br />
+Retrieves the local date of the observer.</p>
+
+<p><strong>Parameters:</strong> intDate = Optional. Number.<br />
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunLocalTime(dblHours)</code><br />
+Retrieves the local time of the observer.</p>
+
+<p><strong>Parameters:</strong> dblHours = Optional. Number.<br />
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunUTCDate(intDate)</code><br />
+Retrieves the UTC date of the observer.</p>
+
+<p><strong>Parameters:</strong> intDate = Optional. Number.<br />
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunUTCTime(dblHours)</code><br />
+Retrieves the UTC time of the observer.</p>
+
+<p><strong>Parameters:</strong> dblHours = Optional. Number.<br />
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SunLight()</code><br />
+Get an ON_Light which represents the sun.</p>
+
+<p><strong>Returns:</strong> String which is the identifier of the light. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">MaterialInstanceId(intMaterialTableIndex)</code><br />
+Returns the content instance id for a given index into the Rhino material table</p>
+
+<p><strong>Parameters:</strong> intMaterialTableIndex = Required. Number. Index in material table.<br />
+<strong>Returns:</strong> String which is the identifier of the content. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SetMaterialInstanceId(strInstanceId, intMaterialTableIndex)</code><br />
+Assigns a certain content to a material table index.</p>
+
+<p><strong>Parameters:</strong> strInstanceId = Required. String. Identifier of content.<br />
+intMaterialTableIndex = Required. Number. Index in material table.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.<br />
+<code class="highlighter-rouge">HSB2RGB(arrColor)</code><br />
+Converts color</p>
+
+<p><strong>Parameters:</strong> arrColor = Required. Array. 3D Array of doubles.<br />
+<strong>Returns:</strong> Array of Numbers. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">RGB2HSB(arrColor)</code><br />
+Converts color.</p>
+
+<p><strong>Parameters:</strong> arrColor = Required. Array. 3D Array of doubles.<br />
+<strong>Returns:</strong> Array of Numbers. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ShowContentChooser(strDefaultType, strDefaultInstance, strAllowedKinds)</code><br />
+Shows the content chooser to allow the user to select a new or existing content.</p>
+
+<p><strong>Parameters:</strong> strDefaultType = Required. String. Is the content type that will be initially selected in the ‘New’ tab.<br />
+strDefaultInstance = Required. String. Is the content instance that will be initially selected in the ‘Existing’ tab.<br />
+strAllowedKinds = Required. Array. List of strings of content kinds that will be displayed.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentKindList()</code><br />
+Returns list of content kinds.</p>
+
+<p><strong>Returns:</strong> Array of strings of content kinds. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">SelectedContent(strContentType)</code><br />
+Get the selected content of the specified kind.</p>
+
+<p><strong>Parameters:</strong> strContentType = Required. String. Content type to look for selection.<br />
+<strong>Returns:</strong> String which is the identifier of the selected content. NULL in error conditions.<br />
+<code class="highlighter-rouge">OpenFloatingContentPreview(strContentInstanceID, arrPos, arrSize)</code><br />
+Open content preview window.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. Content identifier.<br />
+arrPos = Required. Array. 2D array of integers x,y.<br />
+arrSize = Required. Array. 2D array of integers width, height.<br />
+<strong>Returns:</strong> String which is the identifier of the preview window. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">CloseFloatingContentPreview(strWindowId)</code><br />
+Close content preview window.</p>
+
+<p><strong>Parameters:</strong> strWindowId = Required. String. Identifier of preview window.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ContentResetToDefaults(strContentInstanceID)</code><br />
+Reset content to defaults.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. Content identifier.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+<p><code class="highlighter-rouge">ChangeContent(strContentInstanceID, strNewContentId, bHarvest)</code><br />
+Change content.</p>
+
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. Content identifier.<br />
+strNewContentID = Required. String. Content identifier to change too.<br />
+bHarvest = Required. Boolean. Determines whether or not parameter harvesting will be performed.<br />
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:andy@mcneel.com">andy@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/rhinoscript/scripting_methods_for_rdk.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

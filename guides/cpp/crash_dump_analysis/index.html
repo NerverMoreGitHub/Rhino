@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Crash Dump Analysis</title>
+  <meta name="description" content="Crash Dump Analysis">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/guides/cpp/crash_dump_analysis/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/"><img src="/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/guides/#cpp">C/C++</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#crash-dump-analysis">Crash Dump Analysis</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#analysis">Analysis</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#step-by-step">Step-by-Step</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#microsoft-symbol-server">Microsoft Symbol Server</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#try-this-yourself">Try this yourself</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="crash-dump-analysis">Crash Dump Analysis</h1>
+
+<p>This guide discusses how to analyze crash dump files in Visual Studio.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>If Rhino crashes, two files are created on the user’s desktop: <em>RhinoCrashDump.dmp</em> and <em>RhinoCrashDump.3dm</em>. The <em>.3DM</em> file is Rhino’s last ditch effort to save the model.  The <em>.DMP</em> file can be used in Visual Studio to find the place in the source code where a Rhino plugin crashed.</p>
+
+<h2 id="analysis">Analysis</h2>
+
+<p>Analyzing crash dumps is not a quick and easy way to diagnose crash bugs.  If a crash is repeatable, do not use crash dumps. Simply debug the crash by running the command in the debugger.  In a crash dump, no heap is available and only a limited amount of stack is available.  But with a little effort and thought, you can find the line where the crash occurred and see what arguments were passed to the functions.</p>
+
+<p>Keep in mind you are debugging optimized code.  Some values of local variables (like loop counters and frequently used doubles) are kept in CPU registers and cannot be viewed in a watch window.</p>
+
+<p>If you read a RhinoCrashDump.dmp file in Notepad.exe and search for “RHINOCRASHINFO” you will find a block of text like the following:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;RHINOCRASHINFO&gt;
+  &lt;BUILD VERSION="YYYY-MM-DD" DATE="mmm dd yyyy" TIME="hh:mm"ss" /&gt;
+  &lt;COMMAND NAME="..." UUID="..." /&gt;
+  &lt;EXECUTABLE FILENAME="..." UUID="..." /&gt;
+&lt;/RHINOCRASHINFO&gt;
+</code></pre>
+</div>
+
+<p>If the crash happens in a command that is in a plugin, the name of the plugin’s <em>.RHP</em> file is in *<executable filename="">* and the id is in *<executable uuid="">*.</executable></executable></p>
+
+<p>*<build date="">* and *<build time="">* are the date and time the *.cpp* file that contains the crash dump exception handing code was compiled.</build></build></p>
+
+<h3 id="step-by-step">Step-by-Step</h3>
+
+<ol>
+  <li><strong>Determine which build of Rhino crashed</strong>: Open the <em>RhinoCrashDump.dmp</em> file in Notepad.exe (or your favorite text editor) and search for <code class="highlighter-rouge">RHINOCRASHINFO</code>.  Then look for <code class="highlighter-rouge">B u i l d V e r s i o n = " YYYY - MM - DD "</code>… <code class="highlighter-rouge">YYYYMMDD</code> is the build that crashed.  If you are lucky, the other <code class="highlighter-rouge">RHINOCRASHINFO</code> values will give you a hint about what crashed.</li>
+  <li><strong>Get the build of Rhino that crashed</strong>: To analyze the crash dump file, you need the same build of Rhino on your system that produced the crash dump.  If you do not have the same build, download it from the <a href="http://www.rhino3d.com/download">Rhino download page</a>.</li>
+  <li><strong>Copy files</strong>: After you have determined the version of the crashed Rhino, copy the <em>RhinoCrashDump.dmp</em> into the same directory as the <em>Rhino.exe</em> file.  In most cases, this will be the following folder: <em>C:\Program Files\Rhinoceros\System</em>.  Over your plugin’s life you are likely to see many crashes.  So do yourself a big favor and rename the <em>RhinoCrashDump.dmp</em> file something descriptive. Also, copy your plugin’s release <em>.RHP</em> and <em>.PDB</em> files into the same folder.
+    <div class="bs-callout bs-callout-danger">
+    <h4>WARNING</h4>
+    <p>To be successful in performing crash dump analysis, save your release build .PDB files to use later.  Without your plugin's .PDB file, crash dump analysis is useless.</p>
+  </div>
+  </li>
+  <li><strong>Locate the crash</strong>: Start a new instance of Developer Studio and from the menu use <em>File</em> &gt; <em>Open Solution…</em> to bring up the <em>Open Solution</em> dialog box.  In the <em>Files of type: droplist box</em> select <em>Dump files (.dmp; .mdmp)</em>.  Then navigate to the Rhino System folder and double-click on <em>RhinoCrashDump.dmp</em>.  It may also be possible to double-click on the <em>dmp</em> file from Explorer and have Visual Studio open it.
+    <ol>
+      <li>Once the dump is loaded (it doesn’t take long), press the <kbd>F10</kbd> key.  When you are prompted to save <em>RhinoCrashDump.sln</em>, click the <em>Save</em> button.  The <em>Output window</em> will pop up and you can watch as the debugger attempts to reconstruct the state of the executable when the crash occurred.  This can take a while, especially if the debugger has to go to an external symbol server to download symbols.</li>
+      <li>Eventually an error message box will pop up with <em>Break/Continue/Ignore/Help</em> buttons.  Click <em>Break</em> and examine the call stack for hints about what when wrong.</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="microsoft-symbol-server">Microsoft Symbol Server</h2>
+
+<p>You must have symbol information when you debug applications with various Microsoft tools.  Symbol files provide a footprint of the functions contained in executable files and dynamic-link libraries (<em>DLLs</em>). Also, symbol files can present a roadmap of the function calls that lead to the point of failure.  For example, you must have the symbols when you dump call stacks inside a debugger.</p>
+
+<p>The Microsoft Symbol Server is built by using the SymSrv technology (<em>SymSrv.dll</em>) that is provided with the Debugging Tools for Windows package.  SymSrv builds a local symbol cache for fast, automatic symbol resolution.</p>
+
+<p>You can use the symbol server to allow Visual Studio to automatically download the proper Microsoft symbols for debugging your Visual Studio project.  To allow Visual Studio to use the Microsoft Symbol Server, select <em>Tools</em> &gt; <em>Options</em> and fill in the information listed below.</p>
+
+<p><img src="/images/crash_dump_analysis_01.png" alt="Microsoft Symbol Server Options" /></p>
+
+<h2 id="try-this-yourself">Try this yourself</h2>
+
+<p>Below is a sample C++ plugin that will crash Rhino.  To test out crash dump analysis, download and build the plugin.  Then, launch Rhino and load the plugin using the <code class="highlighter-rouge">PlugInManager</code> command.  Then run the <code class="highlighter-rouge">TestSdkCrash</code> command.  While the <em>McNeel Error Reporting</em> dialog is displayed, copy the <em>RhinoCrashDump.dmp</em> from the desktop to some other location, and then click <em>Don’t Send</em>.  Then follow the steps above to analyze the crash dump.</p>
+
+<p><a href="/files/testsdkcrash.zip"><span class="glyphicon glyphicon-download"> testsdkcrash.zip</span></a></p>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/cpp/crash_dump_analysis.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

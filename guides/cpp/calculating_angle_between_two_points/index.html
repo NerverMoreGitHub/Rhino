@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Calculating the Angle Between Two Points</title>
+  <meta name="description" content="Calculating the Angle Between Two Points">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/guides/cpp/calculating_angle_between_two_points/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/"><img src="/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/guides/#cpp">C/C++</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#calculating-the-angle-between-two-points">Calculating the Angle Bet...</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#problem">Problem</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#solution">Solution</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related Topics</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="calculating-the-angle-between-two-points">Calculating the Angle Between Two Points</h1>
+
+<p>This guide demonstrates how to calculate the angle between two points using C/C++.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>For two sets of 3D vectors, you can use the method demonstrated in <a href="/samples/cpp/calculate_the_angle_between_two_vectors/">Calculate the Angle Between Two Vectors </a> to calculate the angle between them.  The results for both are always the same - 45 degree in this case.  For example:</p>
+
+<p><img src="/images/calculating_angle_between_two_points_01.png" alt="Angle between vectors" /></p>
+
+<p>But what if you need a result in which one is 45 degrees the other is 315 degrees?</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>The following example code demonstrates how to calculate the angle between two 3D points, given a common base point.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*
+Description:
+  Calculates the angle between two points that lie on a
+  given plane.
+Parameters:
+  plane   - [in]  The plane on which the points lie
+  basept  - [in]  The base point
+  refpt1  - [in]  The first reference point
+  refpt2  - [in]  The second reference point
+  radians - [out] The angle in radians
+Returns:
+  TRUE if successful, FALSE otherwise.
+*/</span>
+<span class="k">static</span> <span class="n">bool</span> <span class="nf">CalculatePlaneAngle</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">ON_Plane</span><span class="o">&amp;</span> <span class="n">plane</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">basept</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">refpt1</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">refpt2</span><span class="p">,</span>
+        <span class="kt">double</span><span class="o">&amp;</span> <span class="n">radians</span>
+        <span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Make sure the points are on the plane
+</span>  <span class="kt">double</span> <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.000001</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">dist</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+
+  <span class="n">dist</span> <span class="o">=</span> <span class="n">plane</span><span class="p">.</span><span class="n">plane_equation</span><span class="p">.</span><span class="n">ValueAt</span><span class="p">(</span> <span class="n">basept</span> <span class="p">);</span>  
+  <span class="k">if</span><span class="p">(</span> <span class="n">fabs</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tolerance</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+
+  <span class="n">dist</span> <span class="o">=</span> <span class="n">plane</span><span class="p">.</span><span class="n">plane_equation</span><span class="p">.</span><span class="n">ValueAt</span><span class="p">(</span> <span class="n">refpt1</span> <span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span> <span class="n">fabs</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tolerance</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+
+  <span class="n">dist</span> <span class="o">=</span> <span class="n">plane</span><span class="p">.</span><span class="n">plane_equation</span><span class="p">.</span><span class="n">ValueAt</span><span class="p">(</span> <span class="n">refpt2</span> <span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span> <span class="n">fabs</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tolerance</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+
+  <span class="c1">// Make sure base and reference points are not equal
+</span>
+  <span class="k">if</span><span class="p">(</span> <span class="n">basept</span> <span class="o">==</span> <span class="n">refpt1</span> <span class="o">|</span> <span class="n">basept</span> <span class="o">==</span> <span class="n">refpt2</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+
+  <span class="c1">// Calculate angle between vectors
+</span>
+  <span class="n">ON_3dVector</span> <span class="n">v</span> <span class="o">=</span> <span class="n">refpt2</span> <span class="o">-</span> <span class="n">basept</span><span class="p">;</span>
+  <span class="n">v</span><span class="p">.</span><span class="n">Unitize</span><span class="p">();</span>
+
+  <span class="n">ON_3dVector</span> <span class="n">zerov</span> <span class="o">=</span> <span class="n">refpt1</span> <span class="o">-</span> <span class="n">basept</span><span class="p">;</span>
+  <span class="n">zerov</span><span class="p">.</span><span class="n">Unitize</span><span class="p">();</span>  
+
+  <span class="kt">double</span> <span class="n">dot</span> <span class="o">=</span> <span class="n">ON_DotProduct</span><span class="p">(</span> <span class="n">zerov</span><span class="p">,</span> <span class="n">v</span> <span class="p">);</span>
+  <span class="n">dot</span> <span class="o">=</span> <span class="n">RHINO_CLAMP</span><span class="p">(</span> <span class="n">dot</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span> <span class="p">);</span>
+  <span class="kt">double</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">acos</span><span class="p">(</span> <span class="n">dot</span> <span class="p">);</span>
+
+  <span class="c1">// Calculate a new y-axis based on the plane's
+</span>  <span class="c1">// zaxis and our zero vector
+</span>  <span class="n">v</span> <span class="o">=</span> <span class="n">ON_CrossProduct</span><span class="p">(</span> <span class="n">plane</span><span class="p">.</span><span class="n">zaxis</span><span class="p">,</span> <span class="n">zerov</span> <span class="p">);</span>
+  <span class="n">v</span><span class="p">.</span><span class="n">Unitize</span><span class="p">();</span>
+
+  <span class="c1">// Create a plane using our y-axis a the normal
+</span>  <span class="n">ON_Plane</span> <span class="n">yplane</span><span class="p">;</span>
+  <span class="n">yplane</span><span class="p">.</span><span class="n">CreateFromNormal</span><span class="p">(</span> <span class="n">basept</span><span class="p">,</span> <span class="n">v</span> <span class="p">);</span>
+
+  <span class="c1">// Figure out which side of this plane that refpt2 is on
+</span>  <span class="n">dist</span> <span class="o">=</span> <span class="n">yplane</span><span class="p">.</span><span class="n">plane_equation</span><span class="p">.</span><span class="n">ValueAt</span><span class="p">(</span> <span class="n">refpt2</span> <span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="p">)</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="p">(</span><span class="n">ON_PI</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">angle</span><span class="p">;</span>
+
+  <span class="n">radians</span> <span class="o">=</span> <span class="n">angle</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>You can use the above function as follows…</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">CRhinoView</span><span class="o">*</span> <span class="n">view</span> <span class="o">=</span> <span class="n">RhinoApp</span><span class="p">().</span><span class="n">ActiveView</span><span class="p">();</span>
+  <span class="k">if</span><span class="p">(</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">view</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">failure</span><span class="p">;</span>
+
+  <span class="n">ON_Plane</span> <span class="n">plane</span> <span class="o">=</span> <span class="n">view</span><span class="o">-&gt;</span><span class="n">ActiveViewport</span><span class="p">().</span><span class="n">ConstructionPlane</span><span class="p">().</span><span class="n">m_plane</span><span class="p">;</span>
+  <span class="n">ON_3dPoint</span> <span class="n">basept</span><span class="p">,</span> <span class="n">refpt1</span><span class="p">,</span> <span class="n">refpt2</span><span class="p">;</span>
+
+  <span class="n">CRhinoGetPoint</span> <span class="n">gp</span><span class="p">;</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Base point"</span> <span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">Constrain</span><span class="p">(</span> <span class="n">plane</span> <span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">GetPoint</span><span class="p">();</span>
+  <span class="k">if</span><span class="p">(</span> <span class="n">gp</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">()</span> <span class="o">!=</span> <span class="n">success</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">();</span>
+
+  <span class="n">basept</span> <span class="o">=</span> <span class="n">gp</span><span class="p">.</span><span class="n">Point</span><span class="p">();</span>
+
+  <span class="n">gp</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"First angle point"</span> <span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">SetBasePoint</span><span class="p">(</span> <span class="n">basept</span> <span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">DrawLineFromPoint</span><span class="p">(</span> <span class="n">basept</span><span class="p">,</span> <span class="n">TRUE</span> <span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">GetPoint</span><span class="p">();</span>
+  <span class="k">if</span><span class="p">(</span> <span class="n">gp</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">()</span> <span class="o">!=</span> <span class="n">success</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">();</span>
+
+  <span class="n">refpt1</span> <span class="o">=</span> <span class="n">gp</span><span class="p">.</span><span class="n">Point</span><span class="p">();</span>
+
+  <span class="n">gp</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Second angle point"</span> <span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">SetBasePoint</span><span class="p">(</span> <span class="n">basept</span> <span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">DrawLineFromPoint</span><span class="p">(</span> <span class="n">basept</span><span class="p">,</span> <span class="n">TRUE</span> <span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">GetPoint</span><span class="p">();</span>
+  <span class="k">if</span><span class="p">(</span> <span class="n">gp</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">()</span> <span class="o">!=</span> <span class="n">success</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">();</span>
+
+  <span class="n">refpt2</span> <span class="o">=</span> <span class="n">gp</span><span class="p">.</span><span class="n">Point</span><span class="p">();</span>
+
+  <span class="kt">double</span> <span class="n">angle</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span> <span class="n">CalculatePlaneAngle</span><span class="p">(</span><span class="n">plane</span><span class="p">,</span> <span class="n">basept</span><span class="p">,</span> <span class="n">refpt1</span><span class="p">,</span> <span class="n">refpt2</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">RhinoApp</span><span class="p">().</span><span class="n">Print</span><span class="p">(</span> <span class="s">L"Angle = %.3f degrees.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">angle</span> <span class="o">*</span> <span class="p">(</span><span class="mf">180.0</span> <span class="o">/</span> <span class="n">ON_PI</span><span class="p">)</span> <span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">success</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="related-topics">Related Topics</h2>
+
+<ul>
+  <li><a href="/samples/cpp/calculate_the_angle_between_two_vectors/">Calculate the Angle Between Two Vectors (Sample)</a></li>
+</ul>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/cpp/calculating_angle_between_two_points.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

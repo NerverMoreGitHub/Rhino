@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Loading Tool Palettes (Mac)</title>
+  <meta name="description" content="Loading Tool Palettes (Mac)">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/guides/rhinocommon/loading_tool_palettes_mac/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/"><img src="/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/guides/#rhinocommon">RhinoCommon</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#loading-tool-palettes-mac">Loading Tool Palettes (Mac)</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#prerequisites">Prerequisites</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#create-or-convert-a-tool-palette-collection">Create or Convert A Tool ...</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#creating-from-scratch">Creating from Scratch</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#convert-rui-to-plist">Convert RUI to plist</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#add-the-palette-to-your-project">Add the Palette to your P...</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#load-the-tool-palette">Load the Tool Palette</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related Topics</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="loading-tool-palettes-mac">Loading Tool Palettes (Mac)</h1>
+
+<p>This guide covers how to create and load a tool palette collection from your RhinoCommon plugin in Rhino for Mac.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>This guide presumes that you have a RhinoCommon plugin that has commands that can be run from a tool palette.  In Rhino for Windows, this UI is normally stored in an <em>rui</em> file that includes the buttons, the icons, and their associated commands.  If you do not yet have a plugin, please begin with the <a href="/guides/rhinocommon/your_first_plugin_mac">Your First Plugin (Mac)</a> guide.</p>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>WARNING</h4>
+  <p><b>Early-adopters</b>: The following instructions will <b>NOT</b> work with the currently released Rhinoceros (5.1).  You will need to use RhinoWIP version (5C133w) or later.</p>
+</div>
+
+<h2 id="overview">Overview</h2>
+
+<p>There are three steps in creating and loading a tool palette collection for your plugin in Rhino for Mac:</p>
+
+<ol>
+  <li>The first step is to <a href="#create-or-convert-a-tool-palette-collection">create (or convert) a tool palette collection</a> that calls the appropriate commands - or to convert a Rhino for Windows <em>.rui</em> file - to <em>ToolPaletteCollection.plist</em> file.</li>
+  <li>The second step is to <a href="#add-the-palette-to-your-project">add this <em>.plist</em> in your plugin project</a> as a resource.</li>
+  <li>The third and final step is to tell Rhino for Mac to <a href="#load-the-tool-palette">load the tool palette from the appropriate file</a> when your plugin is being loaded.</li>
+</ol>
+
+<h2 id="create-or-convert-a-tool-palette-collection">Create or Convert A Tool Palette Collection</h2>
+
+<p>If you are familiar with the <a href="http://docs.mcneel.com/rhino/mac/help/en-us/index.htm#macpreferencesandsettings/commands.htm">Command Editor</a> in Rhino for Mac, you are already well on your way to understanding how to create a custom tool palette collection for use in your plugin.  If not, don’t worry: creating a tool palette collection is relatively easy.</p>
+
+<p>If you already have an existing <em>rui</em> file from Rhino for Windows, this job is even easier: you can <a href="#convert-rui-to-plist">import that <em>rui</em> and convert it to a <em>plist</em></a>.</p>
+
+<h3 id="creating-from-scratch">Creating from Scratch</h3>
+
+<ol>
+  <li>Open Rhino - if it is not already open - and start a new modeling window.</li>
+  <li>Enter the <code class="highlighter-rouge">TestEditToolPaletteCollection</code> command.  (You will need to type the entire command; it will not autocomplete).  This launches a developer tool similar to the Command Editor where tool palette collections can be created, organized, and saved to <em>plist</em> files…</li>
+  <li>By default, the <code class="highlighter-rouge">TestEditToolPaletteCollection</code> editor presumes you have a Rhino for Windows <em>rui</em> file you would like to convert.  A finder window opens where you can navigate to the <em>rui</em> file to import.</li>
+  <li>If you do not have a Rhino for Windows <em>rui</em> file that you would like to convert, you will need to create your Tool Palette Collection “from scratch.”  On the finder window, press <em>Cancel</em>.  An interface much like the <a href="http://docs.mcneel.com/rhino/mac/help/en-us/index.htm#macpreferencesandsettings/commands.htm">Command Editor</a> window appears.  This is where you can create, configure, organize, and save your tool palette collection.</li>
+  <li>Press the <em>+</em> (add) button in the <em>Palette Browser</em>…<br />
+<img src="/images/loading_tool_palettes_mac_01.png" alt="TestEditToolPaletteCollection" /></li>
+  <li>An <em>Untitled</em> tool palette appears in the <em>Palette Browser</em> (upper left).  Click on the name of the <em>Untitled</em> palette and give your tool palette a name…<br />
+<img src="/images/loading_tool_palettes_mac_02.png" alt="Name Tool Palette" /></li>
+  <li>In the <em>Command Button Browser</em> (the area in the lower-left corner), click the <em>+</em> button to <em>add a new button</em>.  An <em>Untitled</em> button should appear.  Select it.<br />
+<img src="/images/loading_tool_palettes_mac_03.png" alt="Add a button" /></li>
+  <li>In the <em>Button Editor</em> (area at lower-right), you can configure your button.  Add a Text title, some Menu text, some informative tooltip, and - most importantly - the macro or command (from your plugin) that you wish to run when this button is clicked.<br />
+<img src="/images/loading_tool_palettes_mac_04.png" alt="Button Editor" /></li>
+  <li>You can drag new images onto the button icon displayed in the <em>Button Editor</em>.  Rhino for Mac prefers PDF icons as they will scale nicely between Retina and non-Retina displays.  If you do not have PDF assets for your icons, use 64 x 64 png images.<br />
+<img src="/images/loading_tool_palettes_mac_05.png" alt="Add a PNG" /></li>
+  <li>You may add as many buttons as you need to the <em>Command Button Browser</em>.  These are the buttons that can be added to Tool Palettes.</li>
+  <li>With the tool palette you want to add buttons to, drag buttons from the <em>Command Button Browser</em> into the <em>Palette Contents</em> area (top, center)…<br />
+<img src="/images/loading_tool_palettes_mac_07.png" alt="Add to Palette" /></li>
+  <li>When you are satisfied with the contents of your tool palette(s), you can save your converted tool palette collection to a <em>plist</em> by clicking on the <em>Save</em> button in the lower-right corner of the <em>Command Editor</em> window.</li>
+  <li><em>NOTE</em>: Should you want to make changes to this tool palette collection, you can always reload the tool palette collection by re-running the <code class="highlighter-rouge">TestEditToolPaletteCollection</code> command and opening the <em>plist</em> file you created.  In order to add a menu to a tool palette button you must save and reload the tool palette in order for the menu to show up in the available menus.</li>
+</ol>
+
+<h3 id="convert-rui-to-plist">Convert RUI to plist</h3>
+
+<ol>
+  <li>Open Rhino - if it is not already open - and start a new modeling window.</li>
+  <li>Enter the <code class="highlighter-rouge">TestEditToolPaletteCollection</code> command.  (You will need to type the entire command; it will not autocomplete).  This launches a developer tool similar to the Command Editor where tool palette collections can be created, organized, and saved to <em>plist</em> files…</li>
+  <li>By default, the <code class="highlighter-rouge">TestEditToolPaletteCollection</code> editor presumes you have a Rhino for Windows <em>rui</em> file you would like to convert.  A finder window opens where you can navigate to the <em>rui</em> file to import.  Navigate to the folder containing your <em>rui</em>, select it, click <em>Open</em>.  Rhino for Mac imports this <em>rui</em> and uses it as a template.</li>
+  <li>The contents of your <em>rui</em> should appear.  Notice that there is a <em>Modified Tool Palette</em> with the name of your toolbar(s)…<br />
+<img src="/images/loading_tool_palettes_mac_06.png" alt="Imported RUI" /></li>
+  <li>The buttons with their associated icons should appear in the <em>Command Button Browser</em> (the area in the lower-left corner).  If you select buttons in this area, you will notice their editable details appear in the <em>Button Editor</em> (area at lower-right).</li>
+  <li>You can drag new images onto the button icon displayed in the <em>Button Editor</em>.  Rhino for Mac prefers PDF icons as they will scale nicely between Retina and non-Retina displays.  If you do not have PDF assets for your icons, use 64 x 64 png images.</li>
+  <li>With the tool palette you want to add buttons to, drag buttons from the <em>Command Button Browser</em> into the <em>Palette Contents</em> area (top, center)…<br />
+<img src="/images/loading_tool_palettes_mac_07.png" alt="Add to Palette" /></li>
+  <li>When you are satisfied with the contents of your tool palette(s), you can save your converted tool palette collection to a <em>plist</em> by clicking on the <em>Save</em> button in the lower-right corner of the <em>Command Editor</em> window.</li>
+  <li><em>NOTE</em>: Should you want to make changes to this tool palette collection, you can always reload the tool palette collection by re-running the <code class="highlighter-rouge">TestEditToolPaletteCollection</code> command and opening the <em>plist</em> file you created.  In order to add a menu to a tool palette button you must save and reload the tool palette in order for the menu to show up in the available menus.</li>
+</ol>
+
+<h2 id="add-the-palette-to-your-project">Add the Palette to your Project</h2>
+
+<p>Now that you have Tool Palette Collection <em>plist</em>, you need to add it to your plugin as a resource.  The best practice is to create a folder within your project called <em>Resources</em> (or similar) and move your Tool Palette Collection <em>plist</em> into to that folder.  <em>NOTE</em>: You are free to place your <em>plist</em> anywhere you think appropriate.</p>
+
+<ol>
+  <li>Open <em>Xamarin Studio</em> if you have not done so already and open your plugin project.</li>
+  <li>Right-click your plugin project in the <em>Solution Explorer</em> and select <em>Add</em> &gt; <em>New Folder</em>…</li>
+  <li>Name this folder <em>Resources</em> (or similar).</li>
+  <li>Right-click the new <em>Resources</em> folder in the <em>Solution Explorer</em> and select <em>Add</em> &gt; <em>Add Files…</em>.</li>
+  <li>Navigate to the <em>plist</em> you saved and add it to the plugin project <em>Resources</em> folder.  When prompted, <em>Move</em> the <em>plist</em> to the plugin <em>Resources</em> project folder.</li>
+  <li>Select your <em>ToolPaletteCollection.plist</em> in <em>Solution Explorer</em> and open the <em>Properties</em> panel.</li>
+  <li>In the <em>Build</em> section of <em>Properties</em>, in the <em>Copy the output directory</em> entry, select <em>Copy if newer</em>.</li>
+</ol>
+
+<h2 id="load-the-tool-palette">Load the Tool Palette</h2>
+
+<ol>
+  <li>In order to load the tool palette, you must reference <em>RhinoMac.dll</em> and <em>Rhino.UI.dll</em>.  In <em>Xamarin Studio</em>, right-click on the project entry in the <em>Solution Explorer</em> and select <em>Tools</em> &gt; <em>Edit File</em>.  This opens up the <em>csproj</em> file for your project as xml text in the code editor.</li>
+  <li>
+    <p>Find the area of the xml near where <em>RhinoCommon</em> is being referenced and add the following entries:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> &lt;Reference Include="Rhino.UI"&gt;
+   &lt;HintPath&gt;\Applications\RhinoWIP.app\Contents\Resources\Rhino.UI.dll&lt;/HintPath&gt;
+   &lt;Private&gt;False&lt;/Private&gt;
+ &lt;/Reference&gt;
+ &lt;Reference Include="RhinoMac"&gt;
+   &lt;HintPath&gt;\Applications\RhinoWIP.app\Contents\Resources\RhinoMac.dll&lt;/HintPath&gt;
+   &lt;Private&gt;False&lt;/Private&gt;
+ &lt;/Reference&gt;
+</code></pre>
+    </div>
+  </li>
+  <li>Close the <em>csproj</em> that is open in the code editor.  Xamarin Studio reloads the project.  If you check in the <em>References</em> section of your project in the <em>Solution Explorer</em>, you should see references to <em>RhinoMac</em> and <em>Rhino.UI</em>.</li>
+  <li>In your <code class="highlighter-rouge">Plugin</code> class, if you have not done so already, override the <code class="highlighter-rouge">OnLoad</code> method.</li>
+  <li>
+    <p>Load your tool palette plist from your desired location by calling the <code class="highlighter-rouge">RhinoMac.Runtime.MacPlatformService.LoadToolPaletteCollection</code> and passing in the full path to your <em>plist</em>.  For example, if your <em>plist</em> is in the <em>Resources</em> folder of your <em>rhp</em>, use the following example:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> protected override Rhino.PlugIns.LoadReturnCode OnLoad (ref string errorMessage)
+ {
+   var pluginPath = System.IO.Path.GetDirectoryName(Assembly.Location);
+   var resourcesPath = System.IO.Path.Combine (pluginPath, "Resources");
+   var plistPath = System.IO.Path.Combine (resourcesPath, "ToolPalette.plist");
+   bool didLoad = RhinoMac.Runtime.MacPlatformService.LoadToolPaletteCollection (plistPath);
+   if (!didLoad)
+     System.Diagnostics.Debug.WriteLine("WARNING: Failed to load tool palette.");
+
+   return base.OnLoad (ref errorMessage);
+ }
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p>Your tool palette collection will be loaded and displayed when Rhino loads your plugin.</p>
+
+<hr />
+
+<h2 id="related-topics">Related Topics</h2>
+
+<ul>
+  <li><a href="/guides/rhinocommon/your_first_plugin_mac">Your First Plugin (Mac)</a></li>
+  <li><a href="http://docs.mcneel.com/rhino/mac/help/en-us/index.htm#macpreferencesandsettings/commands.htm">Command Editor (from Rhino Help)</a></li>
+</ul>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dan@mcneel.com">dan@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/rhinocommon/loading_tool_palettes_mac.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Uncommon Numeric Conversions</title>
+  <meta name="description" content="Uncommon Numeric Conversions">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/guides/rhinoscript/uncommon_numeric_conversions/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/"><img src="/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/guides/#rhinoscript">RhinoScript</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#uncommon-numeric-conversions">Uncommon Numeric Conversions</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#hexadecimal">Hexadecimal</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#binary">Binary</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#roman-numerals">Roman Numerals</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#roman-numeral-to-base-10">Roman Numeral to Base 10</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="uncommon-numeric-conversions">Uncommon Numeric Conversions</h1>
+
+<p>This brief guide demonstrates some useful (or not so useful) numeric conversions in RhinoScript.</p>
+
+<h2 id="hexadecimal">Hexadecimal</h2>
+
+<p>This function converts numbers to their hexadecimal representation…</p>
+
+<pre><code class="language-vbnet">Function CHex(intNumber)
+
+ Dim strChars, intSign
+
+ strChars = "0123456789ABCDEF"
+ intSign = Sgn(intNumber)
+
+ intNumber = Fix(Abs(CDbl(intNumber)))
+ If (intNumber = 0) Then
+   CHex = "0"
+   Exit Function
+ End If
+
+ While (intNumber &gt; 0)
+   CHex = Mid(strChars, 1 + (intNumber - 16 * Fix(intNumber / 16)), 1) &amp; CHex
+   intNumber = Fix(intNumber / 16)
+ Wend
+
+ If (intSign = -1) Then CHex = "-" &amp; CHex
+
+End Function
+</code></pre>
+
+<p>and can be used to…</p>
+
+<pre><code class="language-vbnet">Rhino.Print CHex(2008) '7D8
+</code></pre>
+
+<h2 id="binary">Binary</h2>
+
+<p>The following function converts numbers to their binary representation…</p>
+
+<pre><code class="language-vbnet">Function CBinary(intNumber, intBits)
+
+  Dim strBinary, intMask, i
+
+  strBinary =
+  intMask = 1
+
+  For i = 1 To intBits
+    If (intNumber And intMask) Then
+      strBinary = "1" &amp; strBinary
+    Else
+      strBinary = "0" &amp; strBinary
+    End If
+    intMask = intMask * 2
+  Next
+
+  CBinary = strBinary
+
+End Function
+</code></pre>
+
+<p>and can be used to…</p>
+
+<pre><code class="language-vbnet">Rhino.Print CBinary(2008, 16) '0000011111011000
+</code></pre>
+
+<h2 id="roman-numerals">Roman Numerals</h2>
+
+<p>The following function converts numbers to their Roman numeral representation…</p>
+
+<pre><code class="language-vbnet">Function CRoman(intNumber)
+
+  Dim v, w, x, y, arrOnes, arrTens, arrHund, arrThou
+
+  arrOnes = Array(,"I","II","III","IV","V","VI","VII","VIII","IX")
+  arrTens = Array(,"X","XX","XXX","XL","L","LX","LXX","LXXX","XC")
+  arrHund = Array(,"C","CC","CCC","CD","D","DC","DCC","DCCC","CM")
+  arrThou = Array(,"M","MM","MMM","MMMM","MMMMM")
+
+  v = ((intNumber - (intNumber Mod 1000)) / 1000)
+  intNumber = (intNumber Mod 1000)
+
+  w = ((intNumber - (intNumber Mod 100)) / 100)
+  intNumber = (intNumber Mod 100)
+
+  x = ((intNumber - (intNumber Mod 10)) / 10)
+
+  y = (intNumber Mod 10)
+
+  CRoman = arrThou(v) &amp; arrHund(w) &amp; arrTens(x) &amp; arrOnes(y)
+
+End Function
+</code></pre>
+
+<p>and can be used to…</p>
+
+<pre><code class="language-vbnet">Rhino.Print CRoman(2008) 'MMVIII
+</code></pre>
+
+<h2 id="roman-numeral-to-base-10">Roman Numeral to Base 10</h2>
+
+<p>The following function converts Roman numeral representations to their base 10 representation…</p>
+
+<pre><code class="language-vbnet">Function CUnRoman(strRoman)
+
+  Dim intvalue, strChar, i
+  intValue = 0
+
+  If InStr(strRoman, "CM") Then
+    intValue = intValue + 900
+    strRoman = Replace(strRoman, "CM", )
+  End If
+
+  If InStr(strRoman, "CD") Then
+    intValue = intValue + 400
+    strRoman = Replace(strRoman, "CD", )
+  End If
+
+  If InStr(strRoman, "XC") Then
+    intValue = intValue + 90
+    strRoman = Replace(strRoman, "XC", )
+  End If
+
+  If InStr(strRoman, "XL") Then
+    intValue = intValue + 40
+    strRoman = Replace(strRoman, "XL", )
+  End If
+
+  If InStr(strRoman, "IX") Then
+    intValue = intValue + 9
+    strRoman = Replace(strRoman, "IX", )
+  End If
+
+  If InStr(strRoman, "IV") Then
+    intValue = intValue + 4
+    strRoman = Replace(strRoman, "IV", )
+  End If
+
+  For i = 1 To Len(strRoman)
+    strChar = Mid(strRoman, i, 1)
+    Select Case strChar
+      Case "I" intValue = intValue + 1
+      Case "V" intValue = intValue + 5
+      Case "X" intValue = intValue + 10
+      Case "L" intValue = intValue + 50
+      Case "C" intValue = intValue + 100
+      Case "D" intValue = intValue + 500
+      Case "M" intValue = intValue + 1000
+    End Select
+  Next
+
+  CUnRoman = intValue
+
+End Function
+</code></pre>
+
+<p>and can be used to…</p>
+
+<pre><code class="language-vbnet">Rhino.Print CUnRoman(MMVIII) '2008
+</code></pre>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/rhinoscript/uncommon_numeric_conversions.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

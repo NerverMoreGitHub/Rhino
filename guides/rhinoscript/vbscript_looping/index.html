@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>VBScript Looping</title>
+  <meta name="description" content="VBScript Looping">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/guides/rhinoscript/vbscript_looping/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/"><img src="/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/guides/#rhinoscript">RhinoScript</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#vbscript-looping">VBScript Looping</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#do-loops">Do Loops</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#do-while">Do While</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#do-until">Do Until</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#exiting-a-do-loop">Exiting a Do Loop</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#fornext">For…Next</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#for-eachnext">For Each…Next</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#continue">Continue</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related Topics</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="vbscript-looping">VBScript Looping</h1>
+
+<p>This guide is an overview of looping through VBScript code.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Looping allows you to run a group of statements repeatedly.  Some loops repeat statements until a condition is <em>False</em>; others repeat statements until a condition is <em>True</em>.  There are also loops that repeat statements a specific number of times.</p>
+
+<p>The following looping statements are available in VBScript:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Do...Loop</code> - Loops while or until a condition is True.</li>
+  <li><code class="highlighter-rouge">While...Wend</code> - Loops while a condition is True.</li>
+  <li><code class="highlighter-rouge">For...Next</code> - Uses a counter to run statements a specified number of times.</li>
+  <li><code class="highlighter-rouge">For Each...Next</code> - Repeats a group of statements for each item in a collection or each element of an array.</li>
+</ul>
+
+<h2 id="do-loops">Do Loops</h2>
+
+<p>You can use <code class="highlighter-rouge">Do...Loop</code> statements to run a block of statements an indefinite number of times.  The statements are repeated either while a condition is <em>True</em> or until a condition becomes <em>True</em>.</p>
+
+<h2 id="do-while">Do While</h2>
+
+<p>Use the <code class="highlighter-rouge">While</code> keyword to check a condition in a <code class="highlighter-rouge">Do...Loop</code> statement.  You can check the condition before you enter the loop (as shown in the following <code class="highlighter-rouge">ChkFirstWhile</code> example), or you can check it after the loop has run at least once (as shown in the <code class="highlighter-rouge">ChkLastWhile</code> example).  In the <code class="highlighter-rouge">ChkFirstWhile</code> procedure, if myNum is set to 9 instead of 20, the statements inside the loop will never run.  In the <code class="highlighter-rouge">ChkLastWhile</code> procedure, the statements inside the loop run only once because the condition is already <em>False</em>.</p>
+
+<pre><code class="language-vbnet"> Sub ChkFirstWhile()
+   Dim counter, myNum
+   counter = 0
+   myNum = 20
+   Do While myNum &gt; 10
+     myNum = myNum - 1
+     counter = counter + 1
+   Loop
+   MsgBox "The loop made " &amp; counter &amp; " repetitions."
+ End Sub
+
+ Sub ChkLastWhile()
+   Dim counter, myNum
+   counter = 0
+   myNum = 9
+   Do
+     myNum = myNum - 1
+     counter = counter + 1
+   Loop While myNum &gt; 10
+   MsgBox "The loop made " &amp; counter &amp; " repetitions."
+ End Sub
+</code></pre>
+
+<h2 id="do-until">Do Until</h2>
+
+<p>There are two ways to use the <code class="highlighter-rouge">Until</code> keyword to check a condition in a <code class="highlighter-rouge">Do...Loop</code> statement.  You can check the condition before you enter the loop (as shown in the following <code class="highlighter-rouge">ChkFirstUntil</code> example), or you can check it after the loop has run at least once (as shown in the <code class="highlighter-rouge">ChkLastUntil</code> example).  As long as the condition is <em>False</em>, the looping occurs.</p>
+
+<pre><code class="language-vbnet"> Sub ChkFirstUntil()
+   Dim counter, myNum
+   counter = 0
+   myNum = 20
+   Do Until myNum = 10
+     myNum = myNum - 1
+     counter = counter + 1
+   Loop
+   MsgBox "The loop made " &amp; counter &amp; " repetitions."
+ End Sub
+
+ Sub ChkLastUntil()
+   Dim counter, myNum
+   counter = 0
+   myNum = 1
+   Do
+     myNum = myNum + 1
+     counter = counter + 1
+   Loop Until myNum = 10
+   MsgBox "The loop made " &amp; counter &amp; " repetitions."
+ End Sub
+</code></pre>
+
+<h2 id="exiting-a-do-loop">Exiting a Do Loop</h2>
+
+<p>You can exit a <code class="highlighter-rouge">Do...Loop</code> by using the <code class="highlighter-rouge">Exit Do</code> statement.  Because you usually want to exit only in certain situations, such as to avoid an endless loop, you should use the <code class="highlighter-rouge">Exit Do</code> statement in the True statement block of an <code class="highlighter-rouge">If...Then...Else</code> statement.  If the condition is <em>False</em>, the loop runs as usual.</p>
+
+<p>In the following example, myNum is assigned a value that creates an endless loop.  The <code class="highlighter-rouge">If...Then...Else</code> statement checks for this condition, preventing the endless repetition.</p>
+
+<pre><code class="language-vbnet"> Sub ExitExample()
+   Dim counter, myNum
+   counter = 0
+   myNum = 9
+   Do Until myNum = 10
+      myNum = myNum - 1
+      counter = counter + 1
+      If myNum &lt; 10 Then Exit Do
+   Loop
+   MsgBox "The loop made " &amp; counter &amp; " repetitions."
+ End Sub
+Using While...Wend
+</code></pre>
+
+<p>The <code class="highlighter-rouge">While...Wend</code> statement is provided in VBScript for those who are familiar with its usage. However, because of the lack of flexibility in <code class="highlighter-rouge">While...Wend</code>, it is recommended that you use <code class="highlighter-rouge">Do...Loop</code> instead.</p>
+
+<h2 id="fornext">For…Next</h2>
+
+<p>You can use <code class="highlighter-rouge">For...Next</code> statements to run a block of statements a specific number of times. For loops, use a counter variable whose value increases or decreases with each repetition of the loop.</p>
+
+<p>The following example causes a procedure called <code class="highlighter-rouge">MyProc</code> to execute 50 times. The <code class="highlighter-rouge">For</code> statement specifies the counter variable <code class="highlighter-rouge">x</code> and its start and end values. The <code class="highlighter-rouge">Next</code> statement increments the counter variable by 1.</p>
+
+<pre><code class="language-vbnet"> Sub DoMyProc50Times()
+   Dim x
+   For x = 1 To 50
+     MyProc
+   Next
+ End Sub
+</code></pre>
+
+<p>Using the <code class="highlighter-rouge">Step</code> keyword, you can increase or decrease the counter variable by the value you specify. In the following example, the counter variable <code class="highlighter-rouge">j</code> is incremented by 2 each time the loop repeats. When the loop is finished, the total is the sum of 2, 4, 6, 8, and 10.</p>
+
+<pre><code class="language-vbnet"> Sub TwosTotal()
+   Dim j, total
+   For j = 2 To 10 Step 2
+     total = total + j
+   Next
+   MsgBox "The total is " &amp; total
+ End Sub
+</code></pre>
+
+<p>To decrease the counter variable, use a negative <code class="highlighter-rouge">Step</code> value. You must specify an end value that is less than the start value. In the following example, the counter variable <code class="highlighter-rouge">myNum</code> is decreased by 2 each time the loop repeats. When the loop is finished, total is the sum of 16, 14, 12, 10, 8, 6, 4, and 2.</p>
+
+<pre><code class="language-vbnet"> Sub NewTotal()
+   Dim myNum, total
+   For myNum = 16 To 2 Step -2
+     total = total + myNum
+   Next
+   MsgBox "The total is " &amp; total
+ End Sub
+</code></pre>
+
+<p>You can exit any <code class="highlighter-rouge">For...Next</code> statement before the counter reaches its end value by using the <code class="highlighter-rouge">Exit For</code> statement. Because you usually want to exit only in certain situations, such as when an error occurs, you should use the <code class="highlighter-rouge">Exit For</code> statement in the <em>True</em> statement block of an <code class="highlighter-rouge">If...Then...Else</code> statement. If the condition is <em>False</em>, the loop runs as usual.</p>
+
+<h2 id="for-eachnext">For Each…Next</h2>
+
+<p>A <code class="highlighter-rouge">For Each...Next</code> loop is similar to a <code class="highlighter-rouge">For...Next</code> loop. Instead of repeating the statements a specified number of times, a <code class="highlighter-rouge">For Each...Next</code> loop repeats a group of statements for each item in a collection of objects or for each element of an array.  This is especially helpful if you don’t know how many elements are in a collection.</p>
+
+<p>In the following RhinoScript code example, the contents of a document’s layer table is printed to the command line.</p>
+
+<pre><code class="language-vbnet"> Sub PrintLayerNames
+   Dim l, n   'Create variables
+   n = Rhino.LayerNames
+   For Each l In n
+     Rhino.Print l
+   Next
+ End Sub
+</code></pre>
+
+<h2 id="continue">Continue</h2>
+
+<p>Both C++ and C# have a continue statement that, when used with a For loop, skips the remaining statements of that iteration and moves on to next iteration.  There is no continue or continue-like statement in VBScript. But using a <code class="highlighter-rouge">Do While</code> loop inside of a <code class="highlighter-rouge">For Each</code> statement, you can achieve the same functionality. For example:</p>
+
+<pre><code class="language-vbnet">For i = 0 To 10
+  Do
+    If i = 4 Then Exit Do
+    Rhino.Print i
+  Loop While False
+Next
+</code></pre>
+
+<p>Here is another example…</p>
+
+<pre><code class="language-vbnet">Sub TestContinue
+
+  Dim arrTests, arrTest
+
+  arrTests = Array( _
+        Array(1) _
+      , Array(1,2,3 ) _
+      , Array(1,2) _
+      , Array(1) _
+      , Array(1,2,3) _
+      )
+
+  For Each arrTest In arrTests
+     Call Rhino.Print("Process: {" &amp; Join(arrTest, ", ") &amp; "}")
+     Do While True ' Continue trick
+       Call Rhino.Print(" Process: " &amp; arrTest(0))
+       If 0 = UBound(arrTest) Then Exit Do ' Continue
+       Call Rhino.Print(" Process: " &amp; arrTest(1))
+       If 1 = UBound(arrTest) Then Exit Do ' Continue
+       Call Rhino.Print(" Process: " &amp; arrTest(2))
+       Exit Do
+     Loop
+  Next
+
+End Sub
+</code></pre>
+
+<hr />
+
+<h2 id="related-topics">Related Topics</h2>
+
+<ul>
+  <li><a href="/guides/rhinoscript/what_are_vbscript_rhinoscript">What are VBScript and RhinoScript?</a></li>
+</ul>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/rhinoscript/vbscript_looping.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

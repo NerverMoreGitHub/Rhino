@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Plugin User Data</title>
+  <meta name="description" content="Plugin User Data">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/guides/rhinocommon/plugin_user_data/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/"><img src="/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/guides/#rhinocommon">RhinoCommon</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#plugin-user-data">Plugin User Data</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#document-user-data">Document User Data</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#object-user-data">Object User Data</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related topics</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="plugin-user-data">Plugin User Data</h1>
+
+<p>This guide gives an overview of user data and how to use it with RhinoCommon.</p>
+
+<p>There are two basic ways plugins can store information in Rhino .3dm files:</p>
+
+<ol>
+  <li><a href="#document-user-data">Document User Data</a></li>
+  <li><a href="#object-user-data">Object User Data</a></li>
+</ol>
+
+<p>For example, a rendering plugin might save a scene descriptions as document user data and use object user data to attach rendering material information to individual surfaces.</p>
+
+<h2 id="document-user-data">Document User Data</h2>
+
+<p>To save document user data your plugin must override three PlugIn base class functions:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">PlugIn</span><span class="p">.</span><span class="n">ShouldCallWriteDocument</span>
+<span class="n">PlugIn</span><span class="p">.</span><span class="n">WriteDocument</span>
+<span class="n">PlugIn</span><span class="p">.</span><span class="n">ReadDocument</span>
+</code></pre>
+</div>
+
+<p>SDK references for these functions can be found <a href="/api/RhinoCommon/html/Methods_T_Rhino_PlugIns_PlugIn.htm">here</a>.</p>
+
+<p>When Rhino writes a .3dm file, it goes through all the plugins that are currently loaded. First Rhino calls <code class="highlighter-rouge">ShouldCallWriteDocument()</code> to see if the plugin wants to save document user data.  If <code class="highlighter-rouge">ShouldWriteDocument()</code> returns true, Rhino saves information that identifies the plugin and then calls <code class="highlighter-rouge">WriteDocument()</code> when it is time for the plugin to save its “document” user data.</p>
+
+<p>When Rhino reads a .3dm file and it encounters document user data, it uses the plugin identification information to load the plugin and then calls the plugin’s <code class="highlighter-rouge">ReadDocument()</code> to read the plugin’s “document” user data.</p>
+
+<h2 id="object-user-data">Object User Data</h2>
+
+<p>Object user data can be attached to things like layers, materials, geometry objects, and object attributes. In fact object user data can be attached to any class derived from CommonObject. This user data is stored in a linked list on CommonObject and can be copied, transformed and saved along with the parent object. For example, you could attach object user data to a mesh. When the mesh is copied the object user data would be copied and attached to the copy. When the mesh is transformed, the transformation would be recored by the object user data. When the mesh is saved in a .3dm file, the object user data will be saved too.</p>
+
+<p>There are three forms of object user data:</p>
+
+<ol>
+  <li>User strings</li>
+  <li>UserDictionary</li>
+  <li>Custom UserData</li>
+</ol>
+
+<p>It is <strong>recommended to typically use the User Strings or the UserDictionary on an object</strong> since the data is automatically serialized for you and it is easily shared between plugins and scripts.</p>
+
+<p>In the case that you want to write your own private custom user data, you would derive a class from <code class="highlighter-rouge">Rhino.DocObjects.Custom.UserData</code>. Here’s a sample:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Rhino</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">examples_cs</span>
+<span class="p">{</span>
+  <span class="c1">// You must define a Guid attribute for your user data derived class
+</span>  <span class="c1">// in order to support serialization. Every custom user data class
+</span>  <span class="c1">// needs a custom Guid
+</span>  <span class="p">[</span><span class="nf">Guid</span><span class="p">(</span><span class="s">"DAAA9791-01DB-4F5F-B89B-4AE46767C783"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="k">class</span> <span class="nc">PhysicalData</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="n">UserData</span>
+  <span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Weight</span><span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">double</span> <span class="n">Density</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;}</span>
+
+
+    <span class="c1">// Your UserData class must have a public parameterless constructor
+</span>    <span class="k">public</span> <span class="nf">PhysicalData</span><span class="p">(){}</span>
+
+    <span class="k">public</span> <span class="nf">PhysicalData</span><span class="p">(</span><span class="kt">int</span> <span class="n">weight</span><span class="p">,</span> <span class="kt">double</span> <span class="n">density</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">Weight</span> <span class="p">=</span> <span class="n">weight</span><span class="p">;</span>
+      <span class="n">Density</span> <span class="p">=</span> <span class="n">density</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="n">Description</span>
+    <span class="p">{</span>
+      <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"Physical Properties"</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">ToString</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"weight={0}, density={1}"</span><span class="p">,</span> <span class="n">Weight</span><span class="p">,</span> <span class="n">Density</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnDuplicate</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="n">UserData</span> <span class="n">source</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">PhysicalData</span> <span class="n">src</span> <span class="p">=</span> <span class="n">source</span> <span class="k">as</span> <span class="n">PhysicalData</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">src</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">Weight</span> <span class="p">=</span> <span class="n">src</span><span class="p">.</span><span class="n">Weight</span><span class="p">;</span>
+        <span class="n">Density</span> <span class="p">=</span> <span class="n">src</span><span class="p">.</span><span class="n">Density</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// return true if you have information to save
+</span>    <span class="k">public</span> <span class="k">override</span> <span class="kt">bool</span> <span class="n">ShouldWrite</span>
+    <span class="p">{</span>
+      <span class="k">get</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Weight</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">&amp;&amp;</span> <span class="n">Density</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+          <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="kt">bool</span> <span class="nf">Read</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">FileIO</span><span class="p">.</span><span class="n">BinaryArchiveReader</span> <span class="n">archive</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">Rhino</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">ArchivableDictionary</span> <span class="n">dict</span> <span class="p">=</span> <span class="n">archive</span><span class="p">.</span><span class="nf">ReadDictionary</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">dict</span><span class="p">.</span><span class="nf">ContainsKey</span><span class="p">(</span><span class="s">"Weight"</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="n">dict</span><span class="p">.</span><span class="nf">ContainsKey</span><span class="p">(</span><span class="s">"Density"</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">Weight</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">dict</span><span class="p">[</span><span class="s">"Weight"</span><span class="p">];</span>
+        <span class="n">Density</span> <span class="p">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">dict</span><span class="p">[</span><span class="s">"Density"</span><span class="p">];</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">protected</span> <span class="k">override</span> <span class="kt">bool</span> <span class="nf">Write</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">FileIO</span><span class="p">.</span><span class="n">BinaryArchiveWriter</span> <span class="n">archive</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// you can implement File IO however you want... but the dictionary class makes
+</span>      <span class="c1">// issues like versioning in the 3dm file a bit easier.  If you didn't want to use
+</span>      <span class="c1">// the dictionary for writing, your code would look something like.
+</span>      <span class="c1">//
+</span>      <span class="c1">//  archive.Write3dmChunkVersion(1, 0);
+</span>      <span class="c1">//  archive.WriteInt(Weight);
+</span>      <span class="c1">//  archive.WriteDouble(Density);
+</span>      <span class="n">var</span> <span class="n">dict</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="nf">ArchivableDictionary</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="s">"Physical"</span><span class="p">);</span>
+      <span class="n">dict</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="s">"Weight"</span><span class="p">,</span> <span class="n">Weight</span><span class="p">);</span>
+      <span class="n">dict</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="s">"Density"</span><span class="p">,</span> <span class="n">Density</span><span class="p">);</span>
+      <span class="n">archive</span><span class="p">.</span><span class="nf">WriteDictionary</span><span class="p">(</span><span class="n">dict</span><span class="p">);</span>
+      <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+
+  <span class="p">[</span><span class="nf">Guid</span><span class="p">(</span><span class="s">"ca9a110e-3969-49ec-9d59-a7c2ee0b85bd"</span><span class="p">)]</span>
+  <span class="k">public</span> <span class="k">class</span> <span class="nc">ex_userdataCommand</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Command</span>
+  <span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="n">EnglishName</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"cs_userdataCommand"</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span> <span class="nf">RunCommand</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">RunMode</span> <span class="n">mode</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjRef</span> <span class="n">objref</span><span class="p">;</span>
+      <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select Object"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjectType</span><span class="p">.</span><span class="n">AnyObject</span><span class="p">,</span> <span class="k">out</span> <span class="n">objref</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+
+      <span class="c1">// See if user data of my custom type is attached to the geomtry
+</span>      <span class="n">var</span> <span class="n">ud</span> <span class="p">=</span> <span class="n">objref</span><span class="p">.</span><span class="nf">Geometry</span><span class="p">().</span><span class="n">UserData</span><span class="p">.</span><span class="nf">Find</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">PhysicalData</span><span class="p">))</span> <span class="k">as</span> <span class="n">PhysicalData</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">ud</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// No user data found; create one and add it
+</span>        <span class="kt">int</span> <span class="n">weight</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+        <span class="n">rc</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetInteger</span><span class="p">(</span><span class="s">"Weight"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">ref</span> <span class="n">weight</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
+          <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+
+        <span class="n">ud</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PhysicalData</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="m">12.34</span><span class="p">);</span>
+        <span class="n">objref</span><span class="p">.</span><span class="nf">Geometry</span><span class="p">().</span><span class="n">UserData</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">ud</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0} = {1}"</span><span class="p">,</span> <span class="n">ud</span><span class="p">.</span><span class="n">Description</span><span class="p">,</span> <span class="n">ud</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="related-topics">Related topics</h2>
+
+<ul>
+  <li><a href="/api/RhinoCommon/html/Methods_T_Rhino_PlugIns_PlugIn.htm">Rhino.PlugIns.PlugIn Methods (API Reference)</a></li>
+  <li><a href="/samples/rhinocommon/userdata/">RhinoCommon object plugin user data</a></li>
+</ul>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:steve@mcneel.com">steve@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/rhinocommon/plugin_user_data.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

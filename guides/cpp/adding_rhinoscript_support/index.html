@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Adding RhinoScript Support</title>
+  <meta name="description" content="Adding RhinoScript Support">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/guides/cpp/adding_rhinoscript_support/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/"><img src="/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/guides/#cpp">C/C++</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#adding-rhinoscript-support">Adding RhinoScript Support</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#step-by-step">Step-by-Step</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#create-a-plugin-that-supports-automation">Create a plugin that supp...</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#create-a-com-object-that-supports-idispatch">Create a COM object that ...</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#add-methods-to-your-object">Add methods to your object</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#implement-your-methods">Implement your methods</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#allow-access-to-your-object">Allow access to your object</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#implement-your-rhinoscript-methods">Implement your RhinoScrip...</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="adding-rhinoscript-support">Adding RhinoScript Support</h1>
+
+<p>This guide demonstrates how to add RhinoScript support to C++ plugins.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>With the Rhino C/C++ SDK, it is possible to write plugins that extend the RhinoScript scripting tool.  In order to do this, a plugin must do the following:</p>
+
+<ol>
+  <li>Create a COM object that implements the <code class="highlighter-rouge">IDispatch</code> interface.</li>
+  <li>Override the <code class="highlighter-rouge">CRhinoPlugIn::GetPlugInObjectInterface()</code> to give plugins, such as RhinoScript, access to this object.</li>
+</ol>
+
+<h2 id="step-by-step">Step-by-Step</h2>
+
+<p>Let’s create a new plugin named <em>TestScript</em> that supports RhinoScript scripting.</p>
+
+<p><strong>NOTE</strong>: The purpose of this guide is not to teach COM Automation or to explain how the .IDL file work or what Variants are.  There is plenty of information in MSDN and on the Internet that explain these areas.</p>
+
+<h3 id="create-a-plugin-that-supports-automation">Create a plugin that supports Automation</h3>
+
+<ol>
+  <li>Launch Visual Studio C/C++ and create a new Rhino Plugin project named <em>TestScript</em>.</li>
+  <li>On the <em>Plug-in Settings</em> page of the <em>Rhino Plug-in Appwizard</em> dialog box, make sure to check the <em>Automation</em> check box…</li>
+</ol>
+
+<p><img src="/images/adding_rhinoscript_support_01.png" alt="AppWizard Automation" /><br />
+Once the Appwizard has completed creating the skeleton project, build the project.</p>
+
+<h3 id="create-a-com-object-that-supports-idispatch">Create a COM object that supports IDispatch</h3>
+
+<ol>
+  <li>Create a new MFC class by running the MFC Class Wizard.</li>
+  <li>Name the class <em>CTestScriptObject</em>.  This class should be derived from <code class="highlighter-rouge">CCmdTarget</code>.  Also, under <em>Automation</em>, select the <em>Automation</em> radio button.  <strong>NOTE</strong>: this COM object will not be creatable by type ID because Rhino plugins (DLLs) are dependent on Rhino.</li>
+</ol>
+
+<p><img src="/images/adding_rhinoscript_support_02.png" alt="MFC Wizard" /></p>
+
+<h3 id="add-methods-to-your-object">Add methods to your object</h3>
+
+<p>An object is not useful unless you expose methods or properties.  In this example, we will create a new method that allows the scripter to add point objects to Rhino.</p>
+
+<p><img src="/images/adding_rhinoscript_support_03.png" alt="Add methods" /></p>
+
+<p>Within Class View, select your new object’s interface and add a new method using the <em>Add Method Wizard</em>.  Give the new method the name of <em>AddPoint</em>.  It should have a single VARIANT* argument and return a VARIANT.</p>
+
+<p><img src="/images/adding_rhinoscript_support_04.png" alt="Add methods 2" /></p>
+
+<h3 id="implement-your-methods">Implement your methods</h3>
+
+<p>The <em>Add Method Wizard</em> will create a placeholder for our <code class="highlighter-rouge">AddPoint</code> method in <em>TestScriptObject.cpp</em>.  Add the following code to your new method:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">VARIANT</span> <span class="n">CTestScriptObject</span><span class="o">::</span><span class="n">AddPoint</span><span class="p">(</span><span class="n">VARIANT</span><span class="o">*</span> <span class="n">vaPoint</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">VARIANT</span> <span class="n">vaResult</span><span class="p">;</span>
+  <span class="n">VariantInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vaResult</span><span class="p">);</span>
+  <span class="n">V_VT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vaResult</span><span class="p">)</span> <span class="o">=</span> <span class="n">VT_NULL</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span> <span class="n">vaPoint</span> <span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">ON_3dPoint</span> <span class="n">pt</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">VariantToPoint</span><span class="p">(</span><span class="o">*</span><span class="n">vaPoint</span><span class="p">,</span> <span class="n">pt</span><span class="p">)</span> <span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">CRhinoDoc</span><span class="o">*</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">RhinoApp</span><span class="p">().</span><span class="n">ActiveDoc</span><span class="p">();</span>
+      <span class="k">if</span><span class="p">(</span> <span class="n">doc</span> <span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">CRhinoPointObject</span><span class="o">*</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">doc</span><span class="o">-&gt;</span><span class="n">AddPointObject</span><span class="p">(</span> <span class="n">pt</span> <span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span> <span class="n">obj</span> <span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">doc</span><span class="o">-&gt;</span><span class="n">Redraw</span><span class="p">();</span>
+          <span class="n">ON_wString</span> <span class="n">wstr</span><span class="p">;</span>
+          <span class="n">ON_UuidToString</span><span class="p">(</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">Attributes</span><span class="p">().</span><span class="n">m_uuid</span><span class="p">,</span> <span class="n">wstr</span> <span class="p">);</span>
+          <span class="n">CString</span> <span class="n">str</span><span class="p">(</span><span class="n">wstr</span><span class="p">);</span>
+          <span class="n">V_VT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vaResult</span><span class="p">)</span> <span class="o">=</span> <span class="n">VT_BSTR</span><span class="p">;</span>
+          <span class="n">vaResult</span><span class="p">.</span><span class="n">bstrVal</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">AllocSysString</span><span class="p">();</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">vaResult</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the above code, the <code class="highlighter-rouge">VARIANT*</code> argument is converted to an <code class="highlighter-rouge">ON_3dPoint</code> using the <code class="highlighter-rouge">VariantToPoint()</code> function.  One of the biggest challenges to creating RhinoScript accessible objects is converting the COM Variant data type to an opennurbs data type and back.  Fortunately, we have done all of the work for you.</p>
+
+<p>Once the Variant has been converted to an <code class="highlighter-rouge">ON_3dPoint</code>, the code simply adds the point to Rhino.  But, just like RhinoScript’s <code class="highlighter-rouge">AddPoint</code> method, this method also returns the object’s unique identifier.</p>
+
+<h3 id="allow-access-to-your-object">Allow access to your object</h3>
+
+<p>Now that you have a COM object that implements <code class="highlighter-rouge">IDispatch</code> and has at least one method, we can allow access to it.  The easiest way is to put a copy of your new COM object on your plugin object as a data member.  For example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CTestScriptPlugIn</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoUtilityPlugIn</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">CTestScriptPlugIn</span><span class="p">();</span>
+  <span class="o">~</span><span class="n">CTestScriptPlugIn</span><span class="p">();</span>
+
+  <span class="c1">// Required overrides
+</span>  <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">PlugInName</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">PlugInVersion</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">GUID</span> <span class="n">PlugInID</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="n">BOOL</span> <span class="n">OnLoadPlugIn</span><span class="p">();</span>
+  <span class="kt">void</span> <span class="n">OnUnloadPlugIn</span><span class="p">();</span>
+
+  <span class="c1">// Optional overrides
+</span>  <span class="n">LPUNKNOWN</span> <span class="n">GetPlugInObjectInterface</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_UUID</span><span class="o">&amp;</span> <span class="n">iid</span> <span class="p">);</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="n">ON_wString</span> <span class="n">m_plugin_version</span><span class="p">;</span>
+  <span class="n">CTestScriptObject</span> <span class="n">m_object</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>Then, allow access to the object by overriding the <code class="highlighter-rouge">GetPlugInObjectInterface()</code> virtual function.  For example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">LPUNKNOWN</span> <span class="n">CTestScriptPlugIn</span><span class="o">::</span><span class="n">GetPlugInObjectInterface</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_UUID</span><span class="o">&amp;</span> <span class="n">iid</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">LPUNKNOWN</span> <span class="n">lpUnknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span> <span class="n">iid</span> <span class="o">==</span> <span class="n">IID_IUnknown</span> <span class="p">)</span>
+    <span class="n">lpUnknown</span> <span class="o">=</span> <span class="n">m_object</span><span class="p">.</span><span class="n">GetInterface</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">IID_IUnknown</span> <span class="p">);</span>
+
+  <span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="n">iid</span> <span class="o">==</span> <span class="n">IID_IDispatch</span> <span class="p">)</span>
+    <span class="n">lpUnknown</span> <span class="o">=</span> <span class="n">m_object</span><span class="p">.</span><span class="n">GetInterface</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">IID_IDispatch</span> <span class="p">);</span>
+
+   <span class="k">if</span><span class="p">(</span> <span class="n">lpUnknown</span> <span class="p">)</span>
+    <span class="n">m_object</span><span class="p">.</span><span class="n">ExternalAddRef</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="n">lpUnknown</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>NOTE</strong>: RhinoScript will only request an <code class="highlighter-rouge">IDispatch</code> object from your plugin.  Also because our object is a data member of our plugin object, we must increment our object’s reference counter.  Otherwise, when VBScript releases our object, which will decrement the reference counter, our object will be destroyed.  This will cause your plugin to crash.</p>
+
+<h3 id="implement-your-rhinoscript-methods">Implement your RhinoScript Methods</h3>
+
+<p>Once you have implemented your methods, you can begin to test them.  Launch Rhino and use the <em>PlugInManager</em> command to install your new plugin.  Then, use RhinoScript’s EditScript dialog to test the methods in your plugin’s object.</p>
+
+<p>The following RhinoScript demonstrates how to get our plugins scriptable object and run the <code class="highlighter-rouge">AddPoint</code> method…</p>
+
+<pre><code class="language-vbnet">Sub MyTest
+  Dim objPlugIn, arrPoint, idPoint
+  On Error Resume Next
+  Set objPlugIn = Rhino.GetPluginObject("TestScript")
+  If Err Then
+    MsgBox Err.Description
+    Exit Sub
+  End If
+  arrPoint = Rhino.GetPoint("Base point")
+  If IsArray(arrPoint) Then
+    idPoint = objPlugIn.AddPoint(arrPoint)
+  End If
+  Set objPlugIn = Nothing
+End Sub
+</code></pre>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/cpp/adding_rhinoscript_support.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>
