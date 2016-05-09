@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>VBScript Passing Parameters</title>
+  <meta name="description" content="VBScript Passing Parameters">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/wip/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/rhinoscript/vbscript_passing_parameters/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/wip/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wip/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/wip/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wip/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/wip/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wip/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/wip/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/wip/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+<div class="version-banner">
+  Hey, you're viewing the <strong>wip</strong> version of this page!
+  Click <a href="/guides/rhinoscript/vbscript_passing_parameters/">here</a> to view the current (stable) version.
+</div>
+
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/wip/"><img src="/wip/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/wip/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/wip/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/wip/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/wip/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/wip/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/wip/guides/#rhinoscript">RhinoScript</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#vbscript-passing-parameters">VBScript Passing Parameters</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#passing-by-value">Passing By Value</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#passing-by-reference">Passing By Reference</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#byref--temporary-variables">ByRef &amp; Temporary Var...</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#summary">Summary</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="vbscript-passing-parameters">VBScript Passing Parameters</h1>
+
+<p>This guide discusses parameter passing in VBScript.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>In VBScript, there are two ways values can be passed: <code class="highlighter-rouge">ByVal</code> and <code class="highlighter-rouge">ByRef</code>.  Using <code class="highlighter-rouge">ByVal</code>, we can pass arguments as values whereas with the use of <code class="highlighter-rouge">ByRef</code>, we can pass arguments are references.  This is the obvious bit, but, how do these two differ in practice?</p>
+
+<h2 id="passing-by-value">Passing By Value</h2>
+
+<p>Consider the following code snippet:</p>
+
+<pre><code class="language-vbnet">Function GetValue(ByVal var)
+  var = var + 1
+End Function
+
+Dim x: x = 5
+
+'Pass the variable x to the GetValue function ByVal
+Call GetValue(x)
+
+Call Rhino.Print("x = " &amp; CStr(x))
+</code></pre>
+
+<p>When you run the block of code above, you will get the following output:</p>
+
+<pre><code class="language-vbnet">x = 5
+</code></pre>
+
+<p>In other words, when we passed the variable <code class="highlighter-rouge">x</code> (<code class="highlighter-rouge">ByVal</code>) to the function <code class="highlighter-rouge">GetValue</code>, we were simply passing a copy of the variable <code class="highlighter-rouge">x</code>. When <code class="highlighter-rouge">GetValue</code> executes, var stores a copy of the variable <code class="highlighter-rouge">x</code> and increments itself by 1. Therefore, because what we are passing to <code class="highlighter-rouge">GetValue</code> is a copy of <code class="highlighter-rouge">x</code>, it cannot be modified.</p>
+
+<h2 id="passing-by-reference">Passing By Reference</h2>
+
+<p>Now, let’s look at another way of passing variables: By Reference.</p>
+
+<p>Consider the following code snippet:</p>
+
+<pre><code class="language-vbnet">Function GetReference(ByRef var)
+  var = var + 1
+End Function
+
+Dim x: x = 5
+
+'Pass the variable x to the GetReference function ByRef
+Call GetReference(x)
+
+Call Rhino.Print("x = " &amp; CStr(x))
+</code></pre>
+
+<p>When you run the block of code above, you will get the following output:</p>
+
+<pre><code class="language-vbnet">x = 6
+</code></pre>
+
+<p>Variable <code class="highlighter-rouge">x</code> was increment by 1.  But why was <code class="highlighter-rouge">x</code> incremented?  Only var must have incremented by 1, and not <code class="highlighter-rouge">x</code>?  Well, that is the core concept behind passing variables by reference.</p>
+
+<p>When the function <code class="highlighter-rouge">GetReference</code> executes, var becomes a reference of <code class="highlighter-rouge">x</code>, and therefore, any changes made to var would impact <code class="highlighter-rouge">x</code>.  So if <code class="highlighter-rouge">var</code> increments itself by 1, so would <code class="highlighter-rouge">x</code>.  If <code class="highlighter-rouge">var</code> becomes 0 (zero), so would <code class="highlighter-rouge">x</code>.</p>
+
+<p>Let’s look at another example:</p>
+
+<pre><code class="language-vbnet">Function GetReference(ByRef arrArray)
+  ReDim Preserve arrArray(UBound(arrArray)+1)
+  arrArray(UBound(arrArray)) = 2
+End Function
+
+Dim newArray: newArray = Array(0, 1)
+Call GetReference(newArray)
+</code></pre>
+
+<p>Will the size of <code class="highlighter-rouge">newArray</code> increase?  Look at:</p>
+
+<pre><code class="language-vbnet">' new size: 2
+Call Rhino.Print(UBound(newArray))
+
+' new elements: 0, 1, 2
+For x = LBound(newArray) To UBound(newArray)
+  Call Rhino.Print(newArray(x))
+Next
+</code></pre>
+
+<p>Since <code class="highlighter-rouge">newArray</code> was passed as a reference to the <code class="highlighter-rouge">GetReference</code> function, the change made to <code class="highlighter-rouge">arrArray</code> was reflected upon <code class="highlighter-rouge">newArray</code> as well.  Thus, sizes of both arrays incremented by 1.</p>
+
+<p>Is there a way to pass variables <code class="highlighter-rouge">ByRef</code> and still avoid this?  Yes, there is.  The answer lies in passing temporary variables…</p>
+
+<h2 id="byref--temporary-variables">ByRef &amp; Temporary Variables</h2>
+
+<p>The advantage of using this approach is that you can pass temporary variables to n number of functions accepting arguments as reference, without having the base (original) variables modified.  This is a good (and recommended) approach, since your original variables stay intact and you do not lose track of them when working with extensive function libraries.  Please see a simple demonstration of this approach below:</p>
+
+<pre><code class="language-vbnet">Function GetReference(ByRef var)
+  var = var + 1
+End Function
+
+Dim x: x = 5
+Dim y: y = x
+
+Call GetReference(y)
+
+' Returns 5 (x remains unchanged)
+Call Rhino.Print(x)
+' Returns 6   
+Call Rhino.Print(y)
+</code></pre>
+
+<p>Above, you will notice that as <code class="highlighter-rouge">y</code> became a temporary variable and was passed to <code class="highlighter-rouge">GetReference</code>, only it was modified.  The variable <code class="highlighter-rouge">x</code> was unchanged.  Thus, it’s recommended to use temporary variables when passing variables as reference.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Here is a summary:</p>
+
+<ul>
+  <li>(ByVal) Arguments do not change when passed by value.</li>
+  <li>(ByRef) If the function parameter is modified, it will have the same impact on the parameter that was passed by reference.</li>
+  <li>(ByRef) Because the passed parameters can be changed, we can pass multiple values from functions.</li>
+  <li>(ByRef) In a large function library, it can be hard to tell where the value was changed and what function the variable was supposed to perform.</li>
+</ul>
+
+<hr />
+
+<h1 id="related-topics">Related Topics</h1>
+
+<ul>
+  <li><a href="/wip/guides/rhinoscript/byref_vs_byval">ByRef vs ByVal</a></li>
+  <li><a href="http://msdn.microsoft.com/en-us/library/tt223ahx(v=vs.85).aspx">Sub Statement (VBScript) on MSDN</a></li>
+  <li><a href="http://msdn.microsoft.com/en-us/library/x7hbf8fa(v=vs.85).aspx">Function Statement (VBScript) on MSDN</a></li>
+</ul>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/rhinoscript/vbscript_passing_parameters.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/wip/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Generating Platonic and Archimedean Solids</title>
+  <meta name="description" content="```vbnet‘’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’ Define geometry for rhombitruncated icosidodecahedron‘’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’...">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/wip/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/samples/rhinoscript/platonics/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/wip/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wip/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/wip/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wip/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/wip/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wip/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/wip/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/wip/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+<div class="version-banner">
+  Hey, you're viewing the <strong>wip</strong> version of this page!
+  Click <a href="/samples/rhinoscript/platonics/">here</a> to view the current (stable) version.
+</div>
+
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/wip/"><img src="/wip/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/wip/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/wip/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/wip/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/wip/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <h3>Generating Platonic and Archimedean Solids</h3>
+
+<p>Demonstrates how to generate platonic and archimedean solids with RhinoScript.</p>
+
+<p style="color:#337ab7; padding-left:10px">VBScript</p>
+
+<pre><code class="language-vbnet">'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' Define geometry for rhombitruncated icosidodecahedron
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub RhombitruncatedIcosidodecahedron()
+
+   ' Define the vertices
+   Dim arrVertices(119)
+   arrVertices(0)   = Array( 0.519,  0.280, -0.560)
+   arrVertices(1)   = Array( 0.214, -0.733,  0.280)
+   arrVertices(2)   = Array( 0.280, -0.214, -0.733)
+   arrVertices(3)   = Array( 0.107,  0.107,  0.799)
+   arrVertices(4)   = Array( 0.280,  0.214,  0.733)
+   arrVertices(5)   = Array( 0.453,  0.107, -0.667)
+   arrVertices(6)   = Array( 0.733, -0.280,  0.214)
+   arrVertices(7)   = Array( 0.280, -0.214,  0.733)
+   arrVertices(8)   = Array(-0.280, -0.560,  0.519)
+   arrVertices(9)   = Array( 0.107, -0.107,  0.799)
+   arrVertices(10)  = Array(-0.560, -0.519,  0.280)
+   arrVertices(11)  = Array(-0.280,  0.560, -0.519)
+   arrVertices(12)  = Array( 0.214,  0.733, -0.280)
+   arrVertices(13)  = Array( 0.519, -0.280,  0.560)
+   arrVertices(14)  = Array(-0.667,  0.453, -0.107)
+   arrVertices(15)  = Array( 0.799, -0.107,  0.107)
+   arrVertices(16)  = Array(-0.107, -0.667,  0.453)
+   arrVertices(17)  = Array(-0.107,  0.107,  0.799)
+   arrVertices(18)  = Array( 0.107,  0.799,  0.107)
+   arrVertices(19)  = Array(-0.453,  0.107, -0.667)
+   arrVertices(20)  = Array(-0.280, -0.560, -0.519)
+   arrVertices(21)  = Array( 0.214, -0.733, -0.280)
+   arrVertices(22)  = Array( 0.346,  0.387,  0.626)
+   arrVertices(23)  = Array( 0.560, -0.519, -0.280)
+   arrVertices(24)  = Array(-0.107, -0.107,  0.799)
+   arrVertices(25)  = Array( 0.280, -0.560,  0.519)
+   arrVertices(26)  = Array(-0.107, -0.799,  0.107)
+   arrVertices(27)  = Array( 0.280,  0.560,  0.519)
+   arrVertices(28)  = Array(-0.799, -0.107,  0.107)
+   arrVertices(29)  = Array( 0.626, -0.346, -0.387)
+   arrVertices(30)  = Array(-0.667, -0.453, -0.107)
+   arrVertices(31)  = Array( 0.519,  0.280,  0.560)
+   arrVertices(32)  = Array( 0.560, -0.519,  0.280)
+   arrVertices(33)  = Array(-0.346,  0.387,  0.626)
+   arrVertices(34)  = Array(-0.346,  0.387, -0.626)
+   arrVertices(35)  = Array(-0.453, -0.107, -0.667)
+   arrVertices(36)  = Array(-0.560,  0.519,  0.280)
+   arrVertices(37)  = Array(-0.107,  0.799, -0.107)
+   arrVertices(38)  = Array(-0.519,  0.280,  0.560)
+   arrVertices(39)  = Array(-0.519, -0.280, -0.560)
+   arrVertices(40)  = Array(-0.453,  0.107,  0.667)
+   arrVertices(41)  = Array(-0.387,  0.626,  0.346)
+   arrVertices(42)  = Array(-0.346, -0.387,  0.626)
+   arrVertices(43)  = Array(-0.107,  0.667,  0.453)
+   arrVertices(44)  = Array(-0.733,  0.280, -0.214)
+   arrVertices(45)  = Array(-0.519, -0.280,  0.560)
+   arrVertices(46)  = Array(-0.107, -0.799, -0.107)
+   arrVertices(47)  = Array( 0.387, -0.626, -0.346)
+   arrVertices(48)  = Array( 0.733,  0.280, -0.214)
+   arrVertices(49)  = Array(-0.214,  0.733, -0.280)
+   arrVertices(50)  = Array(-0.107,  0.107, -0.799)
+   arrVertices(51)  = Array( 0.733,  0.280,  0.214)
+   arrVertices(52)  = Array( 0.667,  0.453,  0.107)
+   arrVertices(53)  = Array( 0.107, -0.799, -0.107)
+   arrVertices(54)  = Array( 0.667, -0.453,  0.107)
+   arrVertices(55)  = Array( 0.107,  0.799, -0.107)
+   arrVertices(56)  = Array(-0.346, -0.387, -0.626)
+   arrVertices(57)  = Array( 0.733, -0.280, -0.214)
+   arrVertices(58)  = Array(-0.280, -0.214,  0.733)
+   arrVertices(59)  = Array(-0.667,  0.453,  0.107)
+   arrVertices(60)  = Array( 0.346, -0.387,  0.626)
+   arrVertices(61)  = Array(-0.733,  0.280,  0.214)
+   arrVertices(62)  = Array( 0.214,  0.733,  0.280)
+   arrVertices(63)  = Array( 0.453, -0.107, -0.667)
+   arrVertices(64)  = Array( 0.107, -0.667,  0.453)
+   arrVertices(65)  = Array(-0.626, -0.346,  0.387)
+   arrVertices(66)  = Array(-0.667, -0.453,  0.107)
+   arrVertices(67)  = Array( 0.107, -0.107, -0.799)
+   arrVertices(68)  = Array(-0.626,  0.346,  0.387)
+   arrVertices(69)  = Array( 0.560,  0.519,  0.280)
+   arrVertices(70)  = Array(-0.214,  0.733,  0.280)
+   arrVertices(71)  = Array(-0.733, -0.280,  0.214)
+   arrVertices(72)  = Array(-0.107,  0.667, -0.453)
+   arrVertices(73)  = Array( 0.626,  0.346, -0.387)
+   arrVertices(74)  = Array( 0.667,  0.453, -0.107)
+   arrVertices(75)  = Array(-0.733, -0.280, -0.214)
+   arrVertices(76)  = Array( 0.626, -0.346,  0.387)
+   arrVertices(77)  = Array( 0.346,  0.387, -0.626)
+   arrVertices(78)  = Array(-0.214, -0.733,  0.280)
+   arrVertices(79)  = Array(-0.519,  0.280, -0.560)
+   arrVertices(80)  = Array(-0.626,  0.346, -0.387)
+   arrVertices(81)  = Array( 0.560,  0.519, -0.280)
+   arrVertices(82)  = Array(-0.387,  0.626, -0.346)
+   arrVertices(83)  = Array( 0.107, -0.799,  0.107)
+   arrVertices(84)  = Array( 0.453, -0.107,  0.667)
+   arrVertices(85)  = Array(-0.280,  0.560,  0.519)
+   arrVertices(86)  = Array( 0.799, -0.107, -0.107)
+   arrVertices(87)  = Array(-0.626, -0.346, -0.387)
+   arrVertices(88)  = Array( 0.667, -0.453, -0.107)
+   arrVertices(89)  = Array( 0.387,  0.626, -0.346)
+   arrVertices(90)  = Array(-0.799,  0.107, -0.107)
+   arrVertices(91)  = Array(-0.560,  0.519, -0.280)
+   arrVertices(92)  = Array(-0.107, -0.667, -0.453)
+   arrVertices(93)  = Array( 0.107, -0.667, -0.453)
+   arrVertices(94)  = Array( 0.280,  0.214, -0.733)
+   arrVertices(95)  = Array(-0.799, -0.107, -0.107)
+   arrVertices(96)  = Array( 0.387,  0.626,  0.346)
+   arrVertices(97)  = Array( 0.387, -0.626,  0.346)
+   arrVertices(98)  = Array( 0.799,  0.107,  0.107)
+   arrVertices(99)  = Array( 0.107,  0.667, -0.453)
+   arrVertices(100) = Array(-0.280,  0.214,  0.733)
+   arrVertices(101) = Array(-0.280,  0.214, -0.733)
+   arrVertices(102) = Array(-0.214, -0.733, -0.280)
+   arrVertices(103) = Array( 0.280,  0.560, -0.519)
+   arrVertices(104) = Array( 0.107,  0.107, -0.799)
+   arrVertices(105) = Array( 0.626,  0.346,  0.387)
+   arrVertices(106) = Array(-0.560, -0.519, -0.280)
+   arrVertices(107) = Array( 0.799,  0.107, -0.107)
+   arrVertices(108) = Array(-0.280, -0.214, -0.733)
+   arrVertices(109) = Array( 0.346, -0.387, -0.626)
+   arrVertices(110) = Array(-0.387, -0.626, -0.346)
+   arrVertices(111) = Array( 0.453,  0.107,  0.667)
+   arrVertices(112) = Array( 0.280, -0.560, -0.519)
+   arrVertices(113) = Array( 0.107,  0.667,  0.453)
+   arrVertices(114) = Array(-0.799,  0.107,  0.107)
+   arrVertices(115) = Array(-0.107, -0.107, -0.799)
+   arrVertices(116) = Array(-0.107,  0.799,  0.107)
+   arrVertices(117) = Array(-0.387, -0.626,  0.346)
+   arrVertices(118) = Array( 0.519, -0.280, -0.560)
+   arrVertices(119) = Array(-0.453, -0.107,  0.667)
+
+   'Define the faces
+   Dim arrFaces(61)
+   arrFaces(0)  = Array(47,23,88,54,32,97,1,83,53,21)
+   arrFaces(1)  = Array(84,111,4,3,9,7)
+   arrFaces(2)  = Array(76,6,54,32)
+   arrFaces(3)  = Array(24,9,3,17)
+   arrFaces(4)  = Array(18,62,96,69,52,74,81,89,12,55)
+   arrFaces(5)  = Array(35,39,87,75,95,90,44,80,79,19)
+   arrFaces(6)  = Array(8,16,78,117)
+   arrFaces(7)  = Array(8,42,45,65,10,117)
+   arrFaces(8)  = Array(7,60,13,84)
+   arrFaces(9)  = Array(114,90,44,14,59,61)
+   arrFaces(10) = Array(5,0,73,48,107,86,57,29,118,63)
+   arrFaces(11) = Array(77,94,104,50,101,34,11,72,99,103)
+   arrFaces(12) = Array(4,22,31,111)
+   arrFaces(13) = Array(49,37,55,12,99,72)
+   arrFaces(14) = Array(6,76,13,84,111,31,105,51,98,15)
+   arrFaces(15) = Array(100,33,38,40)
+   arrFaces(16) = Array(18,55,37,116)
+   arrFaces(17) = Array(43,70,41,85)
+   arrFaces(18) = Array(58,42,45,119)
+   arrFaces(19) = Array(105,31,22,27,96,69)
+   arrFaces(20) = Array(21,47,112,93)
+   arrFaces(21) = Array(105,51,52,69)
+   arrFaces(22) = Array(28,71,65,45,119,40,38,68,61,114)
+   arrFaces(23) = Array(15,86,107,98)
+   arrFaces(24) = Array(68,61,59,36)
+   arrFaces(25) = Array(93,92,102,46,53,21)
+   arrFaces(26) = Array(114,28,95,90)
+   arrFaces(27) = Array(65,71,66,10)
+   arrFaces(28) = Array(28,95,75,30,66,71)
+   arrFaces(29) = Array(113,62,96,27)
+   arrFaces(30) = Array(74,81,73,48)
+   arrFaces(31) = Array(89,103,77,0,73,81)
+   arrFaces(32) = Array(76,13,60,25,97,32)
+   arrFaces(33) = Array(14,91,80,44)
+   arrFaces(34) = Array(16,8,42,58,24,9,7,60,25,64)
+   arrFaces(35) = Array(23,29,118,109,112,47)
+   arrFaces(36) = Array(30,106,87,75)
+   arrFaces(37) = Array(43,85,33,100,17,3,4,22,27,113)
+   arrFaces(38) = Array(82,49,37,116,70,41,36,59,14,91)
+   arrFaces(39) = Array(0,5,94,77)
+   arrFaces(40) = Array(93,112,109,2,67,115,108,56,20,92)
+   arrFaces(41) = Array(74,52,51,98,107,48)
+   arrFaces(42) = Array(79,19,101,34)
+   arrFaces(43) = Array(25,64,1,97)
+   arrFaces(44) = Array(12,89,103,99)
+   arrFaces(45) = Array(39,35,108,56)
+   arrFaces(46) = Array(19,101,50,115,108,35)
+   arrFaces(47) = Array(64,1,83,26,78,16)
+   arrFaces(48) = Array(104,50,115,67)
+   arrFaces(49) = Array(110,102,46,26,78,117,10,66,30,106)
+   arrFaces(50) = Array(113,62,18,116,70,43)
+   arrFaces(51) = Array(118,63,2,109)
+   arrFaces(52) = Array(5,94,104,67,2,63)
+   arrFaces(53) = Array(100,17,24,58,119,40)
+   arrFaces(54) = Array(49,82,11,72)
+   arrFaces(55) = Array(91,80,79,34,11,82)
+   arrFaces(56) = Array(83,53,46,26)
+   arrFaces(57) = Array(102,110,20,92)
+   arrFaces(58) = Array(106,87,39,56,20,110)
+   arrFaces(59) = Array(85,41,36,68,38,33)
+   arrFaces(60) = Array(88,23,29,57)
+   arrFaces(61) = Array(6,54,88,57,86,15)
+
+   ' Create the solid
+   CreateSolid arrVertices, arrFaces
+End Sub
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' Define geometry for truncated tetrahedron
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub TruncatedTetrahedron()
+   ' Define the vertices
+   Dim arrVertices(11)
+   arrVertices(0)  = Array(-0.347, 0.000,-0.735)
+   arrVertices(1)  = Array(-0.693,-0.347,-0.245)
+   arrVertices(2)  = Array( 0.347, 0.693, 0.245)
+   arrVertices(3)  = Array( 0.000, 0.347, 0.735)
+   arrVertices(4)  = Array( 0.693, 0.347,-0.245)
+   arrVertices(5)  = Array(-0.347,-0.693, 0.245)
+   arrVertices(6)  = Array( 0.347, 0.000,-0.735)
+   arrVertices(7)  = Array( 0.347,-0.693, 0.245)
+   arrVertices(8)  = Array( 0.693,-0.347,-0.245)
+   arrVertices(9)  = Array( 0.000,-0.347, 0.735)
+   arrVertices(10) = Array(-0.347, 0.693, 0.245)
+   arrVertices(11) = Array(-0.693, 0.347,-0.245)
+
+   'Define the faces
+   Dim arrFaces(7)
+   arrFaces(0) = Array(9,5,7)
+   arrFaces(1) = Array(6,4,8)
+   arrFaces(2) = Array(10,11,0,6,4,2)
+   arrFaces(3) = Array(4,2,3,9,7,8)
+   arrFaces(4) = Array(1,11,0)
+   arrFaces(5) = Array(10,3,2)
+   arrFaces(6) = Array(6,0,1,5,7,8)
+   arrFaces(7) = Array(5,1,11,10,3,9)
+
+   ' Create the solid
+   CreateSolid arrVertices, arrFaces
+End Sub
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' General purpose subroutine to create solids
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub CreateSolid(arrVertices, arrFaces)
+   Dim arrSurfaces()
+   ReDim arrSurfaces(UBound(arrFaces))
+   Rhino.EnableRedraw False
+
+   ' Create each face
+   Dim i, j, arrFace, arrPoints(), strPolyline, arrPlanarSrf
+   For i = 0 To UBound(arrFaces)
+     arrFace = arrFaces(i)
+     ReDim arrPoints(UBound(arrFace) + 1)
+     For j = 0 To UBound(arrFace)
+       arrPoints(j) = arrVertices(arrFace(j))
+     Next
+     arrPoints(UBound(arrFace) + 1) = arrPoints(0)
+     strPolyline = Rhino.AddPolyline(arrPoints)
+     arrPlanarSrf = Rhino.AddPlanarSrf(Array(strPolyline))
+     arrSurfaces(i) = arrPlanarSrf(0)
+     Rhino.DeleteObject strPolyline
+   Next
+
+   ' Join all of the faces
+   Rhino.SelectObjects arrSurfaces
+   Rhino.Command "_-Join"
+   Rhino.UnselectAllObjects
+   Rhino.EnableRedraw True
+ End Sub
+</code></pre>
+
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_samples/rhinoscript/platonics.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/wip/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

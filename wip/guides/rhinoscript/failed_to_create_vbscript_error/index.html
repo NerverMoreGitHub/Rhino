@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Failed to Create VBScript Error</title>
+  <meta name="description" content="Failed to Create VBScript Error">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/wip/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/rhinoscript/failed_to_create_vbscript_error/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/wip/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wip/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/wip/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wip/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/wip/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wip/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/wip/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/wip/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+<div class="version-banner">
+  Hey, you're viewing the <strong>wip</strong> version of this page!
+  Click <a href="/guides/rhinoscript/failed_to_create_vbscript_error/">here</a> to view the current (stable) version.
+</div>
+
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/wip/"><img src="/wip/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/wip/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/wip/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/wip/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/wip/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/wip/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/wip/guides/#rhinoscript">RhinoScript</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#failed-to-create-vbscript-error">Failed to Create VBScript...</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#symptom">Symptom</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#cause">Cause</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#vbscript-is-not-installed">VBScript is not installed</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#installing-vbscript">Installing VBScript</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#vbscript-is-not-registered">VBScript is not registered</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#script-blocking-software">Script Blocking Software</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#mcafee">McAfee</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#security-settings">Security Settings</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="failed-to-create-vbscript-error">Failed to Create VBScript Error</h1>
+
+<p>This guide discusses the Failed to create instance of VBScript engine error and how to fix it.</p>
+
+<h2 id="symptom">Symptom</h2>
+
+<p>When you run Rhino, you receive the following error message:</p>
+
+<p><strong>“Failed to create instance of VBScript engine”</strong></p>
+
+<h2 id="cause">Cause</h2>
+
+<p>The RhinoScript plugin included with Rhino uses Microsoft’s Visual Basic Script, or VBScript.  The “Failed to create instance of VBScript engine” message is a result of RhinoScript’s inability to connect with VBScript.</p>
+
+<p>This error can be caused by the following:</p>
+
+<ul>
+  <li>VBScript is not installed.</li>
+  <li>VBScript is not properly registered.</li>
+  <li>Script blocking software is preventing VBScript from running.</li>
+  <li>Security settings are preventing VBScript from being accessed.</li>
+</ul>
+
+<h2 id="vbscript-is-not-installed">VBScript is not installed</h2>
+
+<p>Rhino 3.0, 4.0, and 5 (32-bit) use the 32-bit version of the VBScript dynamic-link library, <em>vbscript.dll</em>. On English-language versions of 32-bit Windows, <em>vbscript.dll</em> is located here:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>C:\Windows\System32
+</code></pre>
+</div>
+
+<p>On English-language versions of 64-bit Windows, 32-bit <em>vbscript.dll</em> is located here:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>C:\Windows\SysWOW64
+</code></pre>
+</div>
+
+<p>Rhino 5 (64-bit) use the 64-bit version of <em>vbscript.dll</em>. On English-language versions of 64-bit Windows, <em>vbscript.dll</em> is located here:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>C:\Windows\System32
+</code></pre>
+</div>
+
+<p>If you search these folders and you are unable to locate <em>vbscript.dll</em>, then you will need to reinstall VBScript.</p>
+
+<h3 id="installing-vbscript">Installing VBScript</h3>
+
+<p>Install the latest Visual Basic Script engine from Microsoft for your Windows version:</p>
+
+<ul>
+  <li><a href="http://www.microsoft.com/downloads/details.aspx?familyid=47809025-D896-482E-A0D6-524E7E844D81">Windows XP</a></li>
+  <li>Windows Vista, 7, 8, 10: No download necessary. The latest VBScript is already included with Windows.</li>
+</ul>
+
+<p><strong>NOTE</strong>: You can also install the latest VBScript by simply downloading and installing the latest version of Microsoft Internet Explorer.</p>
+
+<h2 id="vbscript-is-not-registered">VBScript is not registered</h2>
+
+<p>In order for applications to use VBScript, it must be properly registered in the Windows Registry.</p>
+
+<p>Rhino 3.0, 4.0, and 5 (32-bit) use the 32-bit version of VBScript.  On English-language versions of 32-bit Windows, VBScript is registered here:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HKEY_CLASSES_ROOT\CLSID\{B54F3741-5B07-11cf-A4B0-00AA004A55E8}
+</code></pre>
+</div>
+
+<p>On English-language versions of 64-bit Windows, 32-bit VBScript is registered here:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{B54F3741-5B07-11cf-A4B0-00AA004A55E8}
+</code></pre>
+</div>
+
+<p>Rhino 5 (64-bit) use the 64-bit version of VBScript.  On English-language versions of 64-bit Windows, VBScript is registered here:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HKEY_CLASSES_ROOT\CLSID\{B54F3741-5B07-11cf-A4B0-00AA004A55E8}
+</code></pre>
+</div>
+
+<p>If, using <em>REGEDIT.EXE</em>, you search for these keys and you are unable to locate them, then you will need to reregister VBScript by following the directions below…</p>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>WARNING</h4>
+  <p>Modifying the registry incorrectly can have negative consequences on your system's stability and even damage the system.  You must be logged in as administrator or logged in as a user with administrator privileges for the computer to execute these steps.</p>
+</div>
+
+<ol>
+  <li>Click Start &gt; All Programs &gt; Accessories &gt; Command Prompt. (Windows 7 users: right-click on Command Prompt and select “Run as administrator”).</li>
+  <li>In the command prompt window, change to the folder where <em>vbscript.dll</em> resides by typing either <code class="highlighter-rouge">CD C:\Windows\System32</code> or <code class="highlighter-rouge">CD C:\Windows\SysWOW64</code> and then press <kbd>Enter</kbd>.</li>
+  <li>In the command prompt window, type <code class="highlighter-rouge">REGSVR32 VBSCRIPT.DLL</code> and then press <kbd>Enter</kbd>.</li>
+  <li>A message should appear stating “DllRegisterServer in VBSCRIPT.DLL succeeded”. If you see a message with error code 0x80004005, the command window was not opened as an administrator.  You might also need to disable anti-virus, personal security, and firewall applications before performing this task.</li>
+</ol>
+
+<h2 id="script-blocking-software">Script Blocking Software</h2>
+
+<p>Many anti-virus, personal security, and firewall applications contain script blocking features that will prevent applications from accessing VBScript.  For example, Norton Antivirus has a Script Blocking feature what will disable VBScript.  McAfee also has one that is even more destructive.  Kaspersky also was found to be blocking VBScripting.</p>
+
+<p>If you are running anti-virus, personal security, and firewall applications, you may have to disable their script blocking features.  Check your product documentation for details.</p>
+
+<h3 id="mcafee">McAfee</h3>
+
+<p>McAfee anti-virus can cause serious problems with VBScript, even if it is uninstalled.  Even after uninstalling McAfee, it may have modified the two registry keys listed above, pointing to place-holder DLLs in the McAfee folders instead of where the two <em>vbscript.dll</em> files should be.  If you encounter this issue, use PSEXEC as described below to restore full permissions to the Administrator account in order to manuallyy change the keys to point back to the 32 and 64-bit <em>vbscript.dll</em> files.</p>
+
+<p>There are two keys that tell Windows where VBScript.dll is on the local drive.  If McAfee has modified your VBScript installation, these keys will be pointing to the wrong file and locations.</p>
+
+<p>It is likely that:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[HKEY_CLASSES_ROOT\CLSID{B54F3741-5B07-11cf-A4B0-00AA004A55E8}\InprocServer32]
+</code></pre>
+</div>
+
+<p>points to:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>C:\Program Files\McAfee\VirusScan Enterprise\scriptcl.dll
+</code></pre>
+</div>
+
+<p>which is wrong.</p>
+
+<p>This causes VBScript to fail when any application tries to use it.  A complete uninstall of McAfee will leave this key unmodified, causing VBScript to fail since this McAfee dll no longer exists.</p>
+
+<p>Manually changing the registry key to the windows default:<br />
+<code class="highlighter-rouge">
+\[HKEY_CLASSES_ROOT\CLSID{B54F3741-5B07-11cf-A4B0-00AA004A55E8}\InprocServer32]
+</code><br />
+to:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\\C:\Windows\System32\vbscript.dll\\
+</code></pre>
+</div>
+
+<p>fixes the problem for Rhino 5 for Windows (64-bit).</p>
+
+<p>For 32-bit Rhino 5 on 64-bit Windows, this key:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> \HKEY_CLASSES_ROOT\Wow6432Node\CLSID{B54F3741-5B07-11cf-A4B0-00AA004A55E8\InprocServer32}\\
+</code></pre>
+</div>
+
+<p>should point to:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> \\C:\Windows\SysWOW64\vbscript.dll\\
+</code></pre>
+</div>
+
+<h2 id="security-settings">Security Settings</h2>
+
+<p>If <em>vbscript.dll</em> is present on your system and the module is properly registered, then you might not have enough rights to read the Windows Registry.</p>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>WARNING</h4>
+  <p>Modifying the registry incorrectly can have negative consequences on your system's stability and even damage the system.  You must be logged in as administrator or logged in as a user with administrator privileges for the computer to execute these steps.</p>
+</div>
+
+<p>Run <em>REGEDIT.EXE</em> and find the appropriate registry key in <code class="highlighter-rouge">HKEY_CLASSES_ROOT</code>, either:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HKEY_CLASSES_ROOT\CLSID\{B54F3741-5B07-11cf-A4B0-00AA004A55E8}
+</code></pre>
+</div>
+
+<p>or</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{B54F3741-5B07-11cf-A4B0-00AA004A55E8}
+</code></pre>
+</div>
+
+<p>Right-click on the key and pick Permissions… from the context menu.</p>
+
+<p>Users should have the Read permission checked.  If this is not the case, then the users permissions have been modified, which is causing RhinoScript to not be able to read this key.  Registry permissions issues are often caused by security policies have been pushed down onto the workstations that are members of an Active Directory domain.</p>
+
+<p>To set the permissions, navigate to the top of the hive, <code class="highlighter-rouge">HKEY_CLASSES_ROOT</code>, and try to set the proper permissions from there.  In doing this, all keys below this will inherit the permissions (and hopefully the problem will be solved).  If you are unable to do this, then you will need to contact your IT department and ask for assistance.</p>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/rhinoscript/failed_to_create_vbscript_error.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/wip/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Running Scripts from Macros</title>
+  <meta name="description" content="Running Scripts from Macros">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/wip/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/rhinoscript/running_scripts_from_macros/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/wip/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wip/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/wip/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wip/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/wip/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wip/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/wip/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/wip/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+<div class="version-banner">
+  Hey, you're viewing the <strong>wip</strong> version of this page!
+  Click <a href="/guides/rhinoscript/running_scripts_from_macros/">here</a> to view the current (stable) version.
+</div>
+
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/wip/"><img src="/wip/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/wip/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/wip/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/wip/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/wip/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/wip/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/wip/guides/#rhinoscript">RhinoScript</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#running-scripts-from-macros">Running Scripts from Macros</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#how-to">How To</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#creating-button-or-alias-for-your-macro-or-script">Creating button or alias ...</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#use-the-macro-editor-to-work-out-new-macros">Use the macro editor to w...</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#paste-your-macro-or-script-into-the-button-or-alias">Paste your macro or scrip...</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#linking-to-external-scripts">Linking to external scripts</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="running-scripts-from-macros">Running Scripts from Macros</h1>
+
+<p>This guide explains how to set up and run macros and RhinoScripts.</p>
+
+<h2 id="how-to">How To</h2>
+
+<h3 id="creating-button-or-alias-for-your-macro-or-script">Creating button or alias for your macro or script</h3>
+
+<p>The simplest way to save and run your macro is from a toolbar button or alias.  If you don’t know how to make a new toolbar button or alias, look in the Help file.  There’s a good explanation.  Once you have your new button (or have chosen to edit an existing one), open the editor by <kbd>shift</kbd>+right-clicking on the button.  For an alias, you will do the same thing, but instead of creating a new button, go into <em>Options</em> &gt; <em>Aliases</em> and use the <em>New</em> button to create a new alias.</p>
+
+<h3 id="use-the-macro-editor-to-work-out-new-macros">Use the macro editor to work out new macros</h3>
+
+<p>The <em>MacroEditor</em> command opens a text editing window in which you can type macros and try them out without the need to edit a button every time.  The run button on the lower edge of the editor runs the macro.  If there is selected text, it runs the selected text.  When it all runs to your satisfaction, copy and paste the macro to a toolbar button.</p>
+
+<p><img src="/wip/images/running_scripts_from_macros_01.png" alt="Macro Editor" /></p>
+
+<h3 id="paste-your-macro-or-script-into-the-button-or-alias">Paste your macro or script into the button or alias</h3>
+
+<p>Now, there are two ways to approach associating the macro or script to your button or alias.  First and simplest is to just copy/paste the whole thing into the left or right button box (or in the alias box).  The advantage of the button method is that it is portable.  That is, if you copy or export the button to another installation the macro goes with it.  Once the test is pasted in, click <em>OK</em> to exit the button editor, and you’re ready to go!</p>
+
+<p>The paste-in-button (or alias) method is fine for macros of Rhino commands and shorter, smaller scripts, but it gets a bit unwieldy to edit if there is a great deal of text.  For larger scripts, some people like to place them externally in a folder with a link so that Rhino can find them.  Both toolbar buttons and aliases can link to external scripts.  One advantage of this system is that all scripts are located in one spot so you can easily find and update them.  The problem here is that if you copy your button or workspace for use somewhere else, you have to remember to bring the script with it.</p>
+
+<h3 id="linking-to-external-scripts">Linking to external scripts</h3>
+
+<p>To set up an external scripts folder: Find a logical place to create your folder.  <em>Take care in choosing this folder. Make sure that the user has permissions to access it.</em>  Open the <em>Options</em> dialog, and navigate to the <em>Files</em> tab.  In the file search paths box, click the new button and then the little <em>…</em> button and browse to the location of the scripts folder.  Then click <em>OK</em>.  Exit the options dialog. Rhino will now go looking for scripts in this folder.</p>
+
+<p>Currently Python does not read this section, so if you use Python scripts you will also need to do a similar operation inside the Python script editor: Open the editor with <em>EditPythonScript</em> and go to <em>Tools</em> &gt; <em>Options</em> and enter the path to your folder in <em>Module Search Paths</em>.</p>
+
+<p>To link your button or alias to an external script: The syntax used will depend on the type of script.  If it is a simple text file with normal Rhino commands (like a long macro), you will need to use the command <em>ReadCommandFile Filename.txt</em>  Substitute the name of your text file for <em>Filename.txt</em>.  Paste that string into the left or right button box and you’re good to go.  To run a <em>RhinoScript .rvb</em> file use the command <em>LoadScript Filename.rvb</em> instead.  In general, that’s all you need to do, but some scripts are written to run immediately on load.  Others are not, so some script tweaking may be necessary.</p>
+
+<p><img src="/wip/images/running_scripts_from_macros_02.png" alt="Edit Toolbar Button Dialog" /></p>
+
+<p>You can also paste an entire RhinoScript into a button. For that, start with the command <em>-_RunScript</em> (not <em>-_LoadScript</em>) followed by a space and an open parentheses.  At the end of the script you need a close parentheses.  For python scripts, you want to use <em>-_RunPythonScript</em> instead of just <em>-_RunScript</em>.</p>
+
+<p>Don’t forget the dash in front of the command, otherwise it will stop and prompt you for what script you want to run.  The underbar insures that the <em>_-Runscript</em> command will run in languages other than English, but it will not insure the actual script will do the same.  It has to be written correctly as well.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>! _NoEcho -_Runscript (
+
+Paste in
+your entire
+script here
+
+)
+</code></pre>
+</div>
+
+<p>The button editor showing pasted in complete RhinoScript should look something like this…</p>
+
+<p><img src="/wip/images/running_scripts_from_macros_03.png" alt="Edit Toolbar Button Done" /></p>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/rhinoscript/running_scripts_from_macros.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/wip/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

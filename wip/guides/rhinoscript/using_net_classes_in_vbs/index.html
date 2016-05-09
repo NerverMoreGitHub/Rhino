@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Using .NET Classes</title>
+  <meta name="description" content="Using .NET Classes">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/wip/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/rhinoscript/using_net_classes_in_vbs/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/wip/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wip/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/wip/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wip/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/wip/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wip/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/wip/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/wip/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+<div class="version-banner">
+  Hey, you're viewing the <strong>wip</strong> version of this page!
+  Click <a href="/guides/rhinoscript/using_net_classes_in_vbs/">here</a> to view the current (stable) version.
+</div>
+
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/wip/"><img src="/wip/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/wip/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/wip/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/wip/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/wip/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/wip/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/wip/guides/#rhinoscript">RhinoScript</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#using-net-classes">Using .NET Classes</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#arraylist">ArrayList</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#sortedlist">SortedList</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#stack">Stack</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#queue">Queue</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related Topics</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="using-net-classes">Using .NET Classes</h1>
+
+<p>This guide discusses several .NET classes that work with RhinoScript.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Unlike other programming languages, VBScript lacks support of complex data structures.  Sometimes this makes life a bit difficult.  We need to code our own algorithms to achieve simple tasks like sorting or reversing an array.  .NET has support for complex data structures which come with built-in functions for these simple tasks.  So if we can use .NET data structure then we can eliminate the reinvention of the wheel for some of these tasks.  Well, the good news is that some .NET libraries are exposed to COM and can be used in VBScript.  Let’s take a look at the most useful of these…</p>
+
+<h2 id="arraylist">ArrayList</h2>
+
+<p>An <a href="http://msdn.microsoft.com/en-us/library/system.collections.arraylist(v=vs.100).aspx">ArrayList</a> is an array whose size is dynamically increased when needed.  Here is an example of its use:</p>
+
+<pre><code class="language-vbnet">Set objArrayList = CreateObject("System.Collections.ArrayList")
+
+objArrayList.Add 6
+objArrayList.Add 8
+objArrayList.Add 2
+objArrayList.Add 4
+objArrayList.Add 1
+objArrayList.Add 5
+objArrayList.Add 3
+objArrayList.Add 3
+objArrayList.Add 7
+
+'Convert to VBScript Array
+Rhino.Print Join(objArrayList.ToArray, ",")
+
+'Return the element at a given index
+Rhino.Print objArrayList(0)
+
+'Return the number of elements
+Rhino.Print objArrayList.Count
+
+'Verifies an element exists or not.
+Rhino.Print objArrayList.Contains(5)
+
+'Sort the elements
+objArrayList.Sort
+Rhino.Print Join(objArrayList.ToArray, ",")
+
+'Reverse the order of all elements
+objArrayList.Reverse
+Rhino.Print Join(objArrayList.ToArray, ",")
+
+'Remove a specific element
+objArrayList.Remove 8
+
+'Remove element by index
+objArrayList.RemoveAt 6
+
+'Remove all elements
+objArrayList.Clear  
+</code></pre>
+
+<p>For VBScript <code class="highlighter-rouge">Dictionary</code> objects we don’t need to redim while appending or removing elements.  Also, an element can be directly searched without iterating through each of them.  Both of these features are available with <code class="highlighter-rouge">ArrayList</code> as well but one of the most important dictionary object features, Key-Value pair, is not in <code class="highlighter-rouge">ArrayList</code>.  <code class="highlighter-rouge">SortedList</code> is an alternative if you want the power of both <code class="highlighter-rouge">ArrayList</code> and <code class="highlighter-rouge">Dictionary</code>.</p>
+
+<h2 id="sortedlist">SortedList</h2>
+
+<p>A <a href="http://msdn.microsoft.com/en-us/library/system.collections.sortedlist.aspx">SortedList</a> a is sorted Dictionary.  Every time we add or remove a key value pair in the dictionary, it automatically gets sorted by Key.  You can also access elements based on its index (just like arrays) which makes this even more powerful. Here is an example:</p>
+
+<pre><code class="language-vbnet">Set objSortedList = CreateObject("System.Collections.SortedList")
+
+objSortedList.Add "Point", 1
+objSortedList.Add "Point Cloud", 2
+objSortedList.Add "Curve", 4
+objSortedList.Add "Surface", 8
+objSortedList.Add "Polysurface", 16
+objSortedList.Add "Mesh", 32
+
+'Return the number of elements
+Rhino.Print objSortedList.Count
+
+'Return a value by its key
+Rhino.Print objSortedList("Surface")
+
+'Access all elements by index
+For i = 0 To objSortedList.Count - 1
+  Rhino.Print CStr(objSortedList.GetByIndex(i))
+Next
+
+'Verify a key exists
+Rhino.Print objSortedList.ContainsKey("Polysurface")
+
+'Verify a value exists
+Rhino.Print objSortedList.ContainsValue(16)
+
+'Return the index by key (zero based index)
+Rhino.Print objSortedList.IndexOfKey("Polysurface")
+
+'Return the index by value
+Rhino.Print objSortedList.IndexOfValue(16)
+
+'Remove an element by key
+objSortedList.Remove "Polysurface"
+
+'Remove an element by index
+objSortedList.RemoveAt 0
+
+'Remove all elements
+objSortedList.Clear
+</code></pre>
+
+<h2 id="stack">Stack</h2>
+
+<p>A <a href="http://msdn.microsoft.com/en-us/library/system.collections.stack.aspx">Stack</a> is a simple last-in, first-out (LIFO) non-generic collection of objects or data.  By last-in, first-out, what we mean is if a set of objects is put into a stack, the last object that was put in will be the first object to be taken out.  For example, in a restaurants with an automatic plate dispenser, the stack of plates are added to from the top.  As each person takes a plate, the next plate in the stack becomes available.  Here is an example of using <code class="highlighter-rouge">Stack</code>:</p>
+
+<pre><code class="language-vbnet">Set objStack = CreateObject("System.Collections.Stack")
+
+'Add elements to stack
+objStack.Push "Item_1"
+objStack.Push "Item_2"
+objStack.Push "Item_3"
+objStack.Push "Item_4"
+
+'Iterate through each element
+For Each Item In objStack
+ Rhino.Print Item
+Next
+
+'Convert to VBScript array
+Rhino.Print Join(objStack.ToArray, ",")
+
+'Return the number of elements
+Rhino.Print objStack.Count
+
+'Verify an element exists
+Rhino.Print objStack.Contains("Item_2")
+
+'Pop the last element
+Rhino.Print objStack.Pop
+
+'Return the last in element without popping
+Rhino.Print objStack.Peek
+Rhino.Print objStack.Pop
+Rhino.Print objStack.Pop
+
+'Remove all elements
+objStack.Clear
+</code></pre>
+
+<h2 id="queue">Queue</h2>
+
+<p>Unlike a <code class="highlighter-rouge">Stack</code>, a <a href="http://msdn.microsoft.com/en-us/library/system.collections.queue(v=vs.100).aspx">Queue</a> represents a first-in, first-out collection of objects or data.  Here is an example:</p>
+
+<pre><code class="language-vbnet">Set objQueue = CreateObject("System.Collections.Queue")
+
+'Add elements to queue
+objQueue.Enqueue "Item_1"
+objQueue.Enqueue "Item_2"
+objQueue.Enqueue "Item_3"
+objQueue.Enqueue "Item_4"
+
+'Iterate through each element
+For Each Item In objQueue
+  Rhino.Print Item
+Next
+
+'Convert to VBScript array
+Rhino.Print Join(objQueue.ToArray, ",")
+
+'Return the number of elements
+Rhino.Print objQueue.Count
+
+'Verify an element exists
+Rhino.Print objQueue.Contains("Item_2")
+
+'Return the first element
+Rhino.Print objQueue.Dequeue
+
+'Return the first element without removing it
+Rhino.Print objQueue.Peek
+Rhino.Print objQueue.Dequeue
+Rhino.Print objQueue.Dequeue
+
+'Removes all elements
+objQueue.Clear
+</code></pre>
+
+<hr />
+
+<h2 id="related-topics">Related Topics</h2>
+
+<ul>
+  <li><a href="http://msdn.microsoft.com/en-us/library/system.collections.arraylist(v=vs.100).aspx">ArrayList on MSDN</a></li>
+  <li><a href="http://msdn.microsoft.com/en-us/library/system.collections.sortedlist.aspx">SortedList on MSDN</a></li>
+  <li><a href="http://msdn.microsoft.com/en-us/library/system.collections.stack.aspx">Stack on MSDN</a></li>
+  <li><a href="http://msdn.microsoft.com/en-us/library/system.collections.queue(v=vs.100).aspx">Queue on MSDN</a></li>
+</ul>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/rhinoscript/using_net_classes_in_vbs.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/wip/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Drawing Arrowheads in Display Conduits</title>
+  <meta name="description" content="Drawing Arrowheads in Display Conduits">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/wip/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/cpp/drawing_arrowheads_in_display_conduits/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/wip/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wip/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/wip/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wip/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/wip/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wip/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/wip/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/wip/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+<div class="version-banner">
+  Hey, you're viewing the <strong>wip</strong> version of this page!
+  Click <a href="/guides/cpp/drawing_arrowheads_in_display_conduits/">here</a> to view the current (stable) version.
+</div>
+
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/wip/"><img src="/wip/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/wip/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/wip/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/wip/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/wip/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/wip/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/wip/guides/#cpp">C/C++</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#drawing-arrowheads-in-display-conduits">Drawing Arrowheads in Dis...</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#problem">Problem</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#solution">Solution</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="drawing-arrowheads-in-display-conduits">Drawing Arrowheads in Display Conduits</h1>
+
+<p>This guide discusses and demonstrates how to draw arrowheads in Rhino Display Conduit.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>You are trying to get your head around drawing arrowheads through conduits in the Rhino C/C++ SDK.  You create an instance of the <code class="highlighter-rouge">CRhinoArrowhead</code> class and set 2D information (point and direction) and then need to set a parent (any type of <code class="highlighter-rouge">CRhinoAnnotationObject</code>).  As <code class="highlighter-rouge">CRhinoAnnotationObject</code> is a virtual class, for your purposes the best version seems to be the leader class.  But (not surprisingly) the arrowhead behaves like a leader, sitting in world space, and is not aligned or scaled to the viewport’s construction as desired.  Is there any other way to draw an arrowhead that does not involve using the <code class="highlighter-rouge">CRhinoArrowhead</code> class?</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Drawing arrowheads in a conduit by using an <code class="highlighter-rouge">CRhinoArrowhead</code> object might appear to be the correct approach, but this object is fairly specialized and designed to be used in conjunction with other annotation objects.  So in this case, this might not work well.</p>
+
+<p>If you add your lines to the document, you can set the objects’ decorations.  Then Rhino would draw the arrowheads for you.</p>
+
+<p>But adding temporary geometry to the document just for display purposes is awkward and frowned upon.</p>
+
+<p>You might be better off just drawing your own arrowheads.  It’s really not that hard.  Draw arrowheads by calling the display pipeline’s <code class="highlighter-rouge">DrawPolygon()</code> member with the fill parameter set to true.  The trick is defining the polygon you want to draw.</p>
+
+<p>Below is some sample code that draws a 2D arrowhead at the end of a line similar to a leader object.  Perhaps this will give you an idea how to implement arrowhead drawing in your project.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#pragma region SampleDrawArrowheadConduit conduit
+</span>
+<span class="k">class</span> <span class="nc">CSampleDrawArrowheadConduit</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoDisplayConduit</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">CSampleDrawArrowheadConduit</span><span class="p">(</span><span class="n">ON_Plane</span> <span class="n">plane</span><span class="p">,</span> <span class="n">ON_Line</span> <span class="n">line</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">);</span>
+
+  <span class="n">bool</span> <span class="n">ExecConduit</span><span class="p">(</span><span class="n">CRhinoDisplayPipeline</span><span class="o">&amp;</span> <span class="n">dp</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">channel</span><span class="p">,</span> <span class="n">bool</span><span class="o">&amp;</span> <span class="n">terminate</span><span class="p">);</span>
+
+<span class="k">protected</span><span class="o">:</span>
+  <span class="n">bool</span> <span class="n">GetArrowHead</span><span class="p">(</span><span class="n">ON_2dVector</span> <span class="n">dir</span><span class="p">,</span> <span class="n">ON_2dPoint</span> <span class="n">tip</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">,</span> <span class="n">ON_3dPointArray</span><span class="o">&amp;</span> <span class="n">triangle</span><span class="p">);</span>
+
+<span class="k">protected</span><span class="o">:</span>
+  <span class="k">static</span> <span class="kt">double</span> <span class="n">m_default_arrow_size</span><span class="p">;</span>
+  <span class="n">bool</span> <span class="n">m_bDraw</span><span class="p">;</span>
+  <span class="n">ON_Line</span> <span class="n">m_line</span><span class="p">;</span>
+  <span class="n">ON_Plane</span> <span class="n">m_plane</span><span class="p">;</span>
+  <span class="n">ON_3dPointArray</span> <span class="n">m_arrowhead</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">double</span> <span class="n">CSampleDrawArrowheadConduit</span><span class="o">::</span><span class="n">m_default_arrow_size</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+
+<span class="n">CSampleDrawArrowheadConduit</span><span class="o">::</span><span class="n">CSampleDrawArrowheadConduit</span><span class="p">(</span><span class="n">ON_Plane</span> <span class="n">plane</span><span class="p">,</span> <span class="n">ON_Line</span> <span class="n">line</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">)</span>
+  <span class="o">:</span> <span class="n">CRhinoDisplayConduit</span><span class="p">(</span><span class="n">CSupportChannels</span><span class="o">::</span><span class="n">SC_CALCBOUNDINGBOX</span> <span class="o">|</span> <span class="n">CSupportChannels</span><span class="o">::</span><span class="n">SC_DRAWOVERLAY</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">m_bDraw</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="n">m_plane</span> <span class="o">=</span> <span class="n">plane</span><span class="p">;</span>
+  <span class="n">m_line</span> <span class="o">=</span> <span class="n">line</span><span class="p">;</span>
+
+  <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+
+  <span class="n">m_plane</span><span class="p">.</span><span class="n">ClosestPointTo</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">from</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span> <span class="n">from</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+
+  <span class="n">m_plane</span><span class="p">.</span><span class="n">ClosestPointTo</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">to</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+  <span class="n">ON_2dPoint</span> <span class="n">to</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+
+  <span class="n">ON_2dVector</span> <span class="n">dir</span><span class="p">(</span><span class="n">from</span> <span class="o">-</span> <span class="n">to</span><span class="p">);</span>
+  <span class="n">dir</span><span class="p">.</span><span class="n">Unitize</span><span class="p">();</span>
+
+  <span class="n">m_bDraw</span> <span class="o">=</span> <span class="n">GetArrowHead</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span> <span class="n">from</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">m_arrowhead</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">bool</span> <span class="n">CSampleDrawArrowheadConduit</span><span class="o">::</span><span class="n">ExecConduit</span><span class="p">(</span><span class="n">CRhinoDisplayPipeline</span><span class="o">&amp;</span> <span class="n">dp</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">channel</span><span class="p">,</span> <span class="n">bool</span><span class="o">&amp;</span> <span class="n">terminate</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">channel</span> <span class="o">==</span> <span class="n">CSupportChannels</span><span class="o">::</span><span class="n">SC_CALCBOUNDINGBOX</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">m_pChannelAttrs</span><span class="o">-&gt;</span><span class="n">m_BoundingBox</span><span class="p">.</span><span class="n">Union</span><span class="p">(</span><span class="n">m_line</span><span class="p">.</span><span class="n">BoundingBox</span><span class="p">());</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">channel</span> <span class="o">==</span><span class="n">CSupportChannels</span><span class="o">::</span><span class="n">SC_DRAWOVERLAY</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">dp</span><span class="p">.</span><span class="n">DrawLine</span><span class="p">(</span><span class="n">m_line</span><span class="p">.</span><span class="n">from</span><span class="p">,</span> <span class="n">m_line</span><span class="p">.</span><span class="n">to</span><span class="p">,</span> <span class="n">m_pDisplayAttrs</span><span class="o">-&gt;</span><span class="n">m_ObjectColor</span> <span class="o">|</span> <span class="mh">0xFF000000</span><span class="p">,</span> <span class="n">m_pDisplayAttrs</span><span class="o">-&gt;</span><span class="n">m_nLineThickness</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">m_bDraw</span><span class="p">)</span>
+      <span class="n">dp</span><span class="p">.</span><span class="n">DrawPolygon</span><span class="p">(</span><span class="n">m_arrowhead</span><span class="p">.</span><span class="n">Array</span><span class="p">(),</span> <span class="n">m_arrowhead</span><span class="p">.</span><span class="n">Count</span><span class="p">(),</span> <span class="n">m_pDisplayAttrs</span><span class="o">-&gt;</span><span class="n">m_ObjectColor</span> <span class="o">|</span> <span class="mh">0xFF000000</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">bool</span> <span class="n">CSampleDrawArrowheadConduit</span><span class="o">::</span><span class="n">GetArrowHead</span><span class="p">(</span><span class="n">ON_2dVector</span> <span class="n">dir</span><span class="p">,</span> <span class="n">ON_2dPoint</span> <span class="n">tip</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">,</span> <span class="n">ON_3dPointArray</span><span class="o">&amp;</span> <span class="n">triangle</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">double</span> <span class="n">arrow_size</span> <span class="o">=</span> <span class="n">CSampleDrawArrowheadConduit</span><span class="o">::</span><span class="n">m_default_arrow_size</span> <span class="o">*</span> <span class="n">scale</span><span class="p">;</span>
+
+  <span class="n">ON_2dPointArray</span> <span class="n">corners</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+  <span class="n">corners</span><span class="p">.</span><span class="n">SetCount</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+  <span class="n">ON_2dVector</span> <span class="n">up</span><span class="p">(</span><span class="o">-</span><span class="n">dir</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">dir</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+  <span class="n">corners</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">Set</span><span class="p">(</span><span class="n">tip</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">tip</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+  <span class="n">corners</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span> <span class="n">tip</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">arrow_size</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">up</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">dir</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+  <span class="n">corners</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span> <span class="n">tip</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">arrow_size</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">up</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">dir</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+  <span class="n">corners</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">x</span> <span class="o">=</span> <span class="n">corners</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">arrow_size</span> <span class="o">*</span> <span class="n">up</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+  <span class="n">corners</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">y</span> <span class="o">=</span> <span class="n">corners</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">y</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">arrow_size</span> <span class="o">*</span> <span class="n">up</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+  <span class="n">triangle</span><span class="p">.</span><span class="n">Reserve</span><span class="p">(</span><span class="n">corners</span><span class="p">.</span><span class="n">Count</span><span class="p">());</span>
+  <span class="n">triangle</span><span class="p">.</span><span class="n">SetCount</span><span class="p">(</span><span class="n">corners</span><span class="p">.</span><span class="n">Count</span><span class="p">());</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">corners</span><span class="p">.</span><span class="n">Count</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">triangle</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_plane</span><span class="p">.</span><span class="n">PointAt</span><span class="p">(</span><span class="n">corners</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span><span class="p">,</span> <span class="n">corners</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#pragma endregion
+</span></code></pre>
+</div>
+
+<p>Here is the above sample conduit used in a test command…</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandSampleDrawArrowhead</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">ON_Line</span> <span class="n">line</span><span class="p">;</span>
+  <span class="n">ON_Plane</span> <span class="n">plane</span><span class="p">;</span>
+
+  <span class="n">CRhinoGetPoint</span> <span class="n">gp</span><span class="p">;</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span><span class="s">L"Start of line"</span><span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">GetPoint</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">()</span> <span class="o">!=</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">success</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">();</span>
+
+  <span class="n">line</span><span class="p">.</span><span class="n">from</span> <span class="o">=</span> <span class="n">gp</span><span class="p">.</span><span class="n">Point</span><span class="p">();</span>
+  <span class="n">plane</span> <span class="o">=</span> <span class="n">RhinoActiveCPlane</span><span class="p">();</span>
+  <span class="n">plane</span><span class="p">.</span><span class="n">SetOrigin</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">from</span><span class="p">);</span>
+
+  <span class="n">gp</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span><span class="s">L"End of line"</span><span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">Constrain</span><span class="p">(</span><span class="n">plane</span><span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">SetBasePoint</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">from</span><span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">DrawLineFromPoint</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">from</span><span class="p">,</span> <span class="n">TRUE</span><span class="p">);</span>
+  <span class="n">gp</span><span class="p">.</span><span class="n">GetPoint</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">()</span> <span class="o">!=</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">success</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">();</span>
+
+  <span class="n">line</span><span class="p">.</span><span class="n">to</span> <span class="o">=</span> <span class="n">plane</span><span class="p">.</span><span class="n">ClosestPointTo</span><span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="n">Point</span><span class="p">());</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">line</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">nothing</span><span class="p">;</span>
+
+  <span class="n">CSampleDrawArrowheadConduit</span> <span class="n">conduit</span><span class="p">(</span><span class="n">plane</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+  <span class="n">conduit</span><span class="p">.</span><span class="n">Enable</span><span class="p">();</span>
+  <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">Redraw</span><span class="p">();</span>
+
+  <span class="n">CRhinoGetString</span> <span class="n">gs</span><span class="p">;</span>
+  <span class="n">gs</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span><span class="s">L"Press &lt;Enter&gt; to continue"</span><span class="p">);</span>
+  <span class="n">gs</span><span class="p">.</span><span class="n">AcceptNothing</span><span class="p">();</span>
+  <span class="n">gs</span><span class="p">.</span><span class="n">GetString</span><span class="p">();</span>
+
+  <span class="n">conduit</span><span class="p">.</span><span class="n">Disable</span><span class="p">();</span>
+  <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">Redraw</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">success</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/cpp/drawing_arrowheads_in_display_conduits.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/wip/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Your First Component (Mac)</title>
+  <meta name="description" content="Your First Component (Mac)">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/wip/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/grasshopper/your_first_component_mac/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/wip/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wip/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/wip/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wip/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/wip/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wip/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/wip/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/wip/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+<div class="version-banner">
+  Hey, you're viewing the <strong>wip</strong> version of this page!
+  Click <a href="/guides/grasshopper/your_first_component_mac/">here</a> to view the current (stable) version.
+</div>
+
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/wip/"><img src="/wip/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/wip/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/wip/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/wip/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/wip/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/wip/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/wip/guides/#grasshopper">Grasshopper</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#your-first-component-mac">Your First Component (Mac)</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#prerequisites">Prerequisites</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#install-the-rhino-add-in-pre-release">Install the Rhino Add-in ...</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#hellograsshopper">HelloGrasshopper</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#file-new">File New</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#boilerplate-build">Boilerplate Build</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#component-anatomy">Component Anatomy</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#debugging">Debugging</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#next-steps">Next Steps</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#adding-components">Adding components</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related topics</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#footnotes">Footnotes</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="your-first-component-mac">Your First Component (Mac)</h1>
+
+<p>This guide walks you through your first Grasshopper Component for Rhino for Mac using RhinoCommon and Xamarin Studio.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Grasshopper for Mac Rhino only exists in the WIP until the next major version of Mac Rhino is released. Because of this, there are a few additional steps that need to be taken to install all of the tools needed to develop components on Mac Rhino. You will need to do the following:</p>
+
+<ol>
+  <li>Install the <a href="http://www.rhino3d.com/go/download/rhino-for-mac/wip/latest">Mac Rhino WIP</a>. The WIP can be safely installed along side the stable release of Mac Rhino.</li>
+  <li>Install Xamarin Studio. Instructions on downloading and installing Xamarin Studio can be found on <a href="/wip/guides/rhinocommon/installing_tools_mac">Installing Tools (Mac)</a> page.</li>
+</ol>
+
+<h2 id="install-the-rhino-add-in-pre-release">Install the Rhino Add-in (pre-release)</h2>
+
+<p>The Rhino Xamarin Studio AddIn is required to debug your component code in an active session of Rhino for Mac.  Additionally, it contains project templates to get you started creating components quickly. This is a special “pre-release” add-in so you will need to get the add-in from the McNeel github site.</p>
+
+<h4 id="step-by-step">Step-by-Step</h4>
+
+<ol>
+  <li>Download the pre-release <a href="https://github.com/mcneel/RhinoCommonXamarinStudioAddin/releases">RhinoXamarinStudioAddin from github</a>. Make sure to get the pre-release addin since this is the one that includes support for Grasshopper component development.<br />
+ <img src="/wip/images/your_first_component_mac_01.png" alt="Pre-release addin" /><br />
+<strong>NOTE: That this page states the addin is a pre-release</strong>: We will likely be making improvements to this addin over time.</li>
+  <li>Launch <strong>Xamarin Studio</strong>.</li>
+  <li>Navigate to <strong>Xamarin Studio</strong> &gt; <strong>Add-in Manager…</strong>…</li>
+  <li>Click the <strong>Install from file…</strong> button</li>
+  <li>Select the RhinoXamarinStudioAddin mpack file that you just downloaded from github. The addin should install</li>
+  <li><strong>IMPORTANT</strong>: You must <strong>Quit</strong> and <strong>Restart</strong> Xamarin Studio.</li>
+  <li>Navigate to <strong>Xamarin Studio</strong> &gt; <strong>Add-in Manager..</strong> &gt; <strong>Install</strong> tab.  Verify that <strong>RhinoCommon Plugin Support</strong> exists under the <strong>Debugging</strong> category.  If it’s there, you have successfully installed the AddIn and you are <strong>DONE</strong>.</li>
+</ol>
+
+<h2 id="hellograsshopper">HelloGrasshopper</h2>
+
+<p>We will use the Rhino Xamarin Addin to create a new, basic, grasshopper component called HelloGrasshopper.</p>
+
+<p>If you are familiar with Visual Studio or Xamarin Studio, these step-by-step instructions may be overly detailed for you.  The executive summary: create a new Solution using the Grasshopper Component template, build and run, and then make a change.</p>
+
+<p>We are presuming you have never used Xamarin Studio before, so we’ll go through this one step at a time.</p>
+
+<h3 id="file-new">File New</h3>
+
+<ol>
+  <li>If you have not done so already, <strong>launch Xamarin Studio</strong>.</li>
+  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Solution</strong>…<br />
+<img src="/wip/images/your_first_plugin_mac_01.png" alt="File New Solution" /></li>
+  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Other</strong> &gt; <strong>Miscellaneous</strong> section.  Under General, select the Grasshopper Plug-In template…<br />
+<img src="/wip/images/your_first_component_mac_02.png" alt="New Project" /></li>
+  <li>Click the <strong>Next</strong> button.</li>
+  <li>You will now <strong>Configure your new project</strong>.  For the purposes of this Guide, we will name our demo component <em>HelloGrasshopper</em>.  Fill in the <strong>Project Name</strong> field.  <strong>Browse</strong> and select a location for this plugin on your Mac…<br />
+<img src="/wip/images/your_first_component_mac_03.png" alt="Project Configuration" /></li>
+  <li>Click the <strong>Create</strong> button.</li>
+  <li>A <strong>new solution</strong> called <strong>HelloGrasshopper</strong> should open…<br />
+<img src="/wip/images/your_first_component_mac_04.png" alt="HelloRhinoCommon Solution" /></li>
+</ol>
+
+<h3 id="boilerplate-build">Boilerplate Build</h3>
+
+<ol>
+  <li>Before we do anything, let’s <strong>build</strong> and <strong>run</strong> HelloGrasshopper to make sure everything is working as expected.  We’ll just build the boilerplate Component template.  Click the large <strong>Build &gt; Run</strong> (play) button in the upper-left corner of Xamarin Studio…<br />
+<img src="/wip/images/your_first_plugin_mac_05.png" alt="Play Button" /></li>
+  <li><strong>Rhinoceros</strong> launches.  Create a <strong>New Model</strong>…<br />
+<img src="/wip/images/your_first_plugin_mac_06.png" alt="New Model Button" /></li>
+  <li>Enter the <strong>ExplicitHistory</strong> command.  Notice that your new component is listed a loaded by Grasshopper…<br />
+<img src="/wip/images/your_first_component_mac_05.png" alt="HelloGrasshopper Loaded" /></li>
+  <li>Go to the Curve tab in grasshopper and you should see a new blank icon for your new component…<br />
+<img src="/wip/images/your_first_component_mac_06.png" alt="Curve Tab" /></li>
+  <li>Drag this component on to the Grasshopper canvas to verify that it is working…<br />
+<img src="/wip/images/your_first_component_mac_07.png" alt="Command Starts" /></li>
+  <li><strong>Quit</strong> Rhinoceros.  This stops the session.  Go back to <strong>Xamarin Studio</strong>.  Let’s take a look at the…</li>
+</ol>
+
+<h3 id="component-anatomy">Component Anatomy</h3>
+
+<ol>
+  <li>Use the <strong>Solution Explorer</strong> to expand the <strong>Solution</strong> (<em>.sln</em>) so that it looks like this…<br />
+<img src="/wip/images/your_first_component_mac_08.png" alt="Solution Anatomy" /></li>
+  <li>The <strong>HelloGrasshopper</strong> project (<em>.csproj</em>) has the same name as its parent solution…this is the project that was created for us by the <strong>Grasshopper Plugin</strong> template wizard earlier.</li>
+  <li><strong>References</strong>: Just as with most projects, you will be referencing other libraries.  The <strong>Grasshopper Plugin</strong> template added the necessary references to create a basic Grasshopper component.</li>
+  <li><strong>Eto</strong> is the cross-platform User Interface (UI) library Rhino uses.  If you examine its properties, you will notice it comes bundled as part of Rhino for Mac.</li>
+  <li><strong>GH_IO</strong> is used for reading and writing Grasshopper definitions.</li>
+  <li><strong>Grasshopper</strong> is the Mac Rhino main grasshopper DLL. Classes in this DLL are subclassed and used by your custom component.</li>
+  <li><strong>Rhino.UI</strong> is the Rhino-specific User Interface (UI) library associated with…</li>
+  <li><strong>RhinoCommon</strong> is used by your component to work with all of the geometry defined in Rhino.</li>
+  <li><strong>System</strong>, <strong>System.Core</strong>, and <strong>System.Drawing</strong> are .NET foundational libraries…in this case, we are referencing the Mono versions of these libraries (on Windows, these references will point to the canonical, Microsoft-provided, versions).</li>
+  <li><strong>Packages</strong> is used the the <a href="https://www.nuget.org/">NuGet</a> package-manager.  There are no referenced packages in this boilerplate project, but note that Xamarin Studio supports NuGet, just like Visual Studio does.</li>
+  <li><strong>Properties</strong> contains the <strong>AssemblyInfo.cs</strong> source file.  This file contains general information about your component.</li>
+  <li><strong>HelloGrasshopperComponent.cs</strong> is where a custom Grasshopper.Kernal.GH_Component subclass is defined. Your project may contain multiple subclasses of GH_Component if you want to ship multiple components in a single gha.</li>
+  <li><strong>HelloGrasshopperInfo.cs</strong> defines general information about this gha.</li>
+</ol>
+
+<h3 id="debugging">Debugging</h3>
+
+<ol>
+  <li>Set a breakpoint on line<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 100 of <em>HelloGrasshopperComponent.cs</em>.  You set breakpoints in Xamarin Studio by clicking in the gutter…<br />
+<img src="/wip/images/your_first_component_mac_09.png" alt="Set a breakpoint" /></li>
+  <li><strong>Build</strong> and <strong>Run</strong>.  Drag one of your new components on to the Grasshopper canvas…as soon as you do, you should hit your breakpoint and pause…<br />
+<img src="/wip/images/your_first_component_mac_10.png" alt="Hit a breakpoint" /></li>
+  <li>With Rhino paused, in <strong>Xamarin Studio</strong> switch to the <strong>Locals</strong> tab.  In the list, you can inspect all of the values for the variables in your function…  <br />
+<img src="/wip/images/your_first_component_mac_11.png" alt="Locals panel" /></li>
+  <li><strong>Continue Executing</strong> in Rhino by pressing the <strong>Play</strong> button in the upper navigation menu of <strong>Xamarin Studio</strong>…<br />
+<img src="/wip/images/your_first_plugin_mac_15.png" alt="Continue Executing" /></li>
+  <li>Control is passed back to <strong>Rhino</strong> and your command finishes.  <strong>Quit</strong> Rhino or <strong>Stop</strong> the debugging session.</li>
+  <li><strong>Remove</strong> the breakpoint you created above by clicking on it in the gutter.</li>
+</ol>
+
+<p><strong>DONE!</strong></p>
+
+<p><strong>Congratulations!</strong>  You have just built your first Grasshopper component for Rhino for Mac.  <strong>Now what?</strong></p>
+
+<hr />
+
+<h2 id="next-steps">Next Steps</h2>
+
+<h3 id="adding-components">Adding components</h3>
+
+<p>A single gha can contain more than one GH_Component derived class (and commonly does). The Xamarin Studio has support for adding more custom components to your project.</p>
+
+<ol>
+  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>File</strong>…<br />
+<img src="/wip/images/your_first_component_mac_12.png" alt="File New Solution" /></li>
+  <li>A <strong>New File</strong> wizard should appear.  In the left column, find the <strong>Rhinoceros</strong> section.  This should give you the ability to select an “Empty Grasshopper Component”…<br />
+<img src="/wip/images/your_first_component_mac_13.png" alt="New Project" /></li>
+  <li>After deciding on a name for the component click the <strong>New</strong> button.</li>
+</ol>
+
+<hr />
+
+<h2 id="related-topics">Related topics</h2>
+
+<p>This article is focused on initial setup and debugging on Mac Rhino. For further reading on customizing your component please see: <strong>TODOO - provide good reference for component development</strong></p>
+
+<ul>
+  <li><a href="/wip/guides/rhinocommon/installing_tools_mac">Installing Tools (Mac)</a></li>
+</ul>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><strong>Line numbers</strong> in Xamarin Studio can be enabled and disabled in <strong>Xamarin Studio</strong> &gt; <strong>Preferences…</strong> &gt; <strong>Text Editor</strong> section &gt; <strong>Markers and Rulers</strong> entry &gt; check <strong>Show line numbers</strong>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:steve@mcneel.com">steve@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/grasshopper/your_first_component_mac.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/wip/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

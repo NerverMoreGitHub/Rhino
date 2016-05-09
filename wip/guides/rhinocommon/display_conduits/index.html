@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Display Conduits</title>
+  <meta name="description" content="Display Conduits">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/wip/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/rhinocommon/display_conduits/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/wip/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wip/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/wip/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wip/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/wip/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wip/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/wip/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/wip/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+<div class="version-banner">
+  Hey, you're viewing the <strong>wip</strong> version of this page!
+  Click <a href="/guides/rhinocommon/display_conduits/">here</a> to view the current (stable) version.
+</div>
+
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/wip/"><img src="/wip/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/wip/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/wip/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/wip/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/wip/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/wip/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/wip/guides/#rhinocommon">RhinoCommon</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#display-conduits">Display Conduits</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#conduit-concept">Conduit Concept</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#implementation">Implementation</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#warning">Warning</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="display-conduits">Display Conduits</h1>
+
+<p>This guide gives an overview of Display Conduits and how to use them to access Rhino’s display pipeline.</p>
+
+<p>Rhino lets you define your own display conduits, which provide access to many levels of the display pipeline.  They are a bit tricky.  This guide cover the concepts and basics of using display conduits.</p>
+
+<h2 id="conduit-concept">Conduit Concept</h2>
+
+<p>The DisplayPipeline in Rhino is a big and complicated class and we do not recommend you derive your own pipeline.  Instead, we’ve exposed something called a conduit for easy access.  The pipeline itself is structured like this (except in reality there are many more channels):</p>
+
+<p><img src="/wip/images/display_conduits_01.png" alt="Rhino Display Pipeline" /></p>
+
+<p>At one end is the Rhino model, a collection of 3D geometry and data.  At the other end is the image we want to display on the screen, a collection of 2D pixels.  To get from model to image, the pipeline has to process a lot of information.  These steps have been put into channels.  When you implement a new conduit, you have to implement at least one of these channels, like so:</p>
+
+<p><img src="/wip/images/display_conduits_02.png" alt="Rhino Display Conduit" /></p>
+
+<p>Note that the pipeline itself is not bound to the channels.  It just executes its code and raises events during specific phases of drawing.  During the drawing of a single frame the events are raised in the following order.  You hook into the pipeline by extending DisplayConduit and overriding the event handlers that have the same name as the pipeline events:</p>
+
+<ol>
+  <li><strong>ObjectCulling</strong>: Create a list of all the objects to draw.</li>
+  <li><strong>CalculateBoundingBox</strong>: Determine the extent of the entire scene.  Override this function to increase the bounding box of scene so it includes the geometry that you plan to draw.</li>
+  <li><strong>CalculateBoundingBoxZoomExtents</strong>: If you want to participate in the Zoom Extents command with your display conduit, then you need to override ZoomExtentsBoundingBox.  Typically you could just call your CalculateBoundingBox override, but you may also want to spend a little more time here and compute a tighter bounding box for your conduit geometry.</li>
+  <li><strong>PreDrawObjects</strong>: Called before objects are drawn.  Depth writing and testing are on. Here you could set up the object’s display attributes.</li>
+  <li><strong>PreDrawObject</strong>: Called before every object in the scene is drawn.</li>
+  <li><strong>PostDrawObjects</strong>: Called after all non-highlighted objects are drawn.  Depth writing and testing are still turned on. If you want to draw without depth writing and testing, see DrawForeground.  Here you draw stuff on top of all the objects, like selection wireframes.</li>
+  <li><strong>DrawForeground</strong>: Called after all non-highlighted objects are drawn and PostDrawObjects called. Depth writing and testing are turned <strong>off</strong>.  If you want to draw with depth writing and testing, see PostDrawObjects.  For example, here you could draw objects like the little axis-system in the lower left corner of viewports.</li>
+  <li><strong>DrawOverlay</strong>: If Rhino is in a feedback mode, the draw overlay call lets temporary geometry be drawn on top of everything in the scene.  This is similar to the dynamic draw routine that occurs with custom get point.</li>
+</ol>
+
+<p>You hook into the pipeline by extending DisplayConduit and overriding the key event handlers which have the same name as the pipeline events.</p>
+
+<h2 id="implementation">Implementation</h2>
+
+<p>In the above image, the conduit overrode two event handlers; <code class="highlighter-rouge">CalculateBoundingBox</code> and <code class="highlighter-rouge">PostDrawObjects</code>. In RhinoCommon this conduit would look like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyConduit</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">DisplayConduit</span>
+<span class="p">{</span>
+  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">CalculateBoundingBoxEventArgs</span> <span class="n">e</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="c1">// ..
+</span>  <span class="p">}</span>
+
+  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">PostDrawObjects</span><span class="p">(</span><span class="n">DrawEventArgs</span> <span class="n">e</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="c1">// ..
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>By default, conduits are not enabled but it is easily done by setting the Enabled property of the DisplayConduit to true:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">var</span> <span class="n">conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MyConduit</span><span class="p">();</span>
+<span class="n">conduit</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Once our conduit is constructed and enabled, the overriden methods will be called whenever the Rhino pipeline raises the event for which our overridden method is registered.  In our case, this method will always be called once with the <code class="highlighter-rouge">CalculateBoundingBox</code> and the <code class="highlighter-rouge">PostDrawObjects</code> events have been raised (the events have the same name as the overridden methods).  Here’s a simple example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyConduit</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">DisplayConduit</span>
+<span class="p">{</span>
+  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">CalculateBoundingBoxEventArgs</span> <span class="n">e</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="n">e</span><span class="p">.</span><span class="n">BoundingBox</span><span class="p">.</span><span class="nf">Union</span><span class="p">(</span><span class="k">new</span> <span class="nf">Point3d</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">DrawEventArgs</span> <span class="n">e</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">DrawPoint</span><span class="p">(</span><span class="k">new</span> <span class="nf">Point3d</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The code above simply draws a single point at the world origin. Since a point is 3D geometry, it is subject to z-depth clipping. This means that if the point resides outside the z-buffer region, it will not be visible (it will get <em>clipped</em>). By default, the clipping planes are set up to encompass the bounding box of the entire Rhino model.  If you are drawing stuff which is potentially outside this box, you should override <code class="highlighter-rouge">CalculateBoundingBox</code> to make sure your objects are not clipped.</p>
+
+<p>Let’s take a look at a more complex drawing routine:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">CalculateBoundingBoxEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">base</span><span class="p">.</span><span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+   <span class="n">e</span><span class="p">.</span><span class="n">BoundingBox</span><span class="p">.</span><span class="nf">Union</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">Viewport</span><span class="p">.</span><span class="nf">ConstructionPlane</span><span class="p">().</span><span class="n">Origin</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">DrawEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">base</span><span class="p">.</span><span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+
+  <span class="n">var</span> <span class="n">cPlane</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">Viewport</span><span class="p">.</span><span class="nf">ConstructionPlane</span><span class="p">();</span>
+  <span class="n">var</span> <span class="n">xColor</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">GridXAxisLineColor</span><span class="p">;</span>
+  <span class="n">var</span> <span class="n">yColor</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">GridYAxisLineColor</span><span class="p">;</span>
+  <span class="n">var</span> <span class="n">zColor</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">GridZAxisLineColor</span><span class="p">;</span>
+
+  <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">EnableDepthWriting</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+  <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">EnableDepthTesting</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+
+  <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">DrawPoint</span><span class="p">(</span><span class="n">cPlane</span><span class="p">.</span><span class="n">Origin</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Color</span><span class="p">.</span><span class="n">White</span><span class="p">);</span>
+  <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">DrawArrow</span><span class="p">(</span><span class="k">new</span> <span class="nf">Line</span><span class="p">(</span><span class="n">cPlane</span><span class="p">.</span><span class="n">Origin</span><span class="p">,</span> <span class="k">new</span> <span class="nf">Vector3d</span><span class="p">(</span><span class="n">cPlane</span><span class="p">.</span><span class="n">XAxis</span><span class="p">)</span> <span class="p">*</span> <span class="m">10.0</span><span class="p">),</span> <span class="n">xColor</span><span class="p">);</span>
+  <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">DrawArrow</span><span class="p">(</span><span class="k">new</span> <span class="nf">Line</span><span class="p">(</span><span class="n">cPlane</span><span class="p">.</span><span class="n">Origin</span><span class="p">,</span> <span class="k">new</span> <span class="nf">Vector3d</span><span class="p">(</span><span class="n">cPlane</span><span class="p">.</span><span class="n">YAxis</span><span class="p">)</span> <span class="p">*</span> <span class="m">10.0</span><span class="p">),</span> <span class="n">yColor</span><span class="p">);</span>
+  <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">DrawArrow</span><span class="p">(</span><span class="k">new</span> <span class="nf">Line</span><span class="p">(</span><span class="n">cPlane</span><span class="p">.</span><span class="n">Origin</span><span class="p">,</span> <span class="k">new</span> <span class="nf">Vector3d</span><span class="p">(</span><span class="n">cPlane</span><span class="p">.</span><span class="n">ZAxis</span><span class="p">)</span> <span class="p">*</span> <span class="m">10.0</span><span class="p">),</span> <span class="n">zColor</span><span class="p">);</span>
+
+  <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">EnableDepthWriting</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+  <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">EnableDepthTesting</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This piece of code draws a colored, c-plane axis system on top of all objects.  Because we disable DepthWriting and Testing before drawing my points and arrows, my objects are not obscured by the existing geometry (which was drawn in a channel previous to <code class="highlighter-rouge">PostDrawObjects</code>):</p>
+
+<p><img src="/wip/images/display_conduits_03.png" alt="Resulting Frame" /></p>
+
+<h2 id="warning">Warning</h2>
+
+<p>Another thing to realize is that there can be many other active conduits present as well.  There is no way of telling which one will be called first.  It is important to consider how your display conduits will interact with other conduits potentially called within the pipeline by other developers.  Do not write display conduit code that intentionally disrupts other conduits.</p>
+
+<p><img src="/wip/images/display_conduits_04.png" alt="Many Conduits" /></p>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/rhinocommon/display_conduits.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/wip/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

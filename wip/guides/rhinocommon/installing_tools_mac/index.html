@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Installing Tools (Mac)</title>
+  <meta name="description" content="Installing Tools (Mac)">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/wip/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/rhinocommon/installing_tools_mac/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/wip/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wip/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/wip/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wip/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/wip/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wip/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/wip/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/wip/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    <div class="container">
+      
+<div class="version-banner">
+  Hey, you're viewing the <strong>wip</strong> version of this page!
+  Click <a href="/guides/rhinocommon/installing_tools_mac/">here</a> to view the current (stable) version.
+</div>
+
+
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/wip/"><img src="/wip/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/wip/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/wip/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/wip/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/wip/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/wip/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/wip/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/wip/guides/#rhinocommon">RhinoCommon</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#installing-tools-mac">Installing Tools (Mac)</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#prerequisites">Prerequisites</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#install-xcode">Install Xcode</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#install-xamarin">Install Xamarin</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#install-the-rhino-add-in">Install the Rhino Add-in</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#next-steps">Next Steps</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#footnotes">Footnotes</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="installing-tools-mac">Installing Tools (Mac)</h1>
+
+<p>This guide covers all the necessary tools required to author Rhino plugins on Mac.</p>
+
+<p>By the end of this guide, you should have all the tools installed necessary for authoring, building, and debugging C# .NET plugins using RhinoCommon in Rhino for Mac.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>This guide presumes you have an:</p>
+
+<ul>
+  <li><a href="http://store.apple.com/">Apple Mac</a> running <a href="https://www.apple.com/osx/">OS X Yosemite</a> (10.10) or later.</li>
+  <li><a href="https://www.rhino3d.com/mac">Rhino 5 for Mac</a> (5.1) or later.</li>
+</ul>
+
+<hr />
+
+<h2 id="install-xcode">Install Xcode</h2>
+
+<p><a href="https://developer.apple.com/xcode/">Xcode</a> is Apple’s development platform and IDE.  Though it is not <em>absolutely</em> required that you install Xcode in order to build, debug, and run C# plugins using RhinoCommon, it is <em>recommended</em> that you do.  In short: the Xamarin on OS X works best with Xcode installed.</p>
+
+<h4 id="step-by-step">Step-by-Step</h4>
+
+<ol>
+  <li><strong><a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12">Xcode</a></strong> is free in the <a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a>.  Click the <strong>View in Mac App Store</strong> button.</li>
+  <li>Click the <strong>Get</strong> &gt; <strong>Install App</strong> button underneath the Xcode icon.</li>
+  <li>You will be prompted for your <a href="https://appleid.apple.com/">Apple ID</a> (required to download apps on the App Store).</li>
+  <li>Xcode is large download - nearly 2.6 GB in size.  You can monitor the progress of the download in Launchpad.  When Xcode is finished downloading an installing, it will be your <em>/Applications</em> folder.</li>
+  <li><strong>Launch</strong> Xcode.  On initial launch, Xcode will install some additional components.</li>
+  <li><strong>Quit</strong> Xcode.</li>
+</ol>
+
+<hr />
+
+<h2 id="install-xamarin">Install Xamarin</h2>
+
+<p>Xamarin’s platform is currently required to build RhinoCommon plugins on OS X.  The core components of the Xamarin platform that are required are the Mono Framework and Xamarin Studio.  Please check out the <a href="/wip/guides/rhinocommon/what_are_mono_and_xamarin/">What are Mono and Xamarin?</a> guide for more information.</p>
+
+<h4 id="step-by-step-1">Step-by-Step</h4>
+
+<ol>
+  <li><strong><a href="http://xamarin.com/download">Download the Xamarin Platform</a></strong>.</li>
+  <li>Xamarin uses an Installer app, which downloads and installs the components that you select.  Once you have downloaded the <strong>XamarinInstaller.dmg</strong>, double-click it to mount the disk image.  Double-click the big <strong>Install Xamarin</strong> icon to launch the installer.</li>
+  <li>You must accept the Xamarin Software License Agreement to use the Xamarin platform.</li>
+  <li>The <strong>Xamarin Platform</strong> is comprised of these pieces:
+    <ul>
+      <li>Xamarin Studio</li>
+      <li>Xamarin.Android<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+      <li>Xamarin.iOS<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></li>
+      <li>Xamarin.Mac<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup><br />
+…verify that <strong>Xamarin.Mac</strong> is checked and click <strong>Continue</strong>.</li>
+    </ul>
+  </li>
+  <li>If you do not have Xcode installed, Xamarin will prompt you.  See <a href="#install-xcode">Install Xcode</a> above.</li>
+  <li>Xamarin installs: <strong>Mono Framework</strong>, <strong>Xamarin Studio</strong>, &amp; <strong>Xamarin.Mac</strong>.  Click <strong>Continue</strong>.</li>
+  <li>Xamarin is will now download and install.  Depending on which products you selected in step 4 above, this can take a while.</li>
+  <li>When the installer is finished, click the <strong>Launch Xamarin Studio</strong> button.</li>
+  <li><strong>Xamarin Studio</strong> - along with the Mono Framework and Xamarin.Mac - are now installed.</li>
+  <li>Xamarin Studio is installed in your <em>/Applications</em> folder. You will want to <strong>drag its icon to your Dock</strong> for future use or - if it’s running - right/option-click the icon in the Dock and select <strong>Keep in Dock</strong>.</li>
+</ol>
+
+<hr />
+
+<h2 id="install-the-rhino-add-in">Install the Rhino Add-in</h2>
+
+<p>The Rhino Xamarin Studio AddIn is required to debug your plugin code in an active session of Rhino for Mac.  Additionally, it contains project templates to get you started creating plugins quickly.</p>
+
+<h4 id="step-by-step-2">Step-by-Step</h4>
+
+<ol>
+  <li>Launch <strong>Xamarin Studio</strong>.</li>
+  <li>Navigate to <strong>Xamarin Studio</strong> &gt; <strong>Add-in Manager…</strong>…</li>
+  <li>Navigate to the <strong>Gallery</strong> tab…<br />
+<img src="/wip/images/installing_tools_mac_01.png" alt="AddIn Manager" /></li>
+  <li>In the <strong>Search</strong> field, search for <em>rhino</em>.  This filters the gallery list below.</li>
+  <li>Find <strong>RhinoCommon Plugin Support</strong> and select it.</li>
+  <li>Click <strong>Install</strong>.  The plugin should install.</li>
+  <li><strong>IMPORTANT</strong>: You must <strong>Quit</strong> and <strong>Restart</strong> Xamarin Studio.</li>
+  <li>Navigate to <strong>Xamarin Studio</strong> &gt; <strong>Add-in Manager..</strong> &gt; <strong>Install</strong> tab.  Verify that <strong>RhinoCommon Plugin Support</strong> exists under the <strong>Debugging</strong> category.  If it’s there, you have successfully installed the AddIn and you are <strong>DONE</strong>.</li>
+</ol>
+
+<hr />
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p><strong>Congratulations!</strong>  You have all the tools necessary to build a RhinoCommon plugin for Rhino for Mac.  <strong>Now what?</strong></p>
+
+<p>Check out the <a href="/wip/guides/rhinocommon/your_first_plugin_mac">Your First Plugin (Mac)</a> guide for instructions building - your guessed it - your first plugin.</p>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Xamarin.Android is used to build C# .NET applications for Android devices.  This is useful to have installed if you wish to use the RhinoMobile toolkit, but not required for RhinoCommon in Rhino for Mac. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Xamarin.iOS is used to build C# .NET applications for Apple iOS devices.  This is useful to have installed if you wish to use the RhinoMobile toolkit, but not required for RhinoCommon in Rhino for Mac. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Xamarin.Mac is Xamarin’s proprietary closed-source toolkit build on the open-source MonoMac (aka Mono for Mac OS X).  Xamarin.Mac provides a commercial license of Mono, bindings to additional frameworks, and the ability to create self-contained application bundles that do not require mono.  Rhino for Mac does not currently use Xamarin.Mac. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dan@mcneel.com">dan@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/rhinocommon/installing_tools_mac.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/wip/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>
