@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Creating Rhino Commands Using Python</title>
+  <meta name="description" content="Creating Rhino Commands Using Python">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/demo/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/demo/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/demo/guides/rhinopython/creating_rhino_commands_using_python/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/demo/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/demo/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/demo/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/demo/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/demo/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/demo/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/demo/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/demo/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/demo/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>demo</strong> version of this page!
+    <a href="/guides/rhinopython/creating_rhino_commands_using_python/">View the current version instead.</a>
+</div>
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/demo/"><img src="/demo/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/demo/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/demo/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/demo/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/demo/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/demo/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/demo/guides/#rhinopython">RhinoPython</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#creating-rhino-commands-using-python">Creating Rhino Commands U...</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#windows">Windows</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#creating-an-rhi-installer">Creating an RHI Installer</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#mac">Mac</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="creating-rhino-commands-using-python">Creating Rhino Commands Using Python</h1>
+
+<p>This guide demonstrates how to create Rhino commands from Python scripts.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>It is possible, if a little convoluted, to create “real” Rhino commands from Python scripts.  Below is outlined the procedure on Rhino for Windows, with a couple of comments about where the files need to go for this all to work with Rhino for Mac.  The initial template for the commands, along with a new GUID and the appropriate folders are created automatically by the Python script editor on Windows.  So far it is possible but not obvious or automatic to create all this on Rhino for Mac.  It is possible to install the folders and scripts for an existing Python command on the Mac and have it all work.</p>
+
+<p>First, we will cover <a href="#windows">Rhino for Windows</a>, then turn our attention to <a href="#mac">Rhino for Mac</a>.</p>
+
+<h2 id="windows">Windows</h2>
+
+<ol>
+  <li>Start in the <em>Rhino Python editor</em> using the <code class="highlighter-rouge">EditPythonScript</code> command.</li>
+  <li>Click on the <em>New</em> icon, and choose <em>Command</em> in the ensuing dialog.<br />
+<img src="/demo/images/creating_rhino_commands_using_python_01.png" alt="New Command" /></li>
+  <li>Enter the command name and the plugin name that you would like to have the command used in - the plugin can be a new one or an existing one.  You can add multiple commands to a plugin.  In this example, we used <code class="highlighter-rouge">MyNewCommand</code> in <em>MyNewPlugIn</em>.  A new script file is generated with the framework for the new command…<br />
+<img src="/demo/images/creating_rhino_commands_using_python_02.png" alt="New Script" /></li>
+  <li>Note that, with Rhino for Windows, the script is automatically saved in a special location:<br />
+<img src="/demo/images/creating_rhino_commands_using_python_03.png" alt="Special Script Location" /></li>
+  <li>The code that the command calls is in the <code class="highlighter-rouge">def RunCommand( is_interactive ):</code> function.</li>
+  <li>Add your script code here - the template provides some dummy code and a couple of comments, all to be called from this part of the script.  The whole script can be in this one function or you can add other functions as you normally would, as needed.  Make sure to modify the initial <code class="highlighter-rouge">import</code> statements to suit the script you are writing - the automatic template <code class="highlighter-rouge">imports</code> are there for the example script provided.</li>
+  <li>Add this line at the bottom of the script <code class="highlighter-rouge">RunCommand(True)</code>.  This allows you to test the script from the editor, debug etc.  Just remember to comment that line before you distribute the script or try to use it as a command.  It is also possible to write a more “normal” script, test, etc. as needed in the usual way, then just copy and paste into this formatted command script template.</li>
+  <li>In order for this to run as a command in Rhino, the script location needs to be exactly right so that Rhino knows where to look.  On Windows, the path for a command script looks like this: <em>C:\Users\USERNAME\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\PythonPlugIns\MyNewPlugIn {146e099d-760d-4a6c-8662-96119f3fd62f}</em> …and it must keep that crazy name with the GUID in brackets, and the path that the editor set up when you created the command initially.<br />
+<img src="/demo/images/creating_rhino_commands_using_python_04.png" alt="Special Script Path" /></li>
+  <li>To distribute the script as a plugin, zip the entire folder, in this case making: <em>MyNewPlugIn {146e099d-760d-4a6c-8662-96119f3fd62f}.zip</em>.</li>
+  <li><em>NOTE</em>: Users will need to unzip to the plugins folder listed above, with Rhino closed.</li>
+</ol>
+
+<h3 id="creating-an-rhi-installer">Creating an RHI Installer</h3>
+
+<p>In the <em>dev</em> sub-folder that is created in the plugin folder, create a <em>py</em> file named <em>plugin.py</em> that has only these lines:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">id</span><span class="o">=</span><span class="s">"{146e099d-760d-4a6c-8662-96119f3fd62f}"</span>
+<span class="n">version</span><span class="o">=</span><span class="s">"1.0.0.1"</span>
+<span class="n">title</span><span class="o">=</span><span class="s">"MyNewCommand"</span>
+</code></pre>
+</div>
+
+<p>In the above <em>plugin.py</em>, the lines mean the following:</p>
+
+<ul>
+  <li>Line 1 has the UUID from the plugin, found in the folder name.</li>
+  <li>Line 2 has the version - it would be up to you to keep that current.</li>
+  <li>Line 3 has the command name.</li>
+</ul>
+
+<p>With this file in place in the <em>dev</em> sub-folder, then you can zip the containing plugin folder (<em>MyNewPlugIn{146e099d etc etc}</em>) and then rename it from <em>.zip</em> to the <em>.rhi</em> extension.  Double-clicking this <em>rhi</em> file on another system (Rhino closed) should install all the files in the correct location for that user.  Rhino should then see the command as a regular command.</p>
+
+<p><em>NOTE</em>: sometimes, using this system, Rhino requires that Python be loaded before it can see the command the first time in a session - running <code class="highlighter-rouge">EditPythonScript</code>, or any other script should allow the command to work.</p>
+
+<h2 id="mac">Mac</h2>
+
+<p>Setting this up on Mac OS X is a bit more labour intensive, but once you see how it works, it should be fairly straightforward. (It is helpful to read the <a href="#windows">Windows</a> section above to get the general idea).</p>
+
+<p>There are four things you need to pay attention to on OS X:</p>
+
+<ol>
+  <li>The py script file</li>
+  <li>The plugin name</li>
+  <li>The command name</li>
+  <li>The plugin GUID</li>
+</ol>
+
+<p>On OS X, the location of the plugin folders must be in:</p>
+
+<p><em>/Users/~/Library/Application Support/McNeel/Rhinoceros/MacPlugIns/PythonPlugIns/</em></p>
+
+<p>If the <em>PythonPlugIns</em> folder does not yet exist, you’ll have to create it.</p>
+
+<p>Within that folder there needs to be a folder for each command plugin such as</p>
+
+<p><em>PythonPlugIns/MyNewPlugIn {146e099d-760d-4a6c-8662-96119f3fd62f}</em></p>
+
+<p>and within the individual plugin’s folder there is yet another folder called <em>dev</em> - that is where the Python script itself should be saved.  The script name must have a special format as well - again, not automatic on Rhino for Mac, so you’ll need to be careful to get it right.  The file name must be in the format:</p>
+
+<p><em>CommandName_cmd.py</em></p>
+
+<p>There can be multiple command files in the folder - one for each command in the plugin.</p>
+
+<p>The long messy number thing in braces is the GUID - that GUID, and in fact the folder itself, is automatically generated on Rhino for Windows when you tell the editor you want to create a command - but on OS X you need to create the GUID and the folder and <em>dev</em> sub-folder yourself.  <a href="https://www.guidgenerator.com/online-guid-generator.aspx">Generate a GUID</a> and then use it in the folder name as indicated above: <em>PlugInName{GUID}</em></p>
+
+<p>The Python script itself has to be set up and named correctly as well - this is done from a template on Rhino for Windows, buy you will need to do it by hand, so to speak, on OS X.  The <em>py</em> file should be set up like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#import statements as needed:</span>
+<span class="kn">import</span> <span class="nn">rhinoscriptsyntax</span> <span class="kn">as</span> <span class="nn">rs</span>
+<span class="kn">import</span> <span class="nn">scriptcontext</span> <span class="kn">as</span> <span class="nn">sc</span>
+<span class="kn">import</span> <span class="nn">Rhino</span>
+<span class="c">#this line with the name of the command:</span>
+<span class="n">__commandname__</span> <span class="o">=</span> <span class="s">"MyNewCommand"</span>
+<span class="k">def</span> <span class="nf">RunCommand</span><span class="p">(</span> <span class="n">is_interactive</span> <span class="p">):</span>
+     <span class="c">#Your code in here</span>
+     <span class="n">obj</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">GetObject</span><span class="p">()</span>
+     <span class="k">if</span> <span class="n">obj</span><span class="p">:</span>
+         <span class="k">print</span> <span class="s">"Got an object"</span>
+     <span class="c">#etc...</span>
+</code></pre>
+</div>
+
+<p>This command script must be saved to:</p>
+
+<p><em>/Users/~/Library/Application Support/McNeel/Rhinoceros/MacPlugIns/PythonPlugIns/PlugInName{GUID}/dev</em></p>
+
+<p><em>NOTE</em>: the command name must match the script file file name, so in this example the file name would be: <em>MyNewCommand_cmd.py</em></p>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:pascal@mcneel.com">pascal@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/demo/_guide_topics/rhinopython/creating_rhino_commands_using_python.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/demo/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Visual Analysis Modes</title>
+  <meta name="description" content="```cspartial class Examples{  public static Rhino.Commands.Result AnalysisMode_on(RhinoDoc doc)  {    // make sure our custom visual analysis mode is registe...">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/demo/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/demo/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/demo/samples/rhinocommon/analysismode/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/demo/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/demo/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/demo/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/demo/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/demo/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/demo/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/demo/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/demo/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/demo/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>demo</strong> version of this page!
+    <a href="/samples/rhinocommon/analysismode/">View the current version instead.</a>
+</div>
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/demo/"><img src="/demo/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/demo/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/demo/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/demo/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/demo/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <h3>Visual Analysis Modes</h3>
+
+<p></p>
+
+<ul class="nav nav-pills">
+  <li class="active"><a href="#cs" data-toggle="pill">C#</a></li>
+  <li><a href="#vb" data-toggle="pill">VB.NET</a></li>
+  <li><a href="#py" data-toggle="pill">Python</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane fade in active highlighter-rouge" id="cs"><pre class="highlight"><code><span class="k">partial</span> <span class="k">class</span> <span class="nc">Examples</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span> <span class="nf">AnalysisMode_on</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// make sure our custom visual analysis mode is registered
+</span>    <span class="n">var</span> <span class="n">zmode</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">VisualAnalysisMode</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">ZAnalysisMode</span><span class="p">));</span>
+
+    <span class="k">const</span> <span class="n">ObjectType</span> <span class="n">filter</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjectType</span><span class="p">.</span><span class="n">Surface</span> <span class="p">|</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjectType</span><span class="p">.</span><span class="n">PolysrfFilter</span> <span class="p">|</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjectType</span><span class="p">.</span><span class="n">Mesh</span><span class="p">;</span>
+    <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjRef</span><span class="p">[]</span> <span class="n">objs</span><span class="p">;</span>
+    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetMultipleObjects</span><span class="p">(</span><span class="s">"Select objects for Z analysis"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">filter</span><span class="p">,</span> <span class="k">out</span> <span class="n">objs</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">objs</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+      <span class="n">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">objs</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="nf">Object</span><span class="p">();</span>
+
+      <span class="c1">// see if this object is alreay in Z analysis mode
+</span>      <span class="k">if</span> <span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="nf">InVisualAnalysisMode</span><span class="p">(</span><span class="n">zmode</span><span class="p">))</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="nf">EnableVisualAnalysisMode</span><span class="p">(</span><span class="n">zmode</span><span class="p">,</span> <span class="k">true</span><span class="p">))</span>
+        <span class="n">count</span><span class="p">++;</span>
+    <span class="p">}</span>
+    <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
+    <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0} objects were put into Z-Analysis mode."</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">static</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span> <span class="nf">AnalysisMode_off</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">var</span> <span class="n">zmode</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">VisualAnalysisMode</span><span class="p">.</span><span class="nf">Find</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">ZAnalysisMode</span><span class="p">));</span>
+    <span class="c1">// If zmode is null, we've never registered the mode so we know it hasn't been used
+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">zmode</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">foreach</span> <span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObject</span> <span class="n">obj</span> <span class="k">in</span> <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">obj</span><span class="p">.</span><span class="nf">EnableVisualAnalysisMode</span><span class="p">(</span><span class="n">zmode</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Z-Analysis is off."</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">/// &lt;summary&gt;
+/// This simple example provides a false color based on the world z-coordinate.
+/// For details, see the implementation of the FalseColor() function.
+/// &lt;/summary&gt;
+</span><span class="k">public</span> <span class="k">class</span> <span class="nc">ZAnalysisMode</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">VisualAnalysisMode</span>
+<span class="p">{</span>
+  <span class="n">Interval</span> <span class="n">m_z_range</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Interval</span><span class="p">(-</span><span class="m">10</span><span class="p">,</span><span class="m">10</span><span class="p">);</span>
+  <span class="n">Interval</span> <span class="n">m_hue_range</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Interval</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">4</span><span class="p">*</span><span class="n">Math</span><span class="p">.</span><span class="n">PI</span> <span class="p">/</span> <span class="m">3</span><span class="p">);</span>
+  <span class="k">private</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">m_show_isocurves</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+
+  <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"Z-Analysis"</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+  <span class="k">public</span> <span class="k">override</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">VisualAnalysisMode</span><span class="p">.</span><span class="n">AnalysisStyle</span> <span class="n">Style</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">AnalysisStyle</span><span class="p">.</span><span class="n">FalseColor</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">override</span> <span class="kt">bool</span> <span class="nf">ObjectSupportsAnalysisMode</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObject</span> <span class="n">obj</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="k">is</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">MeshObject</span> <span class="p">||</span> <span class="n">obj</span> <span class="k">is</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">BrepObject</span><span class="p">)</span>
+      <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">UpdateVertexColors</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObject</span> <span class="n">obj</span><span class="p">,</span> <span class="n">Mesh</span><span class="p">[]</span> <span class="n">meshes</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// A "mapping tag" is used to determine if the colors need to be set
+</span>    <span class="n">Rhino</span><span class="p">.</span><span class="n">Render</span><span class="p">.</span><span class="n">MappingTag</span> <span class="n">mt</span> <span class="p">=</span> <span class="nf">GetMappingTag</span><span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="n">RuntimeSerialNumber</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">mi</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">mi</span> <span class="p">&lt;</span> <span class="n">meshes</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">mi</span><span class="p">++)</span>
+    <span class="p">{</span>
+      <span class="n">var</span> <span class="n">mesh</span> <span class="p">=</span> <span class="n">meshes</span><span class="p">[</span><span class="n">mi</span><span class="p">];</span>
+      <span class="k">if</span><span class="p">(</span> <span class="n">mesh</span><span class="p">.</span><span class="n">VertexColors</span><span class="p">.</span><span class="n">Tag</span><span class="p">.</span><span class="n">Id</span> <span class="p">!=</span> <span class="k">this</span><span class="p">.</span><span class="n">Id</span> <span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// The mesh's mapping tag is different from ours. Either the mesh has
+</span>        <span class="c1">// no false colors, has false colors set by another analysis mode, has
+</span>        <span class="c1">// false colors set using different m_z_range[]/m_hue_range[] values, or
+</span>        <span class="c1">// the mesh has been moved.  In any case, we need to set the false
+</span>        <span class="c1">// colors to the ones we want.
+</span>        <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Color</span><span class="p">[]</span> <span class="n">colors</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Color</span><span class="p">[</span><span class="n">mesh</span><span class="p">.</span><span class="n">Vertices</span><span class="p">.</span><span class="n">Count</span><span class="p">];</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">mesh</span><span class="p">.</span><span class="n">Vertices</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+          <span class="kt">double</span> <span class="n">z</span> <span class="p">=</span> <span class="n">mesh</span><span class="p">.</span><span class="n">Vertices</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">Z</span><span class="p">;</span>
+          <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="nf">FalseColor</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">mesh</span><span class="p">.</span><span class="n">VertexColors</span><span class="p">.</span><span class="nf">SetColors</span><span class="p">(</span><span class="n">colors</span><span class="p">);</span>
+        <span class="c1">// set the mesh's color tag
+</span>        <span class="n">mesh</span><span class="p">.</span><span class="n">VertexColors</span><span class="p">.</span><span class="n">Tag</span> <span class="p">=</span> <span class="n">mt</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">override</span> <span class="kt">bool</span> <span class="n">ShowIsoCurves</span>
+  <span class="p">{</span>
+    <span class="k">get</span>
+    <span class="p">{</span>
+      <span class="c1">// Most shaded analysis modes that work on breps have the option of
+</span>      <span class="c1">// showing or hiding isocurves.  Run the built-in Rhino ZebraAnalysis
+</span>      <span class="c1">// to see how Rhino handles the user interface.  If controlling
+</span>      <span class="c1">// iso-curve visability is a feature you want to support, then provide
+</span>      <span class="c1">// user interface to set this member variable.
+</span>      <span class="k">return</span> <span class="n">m_show_isocurves</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">/// &lt;summary&gt;
+</span>  <span class="c1">/// Returns a mapping tag that is used to detect when a mesh's colors need to
+</span>  <span class="c1">/// be set.
+</span>  <span class="c1">/// &lt;/summary&gt;
+</span>  <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;
+</span>  <span class="n">Rhino</span><span class="p">.</span><span class="n">Render</span><span class="p">.</span><span class="n">MappingTag</span> <span class="nf">GetMappingTag</span><span class="p">(</span><span class="kt">uint</span> <span class="n">serialNumber</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Rhino</span><span class="p">.</span><span class="n">Render</span><span class="p">.</span><span class="n">MappingTag</span> <span class="n">mt</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Render</span><span class="p">.</span><span class="nf">MappingTag</span><span class="p">();</span>
+    <span class="n">mt</span><span class="p">.</span><span class="n">Id</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">Id</span><span class="p">;</span>
+
+    <span class="c1">// Since the false colors that are shown will change if the mesh is
+</span>    <span class="c1">// transformed, we have to initialize the transformation.
+</span>    <span class="n">mt</span><span class="p">.</span><span class="n">MeshTransform</span> <span class="p">=</span> <span class="n">Transform</span><span class="p">.</span><span class="n">Identity</span><span class="p">;</span>
+
+    <span class="c1">// This is a 32 bit CRC or the information used to set the false colors.
+</span>    <span class="c1">// For this example, the m_z_range and m_hue_range intervals control the
+</span>    <span class="c1">// colors, so we calculate their crc.
+</span>    <span class="kt">uint</span> <span class="n">crc</span> <span class="p">=</span> <span class="n">RhinoMath</span><span class="p">.</span><span class="nf">CRC32</span><span class="p">(</span><span class="n">serialNumber</span><span class="p">,</span> <span class="n">m_z_range</span><span class="p">.</span><span class="n">T0</span><span class="p">);</span>
+    <span class="n">crc</span> <span class="p">=</span> <span class="n">RhinoMath</span><span class="p">.</span><span class="nf">CRC32</span><span class="p">(</span><span class="n">crc</span><span class="p">,</span> <span class="n">m_z_range</span><span class="p">.</span><span class="n">T1</span><span class="p">);</span>
+    <span class="n">crc</span> <span class="p">=</span> <span class="n">RhinoMath</span><span class="p">.</span><span class="nf">CRC32</span><span class="p">(</span><span class="n">crc</span><span class="p">,</span> <span class="n">m_hue_range</span><span class="p">.</span><span class="n">T0</span><span class="p">);</span>
+    <span class="n">crc</span> <span class="p">=</span> <span class="n">RhinoMath</span><span class="p">.</span><span class="nf">CRC32</span><span class="p">(</span><span class="n">crc</span><span class="p">,</span> <span class="n">m_hue_range</span><span class="p">.</span><span class="n">T1</span><span class="p">);</span>
+    <span class="n">mt</span><span class="p">.</span><span class="n">MappingCRC</span> <span class="p">=</span> <span class="n">crc</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">mt</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Color</span> <span class="nf">FalseColor</span><span class="p">(</span><span class="kt">double</span> <span class="n">z</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Simple example of one way to change a number into a color.
+</span>    <span class="kt">double</span> <span class="n">s</span> <span class="p">=</span> <span class="n">m_z_range</span><span class="p">.</span><span class="nf">NormalizedParameterAt</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
+    <span class="n">s</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">RhinoMath</span><span class="p">.</span><span class="nf">Clamp</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Color</span><span class="p">.</span><span class="nf">FromArgb</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">s</span> <span class="p">*</span> <span class="m">255</span><span class="p">),</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<pre class="tab-pane fade in" id="vb"><code class="language-vbnet">Partial Friend Class Examples
+  Public Shared Function AnalysisMode_on(ByVal doc As RhinoDoc) As Rhino.Commands.Result
+	' make sure our custom visual analysis mode is registered
+	Dim zmode = Rhino.Display.VisualAnalysisMode.Register(GetType(ZAnalysisMode))
+
+	Const filter As ObjectType = Rhino.DocObjects.ObjectType.Surface Or Rhino.DocObjects.ObjectType.PolysrfFilter Or Rhino.DocObjects.ObjectType.Mesh
+	Dim objs() As Rhino.DocObjects.ObjRef = Nothing
+	Dim rc = Rhino.Input.RhinoGet.GetMultipleObjects("Select objects for Z analysis", False, filter, objs)
+	If rc IsNot Rhino.Commands.Result.Success Then
+	  Return rc
+	End If
+
+	Dim count As Integer = 0
+	For i As Integer = 0 To objs.Length - 1
+	  Dim obj = objs(i).Object()
+
+	  ' see if this object is alreay in Z analysis mode
+	  If obj.InVisualAnalysisMode(zmode) Then
+		Continue For
+	  End If
+
+	  If obj.EnableVisualAnalysisMode(zmode, True) Then
+		count += 1
+	  End If
+	Next i
+	doc.Views.Redraw()
+	RhinoApp.WriteLine("{0} objects were put into Z-Analysis mode.", count)
+	Return Rhino.Commands.Result.Success
+  End Function
+
+  Public Shared Function AnalysisMode_off(ByVal doc As RhinoDoc) As Rhino.Commands.Result
+	Dim zmode = Rhino.Display.VisualAnalysisMode.Find(GetType(ZAnalysisMode))
+	' If zmode is null, we've never registered the mode so we know it hasn't been used
+	If zmode IsNot Nothing Then
+	  For Each obj As Rhino.DocObjects.RhinoObject In doc.Objects
+		obj.EnableVisualAnalysisMode(zmode, False)
+	  Next obj
+	  doc.Views.Redraw()
+	End If
+	RhinoApp.WriteLine("Z-Analysis is off.")
+	Return Rhino.Commands.Result.Success
+  End Function
+End Class
+
+''' &lt;summary&gt;
+''' This simple example provides a false color based on the world z-coordinate.
+''' For details, see the implementation of the FalseColor() function.
+''' &lt;/summary&gt;
+Public Class ZAnalysisMode
+	Inherits Rhino.Display.VisualAnalysisMode
+
+  Private m_z_range As New Interval(-10,10)
+  Private m_hue_range As New Interval(0,4*Math.PI / 3)
+  Private Const m_show_isocurves As Boolean = True
+
+  Public Overrides ReadOnly Property Name() As String
+	  Get
+		  Return "Z-Analysis"
+	  End Get
+  End Property
+  Public Overrides ReadOnly Property Style() As Rhino.Display.VisualAnalysisMode.AnalysisStyle
+	  Get
+		  Return AnalysisStyle.FalseColor
+	  End Get
+  End Property
+
+  Public Overrides Function ObjectSupportsAnalysisMode(ByVal obj As Rhino.DocObjects.RhinoObject) As Boolean
+	If TypeOf obj Is Rhino.DocObjects.MeshObject OrElse TypeOf obj Is Rhino.DocObjects.BrepObject Then
+	  Return True
+	End If
+	Return False
+  End Function
+
+  Protected Overrides Sub UpdateVertexColors(ByVal obj As Rhino.DocObjects.RhinoObject, ByVal meshes() As Mesh)
+	' A "mapping tag" is used to determine if the colors need to be set
+	Dim mt As Rhino.Render.MappingTag = GetMappingTag(obj.RuntimeSerialNumber)
+
+	For mi As Integer = 0 To meshes.Length - 1
+	  Dim mesh = meshes(mi)
+	  If mesh.VertexColors.Tag.Id &lt;&gt; Me.Id Then
+		' The mesh's mapping tag is different from ours. Either the mesh has
+		' no false colors, has false colors set by another analysis mode, has
+		' false colors set using different m_z_range[]/m_hue_range[] values, or
+		' the mesh has been moved.  In any case, we need to set the false
+		' colors to the ones we want.
+		Dim colors(mesh.Vertices.Count - 1) As System.Drawing.Color
+		For i As Integer = 0 To mesh.Vertices.Count - 1
+		  Dim z As Double = mesh.Vertices(i).Z
+		  colors(i) = FalseColor(z)
+		Next i
+		mesh.VertexColors.SetColors(colors)
+		' set the mesh's color tag
+		mesh.VertexColors.Tag = mt
+	  End If
+	Next mi
+  End Sub
+
+  Public Overrides ReadOnly Property ShowIsoCurves() As Boolean
+	Get
+	  ' Most shaded analysis modes that work on breps have the option of
+	  ' showing or hiding isocurves.  Run the built-in Rhino ZebraAnalysis
+	  ' to see how Rhino handles the user interface.  If controlling
+	  ' iso-curve visability is a feature you want to support, then provide
+	  ' user interface to set this member variable.
+	  Return m_show_isocurves
+	End Get
+  End Property
+
+  ''' &lt;summary&gt;
+  ''' Returns a mapping tag that is used to detect when a mesh's colors need to
+  ''' be set.
+  ''' &lt;/summary&gt;
+  ''' &lt;returns&gt;&lt;/returns&gt;
+  Private Function GetMappingTag(ByVal serialNumber As UInteger) As Rhino.Render.MappingTag
+	Dim mt As New Rhino.Render.MappingTag()
+	mt.Id = Me.Id
+
+	' Since the false colors that are shown will change if the mesh is
+	' transformed, we have to initialize the transformation.
+	mt.MeshTransform = Transform.Identity
+
+	' This is a 32 bit CRC or the information used to set the false colors.
+	' For this example, the m_z_range and m_hue_range intervals control the
+	' colors, so we calculate their crc.
+	Dim crc As UInteger = RhinoMath.CRC32(serialNumber, m_z_range.T0)
+	crc = RhinoMath.CRC32(crc, m_z_range.T1)
+	crc = RhinoMath.CRC32(crc, m_hue_range.T0)
+	crc = RhinoMath.CRC32(crc, m_hue_range.T1)
+	mt.MappingCRC = crc
+	Return mt
+  End Function
+
+  Private Function FalseColor(ByVal z As Double) As System.Drawing.Color
+	' Simple example of one way to change a number into a color.
+	Dim s As Double = m_z_range.NormalizedParameterAt(z)
+	s = Rhino.RhinoMath.Clamp(s, 0, 1)
+	Return System.Drawing.Color.FromArgb(CInt(Fix(s * 255)), 0, 0)
+  End Function
+
+End Class
+</code></pre>
+
+<div class="tab-pane fade in highlighter-rouge" id="py"><pre class="highlight"><code><span class="c"># No Python sample available</span>
+</code></pre>
+</div>
+
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+
+        <div class="row">
+          <div class="col-md-3">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+              <a href="https://github.com/mcneel/developer-rhino3d-com/blob/demo/_samples/rhinocommon/analysismode.md" target="_blank">Edit on GitHub</a>
+          </div>
+
+          <div class="col-md-6 text-center">
+            © 1997 - 2016 Robert McNeel &amp; Associates
+          </div>
+
+          <div class="col-md-3">
+            <span class="pull-right">
+              <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/demo/admin">Admin</a>
+            </span>
+          </div>
+
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

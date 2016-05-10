@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Fibonacci Spirals</title>
+  <meta name="description" content="```vbnet‘’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’’ FibonacciSpiral.rvb – June 2009‘ If this code works, it was written by Dale Fu...">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/demo/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/demo/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/demo/samples/rhinoscript/fibonaccispiral/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/demo/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/demo/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/demo/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/demo/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/demo/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/demo/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/demo/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/demo/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/demo/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>demo</strong> version of this page!
+    <a href="/samples/rhinoscript/fibonaccispiral/">View the current version instead.</a>
+</div>
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/demo/"><img src="/demo/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/demo/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/demo/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/demo/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/demo/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <h3>Fibonacci Spirals</h3>
+
+<p>Demonstrates how to create a Fibonacci Spiral with RhinoScript.</p>
+
+<p style="color:#337ab7; padding-left:10px">VBScript</p>
+
+<pre><code class="language-vbnet">'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' FibonacciSpiral.rvb -- June 2009
+' If this code works, it was written by Dale Fugier.
+' If not, I don't know who wrote it.
+' Works with Rhino 4.0.
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+Option Explicit
+
+Call FibonacciSpiral()
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' Computes Fibonacci Spiral
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub FibonacciSpiral()
+
+  ' Local variables
+  Dim steps, scale, plane, xform
+  Dim origin, pt0, pt1, pt2, pt3
+  Dim n, cmd
+
+  ' Get number of Fibonacci numbers to calculate
+  steps = Rhino.GetInteger("Number of steps", 10, 1, 50)
+  If IsNull(steps) Then Exit Sub
+
+  ' Original origin point
+  origin = Array(0,0,0)
+
+  ' Process every step...
+  For n = 1 To steps
+
+    ' Compute Fibonacci number using Binet's formula      
+    scale = Round(((Sqr(5) + 1) / 2) ^ n / Sqr(5))
+
+    ' Determine x and y axes based on where we are
+    plane = Rhino.WorldXYPlane()
+    xform = Rhino.XformRotation(90.0 * (n Mod 4), plane(3), plane(0))
+    plane = Rhino.PlaneTransform(plane, xform)
+
+    ' Calculate arc points
+    pt0 = origin
+    ' Offset pt0 in the xaxis direction by scale
+    pt1 = Rhino.PointAdd(pt0, Rhino.VectorScale(plane(1), scale))
+    ' Offset pt1 in the yaxis direction by scale
+    pt2 = Rhino.PointAdd(pt1, Rhino.VectorScale(plane(2), scale))
+    ' Offset origin in the yaxis direction by scale
+    pt3 = Rhino.PointAdd(pt0, Rhino.VectorScale(plane(2), scale))
+
+    ' Add a closed polyline
+    Call Rhino.AddPolyline(Array(pt0, pt1, pt2, pt3, pt0))
+
+    ' Build a command script that will create an arc from
+    ' start, end, and direction
+    cmd = "_-Arc _StartPoint " &amp; _
+          Rhino.Pt2Str(pt0)    &amp; _
+          " "                  &amp; _
+          Rhino.Pt2Str(pt2)    &amp; _
+          " _Direction "       &amp; _
+          Rhino.Pt2Str(pt1)
+
+    ' Run the command script to create the arc          
+    Call Rhino.Command(cmd, 0)
+
+    ' Update the origin point
+    origin = pt2
+
+  Next
+
+End Sub
+</code></pre>
+
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/demo/_samples/rhinoscript/fibonaccispiral.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/demo/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

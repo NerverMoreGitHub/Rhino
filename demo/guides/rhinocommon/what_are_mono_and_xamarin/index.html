@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>What are Mono & Xamarin?</title>
+  <meta name="description" content="What are Mono &amp; Xamarin?">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/demo/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/demo/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/demo/guides/rhinocommon/what_are_mono_and_xamarin/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/demo/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/demo/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/demo/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/demo/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/demo/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/demo/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/demo/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/demo/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/demo/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>demo</strong> version of this page!
+    <a href="/guides/rhinocommon/what_are_mono_and_xamarin/">View the current version instead.</a>
+</div>
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/demo/"><img src="/demo/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/demo/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/demo/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/demo/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/demo/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/demo/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/demo/guides/#rhinocommon">RhinoCommon</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#what-are-mono--xamarin">What are Mono &amp; Xamarin?</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#mono">Mono</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#mono--rhino-for-mac">Mono &amp; Rhino for Mac</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#xamarin">Xamarin</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#the-xamarin-platform">The Xamarin platform</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#xamarin-studio">Xamarin Studio</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#xamarinmac">Xamarin.Mac?</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#visual-studio-support">Visual Studio support</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#licensing-xamarin">Licensing Xamarin</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#solution--project">Solution &amp; Project</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#porting-net-code">Porting .NET code</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#pinvoke">P/Invoke</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#ui-and-eto">UI and Eto</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related Topics</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="what-are-mono--xamarin">What are Mono &amp; Xamarin?</h1>
+
+<p>This guide is an overview of Mono and Xamarin and how they relate to RhinoCommon plugins.</p>
+
+<hr />
+
+<h2 id="mono">Mono</h2>
+
+<p>The <a href="http://www.mono-project.com/">Mono framework</a> is an <a href="https://github.com/mono/mono">open source implementation</a> of <a href="http://www.microsoft.com/net">Microsoft’s .NET Framework</a> based on the <a href="http://www.mono-project.com/docs/about-mono/languages/ecma/">open standards</a> for the C# language and the <a href="http://www.mono-project.com/docs/advanced/runtime/">Common Language Runtime</a>.</p>
+
+<p>The Mono project has been in active development for <a href="https://en.wikipedia.org/wiki/Mono_(software)#History">over a decade</a> and is used - behind the scenes - in many products.</p>
+
+<h3 id="mono--rhino-for-mac">Mono &amp; Rhino for Mac</h3>
+
+<p>Mono allows C# developers to write cross platform code targeting Windows, Mac OS X, Linux, Android, and iOS.  What this means for Rhino plugin developers is that they can - if written properly - run the same RhinoCommon plugin in <em>both</em> Rhino for Windows <em>and</em> Rhino for Mac…</p>
+
+<div align="center">
+  <img src="/demo/images/rhino_mono_one_binary_two_platforms.png" />
+</div>
+
+<p>RhinoCommon on Mac is executed through an embedded, custom, Mono framework.  That means Rhino for Mac is not using the public Mono, nor premium Xamarin.Mac.  However, the differences between public MonoMac and Rhino for Mac’s MonoMac are inconsequential.</p>
+
+<hr />
+
+<h2 id="xamarin">Xamarin</h2>
+
+<p>Xamarin - a subsidiary of Microsoft - is a company founded by the engineers who created Mono.  Xamarin is the primary maintainer and commercial sponsor of Mono.  Xamarin provides professional developer tools that make cross platform code easier to author, test, and maintain.</p>
+
+<h3 id="the-xamarin-platform">The Xamarin platform</h3>
+
+<p>The <strong><a href="http://xamarin.com/platform">Xamarin Platform</a></strong> is comprised of the following pieces:</p>
+
+<ul>
+  <li><strong><a href="http://xamarin.com/studio">Xamarin Studio</a></strong>: C# IDE that runs on both Windows and Mac.</li>
+  <li><strong>Xamarin.Android</strong>: Used to build C# .NET applications for Android devices.  This is useful to have installed if you wish to use the <a href="/demo/guides/#rhinomobile">RhinoMobile</a> toolkit, but not required for RhinoCommon in Rhino for Mac.</li>
+  <li><strong>Xamarin.iOS</strong>: Used to build C# .NET applications for Apple iOS devices.  This is useful to have installed if you wish to use the <a href="/demo/guides/#rhinomobile">RhinoMobile</a> toolkit, but not required for RhinoCommon in Rhino for Mac.</li>
+  <li><strong>Xamarin.Mac</strong>: Xamarin’s closed-source version of MonoMac.</li>
+</ul>
+
+<p>For developing RhinoCommon plugins, <em>only</em> Xamarin Studio is required.</p>
+
+<h3 id="xamarin-studio">Xamarin Studio</h3>
+
+<p>This is Xamarin’s C# developer environment that runs on both Windows and Mac.  Xamarin Studio has many of the features of Microsoft’s Visual Studio and uses <em>exactly the same formats</em> as Visual Studio: solutions (<em>.sln</em>) and C# projects (<em>.csproj</em>).  At McNeel, we use Xamarin Studio to develop <a href="http://www.rhino3d.com/mac">Rhino for Mac</a> and <a href="https://www.rhino3d.com/ios">iRhino 3D</a>.  We highly recommend you use Xamarin Studio when developing RhinoCommon plugins for the Mac (or for Windows as well).</p>
+
+<h3 id="xamarinmac">Xamarin.Mac?</h3>
+
+<p>Rhino for Mac does not currently use Xamarin.Mac.</p>
+
+<p>Xamarin.Mac is Xamarin’s proprietary closed-source toolkit used to provide .NET access to native features of the Mac Operating System and to allow for compiling .NET projects into self-contained application bundles.  Rhino uses the open source MonoMac framework instead of Xamarin.Mac for accessing native OS X features (primarily native user interface features).</p>
+
+<h3 id="visual-studio-support">Visual Studio support</h3>
+
+<p>Xamarin offers a <a href="http://xamarin.com/visual-studio">Visual Studio extension</a>, however this extension is only useful for Xamarin.iOS and Xamarin.Android development, <strong>not</strong> for RhinoCommon.  If you are writing RhinoCommon plugins you are free to use Visual Studio - when targeting either Rhino for Mac or Rhino for Windows - just as you normally would.  When you want to debug and test your plugin in Rhino for Mac, you will have to use Xamarin Studio, but you can use the <em>exactly same solution</em> and <em>project files</em> to do this.</p>
+
+<h3 id="licensing-xamarin">Licensing Xamarin</h3>
+
+<p>The Xamarin Platform requires a <a href="https://store.xamarin.com/">paid license</a> to use.</p>
+
+<p>Xamarin’s Platform can be <a href="https://xamarin.com/download">downloaded</a> and tested before licensing.</p>
+
+<p>Xamarin is <a href="https://xamarin.com/student">free for students</a>.</p>
+
+<hr />
+
+<h2 id="solution--project">Solution &amp; Project</h2>
+
+<p>Xamarin Studio uses the same formats as Visual Studio:</p>
+
+<ul>
+  <li><strong>.sln</strong></li>
+  <li><strong>.csproj</strong></li>
+</ul>
+
+<p>It is important to stress: these <em>are</em> Visual Studio solutions and projects.  You can open solutions and projects created in Xamarin Studio in Visual Studio and vice-versa.</p>
+
+<hr />
+
+<h2 id="porting-net-code">Porting .NET code</h2>
+
+<p>All of .NET is not yet implemented in Mono (although an awful lot is).  We recommend launching your plugin project in Xamarin Studio and attempting to compile. That is the best way to find any potential problems with getting your plugin to run on Mac Rhino. Please let McNeel know if you find something is missing from the SDK that you need, we may be able to provide this functionality in a Rhino for Mac service release.</p>
+
+<h3 id="pinvoke">P/Invoke</h3>
+
+<p>One of the areas that developers need to be aware of is any .NET code that uses P/invoke may experience problems when running on Mac. P/invoke is a technique to call unmanaged native functions from .NET code.  The feature is available on OS X/mono, but developers need to make sure that the P/invoke calls are calling native code written for OS X and not for Windows.  Many commercial .NET components use P/invoke so this is something we highly recommend you investigate.</p>
+
+<h3 id="ui-and-eto">UI and Eto</h3>
+
+<p>User interface is where developers typically run into trouble with platform specific dependencies and features.  We use and support development of <a href="https://github.com/picoe/Eto">Eto</a>.  Using Eto can make your plugin look and work as a native application on all platforms, using a single UI codebase.  Eto ships with Rhino for Mac (and will ship with Rhino 6 for Windows).  Eto has an easy to use API and uses native toolkits, abstracting the platform-specific implementations for <a href="https://en.wikipedia.org/wiki/Windows_Forms">WinForms</a> (GDI and Direct2D), <a href="https://en.wikipedia.org/wiki/Windows_Presentation_Foundation">WPF</a>, and <a href="https://en.wikipedia.org/wiki/Cocoa_(API)">Cocoa</a> (on OS X).  Though Eto is powerful, it has a shallow learning curve and we’re confident you will be hooked as quickly as we were.</p>
+
+<hr />
+
+<h2 id="related-topics">Related Topics</h2>
+
+<ul>
+  <li><a href="http://www.mono-project.com/">Mono Project homepage</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Mono_(software)">Mono (software) - Wikipedia</a></li>
+  <li><a href="http://xamarin.com">Xamarin homepage</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Xamarin">Xamarin - Wikipedia</a></li>
+  <li><a href="/demo/guides/rhinocommon/installing_tools_mac/">Installing Tools (Mac)</a></li>
+  <li>Cross Platform User Interface</li>
+</ul>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dan@mcneel.com">dan@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/demo/_guide_topics/rhinocommon/what_are_mono_and_xamarin.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/demo/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

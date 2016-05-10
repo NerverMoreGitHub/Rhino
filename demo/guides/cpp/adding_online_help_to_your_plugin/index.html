@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Adding Online Help to Your Plugin</title>
+  <meta name="description" content="Adding Online Help to Your Plugin">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/demo/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/demo/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/demo/guides/cpp/adding_online_help_to_your_plugin/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/demo/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/demo/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/demo/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/demo/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/demo/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/demo/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/demo/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/demo/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/demo/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>demo</strong> version of this page!
+    <a href="/guides/cpp/adding_online_help_to_your_plugin/">View the current version instead.</a>
+</div>
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/demo/"><img src="/demo/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/demo/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/demo/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/demo/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/demo/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/demo/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/demo/guides/#cpp">C/C++</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#adding-online-help-to-your-plugin">Adding Online Help to You...</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#authoring-tools">Authoring Tools</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#plugin-support">Plugin Support</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#command-support">Command Support</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#dialog-support">Dialog Support</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related Topics</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="adding-online-help-to-your-plugin">Adding Online Help to Your Plugin</h1>
+
+<p>Discusses how to add online help support to your Rhino plugin using C/C++.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Once you have your Rhino plugin completed, you may want to add online help support to help your customers use your plugin efficiently and properly.  Most Windows applications provide online help in the form of an HTML help file.</p>
+
+<h2 id="authoring-tools">Authoring Tools</h2>
+
+<p>HTML help files are made with help authoring tools.</p>
+
+<p>Microsoft provides a free utility called the <a href="http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;FamilyID=00535334-c8a6-452f-9aa0-d597d16580cc">HTML Help Workshop</a> that can compile existing HTML files into an HTML help file (.chm). This is a fairly low-level utility in that it will only build HTML help files - it will not create or edit content. Thus, most who are looking to produce online help are looking for something a bit more full featured.</p>
+
+<p>MadCap make a popular help authoring tool called <a href="http://www.madcapsoftware.com/products/flare/">MadCap Flare</a> that will help you create, edit, and publish professional quality topic based technical content.  This is the tool used to create the help files for Rhino.</p>
+
+<p>There are several other tools available on the market.  Google “Create HTML Help File” to see the list.</p>
+
+<h2 id="plugin-support">Plugin Support</h2>
+
+<p>You can add your plugin to Rhino’s <em>Help</em> &gt; <em>Plug-ins</em> menu by overriding the following two virtual functions:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">CRhinoPlugIn::AddToPlugInHelpMenu</code>: Called by Rhino to determine if the plugin name should be added to the Rhino <em>Help</em> &gt; <em>Plug-ins</em> menu.</li>
+  <li><code class="highlighter-rouge">CRhinoPlugIn::OnDisplayPlugInHelp</code>: Called by Rhino if <code class="highlighter-rouge">CRhinoPlugIn::AddToPlugInHelpMenu</code> returns true and the menu item associated with this plugin is selected.</li>
+</ol>
+
+<p>Details on both of these virtual function can be found in <em>rhinoSdkPlugIn.h</em>.</p>
+
+<h2 id="command-support">Command Support</h2>
+
+<p>While running a Rhino command, you can press <kbd>F1</kbd> to bring up online help for that command.  Your plugin commands can do the same.  Simply override the <code class="highlighter-rouge">CRhinoCommand::DoHelp</code> virtual function.  If your command is running when the user presses <kbd>F1</kbd>, this member will be called.</p>
+
+<p>Also, if your want your command’s help to appear in Rhino’s command help dockable window (<em>Help</em> &gt; <em>Command Help</em>), then override the <code class="highlighter-rouge">CRhinoCommand::ContextHelpURL</code> virtual function.</p>
+
+<p>Details on both of these virtual function can be found in <em>rhinoSdkCommand.h</em>.</p>
+
+<h2 id="dialog-support">Dialog Support</h2>
+
+<p>There are a couple of ways you can add help support to dialog boxes.  The first is to simply place a “Help” button somewhere on the form.</p>
+
+<p>Also, if your dialog box has focus and the user presses <kbd>F1</kbd>, Windows will send a WM_HELPINFO message to it.  So, by adding a message handler to your dialog box, you can capture these notifications and display the requested information.</p>
+
+<p>And, if you add the “Context Help” style to your dialog box resource, a ? icon will appear in the upper right corner of the window.  Now, if the user clicks the ? icon and then clicks a control, your dialog’s <code class="highlighter-rouge">OnHelpInfo</code> implementation will and passed information about the control that was clicked.</p>
+
+<p>MSDN had lots of information on how to add context help to dialog boxes.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+
+<ul>
+  <li><a href="http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;FamilyID=00535334-c8a6-452f-9aa0-d597d16580cc">HTML Help Workshop (on Microsoft.com)</a></li>
+  <li><a href="http://www.madcapsoftware.com/products/flare/">MadCap Flare</a></li>
+</ul>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/demo/_guide_topics/cpp/adding_online_help_to_your_plugin.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/demo/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

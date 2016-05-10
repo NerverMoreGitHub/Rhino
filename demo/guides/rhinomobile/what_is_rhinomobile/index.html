@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>What is RhinoMobile?</title>
+  <meta name="description" content="What is RhinoMobile?">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/demo/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/demo/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/demo/guides/rhinomobile/what_is_rhinomobile/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/demo/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/demo/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/demo/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/demo/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/demo/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/demo/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/demo/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/demo/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/demo/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>demo</strong> version of this page!
+    <a href="/guides/rhinomobile/what_is_rhinomobile/">View the current version instead.</a>
+</div>
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/demo/"><img src="/demo/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/demo/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/demo/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/demo/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/demo/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/demo/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/demo/guides/#rhinomobile">RhinoMobile</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#what-is-rhinomobile">What is RhinoMobile?</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#who-should-use-it">Who should use it?</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#downloads--links">Downloads &amp; Links</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#developer-tools">Developer Tools</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#libraries--samples">Libraries &amp; Samples</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#faq">FAQ</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#next-steps">Next Steps</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related Topics</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="what-is-rhinomobile">What is RhinoMobile?</h1>
+
+<p><img src="/demo/images/rhinomobile_overview_01.png" alt="/demo/images/rhinomobile_overview_01.png" class="float-img-right" width="325" /></p>
+
+<p>RhinoMobile is a C# .NET library for the development of 3D, cross-platform, mobile applications. RhinoMobile - like RhinoCommon - is based on the Xamarin Mono framework, a fully-functional .NET runtime that works on Android, iOS and OS X. RhinoMobile uses openNURBS (the 3dm NURBS library) and RhinoCommon (the .NET SDK for Rhinoceros and Grasshopper) and handles file IO, gesture recognition and 3D display (OpenGL ES 2.0). It’s not the entirety of RhinoCommon, but a subset.</p>
+
+<h2 id="who-should-use-it">Who should use it?</h2>
+
+<p>Anyone interested in developing, prototyping, or just experimenting with 3D mobile development. Though there are many good 3D libraries out there for mobile games, none are focused on 3D modeling and design. RhinoMobile seeks to fill that gap. If you want to develop in C# and target as many devices as possible, this is the library for you. No experience with mobile development necessary…just familiarity with C# and .NET.</p>
+
+<h2 class="clear-img" id="where-can-i-get-help">Where can I get help?</h2>
+<p>Visit the <a href="http://discourse.mcneel.com/">Rhino Forum</a> and post your question in the <a href="http://discourse.mcneel.com/c/rhino-developer">Rhino Developer Category</a> and @mention the developer @dan.</p>
+
+<h2 id="downloads--links">Downloads &amp; Links</h2>
+
+<h3 id="developer-tools">Developer Tools</h3>
+
+<ul>
+  <li><a href="http://xamarin.com/download">Xamarin Platform</a>. Using RhinoMobile requires a 30-day free trial of the Business Edition. - Xamarin does have reduced academic pricing.</li>
+  <li><a href="http://developer.apple.com/xcode/">Xcode</a> on a Mac running OS X 10.8 (Mountain Lion) or greater for building iOS apps.</li>
+  <li><a href="http://https//www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx">Visual Studio 2012</a> or better: Non-Express editions only (Xamarin’s extensions require paid versions).</li>
+  <li><a href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">Intel Hardware Accelerated Execution Manager</a> provides hardware-acceleration for Android emulators.</li>
+</ul>
+
+<h3 id="libraries--samples">Libraries &amp; Samples</h3>
+
+<ul>
+  <li><a href="https://github.com/mcneel/rhinocommon/tree/rhino3dmio">RhinoCommon (rhino3dmio branch)</a>: The .NET plugin SDK for Rhino and Grasshopper.</li>
+  <li><a href="http://www.rhino3d.com/opennurbs">openNURBS</a> Download: C++ openNURBS SDK.</li>
+  <li><a href="http://github.com/mcneel/RhinoMobile">RhinoMobile</a> Download or clone the RhinoMobile library.</li>
+  <li><a href="http://github.com/mcneel/RhinoMobileSamples">RhinoMobileSamples</a> Download or clone some sample projects that use RhinoMobile.</li>
+</ul>
+
+<hr />
+
+<h2 id="faq">FAQ</h2>
+
+<p><strong>Is RhinoMobile free?</strong></p>
+
+<p>Yes.</p>
+
+<p><strong>Can I sell the apps I develop with RhinoMobile?</strong></p>
+
+<p>Yes.</p>
+
+<p><strong>Will apps build with RhinoMobile work on Mac and Windows computers as well as mobile devices?</strong></p>
+
+<p>No, with one caveat: though we have yet to add it to the library, we plan on supporting Windows Phone, which uses a DirectX as a display pipeline and can be run (with some limitations) as a “Windows Store App” (aka: Metro UI app).</p>
+
+<p><strong>Does McNeel use RhinoMobile to develop iRhino 3D?</strong></p>
+
+<p>We sure do.</p>
+
+<p><strong>Wait, is this all of RhinoCommon?</strong></p>
+
+<p>No. RhinoMobile uses a subset of RhinoCommon (rhino3dmio), the limits of which are defined by the symbol: MOBILE_BUILD. There’s a lot there: Rhino.DocObjects, Rhino.Geometry, Rhino.FileIO…pretty much everything you’d need to read, write, and draw Rhino 3dm.</p>
+
+<p><strong>So I probably can’t perform Meshing or run a Make2D command?</strong></p>
+
+<p>Sorry, not yet. Given the CPU constraints of mobile platforms, you’d probably consume all your battery life doing so anyway.</p>
+
+<hr />
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>If you are ready to get started with RhinoMobile, begin by making sure you have all the tools installed.  Read:</p>
+
+<ul>
+  <li><a href="/demo/guides/rhinomobile/installing_tools_mac/">Installing Tools (Mac)</a>; or</li>
+  <li><a href="/demo/guides/rhinomobile/installing_tools_windows/">Installing Tools (Windows)</a></li>
+</ul>
+
+<hr />
+
+<h2 id="related-topics">Related Topics</h2>
+
+<ul>
+  <li><a href="/demo/guides/rhinocommon/what_is_rhinocommon/">What is RhinoCommon?</a></li>
+  <li><a href="/demo/guides/rhinocommon/what_are_mono_and_xamarin/">What are Mono &amp; Xamarin?</a></li>
+  <li><a href="/demo/guides/rhinomobile/installing_tools_mac/">Installing Tools (Mac)</a></li>
+  <li><a href="/demo/guides/rhinomobile/installing_tools_windows/">Installing Tools (Windows)</a></li>
+</ul>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dan@mcneel.com">dan@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/demo/_guide_topics/rhinomobile/what_is_rhinomobile.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/demo/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

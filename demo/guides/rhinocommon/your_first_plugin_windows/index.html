@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Your First Plugin (Windows)</title>
+  <meta name="description" content="Your First Plugin (Windows)">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/demo/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/demo/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/demo/guides/rhinocommon/your_first_plugin_windows/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/demo/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/demo/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/demo/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/demo/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/demo/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/demo/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/demo/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/demo/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/demo/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>demo</strong> version of this page!
+    <a href="/guides/rhinocommon/your_first_plugin_windows/">View the current version instead.</a>
+</div>
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/demo/"><img src="/demo/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/demo/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/demo/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/demo/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/demo/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/demo/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/demo/guides/#rhinocommon">RhinoCommon</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#your-first-plugin-windows">Your First Plugin (Windows)</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#hellorhinocommon">HelloRhinoCommon</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#file-new">File New</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#boilerplate-build">Boilerplate Build</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#plugin-anatomy">Plugin Anatomy</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#make-changes">Make Changes</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#debugging">Debugging</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#next-steps">Next Steps</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related topics</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#footnotes">Footnotes</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="your-first-plugin-windows">Your First Plugin (Windows)</h1>
+
+<p>This guide walks you through your first plugin for Rhino for Windows using RhinoCommon and Visual Studio.</p>
+
+<p>It is presumed you already have the necessary tools installed and are ready to go.  If you are not there yet, see <a href="/demo/guides/rhinocommon/installing_tools_windows">Installing Tools (Windows)</a>.</p>
+
+<h2 id="hellorhinocommon">HelloRhinoCommon</h2>
+
+<p>We will use the RhinoCommon Templates to create a new, basic, command plugin called HelloRhinoCommon.</p>
+
+<p>If you are familiar with Visual Studio, these step-by-step instructions may be overly detailed for you.  The executive summary: create a new Solution using the RhinoCommon template, build and run, and then make a change.</p>
+
+<p>We are presuming you have never used Visual Studio before, so we’ll go through this one step at a time.</p>
+
+<h3 id="file-new">File New</h3>
+
+<ol>
+  <li>If you have not done so already, <strong>launch Visual Studio</strong> (for the purposes of this guide, we are using Visual Studio 2015 Community Edition and C#).</li>
+  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Project</strong>…<br />
+<img src="/demo/images/your_first_plugin_windows_01.png" alt="File New Project" /></li>
+  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Installed</strong> &gt; <strong>Templates</strong> &gt; <strong>Visual C#</strong> &gt; <strong>Rhinoceros</strong> section.  In the central list, select the RhinoCommon Plug-In template…<br />
+<img src="/demo/images/your_first_plugin_windows_02.png" alt="New Project" /></li>
+  <li>For the purposes of this Guide, we will name our demo plugin <em>HelloRhinoCommon</em>.  At the bottom of the window, fill in the <strong>Name</strong> field.  <strong>Browse</strong> and select a location for this plugin on your disk…<br />
+<img src="/demo/images/your_first_plugin_windows_03.png" alt="Project Configuration" /></li>
+  <li>Check <strong>Create directory for solution</strong>.  <em>NOTE</em>: This is optional depending on how you want to structure your projects.</li>
+  <li>Click the <strong>OK</strong> button.  <em>NOTE</em>: You don’t have to add the project to source control for this demo.</li>
+  <li>The <strong>New RhinoCommon Plug-In</strong> dialog appears.  This dialog allows you to <strong>Configure your new plugin project</strong>, as well as select which RhinoCommon references to use and which debug version of Rhino you would like to launch…  <br />
+<img src="/demo/images/your_first_plugin_windows_04.png" alt="HelloRhinoCommon Solution" /></li>
+  <li>For the purposes of this guide, we will <strong>accept the defaults</strong> and click <strong>Finish</strong>…</li>
+  <li>A <strong>new solution</strong> called <strong>HelloRhinoCommon</strong> should open…<br />
+<img src="/demo/images/your_first_plugin_windows_05.png" alt="HelloRhinoCommon Solution" /></li>
+</ol>
+
+<h3 id="boilerplate-build">Boilerplate Build</h3>
+
+<ol>
+  <li>Before we do anything, let’s <strong>build</strong> and <strong>run</strong> HelloRhinoCommon to make sure everything is working as expected.  We’ll just build the boilerplate Plugin template.  Click <strong>Start</strong> (play) button in toolbar corner of Visual Studio (or press <strong>F5</strong>) to <strong>Start Debugging</strong>…<br />
+<img src="/demo/images/your_first_plugin_windows_06.png" alt="Start Button" /></li>
+  <li><strong>Rhinoceros</strong> launches.  Create a new, empty model.</li>
+  <li>Since this is the first time you are running the plugin, you need to <strong>“install”</strong> it.  (The RhinoCommon template has set things up so when you compile the solution an <em>.rhp</em> file is compiled in the <em>bin</em> subdirectory of the project directory.) In the Rhino command prompt type the <strong>PlugInManager</strong> command.  Click the <strong>Install…</strong> button.</li>
+  <li><strong>Browse</strong> to the <em>HelloRhinoCommon.rhp</em> file (in our case, this is in <em>C:\dev\repositories\HelloRhinoCommon\HelloRhinoCommon\bin\</em>) and click <strong>Open</strong>.</li>
+  <li>The HelloRhinoCommon plugin is now installed.  Click <strong>OK</strong> to close the Rhino Options dialog.</li>
+  <li>Enter the <strong>HelloRhinoCommonCommand</strong> command.  Notice that the command autocompletes…</li>
+  <li>The <strong>HelloRhinoCommonCommand</strong> command begins and prompts you to <strong><em>Please select the start point:</em></strong>.</li>
+  <li>Notice there is <strong>also a command status</strong> in Rhino’s command prompt when the command begins: <strong><em>The HelloRhinoCommonCommand command will add a line right now.</em></strong></li>
+  <li><strong>Finish</strong> the command by selecting a start point and and end point.</li>
+  <li>Also note there is <strong>a command status</strong> in Rhino’s command prompt when the command ends: <strong><em>The HelloRhinoCommonCommand command added one line to the document.</em></strong></li>
+  <li><strong>Exit</strong> Rhinoceros.  This stops the session.  Go back to <strong>Visual Studio</strong>.  Let’s take a look at the…</li>
+</ol>
+
+<h3 id="plugin-anatomy">Plugin Anatomy</h3>
+
+<ol>
+  <li>Use the <strong>Solution Explorer</strong> to expand the <strong>Solution</strong> (<em>.sln</em>) so that it looks like this…<br />
+<img src="/demo/images/your_first_plugin_windows_07.png" alt="Solution Anatomy" /><br />
+<em>NOTE</em>: Depending on your edition of Visual Studio, it may look slightly different.</li>
+  <li>The <strong>HelloRhinoCommon</strong> project (<em>.csproj</em>) has the same name as its parent solution…this is the project that was created for us by the <strong>RhinoCommon Plugin</strong> template wizard earlier.</li>
+  <li><strong>Properties</strong> contains the <strong>AssemblyInfo.cs</strong> source file.  This file contains the meta-data (author, version, etc) about the plugin.</li>
+  <li><strong>References</strong>: Just as with most projects, you will be referencing other libraries.  The <strong>RhinoCommon Plugin</strong> template added the necessary references to create a basic RhinoCommon plugin.</li>
+  <li><strong>Microsoft.CSharp</strong> contains classes required for C# code compilation.</li>
+  <li><strong>RhinoCommon</strong> is <em>the</em> critical reference for our purposes here.</li>
+  <li><strong>System</strong>, <strong>System.Core</strong>, <strong>System.Drawing</strong>, <strong>System.Windows.Forms</strong> are .NET foundational libraries.</li>
+  <li><strong>HelloRhinoCommonPlugin.cs</strong> is where this template plugin derives from <em>Rhino.Plugins.Plugin</em> and returns a static Instance of itself.</li>
+  <li><strong>HelloRhinoCommonCommand.cs</strong> is where the action is.  Let’s take a look at this file…</li>
+</ol>
+
+<h3 id="make-changes">Make Changes</h3>
+
+<ol>
+  <li>Open <strong>HelloRhinoCommonCommand.cs</strong> in Visual Studio’s Source Editor (if it isn’t already).</li>
+  <li>
+    <p>Notice that <code class="highlighter-rouge">HelloRhinoCommonCommand</code> inherits from <code class="highlighter-rouge">Command</code> …</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> public class HelloRhinoCommonCommand : Command
+</code></pre>
+    </div>
+  </li>
+  <li>If you hover over <code class="highlighter-rouge">Command</code> you will notice this is actually <code class="highlighter-rouge">Rhino.Commands.Command</code>.</li>
+  <li>
+    <p><code class="highlighter-rouge">HelloRhinoCommonCommand</code> also overrides one inherited property called <code class="highlighter-rouge">EnglishName</code> …</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> public override string EnglishName {
+   get { return "HelloRhinoCommonCommand"; }
+ }
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>All Rhino commands must have a <code class="highlighter-rouge">EnglishName</code> property.  This command name is not very accurate.  We know from running the boilerplate code that this command prompts the user to draw a line.  Let’s rename the command to <em>HelloDrawLine</em>:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> public override string EnglishName {
+   get { return "HelloDrawLine"; }
+ }
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Further down, notice that <code class="highlighter-rouge">HelloRhinoCommandCommand</code> overrides the <code class="highlighter-rouge">RunCommand</code> method:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> protected override Result RunCommand (Rhino.RhinoDoc doc, RunMode mode)
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>All Rhino commands must have a <code class="highlighter-rouge">RunCommand</code> method.  As you can see, this is where the action happens.  Let’s create an intermediary line object that we can feed to the <code class="highlighter-rouge">AddLine</code> method.  Find the spot in <code class="highlighter-rouge">RunCommand</code> after the user has been prompted to select two points.  Type in…</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> Rhino.Geometry.Line line1 = new Line (pt0, pt1);
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Notice that - as you type - Visual Studio uses IntelliSense to create an auto-complete list of members to call.  Now, feed <code class="highlighter-rouge">line1</code> as an argument to the <code class="highlighter-rouge">doc.Objects.AddLine</code> method…</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> doc.Objects.AddLine (line1);
+</code></pre>
+    </div>
+  </li>
+  <li>Now that we have a line of our own, let’s examine it…</li>
+</ol>
+
+<h3 id="debugging">Debugging</h3>
+
+<ol>
+  <li>Set a breakpoint on line<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 67 of <em>HelloRhinoCommonCommand.cs</em>.  You set breakpoints in Visual Studio by clicking in the gutter…<br />
+<img src="/demo/images/your_first_plugin_windows_08.png" alt="Set a breakpoint" /></li>
+  <li><strong>Build</strong> and <strong>Run</strong>.  Because you have changed the name of the command, you will need to <strong>“install”</strong> the plugin again.  Follow the steps 3-5 in the <a href="#boilerplate-build">Boilerplate Build</a> section above.</li>
+  <li>Run <strong>HelloDrawLine</strong> in Rhino.  Create the two points…as soon as you do, you should hit your breakpoint and pause…<br />
+<img src="/demo/images/your_first_plugin_windows_09.png" alt="Hit a breakpoint" /></li>
+  <li>With Rhino paused, in <strong>Visual Studio</strong> switch to the <strong>Autos</strong> tab (if it not already there).  In the list, find the <code class="highlighter-rouge">line1</code> object we authored.  Click the dropdown <strong>arrow</strong> to expand the list of members on <code class="highlighter-rouge">line1</code>.  Our <code class="highlighter-rouge">line1</code> is a <code class="highlighter-rouge">Rhino.Geometry.Line</code> this class has a <code class="highlighter-rouge">Length</code> property…  <br />
+<img src="/demo/images/your_first_plugin_windows_10.png" alt="Autos panel" /></li>
+  <li><strong>Continue</strong> in Rhino by pressing the <strong>Continue</strong> button in the upper menu of <strong>Visual Studio</strong> (or press <strong>F5</strong>)…<br />
+<img src="/demo/images/your_first_plugin_windows_11.png" alt="Continue Executing" /></li>
+  <li>Control is passed back to <strong>Rhino</strong> and your command finishes.  <strong>Exit</strong> Rhino or <strong>Stop</strong> the debugging session.</li>
+  <li><strong>Remove</strong> the breakpoint you created above by clicking on it in the gutter.</li>
+  <li>
+    <p>Now, let’s use the <code class="highlighter-rouge">Length</code> value to report something to the user.  Near the very end of <code class="highlighter-rouge">RunCommand</code>, add the following line…</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> RhinoApp.WriteLine ("The distance between the two points is {0}.", line1.Length);
+</code></pre>
+    </div>
+  </li>
+  <li><strong>Save</strong>, <strong>Build</strong>, and <strong>Run</strong>.  Run <code class="highlighter-rouge">HelloDrawLine</code> in Rhino yet again (create the two points…).  Rhino now reports the length of the line you created.  However, this is not very clean.</li>
+  <li><strong>Exit</strong> Rhino to <strong>Stop</strong> the debugging session once more.</li>
+  <li>
+    <p>Let’s add a unit system and be explicit about what we’re reporting…</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> RhinoApp.WriteLine ("The distance between the two points is {0} {1}.", line1.Length, doc.ModelUnitSystem.ToString().ToLower());
+</code></pre>
+    </div>
+  </li>
+  <li><strong>Save</strong>, <strong>Build</strong>, and <strong>Run</strong> again.  Now we’re reporting the length of the line we created with the document’s unit system (<code class="highlighter-rouge">doc.ModelUnitSystem</code>) with the proper case (<code class="highlighter-rouge">ToLower()</code>).  Much better.</li>
+</ol>
+
+<p><strong>DONE!</strong></p>
+
+<p>Well, we could go on and on - <code class="highlighter-rouge">line1</code> was never necessary, we could have just used <code class="highlighter-rouge">pt0.DistanceTo(pt1).ToString()</code>, etc. - but that is beside the point:</p>
+
+<p><strong>Congratulations!</strong>  You have just built your first RhinoCommon plugin for Rhino for Windows.  <strong>Now what?</strong></p>
+
+<hr />
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>You’re using RhinoCommon, so this plugin will actually run on both platforms.  Check out the <a href="/demo/guides/rhinocommon/your_first_plugin_crossplatform">Your First Plugin (Cross Platform)</a> guide.</p>
+
+<hr />
+
+<h2 id="related-topics">Related topics</h2>
+
+<ul>
+  <li><a href="/demo/guides/rhinocommon/installing_tools_windows">Installing Tools (Windows)</a></li>
+  <li><a href="/demo/guides/rhinocommon/your_first_plugin_crossplatform">Your First Plugin (Cross-Platform)</a></li>
+</ul>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><strong>Line numbers</strong> in Visual Studio can be enabled and disabled in <strong>Tools</strong> &gt; <strong>Options…</strong> &gt; <strong>Text Editor</strong> section &gt; <strong>All Languages</strong> entry &gt; <strong>General</strong> sub-entry &gt; <strong>Settings</strong> subsection &gt; check <strong>Line numbers</strong>.  Click <strong>OK</strong> to close the <strong>Options</strong> dialog. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dan@mcneel.com">dan@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/demo/_guide_topics/rhinocommon/your_first_plugin_windows.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/demo/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

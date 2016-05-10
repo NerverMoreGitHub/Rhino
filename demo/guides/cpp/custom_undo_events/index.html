@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Custom Undo Events</title>
+  <meta name="description" content="Custom Undo Events">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/demo/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/demo/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/demo/guides/cpp/custom_undo_events/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/demo/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/demo/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/demo/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/demo/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/demo/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/demo/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/demo/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/demo/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/demo/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>demo</strong> version of this page!
+    <a href="/guides/cpp/custom_undo_events/">View the current version instead.</a>
+</div>
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/demo/"><img src="/demo/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/demo/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/demo/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/demo/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/demo/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/demo/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/demo/guides/#cpp">C/C++</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#custom-undo-events">Custom Undo Events</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#how-to">How To</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#samples">Samples</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#sample-1">Sample 1</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#sample-2">Sample 2</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="custom-undo-events">Custom Undo Events</h1>
+
+<p>This guide discusses custom undo events.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>The Rhino C/C++ SDK supports adding custom undo events.  This way plugins can take advantage of Rhino’s built in <em>Undo</em>, <em>Redo</em>, <em>UndoSelected</em>, <em>UndoMultiple</em>, <em>RedoMultiple</em> and <em>ClearUndo</em> commands, and any future Rhino commands that deal with undo/redo operations.</p>
+
+<h2 id="how-to">How To</h2>
+
+<p>Basically, you create a class derived from <code class="highlighter-rouge">CRhinoUndoEventHandler</code>, pass it to Rhino, and let Rhino deal with all the details.  Sample 1 below shows how to do this.</p>
+
+<p>In order to have stable plugins, developers must follow the rules for using <code class="highlighter-rouge">CRhinoDoc::AddCustomUndoEvent</code>…</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Description:
+//   If you want to your plugin to do something when the Rhino
+//   Undo/Redo command runs, the call AddCustomUndoEvent during
+//   your command.
+//
+//   This function is for expert plugin developers.  If you
+//   don't do a good job here, you will really break Rhino.
+//
+// Parameters:
+//   undo_event_handler - [in]
+//     Pointer to a class allocated with a call to new.
+//     Never delete this class.
+//     Never pass a pointer to a stack variable.
+//
+// Returns:
+//   If a non zero number is returned, then this is the runtime
+//   serial number Rhino has assigned to this undo event.
+//   If zero is returned, then the user has disabled undo
+//   and undo_event_handler was deleted.
+</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">AddCustomUndoEvent</span><span class="p">(</span>
+  <span class="n">CRhinoUndoEventHandler</span><span class="o">*</span> <span class="n">undo_event_handler</span>
+  <span class="p">);</span>
+</code></pre>
+</div>
+
+<p>When you are debugging your code, you may find the <em>AuditUndo</em> command useful.  This command lists all the undo information saved in Rhino.</p>
+
+<p>You can also use and event watcher to monitor Rhino undo/redo activity.  Sample 2 (below) is a simple undo event watcher that reports undo activity in the Rhino command windows…</p>
+
+<h2 id="samples">Samples</h2>
+
+<h3 id="sample-1">Sample 1</h3>
+
+<p>This “plugin” has one piece of data, the account balance, and two commands, <em>EarnTenEuros</em> and <em>SpendFiveEuros</em>.  The commands use <code class="highlighter-rouge">CUndoEuroTransaction</code> class to provide integrated Undo/Redo support…</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//
+// BEGIN CUndoEuroTransaction class definition
+//
+</span>
+<span class="k">static</span> <span class="kt">double</span> <span class="n">m_plugin_data_euro_balance</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CUndoEuroTransaction</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoUndoEventHandler</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">CUndoEuroTransaction</span><span class="p">();</span>
+  <span class="o">~</span><span class="n">CUndoEuroTransaction</span><span class="p">();</span>
+
+  <span class="c1">// virtual CRhinoUndoEventHandler function
+</span>  <span class="kt">void</span> <span class="n">Undo</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">CRhinoCommand</span><span class="o">*</span> <span class="n">cmd</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">action_description</span><span class="p">,</span>
+    <span class="n">bool</span> <span class="n">bCreatedByRedo</span><span class="p">,</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">undo_event_sn</span>
+    <span class="p">);</span>
+
+  <span class="kt">double</span> <span class="n">m_amount</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">CUndoEuroTransaction</span><span class="o">::</span><span class="n">CUndoEuroTransaction</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">m_amount</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">CUndoEuroTransaction</span><span class="o">::~</span><span class="n">CUndoEuroTransaction</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">CUndoEuroTransaction</span><span class="o">::</span><span class="n">Undo</span><span class="p">(</span>
+  <span class="k">const</span> <span class="n">CRhinoCommand</span><span class="o">*</span> <span class="n">cmd</span><span class="p">,</span>
+  <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">action_description</span><span class="p">,</span>
+  <span class="n">bool</span> <span class="n">bCreatedByRedo</span><span class="p">,</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">undo_event_sn</span>
+  <span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// undo the change to m_plugin_data_euro_balance
+</span>  <span class="n">m_plugin_data_euro_balance</span> <span class="o">-=</span> <span class="n">m_amount</span><span class="p">;</span>
+  <span class="n">RhinoApp</span><span class="p">().</span><span class="n">Print</span><span class="p">(</span><span class="s">L"New balance %g euros.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                  <span class="n">m_plugin_data_euro_balance</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//
+// END CUndoEuroTransaction class definition
+//
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+</span>
+<span class="c1">////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//
+// BEGIN EarnTenEuros command
+//
+</span>
+<span class="k">class</span> <span class="nc">CCommandEarnTenEuros</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoCommand</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">CCommandEarnTenEuros</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="o">~</span><span class="n">CCommandEarnTenEuros</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="n">UUID</span> <span class="n">CommandUUID</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// {658C21B8-221-4887-B4A4-09C39C3E38CA}
+</span>    <span class="k">static</span> <span class="k">const</span> <span class="n">GUID</span> <span class="n">EarnTenEurosCommand_UUID</span> <span class="o">=</span>
+    <span class="p">{</span> <span class="mh">0x658C21B8</span><span class="p">,</span> <span class="mh">0x221</span><span class="p">,</span> <span class="mh">0x4887</span><span class="p">,</span> <span class="p">{</span> <span class="mh">0xB4</span><span class="p">,</span> <span class="mh">0xA4</span><span class="p">,</span> <span class="mh">0x09</span><span class="p">,</span> <span class="mh">0xC3</span><span class="p">,</span> <span class="mh">0x9C</span><span class="p">,</span> <span class="mh">0x3E</span><span class="p">,</span> <span class="mh">0x38</span><span class="p">,</span> <span class="mh">0xCA</span> <span class="p">}</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="n">EarnTenEurosCommand_UUID</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">EnglishCommandName</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">L"EarnTenEuros"</span><span class="p">;</span> <span class="p">}</span>
+  <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// The one and only CCommandEarnTenEuros object
+</span><span class="k">static</span> <span class="k">class</span> <span class="nc">CCommandEarnTenEuros</span> <span class="n">theEarnTenEurosCommand</span><span class="p">;</span>
+
+<span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span>
+<span class="n">CCommandEarnTenEuros</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">double</span> <span class="n">amount</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span>
+
+  <span class="n">CUndoEuroTransaction</span><span class="o">*</span> <span class="n">pUndoHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CUndoEuroTransaction</span><span class="p">();</span>
+  <span class="n">pUndoHandler</span><span class="o">-&gt;</span><span class="n">m_amount</span> <span class="o">=</span> <span class="n">amount</span><span class="p">;</span>
+  <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">AddCustomUndoEvent</span><span class="p">(</span><span class="n">pUndoHandler</span><span class="p">);</span>
+
+  <span class="n">m_plugin_data_euro_balance</span> <span class="o">+=</span> <span class="n">amount</span><span class="p">;</span>
+  <span class="n">RhinoApp</span><span class="p">().</span><span class="n">Print</span><span class="p">(</span><span class="s">L"New balance %g euros.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">m_plugin_data_euro_balance</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">success</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//
+// END EarnTenEuros command
+//
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+</span>
+<span class="c1">////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//
+// BEGIN SpendFiveEuros command
+//
+</span>
+<span class="k">class</span> <span class="nc">CCommandSpendFiveEuros</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoCommand</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">CCommandSpendFiveEuros</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="o">~</span><span class="n">CCommandSpendFiveEuros</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="n">UUID</span> <span class="n">CommandUUID</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// {578712DE-D65C-4B9C-9EE6-401C57077057}
+</span>    <span class="k">static</span> <span class="k">const</span> <span class="n">GUID</span> <span class="n">SpendFiveEurosCommand_UUID</span> <span class="o">=</span>
+    <span class="p">{</span> <span class="mh">0x578712DE</span><span class="p">,</span> <span class="mh">0xD65C</span><span class="p">,</span> <span class="mh">0x4B9C</span><span class="p">,</span> <span class="p">{</span> <span class="mh">0x9E</span><span class="p">,</span> <span class="mh">0xE6</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">,</span> <span class="mh">0x1C</span><span class="p">,</span> <span class="mh">0x57</span><span class="p">,</span> <span class="mh">0x07</span><span class="p">,</span> <span class="mh">0x70</span><span class="p">,</span> <span class="mh">0x57</span> <span class="p">}</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="n">SpendFiveEurosCommand_UUID</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">EnglishCommandName</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s">L"SpendFiveEuros"</span><span class="p">;</span> <span class="p">}</span>
+  <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// The one and only CCommandSpendFiveEuros object
+</span><span class="k">static</span> <span class="k">class</span> <span class="nc">CCommandSpendFiveEuros</span> <span class="n">theSpendFiveEurosCommand</span><span class="p">;</span>
+
+<span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span>
+<span class="n">CCommandSpendFiveEuros</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">double</span> <span class="n">amount</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">;</span>
+
+  <span class="n">CUndoEuroTransaction</span><span class="o">*</span> <span class="n">pUndoHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CUndoEuroTransaction</span><span class="p">();</span>
+  <span class="n">pUndoHandler</span><span class="o">-&gt;</span><span class="n">m_amount</span> <span class="o">=</span> <span class="n">amount</span><span class="p">;</span>
+  <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">AddCustomUndoEvent</span><span class="p">(</span><span class="n">pUndoHandler</span><span class="p">);</span>
+
+  <span class="n">m_plugin_data_euro_balance</span> <span class="o">+=</span> <span class="n">amount</span><span class="p">;</span>
+  <span class="n">RhinoApp</span><span class="p">().</span><span class="n">Print</span><span class="p">(</span><span class="s">L"New balance %g euros.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">m_plugin_data_euro_balance</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">success</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//
+// END SpendFiveEuros command
+//
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+</span></code></pre>
+</div>
+
+<h3 id="sample-2">Sample 2</h3>
+
+<p>Using an event watcher to monitor undo events…</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//
+// BEGIN CMyUndoSnooper undo event watcher
+//
+</span>
+<span class="k">class</span> <span class="nc">CMyUndoSnooper</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoEventWatcher</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="c1">// virtual
+</span>  <span class="kt">void</span> <span class="n">UndoEvent</span><span class="p">(</span>
+        <span class="n">CRhinoEventWatcher</span><span class="o">::</span><span class="n">undo_event</span> <span class="n">event</span><span class="p">,</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">undo_record_serialnumber</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">CRhinoCommand</span><span class="o">*</span> <span class="n">cmd</span>
+        <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="n">CMyUndoSnooper</span><span class="o">::</span><span class="n">UndoEvent</span><span class="p">(</span>
+        <span class="n">CRhinoEventWatcher</span><span class="o">::</span><span class="n">undo_event</span> <span class="n">event</span><span class="p">,</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">undo_record_serialnumber</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">CRhinoCommand</span><span class="o">*</span> <span class="n">cmd</span>
+        <span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">CRhinoApp</span><span class="o">&amp;</span> <span class="n">app</span> <span class="o">=</span> <span class="n">RhinoApp</span><span class="p">();</span>
+
+  <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">cmd_name</span> <span class="o">=</span> <span class="n">cmd</span>
+                          <span class="o">?</span> <span class="n">cmd</span><span class="o">-&gt;</span><span class="n">LocalCommandName</span><span class="p">()</span>
+                          <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">cmd_name</span> <span class="p">)</span>
+    <span class="n">cmd_name</span> <span class="o">=</span> <span class="n">L</span><span class="p">;</span>
+
+  <span class="k">switch</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="k">case</span> <span class="n">begin_recording</span><span class="p">:</span>  <span class="c1">// Begin recording changes
+</span>    <span class="n">app</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="s">L"UNDO SNOOP %5d: Begin recording %s changes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                  <span class="n">undo_record_serialnumber</span><span class="p">,</span><span class="n">cmd_name</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">end_recording</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="s">L"UNDO SNOOP %5d: End recording %s changes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                  <span class="n">undo_record_serialnumber</span><span class="p">,</span><span class="n">cmd_name</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+
+  <span class="k">case</span> <span class="n">begin_undo</span><span class="p">:</span>       <span class="c1">// Begin undoing a changes
+</span>    <span class="n">app</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="s">L"UNDO SNOOP %5d: Begin undoing %s changes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                  <span class="n">undo_record_serialnumber</span><span class="p">,</span><span class="n">cmd_name</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">end_undo</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="s">L"UNDO SNOOP %5d: End undoing %s changes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                  <span class="n">undo_record_serialnumber</span><span class="p">,</span><span class="n">cmd_name</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+
+  <span class="k">case</span> <span class="n">begin_redo</span><span class="p">:</span>       <span class="c1">// Begin redoing a changes
+</span>    <span class="n">app</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="s">L"UNDO SNOOP %5d: Begin redoing %s changes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                  <span class="n">undo_record_serialnumber</span><span class="p">,</span><span class="n">cmd_name</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">end_redo</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="s">L"UNDO SNOOP %5d: End redoing %s changes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                  <span class="n">undo_record_serialnumber</span><span class="p">,</span><span class="n">cmd_name</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+
+  <span class="k">case</span> <span class="n">purge_record</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">Print</span><span class="p">(</span><span class="s">L"UNDO SNOOP %5d: Purging %s changes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                  <span class="n">undo_record_serialnumber</span><span class="p">,</span><span class="n">cmd_name</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//
+// END CMyUndoSnooper undo event watcher
+//
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+</span>
+<span class="c1">////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//
+// BEGIN TestUndoSnoop command
+//
+</span>
+<span class="k">class</span> <span class="nc">CCommandTestUndoSnoop</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoTestCommand</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">CCommandTestUndoSnoop</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_bRegistered</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+  <span class="o">~</span><span class="n">CCommandTestUndoSnoop</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="n">UUID</span> <span class="n">CommandUUID</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// {A7474CED-3C3D-4BCD-9124-4058D619BEA0}
+</span>    <span class="k">static</span> <span class="k">const</span> <span class="n">GUID</span> <span class="n">TestUndoSnoopCommand_UUID</span> <span class="o">=</span>
+    <span class="p">{</span> <span class="mh">0xA7474CED</span><span class="p">,</span> <span class="mh">0x3C3D</span><span class="p">,</span> <span class="mh">0x4BCD</span><span class="p">,</span> <span class="p">{</span> <span class="mh">0x91</span><span class="p">,</span> <span class="mh">0x24</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">,</span> <span class="mh">0x58</span><span class="p">,</span> <span class="mh">0xD6</span><span class="p">,</span> <span class="mh">0x19</span><span class="p">,</span> <span class="mh">0xBE</span><span class="p">,</span> <span class="mh">0xA0</span> <span class="p">}</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="n">TestUndoSnoopCommand_UUID</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">EnglishCommandName</span><span class="p">()</span> <span class="p">{</span> <span class="s">L"TestUndoSnoop"</span><span class="p">;</span> <span class="p">}</span>
+  <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="p">);</span>
+
+  <span class="n">CMyUndoSnooper</span> <span class="n">m_snooper</span><span class="p">;</span>
+  <span class="n">bool</span> <span class="n">m_bRegistered</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// The one and only CCommandTestUndoSnoop object
+</span><span class="k">static</span> <span class="k">class</span> <span class="nc">CCommandTestUndoSnoop</span> <span class="n">theTestUndoSnoopCommand</span><span class="p">;</span>
+
+<span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span>
+<span class="n">CCommandTestUndoSnoop</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span> <span class="n">IDYES</span> <span class="o">==</span> <span class="n">RhinoMessageBox</span><span class="p">(</span> <span class="s">L"Watch undo events?"</span><span class="p">,</span>
+                                <span class="s">L"Undo Snooper"</span><span class="p">,</span>
+                                <span class="n">MB_YESNO</span> <span class="o">|</span> <span class="n">MB_ICONQUESTION</span><span class="p">)</span>
+                               <span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">m_bRegistered</span> <span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">m_bRegistered</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="n">m_snooper</span><span class="p">.</span><span class="n">Register</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">m_snooper</span><span class="p">.</span><span class="n">Enable</span><span class="p">(</span> <span class="nb">true</span> <span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="n">m_snooper</span><span class="p">.</span><span class="n">Enable</span><span class="p">(</span> <span class="nb">false</span> <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">success</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//
+// END TestUndoSnoop command
+//
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+</span></code></pre>
+</div>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/demo/_guide_topics/cpp/custom_undo_events.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/demo/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

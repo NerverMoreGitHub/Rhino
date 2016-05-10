@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Object Selection with Options</title>
+  <meta name="description" content="Object Selection with Options">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/demo/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/demo/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/demo/guides/rhinocommon/object_selection_options/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/demo/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/demo/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/demo/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/demo/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/demo/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/demo/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/demo/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/demo/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/demo/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>demo</strong> version of this page!
+    <a href="/guides/rhinocommon/object_selection_options/">View the current version instead.</a>
+</div>
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/demo/"><img src="/demo/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/demo/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/demo/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/demo/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/demo/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/demo/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/demo/guides/#rhinocommon">RhinoCommon</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#object-selection-with-options">Object Selection with Opt...</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#getobject">GetObject</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="object-selection-with-options">Object Selection with Options</h1>
+
+<p>This guide covers how to pick some objects, select command options, return to picking more objects, all while keeping your current selection set.</p>
+
+<h2 id="getobject">GetObject</h2>
+
+<p>RhinoCommon’s <a href="/demo/api/RhinoCommon/html/T_Rhino_Input_Custom_GetObject.htm">GetObject class</a> has a few properties and methods that you need to use, including:</p>
+
+<ul>
+  <li><a href="/demo/api/RhinoCommon/html/M_Rhino_Input_Custom_GetObject_EnableClearObjectsOnEntry.htm">GetObject.EnableClearObjectsOnEntry</a></li>
+  <li><a href="/demo/api/RhinoCommon/html/M_Rhino_Input_Custom_GetObject_EnableUnselectObjectsOnExit.htm">GetObject.EnableUnselectObjectsOnExit</a></li>
+  <li><a href="/demo/api/RhinoCommon/html/P_Rhino_Input_Custom_GetObject_DeselectAllBeforePostSelect.htm">GetObject.DeselectAllBeforePostSelect</a></li>
+</ul>
+
+<p>Also, after clicking a command line option, turn off pre-selection, using <code class="highlighter-rouge">GetObject.EnablePreSelect</code>.  Otherwise, <code class="highlighter-rouge">GetObject.GetMultiple</code> will return with a <code class="highlighter-rouge">GetResult.Object</code> return code.</p>
+
+<p>For example:</p>
+
+<ul class="nav nav-pills">
+  <li class="active"><a href="#cs" data-toggle="pill">C#</a></li>
+  <li><a href="#vb" data-toggle="pill">VB.NET</a></li>
+</ul>
+
+<div class="tab-content">
+
+  <div class="tab-pane fade in active highlighter-rouge" id="cs"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Rhino</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Rhino.Commands</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Rhino.DocObjects</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Rhino.Input</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Rhino.Input.Custom</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="k">protected</span> <span class="k">override</span> <span class="n">Result</span> <span class="nf">RunCommand</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">,</span> <span class="n">RunMode</span> <span class="n">mode</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="n">ObjectType</span> <span class="n">geometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Surface</span> <span class="p">|</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">PolysrfFilter</span> <span class="p">|</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Mesh</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">integer1</span> <span class="p">=</span> <span class="m">300</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">integer2</span> <span class="p">=</span> <span class="m">300</span><span class="p">;</span>
+
+  <span class="n">OptionInteger</span> <span class="n">optionInteger1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OptionInteger</span><span class="p">(</span><span class="n">integer1</span><span class="p">,</span> <span class="m">200</span><span class="p">,</span> <span class="m">900</span><span class="p">);</span>
+  <span class="n">OptionInteger</span> <span class="n">optionInteger2</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OptionInteger</span><span class="p">(</span><span class="n">integer2</span><span class="p">,</span> <span class="m">200</span><span class="p">,</span> <span class="m">900</span><span class="p">);</span>
+
+  <span class="n">GetObject</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+  <span class="n">go</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Select surfaces, polysurfaces, or meshes"</span><span class="p">);</span>
+  <span class="n">go</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">geometryFilter</span><span class="p">;</span>
+  <span class="n">go</span><span class="p">.</span><span class="nf">AddOptionInteger</span><span class="p">(</span><span class="s">"Option1"</span><span class="p">,</span> <span class="k">ref</span> <span class="n">optionInteger1</span><span class="p">);</span>
+  <span class="n">go</span><span class="p">.</span><span class="nf">AddOptionInteger</span><span class="p">(</span><span class="s">"Option2"</span><span class="p">,</span> <span class="k">ref</span> <span class="n">optionInteger2</span><span class="p">);</span>
+  <span class="n">go</span><span class="p">.</span><span class="n">GroupSelect</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+  <span class="n">go</span><span class="p">.</span><span class="n">SubObjectSelect</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+  <span class="n">go</span><span class="p">.</span><span class="nf">EnableClearObjectsOnEntry</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+  <span class="n">go</span><span class="p">.</span><span class="nf">EnableUnselectObjectsOnExit</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+  <span class="n">go</span><span class="p">.</span><span class="n">DeselectAllBeforePostSelect</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="n">bHavePreselectedObjects</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(;;)</span>
+  <span class="p">{</span>
+    <span class="n">GetResult</span> <span class="n">res</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">GetMultiple</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">res</span> <span class="p">==</span> <span class="n">GetResult</span><span class="p">.</span><span class="n">Option</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">go</span><span class="p">.</span><span class="nf">EnablePreSelect</span><span class="p">(</span><span class="k">false</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+      <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">res</span> <span class="p">!=</span> <span class="n">GetResult</span><span class="p">.</span><span class="n">Object</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Cancel</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">go</span><span class="p">.</span><span class="n">ObjectsWerePreselected</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">bHavePreselectedObjects</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+      <span class="n">go</span><span class="p">.</span><span class="nf">EnablePreSelect</span><span class="p">(</span><span class="k">false</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+      <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">bHavePreselectedObjects</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Normally, pre-selected objects will remain selected, when a
+</span>    <span class="c1">// command finishes, and post-selected objects will be unselected.
+</span>    <span class="c1">// This this way of picking, it is possible to have a combination
+</span>    <span class="c1">// of pre-selected and post-selected. So, to make sure everything
+</span>    <span class="c1">// "looks the same", lets unselect everything before finishing
+</span>    <span class="c1">// the command.
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">go</span><span class="p">.</span><span class="n">ObjectCount</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+      <span class="n">RhinoObject</span> <span class="n">rhinoObject</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="nf">Object</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">null</span> <span class="p">!=</span> <span class="n">rhinoObject</span><span class="p">)</span>
+        <span class="n">rhinoObject</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="kt">int</span> <span class="n">objectCount</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="n">ObjectCount</span><span class="p">;</span>
+  <span class="n">integer1</span> <span class="p">=</span> <span class="n">optionInteger1</span><span class="p">.</span><span class="n">CurrentValue</span><span class="p">;</span>
+  <span class="n">integer2</span> <span class="p">=</span> <span class="n">optionInteger2</span><span class="p">.</span><span class="n">CurrentValue</span><span class="p">;</span>
+
+  <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"Select object count = {0}"</span><span class="p">,</span> <span class="n">objectCount</span><span class="p">));</span>
+  <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"Value of integer1 = {0}"</span><span class="p">,</span> <span class="n">integer1</span><span class="p">));</span>
+  <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"Value of integer2 = {0}"</span><span class="p">,</span> <span class="n">integer2</span><span class="p">));</span>
+
+  <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+  </div>
+
+  <pre class="tab-pane fade in" id="vb"><code class="language-vbnet">Imports Rhino
+Imports Rhino.Commands
+Imports Rhino.DocObjects
+Imports Rhino.Input
+Imports Rhino.Input.Custom
+
+...
+
+Protected Overrides Function RunCommand(doc As RhinoDoc, mode As RunMode) As Result
+  Const geometryFilter As ObjectType = ObjectType.Surface Or ObjectType.PolysrfFilter Or ObjectType.Mesh
+  Dim integer1 As Integer = 300
+  Dim integer2 As Integer = 300
+
+  Dim optionInteger1 As New OptionInteger(integer1, 200, 900)
+  Dim optionInteger2 As New OptionInteger(integer2, 200, 900)
+
+  Dim go As New GetObject()
+  go.SetCommandPrompt("Select surfaces, polysurfaces, or meshes")
+  go.GeometryFilter = geometryFilter
+  go.AddOptionInteger("Option1", optionInteger1)
+  go.AddOptionInteger("Option2", optionInteger2)
+  go.GroupSelect = True
+  go.SubObjectSelect = False
+  go.EnableClearObjectsOnEntry(False)
+  go.EnableUnselectObjectsOnExit(False)
+  go.DeselectAllBeforePostSelect = False
+
+  Dim bHavePreselectedObjects As Boolean = False
+
+  While True
+    Dim res As GetResult = go.GetMultiple(1, 0)
+
+    If res = GetResult.[Option] Then
+      go.EnablePreSelect(False, True)
+      Continue While
+
+    ElseIf res &lt;&gt; GetResult.[Object] Then
+      Return Result.Cancel
+    End If
+
+    If go.ObjectsWerePreselected Then
+      bHavePreselectedObjects = True
+      go.EnablePreSelect(False, True)
+      Continue While
+    End If
+
+    Exit While
+  End While
+
+  If bHavePreselectedObjects Then
+    ' Normally, pre-selected objects will remain selected, when a
+    ' command finishes, and post-selected objects will be unselected.
+    ' This this way of picking, it is possible to have a combination
+    ' of pre-selected and post-selected. So, to make sure everything
+    ' "looks the same", lets unselect everything before finishing
+    ' the command.
+    For i As Integer = 0 To go.ObjectCount - 1
+      Dim rhinoObject As RhinoObject = go.[Object](i).[Object]()
+      If rhinoObject IsNot Nothing Then
+        rhinoObject.[Select](False)
+      End If
+    Next
+    doc.Views.Redraw()
+  End If
+
+  Dim objectCount As Integer = go.ObjectCount
+  integer1 = optionInteger1.CurrentValue
+  integer2 = optionInteger2.CurrentValue
+
+  RhinoApp.WriteLine(String.Format("Select object count = {0}", objectCount))
+  RhinoApp.WriteLine(String.Format("Value of integer1 = {0}", integer1))
+  RhinoApp.WriteLine(String.Format("Value of integer2 = {0}", integer2))
+
+  Return Result.Success
+End Function
+</code></pre>
+
+</div>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:steve@mcneel.com">steve@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/demo/_guide_topics/rhinocommon/object_selection_options.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/demo/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

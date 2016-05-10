@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Using methodgen</title>
+  <meta name="description" content="Using methodgen">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/demo/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/demo/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/demo/guides/rhinocommon/using_methodgen/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/demo/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/demo/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/demo/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/demo/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/demo/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/demo/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/demo/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/demo/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/demo/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>demo</strong> version of this page!
+    <a href="/guides/rhinocommon/using_methodgen/">View the current version instead.</a>
+</div>
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/demo/"><img src="/demo/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/demo/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/demo/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/demo/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/demo/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/demo/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/demo/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/demo/guides/#rhinocommon">RhinoCommon</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#using-methodgen">Using methodgen</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#methodgen-in-your-project">methodgen in your project</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#export-c-functions-to-c">1. Export C functions to C#</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#parsing-function-parameter-and-return-types">Parsing function paramete...</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#define-helper-enums-for-marshalling">2. Define helper enums fo...</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#share-enum-values-between-the-c-and-c">3. Share enum values betw...</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#remarks-on-options">Remarks on options</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#enum-design">Enum design</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#rhcpreprocessor-macro">RH_C_PREPROCESSOR macro</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#related-topics">Related Topics</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="using-methodgen">Using methodgen</h1>
+
+<p>This guide covers the automatic pInvoke call generator and enum synchronization utility called methodgen.</p>
+
+<p>It builds on top of concepts from the <a href="/demo/guides/rhinocommon/wrapping_native_libraries">Wrapping Native Libraries</a> guide.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Wrapping a C/C++ library for .NET consumption is a large task.  Usually, there is a C/C++ library with every C exported function, that will link to or be itself the content of the exported functionality (we call this <em>lib_C</em>, in a directory called <em>lib_C_dir</em>), and a C# library that will provide access to the exported functionality (<em>lib_CS</em>, in <em>lib_CS_dir</em>).</p>
+
+<p>Besides other more high-level restructuring, wrapping usually involves:</p>
+
+<ol>
+  <li>Creating a large amount of C functions to be exported for PInvoke,</li>
+  <li>The definition of some helper enum values that have the only purpose of helping C - C# communication, and</li>
+  <li>Copying many public C++ enum values to C#</li>
+</ol>
+
+<p>For each of these tasks, we wrote a tool, <em>methodgen.exe</em>, that automatically writes most of the boilerplate code.</p>
+
+<h2 id="methodgen-in-your-project">methodgen in your project</h2>
+
+<p>To run the tool, place it in a folder that is a parent folder to both your C and your C# solutions.  Then, add a prebuild event to your project, either using the standard Visual Studio or Xamarin Studio interface, of by adding this code to the <code class="highlighter-rouge">.csproj</code> solution:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;PropertyGroup Condition=" '$(Configuration)' == 'Release' Or '$(Configuration)' == 'Debug' "&gt;
+  &lt;PreBuildEvent&gt;$(ProjectDir)..\methodgen.exe lib_C_dir lib_CS_dir&lt;/PreBuildEvent&gt;
+&lt;/PropertyGroup&gt;
+</code></pre>
+</div>
+
+<p>Each path can be relative.  Every <em>.h</em> and <em>.cpp</em> file in <em>lib_C_dir</em> will be parsed.</p>
+
+<p>A file called <em>AutoNativeMethods.cs</em>, and another one called <em>AutoNativeEnums.cs</em> if required, will be placed in <em>lib_CS_dir</em> at the end of the process.  This will happen in the following 3 steps…</p>
+
+<h2 id="export-c-functions-to-c">1. Export C functions to C#</h2>
+
+<p><em>methodgen.exe</em> looks for every line starting with <code class="highlighter-rouge">RH_C_FUNCTION</code> in every <em>.h</em> and <em>.cpp</em> file in <em>cpp_dir</em>.</p>
+
+<p>We define the <code class="highlighter-rouge">RH_C_FUNCTION</code> macro directive like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#define RH_C_FUNCTION extern "C" __declspec(dllexport)
+</span></code></pre>
+</div>
+
+<p>A typical exported C function will look like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_FUNCTION</span> <span class="kt">int</span> <span class="nf">ON_Brep_SplitEdgeAtParameters</span><span class="p">(</span><span class="n">ON_Brep</span><span class="o">*</span> <span class="n">pBrep</span><span class="p">,</span> <span class="kt">int</span> <span class="n">edge_index</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="cm">/*ARRAY*/</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">parameters</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">pBrep</span> <span class="o">&amp;&amp;</span> <span class="n">count</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">parameters</span><span class="p">)</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">pBrep</span><span class="o">-&gt;</span><span class="n">SplitEdgeAtParameters</span><span class="p">(</span><span class="n">edge_index</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">parameters</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Inside <em>AutoNativeMethods.cs</em>, in an <code class="highlighter-rouge">_internal partial class_</code> called <code class="highlighter-rouge">UnsafeNativeMethods</code>, <em>methodgen.exe</em> will create these lines of code:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="na">[DllImport(Import.lib, CallingConvention=CallingConvention.Cdecl )]</span>
+<span class="k">internal</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">int</span> <span class="nf">ON_Brep_SplitEdgeAtParameters</span><span class="p">(</span><span class="n">IntPtr</span> <span class="n">pBrep</span><span class="p">,</span> <span class="kt">int</span> <span class="n">edgeIndex</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="kt">double</span><span class="p">[]</span> <span class="n">parameters</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h3 id="parsing-function-parameter-and-return-types">Parsing function parameter and return types</h3>
+
+<p>Every parameter to the function will undergo some transformation to be useful in C# as follows:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">const</code> will be removed.  It might be a good idea to name parameter variables in a predictable manner relative to const-ness of the data that is passed.</li>
+  <li>Any <code class="highlighter-rouge">type*</code> will be transformed to a generic <code class="highlighter-rouge">IntPtr</code>.  As an exception, if the pointer refers to a fundamental type (such as <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">unsigned char</code>), this will be passed as a inbuilt C# type, with the keyword <code class="highlighter-rouge">ref</code> prefixed.</li>
+  <li>Fundamental types will be translated to the corresponding C# type.  The <code class="highlighter-rouge">unsigned</code> modifier will usually be removed. E.g., <code class="highlighter-rouge">unsigned int</code> will be transformed in <code class="highlighter-rouge">uint</code>.  <code class="highlighter-rouge">unsigned char</code> will become <code class="highlighter-rouge">byte</code>.</li>
+  <li><code class="highlighter-rouge">/*ARRAY*/</code> allows to treat pointers to fundamental types (such as <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">double</code>) as C# arrays, rather than <code class="highlighter-rouge">ref</code> values.  The <code class="highlighter-rouge">/*ARRAY*/</code> string token must not contain extra spaces (see example above).</li>
+  <li>Enum types exported with <code class="highlighter-rouge">RH_C_SHARED_ENUM</code> will be translated to the defined C# counterpart (see below for details).</li>
+</ul>
+
+<h2 id="define-helper-enums-for-marshalling">2. Define helper enums for Marshalling</h2>
+
+<p>Enums that are found while scanning every <em>.h</em> and <em>.cpp</em> file in <em>cpp_dir</em> will be exported as nested enums in<br />
+<em>AutoNativeMethods.cs</em>, in the same <code class="highlighter-rouge">UnsafeNativeMethods</code> class.  These should be C enums.</p>
+
+<p>For example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="o">:</span> <span class="kt">int</span>
+<span class="p">{</span>
+  <span class="n">mbcHasVertexNormals</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">mbcHasFaceNormals</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="n">mbcHasTextureCoordinates</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="n">mbcHasSurfaceParameters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="n">mbcHasPrincipalCurvatures</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="n">mbcHasVertexColors</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="n">mbcIsClosed</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>This can then be used in <code class="highlighter-rouge">RH_C_FUNCTION</code> lines:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_FUNCTION</span> <span class="n">bool</span> <span class="nf">ON_Mesh_GetBool</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">pMesh</span><span class="p">,</span> <span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="n">which</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">pMesh</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">which</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="k">case</span> <span class="n">mbcIsClosed</span><span class="p">:</span>
+      <span class="n">rc</span> <span class="o">=</span> <span class="n">pMesh</span><span class="o">-&gt;</span><span class="n">IsClosed</span><span class="p">();</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="c1">// other cases omitted
+</span>    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>and will result in this C# enum and the possibility to call it without using any enum value (just the field name)…</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">internal</span> <span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="p">:</span> <span class="kt">int</span>
+<span class="p">{</span>
+  <span class="n">HasVertexNormals</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
+  <span class="n">HasFaceNormals</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
+  <span class="n">HasTextureCoordinates</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span>
+  <span class="n">HasSurfaceParameters</span> <span class="p">=</span> <span class="m">3</span><span class="p">,</span>
+  <span class="n">HasPrincipalCurvatures</span> <span class="p">=</span> <span class="m">4</span><span class="p">,</span>
+  <span class="n">HasVertexColors</span> <span class="p">=</span> <span class="m">5</span><span class="p">,</span>
+  <span class="n">IsClosed</span> <span class="p">=</span> <span class="m">6</span>
+<span class="p">}</span>
+
+
+<span class="na">[DllImport(Import.lib, CallingConvention=CallingConvention.Cdecl )]</span>
+<span class="na">[return: MarshalAs(UnmanagedType.U1)]</span>
+<span class="k">internal</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">bool</span> <span class="nf">ON_Mesh_GetBool</span><span class="p">(</span><span class="n">IntPtr</span> <span class="n">pMesh</span><span class="p">,</span> <span class="n">MeshBoolConst</span> <span class="n">which</span><span class="p">);</span>
+
+
+<span class="c1">//your code
+</span><span class="n">UnsafeNativeMethods</span><span class="p">.</span><span class="nf">ON_Mesh_GetBool</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="n">UnsafeNativeMethods</span><span class="p">.</span><span class="n">MeshBoolConst</span><span class="p">.</span><span class="n">IsClosed</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Notice that every enum field had some prefixed lower-case acronym, which is removed by <em>methodgen</em>.</p>
+
+<h2 id="share-enum-values-between-the-c-and-c">3. Share enum values between the C++ and C#</h2>
+
+<p>Similar to the <a href="#defining-helper-enums-for-marshalling">Define helper enums for Marshalling</a> step, <em>methodgen</em> also allows to harvest enum values directly from any file (being that <em>.h</em>, <em>.cpp</em>, or anything else) that follows the convention explained here.</p>
+
+<p>Again, every <em>.h</em> and <em>.cpp</em> file in <em>lib_C_dir</em> is parsed, looking for lines starting with <code class="highlighter-rouge">RH_C_SHARED_ENUM_PARSE_FILE</code>. <code class="highlighter-rouge">RH_C_SHARED_ENUM_PARSE_FILE</code> can be defined by you as an empty macro:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#define RH_C_SHARED_ENUM_PARSE_FILE(path)
+#define RH_C_SHARED_ENUM_PARSE_FILE3(path, sectionPrefix, sectionSuffix)
+</span></code></pre>
+</div>
+
+<p><code class="highlighter-rouge">path</code> becomes then a candidate for shared enum collection.  Every <code class="highlighter-rouge">path</code> file is then opened, and the tool searches for <code class="highlighter-rouge">#pragma region RH_C_SHARED_ENUM</code> and processes an enum till <code class="highlighter-rouge">#pragma endregion</code>.</p>
+
+<p>The complete <code class="highlighter-rouge">RH_C_SHARED_ENUM</code> syntax will look like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#pragma region RH_C_SHARED_ENUM [full_cpp_type] [full_cs_type] [options]
+</span>   <span class="c1">//... enum
+</span><span class="cp">#pragma endregion
+</span></code></pre>
+</div>
+
+<p>The above code is broken down as follows:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">full_cpp_type</code>: the full C++ type name.  This should be the standard way to reference any instance.</li>
+  <li><code class="highlighter-rouge">full_cs_type</code>: the full C# type name.  This will be the standard way to reference the instance type in .NET.</li>
+  <li><code class="highlighter-rouge">options</code>: any combination of one single item within each of these sets, <code class="highlighter-rouge">(</code><strong><code class="highlighter-rouge">public</code></strong><code class="highlighter-rouge">|internal)</code>, <code class="highlighter-rouge">(</code><strong><code class="highlighter-rouge">unnested</code></strong><code class="highlighter-rouge">|nested)</code>, <code class="highlighter-rouge">(sbyte|byte|</code><strong><code class="highlighter-rouge">int</code></strong><code class="highlighter-rouge">|uint|short|ushort|long|ulong)</code>, <code class="highlighter-rouge">(flags)</code>, <code class="highlighter-rouge">(clsfalse)</code>; separated by a colon (<code class="highlighter-rouge">:</code>).  If an option from a set is not specified, the one in bold is used.  Sets without a bold item have the option turned off.</li>
+</ul>
+
+<h3 id="remarks-on-options">Remarks on options</h3>
+
+<p>Keep the following in mind concerning options:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">nested</code>: please use this option with care.  See the <a href="https://msdn.microsoft.com/en-us/library/ms229027.aspx">.NET design guidelines for nested types on MSDN</a>.  Keeping class design simple is paramount.</li>
+  <li><code class="highlighter-rouge">type</code> (<code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">long</code>, etc): usually, just choose the corresponding .NET type that is CLSCompliant.  If you choose anything else than a type that is sized the same as the C++ one, you are responsible for differences in array sizes.  Automatic marshalling usually gets the size of single arguments right and casts accordingly.  If the size of the C# element is smaller than the C++ one, there will possibly be problems with uniqueness of fields.  If you use any non-CLS-compliant type, then you might have to add the next option.</li>
+  <li><code class="highlighter-rouge">clsfalse</code>: marks the resulting enum code with the <code class="highlighter-rouge">[CLSCompliant(false)]</code> attribute.  Only here for compatibility with already-defined C# enums.</li>
+  <li><code class="highlighter-rouge">flags</code>: marks the resulting enum code with the <code class="highlighter-rouge">[Flags]</code> attribute. Always mark the .NET type with this attribute if the enum is used as a bitmask.</li>
+</ul>
+
+<h3 id="enum-design">Enum design</h3>
+
+<div class="bs-callout bs-callout-danger">
+  <h4>WARNING</h4>
+  Although similar in purpose, .NET and C++ enums differ considerably both in common usage and in formatting style conventions.  Here we list a few gotchas of which to be aware when defining shared enums.  Read the following list carefully.
+</div>
+
+<p>Follow these rules when sharing enums:</p>
+
+<ul>
+  <li>.NET enums are best defined as deriving from CLS-compliant types: <code class="highlighter-rouge">byte</code>, <code class="highlighter-rouge">short</code>, <code class="highlighter-rouge">int</code> and <code class="highlighter-rouge">long</code>.  When sharing a C++ enum that translates to <code class="highlighter-rouge">sbyte</code>, <code class="highlighter-rouge">ushort</code>, <code class="highlighter-rouge">uint</code>, <code class="highlighter-rouge">ulong</code>, it might be tempting to use one of these non-CLS-compliant types, and apply the provided option.  <em>This is a bad idea!</em>  The option is only there for support of already-existing enums.  Every method with non-CLS-compliant parameters will be non-CLS-compliant.  On the other hand, only a solvable issue with the first bit of high-valued enum fields needs to be addressed when translating an <code class="highlighter-rouge">unsigned int</code> enum to an <code class="highlighter-rouge">int</code> one in C#. .NET users of the library will find a library that is simpler to read as well.</li>
+  <li>In an enum shared with .NET, do not define sentinel values or fields cautiously reserved for future use.  They are evil.  See the <a href="https://msdn.microsoft.com/en-us/library/ms229058%28v=vs.110%29.aspx">Enum Design on MSDN</a> to better understand why.</li>
+  <li>Because each enum field name will be the same as in .NET, it is best practice not to use constant prefixes like <code class="highlighter-rouge">k</code> in <code class="highlighter-rouge">kMyEnum</code>, and not to use <code class="highlighter-rouge">ALL_CAPS</code>.  Simply use <code class="highlighter-rouge">PascalCase</code> for enum field names.</li>
+  <li>Consider using <code class="highlighter-rouge">class enums</code> in C++ to avoid naming collisions.  This is not an issue in .NET, because <em>methodgen</em> removes the <code class="highlighter-rouge">class</code> keyword automatically.</li>
+  <li>Use .NET-type descriptions also in C++ to comment the enum and each of its field.  A <code class="highlighter-rouge">///&lt;summary&gt;</code> is usually sufficient.</li>
+</ul>
+
+<p>To illustrate the above rules in action, in a parsed file, place:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_SHARED_ENUM_PARSE_FILE3</span><span class="p">(</span><span class="s">"../../../opennurbs/opennurbs_subd.h"</span><span class="p">,</span> <span class="s">"#if OPENNURBS_SUBD_WIP"</span><span class="p">,</span> <span class="s">"#endif"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Then, within that <em>opennurbs_subd.h</em> file:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#pragma region RH_C_SHARED_ENUM [ON_SubD::SubDType] [Rhino.Geometry.SubD.SubDType] [nested:byte]
+</span><span class="c1">/// &lt;summary&gt;
+/// Subdivision algorithm.
+/// &lt;/summary&gt;  
+</span><span class="k">enum</span> <span class="k">class</span> <span class="nc">SubDType</span> <span class="o">:</span> <span class="kt">unsigned</span> <span class="kt">char</span>
+<span class="p">{</span>
+  <span class="c1">///&lt;summary&gt;
+</span>  <span class="c1">/// Built-in Loop-Warren triangle with Bernstein-Levin-Zorin creases and darts.
+</span>  <span class="c1">///&lt;/summary&gt;
+</span>  <span class="n">TriLoopWarren</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+
+  <span class="c1">///&lt;summary&gt;
+</span>  <span class="c1">/// Built-in Catmull-Clark quad with Bernstein-Levin-Zorin creases and darts.
+</span>  <span class="c1">///&lt;/summary&gt;
+</span>  <span class="n">QuadCatmullClark</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="cp">#pragma endregion
+</span></code></pre>
+</div>
+
+<p>This above will result in an enum called <code class="highlighter-rouge">SubDType</code>, placed inside a <code class="highlighter-rouge">_public partial_ class SubD</code>, inside <em>AutoNativeEnums.cs</em>.</p>
+
+<hr />
+
+<h2 id="rhcpreprocessor-macro">RH_C_PREPROCESSOR macro</h2>
+
+<p>Inside every <em>.h</em> and <em>.cpp</em> file in <em>lib_C_dir</em>, <em>methogen</em> keeps track of <code class="highlighter-rouge">#ifdef</code>, <code class="highlighter-rouge">#ifndef</code>, <code class="highlighter-rouge">#if defined</code>, <code class="highlighter-rouge">#elif defined</code>, <code class="highlighter-rouge">#else</code> and <code class="highlighter-rouge">#endif</code> lines marked with an <code class="highlighter-rouge">RH_C_PREPROCESSOR</code> suffix.  Lines with both preprocessor instructions and the mark will not be removed and will appear in <em>AutoNativeMethods.cs</em>, transformed to the appropriate C# representation.</p>
+
+<p>The <code class="highlighter-rouge">RH_C_PREPROCESSOR</code> string can appear either in plain code or in a comment, provided it is the first word in the comment.  For example:</p>
+
+<p><code class="highlighter-rouge">#else //RH_C_PREPROCESSOR</code></p>
+
+<p>is just as valid as:</p>
+
+<p><code class="highlighter-rouge">#else RH_C_PREPROCESSOR</code></p>
+
+<p>This is because having extra tokens after <code class="highlighter-rouge">#endif</code> is non-standard C, and some compilers check against this condition.</p>
+
+<hr />
+
+<h2 id="related-topics">Related Topics</h2>
+
+<ul>
+  <li><a href="/demo/guides/rhinocommon/wrapping_native_libraries">Wrapping Native Libraries</a></li>
+  <li><a href="https://msdn.microsoft.com/en-us/library/ms229027.aspx">.NET design guidelines for nested types on MSDN</a></li>
+  <li><a href="https://msdn.microsoft.com/en-us/library/ms229058%28v=vs.110%29.aspx">Enum Design on MSDN</a></li>
+</ul>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:giulio@mcneel.com">giulio@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/demo/_guide_topics/rhinocommon/using_methodgen.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/demo/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>
