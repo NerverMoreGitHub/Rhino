@@ -353,25 +353,25 @@
 
 <ol>
   <li>If you have not done so already, <strong>launch Visual Studio</strong> (for the purposes of this guide, we are using Visual Studio 2015 Community Edition and C#).</li>
-  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Project</strong>…<br />
+  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Project</strong>…
 <img src="/images/your_first_plugin_windows_01.png" alt="File New Project" /></li>
-  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Installed</strong> &gt; <strong>Templates</strong> &gt; <strong>Visual C#</strong> &gt; <strong>Rhinoceros</strong> section.  In the central list, select the RhinoCommon Plug-In template…<br />
+  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Installed</strong> &gt; <strong>Templates</strong> &gt; <strong>Visual C#</strong> &gt; <strong>Rhinoceros</strong> section.  In the central list, select the RhinoCommon Plug-In template…
 <img src="/images/your_first_plugin_windows_02.png" alt="New Project" /></li>
-  <li>For the purposes of this Guide, we will name our demo plugin <em>HelloRhinoCommon</em>.  At the bottom of the window, fill in the <strong>Name</strong> field.  <strong>Browse</strong> and select a location for this plugin on your disk…<br />
+  <li>For the purposes of this Guide, we will name our demo plugin <em>HelloRhinoCommon</em>.  At the bottom of the window, fill in the <strong>Name</strong> field.  <strong>Browse</strong> and select a location for this plugin on your disk…
 <img src="/images/your_first_plugin_windows_03.png" alt="Project Configuration" /></li>
   <li>Check <strong>Create directory for solution</strong>.  <em>NOTE</em>: This is optional depending on how you want to structure your projects.</li>
   <li>Click the <strong>OK</strong> button.  <em>NOTE</em>: You don’t have to add the project to source control for this demo.</li>
-  <li>The <strong>New RhinoCommon Plug-In</strong> dialog appears.  This dialog allows you to <strong>Configure your new plugin project</strong>, as well as select which RhinoCommon references to use and which debug version of Rhino you would like to launch…  <br />
+  <li>The <strong>New RhinoCommon Plug-In</strong> dialog appears.  This dialog allows you to <strong>Configure your new plugin project</strong>, as well as select which RhinoCommon references to use and which debug version of Rhino you would like to launch…<br />
 <img src="/images/your_first_plugin_windows_04.png" alt="HelloRhinoCommon Solution" /></li>
   <li>For the purposes of this guide, we will <strong>accept the defaults</strong> and click <strong>Finish</strong>…</li>
-  <li>A <strong>new solution</strong> called <strong>HelloRhinoCommon</strong> should open…<br />
+  <li>A <strong>new solution</strong> called <strong>HelloRhinoCommon</strong> should open…
 <img src="/images/your_first_plugin_windows_05.png" alt="HelloRhinoCommon Solution" /></li>
 </ol>
 
 <h3 id="boilerplate-build">Boilerplate Build</h3>
 
 <ol>
-  <li>Before we do anything, let’s <strong>build</strong> and <strong>run</strong> HelloRhinoCommon to make sure everything is working as expected.  We’ll just build the boilerplate Plugin template.  Click <strong>Start</strong> (play) button in toolbar corner of Visual Studio (or press <strong>F5</strong>) to <strong>Start Debugging</strong>…<br />
+  <li>Before we do anything, let’s <strong>build</strong> and <strong>run</strong> HelloRhinoCommon to make sure everything is working as expected.  We’ll just build the boilerplate Plugin template.  Click <strong>Start</strong> (play) button in toolbar corner of Visual Studio (or press <strong>F5</strong>) to <strong>Start Debugging</strong>…
 <img src="/images/your_first_plugin_windows_06.png" alt="Start Button" /></li>
   <li><strong>Rhinoceros</strong> launches.  Create a new, empty model.</li>
   <li>Since this is the first time you are running the plugin, you need to <strong>“install”</strong> it.  (The RhinoCommon template has set things up so when you compile the solution an <em>.rhp</em> file is compiled in the <em>bin</em> subdirectory of the project directory.) In the Rhino command prompt type the <strong>PlugInManager</strong> command.  Click the <strong>Install…</strong> button.</li>
@@ -388,8 +388,8 @@
 <h3 id="plugin-anatomy">Plugin Anatomy</h3>
 
 <ol>
-  <li>Use the <strong>Solution Explorer</strong> to expand the <strong>Solution</strong> (<em>.sln</em>) so that it looks like this…<br />
-<img src="/images/your_first_plugin_windows_07.png" alt="Solution Anatomy" /><br />
+  <li>Use the <strong>Solution Explorer</strong> to expand the <strong>Solution</strong> (<em>.sln</em>) so that it looks like this…
+<img src="/images/your_first_plugin_windows_07.png" alt="Solution Anatomy" />
 <em>NOTE</em>: Depending on your edition of Visual Studio, it may look slightly different.</li>
   <li>The <strong>HelloRhinoCommon</strong> project (<em>.csproj</em>) has the same name as its parent solution…this is the project that was created for us by the <strong>RhinoCommon Plugin</strong> template wizard earlier.</li>
   <li><strong>Properties</strong> contains the <strong>AssemblyInfo.cs</strong> source file.  This file contains the meta-data (author, version, etc) about the plugin.</li>
@@ -458,14 +458,14 @@
 <h3 id="debugging">Debugging</h3>
 
 <ol>
-  <li>Set a breakpoint on line<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 67 of <em>HelloRhinoCommonCommand.cs</em>.  You set breakpoints in Visual Studio by clicking in the gutter…<br />
+  <li>Set a breakpoint on line<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 67 of <em>HelloRhinoCommonCommand.cs</em>.  You set breakpoints in Visual Studio by clicking in the gutter…
 <img src="/images/your_first_plugin_windows_08.png" alt="Set a breakpoint" /></li>
   <li><strong>Build</strong> and <strong>Run</strong>.  Because you have changed the name of the command, you will need to <strong>“install”</strong> the plugin again.  Follow the steps 3-5 in the <a href="#boilerplate-build">Boilerplate Build</a> section above.</li>
-  <li>Run <strong>HelloDrawLine</strong> in Rhino.  Create the two points…as soon as you do, you should hit your breakpoint and pause…<br />
+  <li>Run <strong>HelloDrawLine</strong> in Rhino.  Create the two points…as soon as you do, you should hit your breakpoint and pause…
 <img src="/images/your_first_plugin_windows_09.png" alt="Hit a breakpoint" /></li>
-  <li>With Rhino paused, in <strong>Visual Studio</strong> switch to the <strong>Autos</strong> tab (if it not already there).  In the list, find the <code class="highlighter-rouge">line1</code> object we authored.  Click the dropdown <strong>arrow</strong> to expand the list of members on <code class="highlighter-rouge">line1</code>.  Our <code class="highlighter-rouge">line1</code> is a <code class="highlighter-rouge">Rhino.Geometry.Line</code> this class has a <code class="highlighter-rouge">Length</code> property…  <br />
+  <li>With Rhino paused, in <strong>Visual Studio</strong> switch to the <strong>Autos</strong> tab (if it not already there).  In the list, find the <code class="highlighter-rouge">line1</code> object we authored.  Click the dropdown <strong>arrow</strong> to expand the list of members on <code class="highlighter-rouge">line1</code>.  Our <code class="highlighter-rouge">line1</code> is a <code class="highlighter-rouge">Rhino.Geometry.Line</code> this class has a <code class="highlighter-rouge">Length</code> property…<br />
 <img src="/images/your_first_plugin_windows_10.png" alt="Autos panel" /></li>
-  <li><strong>Continue</strong> in Rhino by pressing the <strong>Continue</strong> button in the upper menu of <strong>Visual Studio</strong> (or press <strong>F5</strong>)…<br />
+  <li><strong>Continue</strong> in Rhino by pressing the <strong>Continue</strong> button in the upper menu of <strong>Visual Studio</strong> (or press <strong>F5</strong>)…
 <img src="/images/your_first_plugin_windows_11.png" alt="Continue Executing" /></li>
   <li>Control is passed back to <strong>Rhino</strong> and your command finishes.  <strong>Exit</strong> Rhino or <strong>Stop</strong> the debugging session.</li>
   <li><strong>Remove</strong> the breakpoint you created above by clicking on it in the gutter.</li>

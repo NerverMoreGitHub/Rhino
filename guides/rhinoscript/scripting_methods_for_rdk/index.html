@@ -275,522 +275,522 @@ Set rdk = Rhino.GetPlugInObject("Renderer Development Kit")
 
 <h2 id="functions">Functions</h2>
 
-<p><code class="highlighter-rouge">FactoryList();</code><br />
+<p><code class="highlighter-rouge">FactoryList();</code>
 Return a list of RDK’s content factory collection.</p>
 
 <p><strong>Returns:</strong> Array of strings identifying the factory.</p>
 
-<p><code class="highlighter-rouge">ContentList(strContentType)</code><br />
+<p><code class="highlighter-rouge">ContentList(strContentType)</code>
 Returns a list of contents for a certain type: material, texture, environment.</p>
 
-<p><strong>Parameters:</strong> strContentType = Required. String. Type of content: material, texture or environment.<br />
+<p><strong>Parameters:</strong> strContentType = Required. String. Type of content: material, texture or environment.
 <strong>Returns:</strong> Array of strings identifying the content. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">DeleteFactory(strFactoryId)</code><br />
+<p><code class="highlighter-rouge">DeleteFactory(strFactoryId)</code>
 Deletes a content factory by its identifier.</p>
 
-<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory to delete.<br />
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory to delete.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">FactoryKind(strFactoryId)</code><br />
+<p><code class="highlighter-rouge">FactoryKind(strFactoryId)</code>
 Returns the kind of the content.</p>
 
-<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.
 <strong>Returns:</strong> String of the kind of the factory. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">FactoryNewContent(strFactoryId, strParentId)</code><br />
+<p><code class="highlighter-rouge">FactoryNewContent(strFactoryId, strParentId)</code>
 Create a new content of the specified type.</p>
 
-<p><strong>Parameters:</strong><br />
-strFactoryId = Required. String. The identifier of the factory.<br />
-strParentId = Optional. String. The identifier of the parent content.<br />
+<p><strong>Parameters:</strong>
+strFactoryId = Required. String. The identifier of the factory.
+strParentId = Optional. String. The identifier of the parent content.
 <strong>Returns:</strong> String which identifies new content.   NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">FactoryContentTypeId(strFactoryId)</code><br />
+<p><code class="highlighter-rouge">FactoryContentTypeId(strFactoryId)</code>
 Returns the identifier of the content type.</p>
 
-<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.
 <strong>Returns:</strong> String which identifies the factory. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">FactoryContentInternalName(strFactoryId)</code><br />
+<p><code class="highlighter-rouge">FactoryContentInternalName(strFactoryId)</code>
 Returns the internal name of the content created by specified factory.</p>
 
-<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.
 <strong>Returns:</strong> String which is the internal name of the factory. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">FactoryRenderEngineId(strFactoryId)</code><br />
+<p><code class="highlighter-rouge">FactoryRenderEngineId(strFactoryId)</code>
 Returns the render engine id of the content that this factory produces.</p>
 
-<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.
 <strong>Returns:</strong> String which is the identifier of the render engine. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">FactoryPlugInId(strFactoryId)</code><br />
+<p><code class="highlighter-rouge">FactoryPlugInId(strFactoryId)</code>
 Returns the plugin id of the plugin that created this factory.</p>
 
-<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.
 <strong>Returns:</strong> String which is the identifier of the plugin. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">FactoryRebuildCache(strFactoryId)</code><br />
+<p><code class="highlighter-rouge">FactoryRebuildCache(strFactoryId)</code>
 Rebuild the factory cache. This forces a refresh of cached data such as the factory name.</p>
 
-<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.<br />
+<p><strong>Parameters:</strong> strFactoryId = Required. String. The identifier of the factory.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentRenderEngineId(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentRenderEngineId(strContentInstanceID)</code>
 Return Render engine identifier.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the identifier of the render engine. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentPlugInId(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentPlugInId(strContentInstanceID)</code>
 Return The plugin id of the plugin that defines this content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the identifier of the plugin. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentTypeId(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentTypeId(strContentInstanceID)</code>
 Return The unique id of the content type.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the identifier of the content type. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentInternalName(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentInternalName(strContentInstanceID)</code>
 Return the internal name of the content type.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the internal name of the content. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentTypeName(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentTypeName(strContentInstanceID)</code>
 Return the name of the content type.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the name of the content type. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentTypeDescription(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentTypeDescription(strContentInstanceID)</code>
 Return the description of the content type.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the description of the content type. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentCategory(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentCategory(strContentInstanceID)</code>
 Return the category of the content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the category of the content. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentKind(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentKind(strContentInstanceID)</code>
 Return return a string uniquely identifying the kind of the content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the uniquely identifying the kind of the content. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentLibraryFileExtension(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentLibraryFileExtension(strContentInstanceID)</code>
 Return the library file extension of the content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the library file extension of the content. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">CurrentContent(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">CurrentContent(strContentInstanceID)</code>
 Returns if content is currently selected in thumbnail display.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> Boolean True or false indicating if content is selected. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentInstanceName(strContentInstanceID, strName)</code><br />
+<p><code class="highlighter-rouge">ContentInstanceName(strContentInstanceID, strName)</code>
 Return content’s name.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strName = Optional. String. Use to set content name.<br />
-<strong>Returns:</strong> String which is the current name of the content. NULL in error conditions.<br />
-<code class="highlighter-rouge">ContentNotes(strContentInstanceID, strNotes, strSendEvent)</code><br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strName = Optional. String. Use to set content name.
+<strong>Returns:</strong> String which is the current name of the content. NULL in error conditions.
+<code class="highlighter-rouge">ContentNotes(strContentInstanceID, strNotes, strSendEvent)</code>
 Return the content’s notes.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strNotes = Optional. Use to set notes.<br />
-bSendEvent = Optional. Use to update UI.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strNotes = Optional. Use to set notes.
+bSendEvent = Optional. Use to update UI.
 <strong>Returns:</strong> String which are the current notes. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentOpenInThumbnailEditor(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentOpenInThumbnailEditor(strContentInstanceID)</code>
 Call this method to open the content in the relevant thumbnail editor and select it.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.<br />
-<code class="highlighter-rouge">ContentParameter(strContentInstanceID, strName, varValue)</code><br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.
+<code class="highlighter-rouge">ContentParameter(strContentInstanceID, strName, varValue)</code>
 Returns or modifies a content parameter.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strName = Optional. String. Name of the parameter.<br />
-varValue = Optional. New value of the parameter.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strName = Optional. String. Name of the parameter.
+varValue = Optional. New value of the parameter.
 <strong>Returns:</strong> Array of strings which are the available paramter names when strName not specified. Variant with current value of parameter if strName is specified. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">UngroupContent(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">UngroupContent(strContentInstanceID)</code>
 Remove this content tree from any instance group it may be a member of.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentGroupId(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentGroupId(strContentInstanceID)</code>
 Returns the group id which this content is a member of.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the identifier of the group. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">DeleteContent(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">DeleteContent(strContentInstanceID)</code>
 Delete the content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.<br />
-<code class="highlighter-rouge">DuplicateContent(strContentInstanceID)</code><br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.
+<code class="highlighter-rouge">DuplicateContent(strContentInstanceID)</code>
 Duplicate the content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the identifier of the new content. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentParent(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentParent(strContentInstanceID)</code>
 Return parent content or empty string if this is the top level object.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the identifier of parent or empty string if this is the top level object. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentFirstChild(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentFirstChild(strContentInstanceID)</code>
 Return first child of this content or NULL if none.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the identifier of the child. NULL in error conditions or if no child.</p>
 
-<p><code class="highlighter-rouge">ContentNextSibling(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentNextSibling(strContentInstanceID)</code>
 Return first sibling of this content or NULL if none.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the identifier of the first sibling. NULL in error conditions or if no sibling.</p>
 
-<p><code class="highlighter-rouge">ContentTopLevelParent(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentTopLevelParent(strContentInstanceID)</code>
 Return identifier of top level parent of this content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the identifier of the top level parent. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentReplaceChild(VARIANT vaContentInstance, strOldChild, strNewChild)</code><br />
+<p><code class="highlighter-rouge">ContentReplaceChild(VARIANT vaContentInstance, strOldChild, strNewChild)</code>
 Replace a child content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strOldChild = Required. The identifier of the old child.<br />
-strNewChild = Required. The identifier of the new child.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strOldChild = Required. The identifier of the old child.
+strNewChild = Required. The identifier of the new child.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentAddChild(strContentInstanceID, strContent)</code><br />
+<p><code class="highlighter-rouge">ContentAddChild(strContentInstanceID, strContent)</code>
 Adds another content as a child of this content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strContent = Required. String. The identifier of the child content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strContent = Required. String. The identifier of the child content.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentChildSlotName(strContentInstanceID, strChildSlotName)</code><br />
+<p><code class="highlighter-rouge">ContentChildSlotName(strContentInstanceID, strChildSlotName)</code>
 Return the child-slot-name of this content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-varChildSlotName = Optional. String. The new child slot name<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+varChildSlotName = Optional. String. The new child slot name
 <strong>Returns:</strong> String which is current child slot name. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentChildSlotNameFromParamName(strContentInstanceID, strParamName)</code><br />
+<p><code class="highlighter-rouge">ContentChildSlotNameFromParamName(strContentInstanceID, strParamName)</code>
 Return the child-slot-name corresponding to a parameter name.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strParamName = Required. String. The parameter name of the slot name.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strParamName = Required. String. The parameter name of the slot name.
 <strong>Returns:</strong> String which is the current child slot name. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentParamNameFromChildSlotName(strContentInstanceID, strChildSlotName)</code><br />
+<p><code class="highlighter-rouge">ContentParamNameFromChildSlotName(strContentInstanceID, strChildSlotName)</code>
 Return the parameter name corresponding to a child-slot-name.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strChildSlotName = Required. String. The child slot name.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strChildSlotName = Required. String. The child slot name.
 <strong>Returns:</strong> String which is the current parameter name of the child slot. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentFindChild(strContentInstanceID, strChildSlotName)</code><br />
+<p><code class="highlighter-rouge">ContentFindChild(strContentInstanceID, strChildSlotName)</code>
 Return the immediate child that has the specified child-slot-name or NULL if none.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strChildSlotName = required. String. The child slot name.<br />
-<strong>Returns:</strong> String which is the identifier of child content. NULL in error conditions.<br />
-<code class="highlighter-rouge">IsContentTypeAcceptableAsChild(strContentInstanceID, strType, strChildSlotName)</code><br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strChildSlotName = required. String. The child slot name.
+<strong>Returns:</strong> String which is the identifier of child content. NULL in error conditions.
+<code class="highlighter-rouge">IsContentTypeAcceptableAsChild(strContentInstanceID, strType, strChildSlotName)</code>
 Return true only if content type can be accepted as a child in the specified child slot.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strType = Required. String. The identifier of a content type.<br />
-strChildSlotName = Required. String. Name of the child slot.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strType = Required. String. The identifier of a content type.
+strChildSlotName = Required. String. Name of the child slot.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">IsTypeAcceptableAsChild(strContentInstanceID, strFactory, strChildSlotName)</code><br />
+<p><code class="highlighter-rouge">IsTypeAcceptableAsChild(strContentInstanceID, strFactory, strChildSlotName)</code>
 Return true only if content produced by pFactory can be accepted as a child in the specified child slot.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strFactory = Required. The identifier of the factory.<br />
-strChildSlotName = Required. The name of the child slot.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strFactory = Required. The identifier of the factory.
+strChildSlotName = Required. The name of the child slot.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentGetChildren(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentGetChildren(strContentInstanceID)</code>
 Return all the children of this content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> Array of strings which are the identifier of the child content. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentGetChildSlots(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentGetChildSlots(strContentInstanceID)</code>
 Return all child slots.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> Array of strings of child slot names. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentFactory(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentFactory(strContentInstanceID)</code>
 Return the factory that creates this type of content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is the identifier of the factory. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">FindContentInstance(strContentInstanceID, strInstance)</code><br />
+<p><code class="highlighter-rouge">FindContentInstance(strContentInstanceID, strInstance)</code>
 Searches for the content with the specified instance id.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strInstance = Required. String. The identifier of the instance to search for.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strInstance = Required. String. The identifier of the instance to search for.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentDestroyChildContent(strContentInstanceID, strPlugIn)</code><br />
+<p><code class="highlighter-rouge">ContentDestroyChildContent(strContentInstanceID, strPlugIn)</code>
 Unlink and destroy all child contents belonging to the specified plugin.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strPlugIn = Required. String. The identifier of the plug-In.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strPlugIn = Required. String. The identifier of the plug-In.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">IsContentCompatible(strContentInstanceID, strRenderEngine)</code><br />
+<p><code class="highlighter-rouge">IsContentCompatible(strContentInstanceID, strRenderEngine)</code>
 A content is compatible with a render engine when its RenderEngineId() matches the id of the render engine.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strRenderEngine = Required. String. The identifier of the render engine.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strRenderEngine = Required. String. The identifier of the render engine.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">IsContentUniversal(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">IsContentUniversal(strContentInstanceID)</code>
 A content is universal if it is meant to be used with any render engine.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">IsContentPrivate(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">IsContentPrivate(strContentInstanceID)</code>
 A content is private if it is not intended to show in any editor.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.<br />
-<code class="highlighter-rouge">ContentSaveToFile(strContentInstanceID, strFullPath)</code><br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.
+<code class="highlighter-rouge">ContentSaveToFile(strContentInstanceID, strFullPath)</code>
 Save the content to a library file.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strFullPath = Required. String. The full path to the library file to be created.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strFullPath = Required. String. The full path to the library file to be created.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentLoadFromFile(VARIANT vaFullPath)</code><br />
+<p><code class="highlighter-rouge">ContentLoadFromFile(VARIANT vaFullPath)</code>
 Load content from a library file.</p>
 
-<p><strong>Parameters:</strong> strFullPath = Required. String. The full path to the library file to be created.<br />
+<p><strong>Parameters:</strong> strFullPath = Required. String. The full path to the library file to be created.
 <strong>Returns:</strong> String which is the identifier of the content. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">IsContentInDocument(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">IsContentInDocument(strContentInstanceID)</code>
 Query whether or not the content is in the document.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentEmbeddedFiles(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentEmbeddedFiles(strContentInstanceID)</code>
 Return a semicolon-delimited string of full paths to files used by the content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
 <strong>Returns:</strong> String which is a semicolon-delimited string of full paths. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentSupportsCommand(strContentInstanceID, strCommand)</code><br />
+<p><code class="highlighter-rouge">ContentSupportsCommand(strContentInstanceID, strCommand)</code>
 Indicates whether or not the content supports a particular command.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strCommand = Required. String. Command identifier.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strCommand = Required. String. Command identifier.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentExecuteCommand(strContentInstanceID, strCommand)</code><br />
+<p><code class="highlighter-rouge">ContentExecuteCommand(strContentInstanceID, strCommand)</code>
 Executes a command.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.<br />
-strCommand = Required. String. Command identifier.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. The identifier of the content.
+strCommand = Required. String. Command identifier.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunEnableAllowed([optional] VARIANT vaAllowed)</code><br />
+<p><code class="highlighter-rouge">SunEnableAllowed([optional] VARIANT vaAllowed)</code>
 Returns or modifies the sun enable allowed value.</p>
 
-<p><strong>Parameters:</strong> bAllowed = Optional. Boolean. Use to enable/disable this option.<br />
+<p><strong>Parameters:</strong> bAllowed = Optional. Boolean. Use to enable/disable this option.
 <strong>Returns:</strong> Boolean which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunEnableOn(bOn)</code><br />
+<p><code class="highlighter-rouge">SunEnableOn(bOn)</code>
 Returns or modifies the sun ON value.</p>
 
-<p><strong>Parameters:</strong> bOn = Optional. Boolean. Use to enable/disable this option.<br />
+<p><strong>Parameters:</strong> bOn = Optional. Boolean. Use to enable/disable this option.
 <strong>Returns:</strong> Boolean which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunManualControlAllowed(bAllowed)</code><br />
+<p><code class="highlighter-rouge">SunManualControlAllowed(bAllowed)</code>
 Returns or modifies the ManualControlAllowed value.</p>
 
-<p><strong>Parameters:</strong> bAllowed = Optional. Boolean. Use to enable/disable this option.<br />
+<p><strong>Parameters:</strong> bAllowed = Optional. Boolean. Use to enable/disable this option.
 <strong>Returns:</strong> Boolean which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunManualControlOn(bManual)</code><br />
+<p><code class="highlighter-rouge">SunManualControlOn(bManual)</code>
 Returns or modifies the ManualControlOn value.</p>
 
-<p><strong>Parameters:</strong> bManual = Optional. Boolean. Use to enable/disable this option.<br />
+<p><strong>Parameters:</strong> bManual = Optional. Boolean. Use to enable/disable this option.
 <strong>Returns:</strong> Boolean which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunNorth(dblNorth)</code><br />
+<p><code class="highlighter-rouge">SunNorth(dblNorth)</code>
 Returns or modifies the azimuth corresponding to North.</p>
 
-<p><strong>Parameters:</strong> dblNorth = Optional. Use to set/get north.<br />
+<p><strong>Parameters:</strong> dblNorth = Optional. Use to set/get north.
 <strong>Returns:</strong> Array which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunVector(vVector)</code><br />
+<p><code class="highlighter-rouge">SunVector(vVector)</code>
 Return the sun’s direction vector in world space.</p>
 
-<p><strong>Parameters:</strong> vVector = Optional. Array. 3D-Vector<br />
+<p><strong>Parameters:</strong> vVector = Optional. Array. 3D-Vector
 <strong>Returns:</strong> Array which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunAzimuth(dblAzimuth)</code><br />
+<p><code class="highlighter-rouge">SunAzimuth(dblAzimuth)</code>
 Return the azimuth of the sun in degrees.</p>
 
-<p><strong>Parameters:</strong> dblAzimuth = Optional. Number.<br />
+<p><strong>Parameters:</strong> dblAzimuth = Optional. Number.
 <strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunAltitude(dblAltitude)</code><br />
+<p><code class="highlighter-rouge">SunAltitude(dblAltitude)</code>
 Return the altitude of the sun in degrees.</p>
 
-<p><strong>Parameters:</strong> dblAltitude = Optional. Number.<br />
+<p><strong>Parameters:</strong> dblAltitude = Optional. Number.
 <strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunLatitude(dblLatitude)</code><br />
+<p><code class="highlighter-rouge">SunLatitude(dblLatitude)</code>
 Return the latitude of the observer.</p>
 
-<p><strong>Parameters:</strong> dblLatitude = Optional. Number.<br />
+<p><strong>Parameters:</strong> dblLatitude = Optional. Number.
 <strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunLongitude(dblLongitude)</code><br />
+<p><code class="highlighter-rouge">SunLongitude(dblLongitude)</code>
 Return the longitude of the observer.</p>
 
-<p><strong>Parameters:</strong> dblLongitude = Optional. Number.<br />
+<p><strong>Parameters:</strong> dblLongitude = Optional. Number.
 <strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunTimeZone(dblHours)</code><br />
+<p><code class="highlighter-rouge">SunTimeZone(dblHours)</code>
 Return the time zone of the observer in hours.</p>
 
-<p><strong>Parameters:</strong> dblHours = Optional. Number.<br />
+<p><strong>Parameters:</strong> dblHours = Optional. Number.
 <strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunDaylightSavingOn(bOn)</code><br />
+<p><code class="highlighter-rouge">SunDaylightSavingOn(bOn)</code>
 Return true if daylight saving is on.</p>
 
-<p><strong>Parameters:</strong> bOn = Optional. Boolean.<br />
+<p><strong>Parameters:</strong> bOn = Optional. Boolean.
 <strong>Returns:</strong> Boolean which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunDaylightSavingMinutes(intMinutes)</code><br />
+<p><code class="highlighter-rouge">SunDaylightSavingMinutes(intMinutes)</code>
 Return the daylight saving of the observer in minutes.</p>
 
-<p><strong>Parameters:</strong> intMinutes = Optional. Number.<br />
-<strong>Returns:</strong> Number which is the current value. NULL in error conditions.<br />
-<code class="highlighter-rouge">SunLocalDate(intDate)</code><br />
+<p><strong>Parameters:</strong> intMinutes = Optional. Number.
+<strong>Returns:</strong> Number which is the current value. NULL in error conditions.
+<code class="highlighter-rouge">SunLocalDate(intDate)</code>
 Retrieves the local date of the observer.</p>
 
-<p><strong>Parameters:</strong> intDate = Optional. Number.<br />
+<p><strong>Parameters:</strong> intDate = Optional. Number.
 <strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunLocalTime(dblHours)</code><br />
+<p><code class="highlighter-rouge">SunLocalTime(dblHours)</code>
 Retrieves the local time of the observer.</p>
 
-<p><strong>Parameters:</strong> dblHours = Optional. Number.<br />
+<p><strong>Parameters:</strong> dblHours = Optional. Number.
 <strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunUTCDate(intDate)</code><br />
+<p><code class="highlighter-rouge">SunUTCDate(intDate)</code>
 Retrieves the UTC date of the observer.</p>
 
-<p><strong>Parameters:</strong> intDate = Optional. Number.<br />
+<p><strong>Parameters:</strong> intDate = Optional. Number.
 <strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunUTCTime(dblHours)</code><br />
+<p><code class="highlighter-rouge">SunUTCTime(dblHours)</code>
 Retrieves the UTC time of the observer.</p>
 
-<p><strong>Parameters:</strong> dblHours = Optional. Number.<br />
+<p><strong>Parameters:</strong> dblHours = Optional. Number.
 <strong>Returns:</strong> Number which is the current value. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SunLight()</code><br />
+<p><code class="highlighter-rouge">SunLight()</code>
 Get an ON_Light which represents the sun.</p>
 
 <p><strong>Returns:</strong> String which is the identifier of the light. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">MaterialInstanceId(intMaterialTableIndex)</code><br />
+<p><code class="highlighter-rouge">MaterialInstanceId(intMaterialTableIndex)</code>
 Returns the content instance id for a given index into the Rhino material table</p>
 
-<p><strong>Parameters:</strong> intMaterialTableIndex = Required. Number. Index in material table.<br />
+<p><strong>Parameters:</strong> intMaterialTableIndex = Required. Number. Index in material table.
 <strong>Returns:</strong> String which is the identifier of the content. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SetMaterialInstanceId(strInstanceId, intMaterialTableIndex)</code><br />
+<p><code class="highlighter-rouge">SetMaterialInstanceId(strInstanceId, intMaterialTableIndex)</code>
 Assigns a certain content to a material table index.</p>
 
-<p><strong>Parameters:</strong> strInstanceId = Required. String. Identifier of content.<br />
-intMaterialTableIndex = Required. Number. Index in material table.<br />
-<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.<br />
-<code class="highlighter-rouge">HSB2RGB(arrColor)</code><br />
+<p><strong>Parameters:</strong> strInstanceId = Required. String. Identifier of content.
+intMaterialTableIndex = Required. Number. Index in material table.
+<strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.
+<code class="highlighter-rouge">HSB2RGB(arrColor)</code>
 Converts color</p>
 
-<p><strong>Parameters:</strong> arrColor = Required. Array. 3D Array of doubles.<br />
+<p><strong>Parameters:</strong> arrColor = Required. Array. 3D Array of doubles.
 <strong>Returns:</strong> Array of Numbers. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">RGB2HSB(arrColor)</code><br />
+<p><code class="highlighter-rouge">RGB2HSB(arrColor)</code>
 Converts color.</p>
 
-<p><strong>Parameters:</strong> arrColor = Required. Array. 3D Array of doubles.<br />
+<p><strong>Parameters:</strong> arrColor = Required. Array. 3D Array of doubles.
 <strong>Returns:</strong> Array of Numbers. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ShowContentChooser(strDefaultType, strDefaultInstance, strAllowedKinds)</code><br />
+<p><code class="highlighter-rouge">ShowContentChooser(strDefaultType, strDefaultInstance, strAllowedKinds)</code>
 Shows the content chooser to allow the user to select a new or existing content.</p>
 
-<p><strong>Parameters:</strong> strDefaultType = Required. String. Is the content type that will be initially selected in the ‘New’ tab.<br />
-strDefaultInstance = Required. String. Is the content instance that will be initially selected in the ‘Existing’ tab.<br />
-strAllowedKinds = Required. Array. List of strings of content kinds that will be displayed.<br />
+<p><strong>Parameters:</strong> strDefaultType = Required. String. Is the content type that will be initially selected in the ‘New’ tab.
+strDefaultInstance = Required. String. Is the content instance that will be initially selected in the ‘Existing’ tab.
+strAllowedKinds = Required. Array. List of strings of content kinds that will be displayed.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentKindList()</code><br />
+<p><code class="highlighter-rouge">ContentKindList()</code>
 Returns list of content kinds.</p>
 
 <p><strong>Returns:</strong> Array of strings of content kinds. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">SelectedContent(strContentType)</code><br />
+<p><code class="highlighter-rouge">SelectedContent(strContentType)</code>
 Get the selected content of the specified kind.</p>
 
-<p><strong>Parameters:</strong> strContentType = Required. String. Content type to look for selection.<br />
-<strong>Returns:</strong> String which is the identifier of the selected content. NULL in error conditions.<br />
-<code class="highlighter-rouge">OpenFloatingContentPreview(strContentInstanceID, arrPos, arrSize)</code><br />
+<p><strong>Parameters:</strong> strContentType = Required. String. Content type to look for selection.
+<strong>Returns:</strong> String which is the identifier of the selected content. NULL in error conditions.
+<code class="highlighter-rouge">OpenFloatingContentPreview(strContentInstanceID, arrPos, arrSize)</code>
 Open content preview window.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. Content identifier.<br />
-arrPos = Required. Array. 2D array of integers x,y.<br />
-arrSize = Required. Array. 2D array of integers width, height.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. Content identifier.
+arrPos = Required. Array. 2D array of integers x,y.
+arrSize = Required. Array. 2D array of integers width, height.
 <strong>Returns:</strong> String which is the identifier of the preview window. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">CloseFloatingContentPreview(strWindowId)</code><br />
+<p><code class="highlighter-rouge">CloseFloatingContentPreview(strWindowId)</code>
 Close content preview window.</p>
 
-<p><strong>Parameters:</strong> strWindowId = Required. String. Identifier of preview window.<br />
+<p><strong>Parameters:</strong> strWindowId = Required. String. Identifier of preview window.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ContentResetToDefaults(strContentInstanceID)</code><br />
+<p><code class="highlighter-rouge">ContentResetToDefaults(strContentInstanceID)</code>
 Reset content to defaults.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. Content identifier.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. Content identifier.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
-<p><code class="highlighter-rouge">ChangeContent(strContentInstanceID, strNewContentId, bHarvest)</code><br />
+<p><code class="highlighter-rouge">ChangeContent(strContentInstanceID, strNewContentId, bHarvest)</code>
 Change content.</p>
 
-<p><strong>Parameters:</strong> strContentInstanceID = Required. String. Content identifier.<br />
-strNewContentID = Required. String. Content identifier to change too.<br />
-bHarvest = Required. Boolean. Determines whether or not parameter harvesting will be performed.<br />
+<p><strong>Parameters:</strong> strContentInstanceID = Required. String. Content identifier.
+strNewContentID = Required. String. Content identifier to change too.
+bHarvest = Required. Boolean. Determines whether or not parameter harvesting will be performed.
 <strong>Returns:</strong> Boolean True or false indicating success or failure. NULL in error conditions.</p>
 
         </article>

@@ -459,10 +459,10 @@
 
 <p>This causes VBScript to fail when any application tries to use it.  A complete uninstall of McAfee will leave this key unmodified, causing VBScript to fail since this McAfee dll no longer exists.</p>
 
-<p>Manually changing the registry key to the windows default:<br />
+<p>Manually changing the registry key to the windows default:
 <code class="highlighter-rouge">
 \[HKEY_CLASSES_ROOT\CLSID{B54F3741-5B07-11cf-A4B0-00AA004A55E8}\InprocServer32]
-</code><br />
+</code>
 to:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>\\C:\Windows\System32\vbscript.dll\\

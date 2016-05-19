@@ -343,12 +343,12 @@
 
 <ol>
   <li>If you have not done so already, <strong>launch Xamarin Studio</strong>.</li>
-  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Solution</strong>…<br />
+  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Solution</strong>…
 <img src="/images/your_first_plugin_mac_01.png" alt="File New Solution" /></li>
-  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Other</strong> &gt; <strong>Miscellaneous</strong> section.  Under Generic, select the <strong>Blank Solution</strong> template…<br />
+  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Other</strong> &gt; <strong>Miscellaneous</strong> section.  Under Generic, select the <strong>Blank Solution</strong> template…
 <img src="/images/your_first_plugin_crossplatform_01.png" alt="New Solution" /></li>
   <li>Click the <strong>Next</strong> button.</li>
-  <li>You will now <strong>Configure your new solution</strong>.  For the purposes of this guide, we will name our solution <em>HelloRhino.CrossPlatform</em>.  Fill in the <strong>Solution Name</strong> field.  <strong>Browse</strong> and select a location for this plugin that is visible to both OS X and Windows.<br />
+  <li>You will now <strong>Configure your new solution</strong>.  For the purposes of this guide, we will name our solution <em>HelloRhino.CrossPlatform</em>.  Fill in the <strong>Solution Name</strong> field.  <strong>Browse</strong> and select a location for this plugin that is visible to both OS X and Windows.
 <img src="/images/your_first_plugin_crossplatform_02.png" alt="Solution Configuration" /></li>
   <li>Click the <strong>Create</strong> button.  <em>NOTE</em>: It is recommended that you create a .git repository for this demo.</li>
   <li>A new <strong>blank solution</strong> called <strong>HelloRhino.CrossPlatform</strong> should open.</li>
@@ -359,12 +359,12 @@
 <h4 id="mac">Mac</h4>
 
 <ol>
-  <li>As in the <a href="/guides/rhinocommon/your_first_plugin_mac">Your First Plugin (Mac)</a> guide, let’s add a template project to the solution.  Right-click the <strong>HelloRhino.CrossPlatform</strong> solution entry in the Solution panel.  Navigate to <strong>Add</strong> &gt; <strong>Add New Project…</strong>.<br />
+  <li>As in the <a href="/guides/rhinocommon/your_first_plugin_mac">Your First Plugin (Mac)</a> guide, let’s add a template project to the solution.  Right-click the <strong>HelloRhino.CrossPlatform</strong> solution entry in the Solution panel.  Navigate to <strong>Add</strong> &gt; <strong>Add New Project…</strong>.
 <img src="/images/your_first_plugin_crossplatform_03.png" alt="New Project" /></li>
-  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Other</strong> &gt; <strong>Miscellaneous</strong> section.  Under General, select the RhinoCommon Plug-In template…<br />
+  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Other</strong> &gt; <strong>Miscellaneous</strong> section.  Under General, select the RhinoCommon Plug-In template…
 <img src="/images/your_first_plugin_mac_02.png" alt="New Project" /></li>
   <li>Click the <strong>Next</strong> button.</li>
-  <li>You will now <strong>Configure your new project</strong>.  Fill in the <strong>Project Name</strong> field…call it  <strong>HelloRhino.Common</strong>.  <strong>Browse</strong> and select the <strong>HelloRhino.CrossPlatform</strong> folder.  <strong>Check</strong> the <strong>Create a project within the solution directory</strong> checkbox; we want the <em>HelloRhino.Common.csproj</em> to be created in the <em>HelloRhino.Common</em> folder.<br />
+  <li>You will now <strong>Configure your new project</strong>.  Fill in the <strong>Project Name</strong> field…call it  <strong>HelloRhino.Common</strong>.  <strong>Browse</strong> and select the <strong>HelloRhino.CrossPlatform</strong> folder.  <strong>Check</strong> the <strong>Create a project within the solution directory</strong> checkbox; we want the <em>HelloRhino.Common.csproj</em> to be created in the <em>HelloRhino.Common</em> folder.
 <img src="/images/your_first_plugin_crossplatform_04.png" alt="New Mac Project" /></li>
   <li>In the Solution panel, <strong>right-click</strong> the <strong>HelloRhino.Common</strong> project and select <strong>Rename</strong>.  Rename the project <strong>HelloRhino.Common.Mac</strong>.</li>
   <li>Rename <strong>HelloRhino.CommonCommand.cs</strong> to <strong>HelloRhinoCommonCommand.cs</strong>.</li>
@@ -392,27 +392,27 @@
 <ol>
   <li>In Visual Studio, open the <strong>HelloRhino.CrossPlatform</strong> solution you created above.</li>
   <li>You may get a warning about trusting this project.  Click <strong>OK</strong>.</li>
-  <li>Expand the <strong>References</strong> section of the <strong>HelloRhino.Common.Mac</strong> project.  Notice that Visual Studio cannot resolve the references to <em>RhinoCommon</em>, <em>Rhino.UI</em> and <em>Eto</em>.  This is to be expected, as this is not the Windows plugin project file.<br />
+  <li>Expand the <strong>References</strong> section of the <strong>HelloRhino.Common.Mac</strong> project.  Notice that Visual Studio cannot resolve the references to <em>RhinoCommon</em>, <em>Rhino.UI</em> and <em>Eto</em>.  This is to be expected, as this is not the Windows plugin project file.
 <img src="/images/your_first_plugin_crossplatform_05.png" alt="Bad References" /></li>
-  <li>In the <strong>Solution Explorer</strong>, <strong>right-click</strong> the <strong>HelloRhino.Common.Mac</strong> project and select <strong>Unload Project</strong> from the drop-down menu.<br />
+  <li>In the <strong>Solution Explorer</strong>, <strong>right-click</strong> the <strong>HelloRhino.Common.Mac</strong> project and select <strong>Unload Project</strong> from the drop-down menu.
 <img src="/images/your_first_plugin_crossplatform_06.png" alt="Unload Project" /></li>
   <li>In <strong>Windows File Explorer</strong>, navigate to the <em>HelloRhino.CrossPlatform/HelloRhino.Common</em> folder.  We are going to <em>“clone”</em> (copy) the <em>HelloRhino.Common.Mac.csproj</em> as our template for the Windows <em>.csproj</em>.</li>
-  <li><strong>Copy</strong> the <strong>HelloRhino.Common.Mac.csproj</strong> file and rename it <strong>HelloRhino.Common.Windows.csproj</strong>:<br />
+  <li><strong>Copy</strong> the <strong>HelloRhino.Common.Mac.csproj</strong> file and rename it <strong>HelloRhino.Common.Windows.csproj</strong>:
 <img src="/images/your_first_plugin_crossplatform_07.png" alt="Copy Project" /></li>
-  <li>In Visual Studio, right-click on the <strong>HelloRhino.CrossPlatform</strong> solution in the Solution Explorer and navigate to <strong>Add</strong> &gt; <strong>Existing Project…</strong><br />
+  <li>In Visual Studio, right-click on the <strong>HelloRhino.CrossPlatform</strong> solution in the Solution Explorer and navigate to <strong>Add</strong> &gt; <strong>Existing Project…</strong>
 <img src="/images/your_first_plugin_crossplatform_08.png" alt="Add Existing Project" /></li>
   <li>Navigate to the <strong>HelloRhino.Common.Windows.csproj</strong> you just copied in Step 6 above.</li>
   <li>In the Solution Explorer, expand the <strong>References</strong> section of <strong>HelloRhino.Common.Windows</strong> project.  Because we copied (“cloned”) the <em>.csproj</em> file, these Mac-specific references are still present.  Let’s delete those…</li>
-  <li><strong>Shift Select</strong> the three references <strong>Eto</strong>, <strong>Rhino.UI</strong>, and <strong>RhinoCommon</strong> in the list.  <strong>Right-click</strong> and <strong>Remove</strong> those references.<br />
+  <li><strong>Shift Select</strong> the three references <strong>Eto</strong>, <strong>Rhino.UI</strong>, and <strong>RhinoCommon</strong> in the list.  <strong>Right-click</strong> and <strong>Remove</strong> those references.
 <img src="/images/your_first_plugin_crossplatform_09.png" alt="Remove Old References" /></li>
   <li><strong>Right-click</strong> the <strong>References</strong> to <strong>Add</strong> new references.</li>
   <li>Browse to <strong>RhinoCommon.dll</strong>.  (Let’s presume we’re targeting Rhino for Windows 64-bit).  The location of <em>RhinoCommon.dll</em> is <em>C:\Program Files\Rhinoceros 5 (64-bit)\System\RhinoCommon.dll</em>.  Click <strong>OK</strong>.</li>
-  <li>In the <strong>Solution Explorer</strong>, select the <strong>RhinoCommon</strong> reference you just added to <strong>HelloRhino.Common.Windows</strong>.  Open the <strong>Properties</strong> panel if it is not already visible (<strong>View</strong> &gt; <strong>Properties Window</strong>).  Make sure <strong>Copy Local</strong> is <strong>False</strong>:<br />
+  <li>In the <strong>Solution Explorer</strong>, select the <strong>RhinoCommon</strong> reference you just added to <strong>HelloRhino.Common.Windows</strong>.  Open the <strong>Properties</strong> panel if it is not already visible (<strong>View</strong> &gt; <strong>Properties Window</strong>).  Make sure <strong>Copy Local</strong> is <strong>False</strong>:
 <img src="/images/your_first_plugin_crossplatform_10.png" alt="Copy Local False" /></li>
   <li>In the <strong>Solution Explorer</strong>, <strong>right-click</strong> the <strong>HelloRhino.Common.Windows</strong> project and select <strong>Properties</strong> from the menu.</li>
-  <li>In the <strong>Build Events</strong> section, in the <strong>Post-build event command line:</strong> enter <code class="highlighter-rouge">Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).rhp" Erase "$(TargetPath)"</code>…<br />
+  <li>In the <strong>Build Events</strong> section, in the <strong>Post-build event command line:</strong> enter <code class="highlighter-rouge">Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).rhp" Erase "$(TargetPath)"</code>…
 <img src="/images/your_first_plugin_crossplatform_11.png" alt="Build Events" /></li>
-  <li>In the <strong>Debug</strong> section, in the <strong>Start external program</strong>, browse to: <code class="highlighter-rouge">C:\Program Files\Rhinoceros 5 (64-bit)\System\Rhino.exe</code>…<br />
+  <li>In the <strong>Debug</strong> section, in the <strong>Start external program</strong>, browse to: <code class="highlighter-rouge">C:\Program Files\Rhinoceros 5 (64-bit)\System\Rhino.exe</code>…
 <img src="/images/your_first_plugin_crossplatform_12.png" alt="Debug Properties" /></li>
   <li><strong>Build</strong> and <strong>Start Debugging</strong>.  You should get two build errors concerning Eto.  Let’s take this opportunity to do create some…</li>
 </ol>
@@ -425,7 +425,7 @@
 
 <ol>
   <li>In the <strong>Solution Explorer</strong>, <strong>right-click</strong> the <strong>HelloRhino.Common.Windows</strong> project and select <strong>Properties</strong> from the menu.</li>
-  <li>In the <strong>Build</strong> section, switch the <strong>Configuration:</strong> to <strong>All Configurations</strong> and, in <strong>Conditional compilation symbols</strong>, create a define called <code class="highlighter-rouge">ON_RUNTIME_WIN</code>…<br />
+  <li>In the <strong>Build</strong> section, switch the <strong>Configuration:</strong> to <strong>All Configurations</strong> and, in <strong>Conditional compilation symbols</strong>, create a define called <code class="highlighter-rouge">ON_RUNTIME_WIN</code>…
 <img src="/images/your_first_plugin_crossplatform_13.png" alt="Windows Define" /></li>
   <li>Open <strong>HelloRhinoCommonCommand.cs</strong>.</li>
   <li>
@@ -445,10 +445,10 @@
 
 <ol>
   <li>In <strong>Xamarin Studio</strong> on <strong>OS X</strong>, open the <strong>HelloRhino.CrossPlatform</strong> solution (if it is not already open).</li>
-  <li>Notice that <strong>HelloRhino.Common.Windows</strong> is now present in your solution (as expected).  In the <strong>Solution</strong> panel, <strong>right-click</strong> the <strong>HelloRhino.Common.Windows</strong> project and select <strong>Unload</strong>…<br />
+  <li>Notice that <strong>HelloRhino.Common.Windows</strong> is now present in your solution (as expected).  In the <strong>Solution</strong> panel, <strong>right-click</strong> the <strong>HelloRhino.Common.Windows</strong> project and select <strong>Unload</strong>…
 <img src="/images/your_first_plugin_crossplatform_14.png" alt="Unload Windows Project" /></li>
   <li>In the <strong>Solution</strong> panel, <strong>double-click</strong> the <strong>HelloRhino.Common.Mac</strong> project to bring up its <strong>Project Options</strong> (Properties).</li>
-  <li>Navigate to the <strong>Build</strong> &gt; <strong>Compiler</strong> section in the <strong>Project Options</strong>.  Notice that the configuration is set to <strong>Debug</strong>.  In the <strong>Define Symbols</strong>: add a <code class="highlighter-rouge">ON_RUNTIME_APPLE</code> after <code class="highlighter-rouge">DEBUG</code>.  You must separate these with a semi-colon.  It should read: <code class="highlighter-rouge">DEBUG;ON_RUNTIME_APPLE</code>.  Switch the <strong>Configuration</strong> to <strong>Release</strong>.  Add the <code class="highlighter-rouge">ON_RUNTIME_APPLE</code> again (Xamarin Studio lacks an “All Configurations” like Visual Studio)…<br />
+  <li>Navigate to the <strong>Build</strong> &gt; <strong>Compiler</strong> section in the <strong>Project Options</strong>.  Notice that the configuration is set to <strong>Debug</strong>.  In the <strong>Define Symbols</strong>: add a <code class="highlighter-rouge">ON_RUNTIME_APPLE</code> after <code class="highlighter-rouge">DEBUG</code>.  You must separate these with a semi-colon.  It should read: <code class="highlighter-rouge">DEBUG;ON_RUNTIME_APPLE</code>.  Switch the <strong>Configuration</strong> to <strong>Release</strong>.  Add the <code class="highlighter-rouge">ON_RUNTIME_APPLE</code> again (Xamarin Studio lacks an “All Configurations” like Visual Studio)…
 <img src="/images/your_first_plugin_crossplatform_15.png" alt="Add Mac Defines" /></li>
   <li>Click <strong>OK</strong> to close the <strong>Project Options</strong> dialog.</li>
   <li><strong>Build</strong> and <strong>Run</strong>.  The <em>HelloRhino</em> command from the plugin should autocomplete and run.</li>
