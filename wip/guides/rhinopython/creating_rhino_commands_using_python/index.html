@@ -306,16 +306,16 @@
 
 <ol>
   <li>Start in the <em>Rhino Python editor</em> using the <code class="highlighter-rouge">EditPythonScript</code> command.</li>
-  <li>Click on the <em>New</em> icon, and choose <em>Command</em> in the ensuing dialog.<br />
+  <li>Click on the <em>New</em> icon, and choose <em>Command</em> in the ensuing dialog.
 <img src="/wip/images/creating_rhino_commands_using_python_01.png" alt="New Command" /></li>
-  <li>Enter the command name and the plugin name that you would like to have the command used in - the plugin can be a new one or an existing one.  You can add multiple commands to a plugin.  In this example, we used <code class="highlighter-rouge">MyNewCommand</code> in <em>MyNewPlugIn</em>.  A new script file is generated with the framework for the new command…<br />
+  <li>Enter the command name and the plugin name that you would like to have the command used in - the plugin can be a new one or an existing one.  You can add multiple commands to a plugin.  In this example, we used <code class="highlighter-rouge">MyNewCommand</code> in <em>MyNewPlugIn</em>.  A new script file is generated with the framework for the new command…
 <img src="/wip/images/creating_rhino_commands_using_python_02.png" alt="New Script" /></li>
-  <li>Note that, with Rhino for Windows, the script is automatically saved in a special location:<br />
+  <li>Note that, with Rhino for Windows, the script is automatically saved in a special location:
 <img src="/wip/images/creating_rhino_commands_using_python_03.png" alt="Special Script Location" /></li>
   <li>The code that the command calls is in the <code class="highlighter-rouge">def RunCommand( is_interactive ):</code> function.</li>
   <li>Add your script code here - the template provides some dummy code and a couple of comments, all to be called from this part of the script.  The whole script can be in this one function or you can add other functions as you normally would, as needed.  Make sure to modify the initial <code class="highlighter-rouge">import</code> statements to suit the script you are writing - the automatic template <code class="highlighter-rouge">imports</code> are there for the example script provided.</li>
   <li>Add this line at the bottom of the script <code class="highlighter-rouge">RunCommand(True)</code>.  This allows you to test the script from the editor, debug etc.  Just remember to comment that line before you distribute the script or try to use it as a command.  It is also possible to write a more “normal” script, test, etc. as needed in the usual way, then just copy and paste into this formatted command script template.</li>
-  <li>In order for this to run as a command in Rhino, the script location needs to be exactly right so that Rhino knows where to look.  On Windows, the path for a command script looks like this: <em>C:\Users\USERNAME\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\PythonPlugIns\MyNewPlugIn {146e099d-760d-4a6c-8662-96119f3fd62f}</em> …and it must keep that crazy name with the GUID in brackets, and the path that the editor set up when you created the command initially.<br />
+  <li>In order for this to run as a command in Rhino, the script location needs to be exactly right so that Rhino knows where to look.  On Windows, the path for a command script looks like this: <em>C:\Users\USERNAME\AppData\Roaming\McNeel\Rhinoceros\5.0\Plug-ins\PythonPlugIns\MyNewPlugIn {146e099d-760d-4a6c-8662-96119f3fd62f}</em> …and it must keep that crazy name with the GUID in brackets, and the path that the editor set up when you created the command initially.
 <img src="/wip/images/creating_rhino_commands_using_python_04.png" alt="Special Script Path" /></li>
   <li>To distribute the script as a plugin, zip the entire folder, in this case making: <em>MyNewPlugIn {146e099d-760d-4a6c-8662-96119f3fd62f}.zip</em>.</li>
   <li><em>NOTE</em>: Users will need to unzip to the plugins folder listed above, with Rhino closed.</li>

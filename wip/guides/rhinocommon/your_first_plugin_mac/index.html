@@ -358,16 +358,16 @@
 
 <ol>
   <li>If you have not done so already, <strong>launch Xamarin Studio</strong>.</li>
-  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Solution</strong>…<br />
+  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Solution</strong>…
 <img src="/wip/images/your_first_plugin_mac_01.png" alt="File New Solution" /></li>
-  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Other</strong> &gt; <strong>Miscellaneous</strong> section.  Under General, select the RhinoCommon Plug-In template…<br />
+  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Other</strong> &gt; <strong>Miscellaneous</strong> section.  Under General, select the RhinoCommon Plug-In template…
 <img src="/wip/images/your_first_plugin_mac_02.png" alt="New Project" /></li>
   <li>Click the <strong>Next</strong> button.</li>
-  <li>You will now <strong>Configure your new project</strong>.  For the purposes of this Guide, we will name our demo plugin <em>HelloRhinoCommon</em>.  Fill in the <strong>Project Name</strong> field.  <strong>Browse</strong> and select a location for this plugin on your Mac…<br />
+  <li>You will now <strong>Configure your new project</strong>.  For the purposes of this Guide, we will name our demo plugin <em>HelloRhinoCommon</em>.  Fill in the <strong>Project Name</strong> field.  <strong>Browse</strong> and select a location for this plugin on your Mac…
 <img src="/wip/images/your_first_plugin_mac_03.png" alt="Project Configuration" /></li>
   <li>Check <strong>Create a project within the solution directory</strong>.  <em>NOTE</em>: This is optional depending on how you want to structure your projects.</li>
   <li>Click the <strong>Create</strong> button.  <em>NOTE</em>: You don’t have to create a .git repository for this demo.</li>
-  <li>A <strong>new solution</strong> called <strong>HelloRhinoCommon</strong> should open…<br />
+  <li>A <strong>new solution</strong> called <strong>HelloRhinoCommon</strong> should open…
 <img src="/wip/images/your_first_plugin_mac_04.png" alt="HelloRhinoCommon Solution" /></li>
   <li>Right-click on the <strong>HelloRhinoCommon</strong> project and select <strong>Set As Startup Project</strong> from the menu.</li>
 </ol>
@@ -375,17 +375,17 @@
 <h3 id="boilerplate-build">Boilerplate Build</h3>
 
 <ol>
-  <li>Before we do anything, let’s <strong>build</strong> and <strong>run</strong> HelloRhinoCommon to make sure everything is working as expected.  We’ll just build the boilerplate Plugin template.  Click the large <strong>Build &gt; Run</strong> (play) button in the upper-left corner of Xamarin Studio…<br />
+  <li>Before we do anything, let’s <strong>build</strong> and <strong>run</strong> HelloRhinoCommon to make sure everything is working as expected.  We’ll just build the boilerplate Plugin template.  Click the large <strong>Build &gt; Run</strong> (play) button in the upper-left corner of Xamarin Studio…
 <img src="/wip/images/your_first_plugin_mac_05.png" alt="Play Button" /></li>
-  <li><strong>Rhinoceros</strong> launches.  Create a <strong>New Model</strong>…<br />
+  <li><strong>Rhinoceros</strong> launches.  Create a <strong>New Model</strong>…
 <img src="/wip/images/your_first_plugin_mac_06.png" alt="New Model Button" /></li>
-  <li>Enter the <strong>HelloRhinoCommonCommand</strong> command.  Notice that the command autocompletes…<br />
+  <li>Enter the <strong>HelloRhinoCommonCommand</strong> command.  Notice that the command autocompletes…
 <img src="/wip/images/your_first_plugin_mac_07.png" alt="Command Autocompletes" /></li>
-  <li>The <strong>HelloRhinoCommonCommand</strong> command begins and prompts you…<br />
+  <li>The <strong>HelloRhinoCommonCommand</strong> command begins and prompts you…
 <img src="/wip/images/your_first_plugin_mac_08.png" alt="Command Prompt" /></li>
-  <li>Notice there is <strong>also a command status</strong> in Rhino’s command history area when the command begins…<br />
+  <li>Notice there is <strong>also a command status</strong> in Rhino’s command history area when the command begins…
 <img src="/wip/images/your_first_plugin_mac_09.png" alt="Command Starts" /></li>
-  <li>Also note there is <strong>a command status</strong> in Rhino’s command history area when the command ends…<br />
+  <li>Also note there is <strong>a command status</strong> in Rhino’s command history area when the command ends…
 <img src="/wip/images/your_first_plugin_mac_10.png" alt="Command Ends" /></li>
   <li><strong>Quit</strong> Rhinoceros.  This stops the session.  Go back to <strong>Xamarin Studio</strong>.  Let’s take a look at the…</li>
 </ol>
@@ -393,7 +393,7 @@
 <h3 id="plugin-anatomy">Plugin Anatomy</h3>
 
 <ol>
-  <li>Use the <strong>Solution Explorer</strong> to expand the <strong>Solution</strong> (<em>.sln</em>) so that it looks like this…<br />
+  <li>Use the <strong>Solution Explorer</strong> to expand the <strong>Solution</strong> (<em>.sln</em>) so that it looks like this…
 <img src="/wip/images/your_first_plugin_mac_11.png" alt="Solution Anatomy" /></li>
   <li>The <strong>HelloRhinoCommon</strong> project (<em>.csproj</em>) has the same name as its parent solution…this is the project that was created for us by the <strong>RhinoCommon Plugin</strong> template wizard earlier.</li>
   <li><strong>References</strong>: Just as with most projects, you will be referencing other libraries.  The <strong>RhinoCommon Plugin</strong> template added the necessary references to create a basic RhinoCommon plugin.</li>
@@ -463,13 +463,13 @@
 <h3 id="debugging">Debugging</h3>
 
 <ol>
-  <li>Set a breakpoint on line<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 55 of <em>HelloRhinoCommonCommand.cs</em>.  You set breakpoints in Xamarin Studio by clicking in the gutter…<br />
+  <li>Set a breakpoint on line<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 55 of <em>HelloRhinoCommonCommand.cs</em>.  You set breakpoints in Xamarin Studio by clicking in the gutter…
 <img src="/wip/images/your_first_plugin_mac_12.png" alt="Set a breakpoint" /></li>
-  <li><strong>Build</strong> and <strong>Run</strong>.  Run <strong>HelloDrawLine</strong> in Rhino.  Create the two points…as soon as you do, you should hit your breakpoint and pause…<br />
+  <li><strong>Build</strong> and <strong>Run</strong>.  Run <strong>HelloDrawLine</strong> in Rhino.  Create the two points…as soon as you do, you should hit your breakpoint and pause…
 <img src="/wip/images/your_first_plugin_mac_13.png" alt="Hit a breakpoint" /></li>
-  <li>With Rhino paused, in <strong>Xamarin Studio</strong> switch to the <strong>Locals</strong> tab.  In the list, find the <code class="highlighter-rouge">line1</code> object we authored.  Click the dropdown <strong>arrow</strong> to expand the list of members on <code class="highlighter-rouge">line1</code>.  Our <code class="highlighter-rouge">line1</code> is a <code class="highlighter-rouge">Rhino.Geometry.Line</code> this class has a <code class="highlighter-rouge">Length</code> property…  <br />
+  <li>With Rhino paused, in <strong>Xamarin Studio</strong> switch to the <strong>Locals</strong> tab.  In the list, find the <code class="highlighter-rouge">line1</code> object we authored.  Click the dropdown <strong>arrow</strong> to expand the list of members on <code class="highlighter-rouge">line1</code>.  Our <code class="highlighter-rouge">line1</code> is a <code class="highlighter-rouge">Rhino.Geometry.Line</code> this class has a <code class="highlighter-rouge">Length</code> property…<br />
 <img src="/wip/images/your_first_plugin_mac_14.png" alt="Locals panel" /></li>
-  <li><strong>Continue Executing</strong> in Rhino by pressing the <strong>Play</strong> button in the upper navigation menu of <strong>Xamarin Studio</strong>…<br />
+  <li><strong>Continue Executing</strong> in Rhino by pressing the <strong>Play</strong> button in the upper navigation menu of <strong>Xamarin Studio</strong>…
 <img src="/wip/images/your_first_plugin_mac_15.png" alt="Continue Executing" /></li>
   <li>Control is passed back to <strong>Rhino</strong> and your command finishes.  <strong>Quit</strong> Rhino or <strong>Stop</strong> the debugging session.</li>
   <li><strong>Remove</strong> the breakpoint you created above by clicking on it in the gutter.</li>

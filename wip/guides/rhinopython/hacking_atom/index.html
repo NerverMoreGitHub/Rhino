@@ -193,26 +193,26 @@
 <p>I updated the rhino-python Atom package to support configuring the Python search path which I plan to deploy when we release MR5.1.  The document describes how to install and run it from source so some of you can test and give feedback.</p>
 
 <ul>
-  <li>open a terminal window pointing to the directory where you want to clone the rhino-python package and type:<br />
+  <li>open a terminal window pointing to the directory where you want to clone the rhino-python package and type:
 <code class="highlighter-rouge">
 git clone https://github.com/mcneel/rhino-python.git
-</code><br />
+</code>
 <code class="highlighter-rouge">
 cd rhino-python
 </code></li>
-  <li>switch to the branch that implements the search paths configuration.<br />
+  <li>switch to the branch that implements the search paths configuration.
   <code class="highlighter-rouge">
   git checkout settings
  </code></li>
-  <li>create a link so that the package will be loaded from the git repo when Atom is run in dev mode:<br />
+  <li>create a link so that the package will be loaded from the git repo when Atom is run in dev mode:
   <code class="highlighter-rouge">
   apm link -d
  </code></li>
-  <li>install the package dependencies<br />
+  <li>install the package dependencies
   <code class="highlighter-rouge">
   apm install
  </code></li>
-  <li>to launch Atom in dev mode cd to where your python files are and type:<br />
+  <li>to launch Atom in dev mode cd to where your python files are and type:
   <code class="highlighter-rouge">
   atom -d .
  </code></li>

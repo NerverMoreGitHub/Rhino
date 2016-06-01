@@ -397,7 +397,7 @@
 
 <ol>
   <li>Open <strong>SampleNativeLibrary.sln</strong> in <strong>Visual Studio</strong>.</li>
-  <li>In the Solution Explorer, you will notice there are three projects…two C# (.csproj) projects and one C++ project.  Expand the <strong>SampleLibrary</strong> C++ project…<br />
+  <li>In the Solution Explorer, you will notice there are three projects…two C# (.csproj) projects and one C++ project.  Expand the <strong>SampleLibrary</strong> C++ project…
 <img src="/wip/images/wrapping_native_libraries_02.png" alt="SampleNativeLibrary" /></li>
   <li>The <strong>SampleLibrary</strong> (.vcxproj) is just a boilerplate C++ project (created using the regular Shared MFC C++ project wizard) that was created by Visual Studio.  <em>There is nothing fancy going on here at all; much of the code is not even relevant to this guide</em>.</li>
   <li>
@@ -432,7 +432,7 @@
 
 <ol>
   <li>Launch <strong>Xcode</strong> and open <strong>SampleLibrary.xcodeproj</strong>.  (Unlike Visual Studio on Windows, on OS X, we cannot do all of our development in a single IDE, but we have to build our native C/C++ <strong>SampleLibrary</strong> using the native Apple Tools - Xcode and xcodebuild).</li>
-  <li>In the <strong>Project Navigator</strong>, notice that this project is referencing the <em>exact same source code</em> as its Windows counterpart…<br />
+  <li>In the <strong>Project Navigator</strong>, notice that this project is referencing the <em>exact same source code</em> as its Windows counterpart…
 <img src="/wip/images/wrapping_native_libraries_03.png" alt="SampleLibrary on OS X" /></li>
   <li>Instead of building a .dll, on OS X we are building <strong>libSampleLibrary.dylib</strong> which - despite the extension - amounts to exactly the same thing as a dll.  For all intents and purposes, SampleLibrary does exactly the same thing on OS X that it does on Windows and the source is the same.</li>
   <li><strong>Build</strong> SampleLibrary using Xcode to make sure that it builds successfully.</li>
@@ -452,10 +452,10 @@
 <ol>
   <li>If you have not done so already, open the <strong>SampleNativeLibrary.sln</strong> in <strong>Visual Studio</strong>.</li>
   <li>If you have not done so already, build <strong>SampleLibrary</strong>.  Verify that <em>SampleLibrary.dll</em> is present in your <em>/bin</em> folder.</li>
-  <li>Now, let’s turn our attention to the <strong>SampleRhino.Win</strong> project.  Make sure that <strong>SampleRhino.Win</strong> is set as the Startup Project and expand it so you can see the source files…<br />
+  <li>Now, let’s turn our attention to the <strong>SampleRhino.Win</strong> project.  Make sure that <strong>SampleRhino.Win</strong> is set as the Startup Project and expand it so you can see the source files…
 <img src="/wip/images/wrapping_native_libraries_04.png" alt="SampleRhino on Windows" /></li>
   <li>Before we do anything, let’s build and test the plugin.  Build <strong>SampleRhino.Win</strong>.</li>
-  <li>Load the <strong>SampleRhino.rhp</strong> in Rhino and run the <strong>SampleRhinoCommand</strong>.  You will be prompted to enter two numbers.  Once you have done that you should see the result in a dialog box…<br />
+  <li>Load the <strong>SampleRhino.rhp</strong> in Rhino and run the <strong>SampleRhinoCommand</strong>.  You will be prompted to enter two numbers.  Once you have done that you should see the result in a dialog box…
 <img src="/wip/images/wrapping_native_libraries_05.png" alt="SampleRhino plugin test" /></li>
   <li>The “additional” calculation for this command was all performed in the native C/C++ SampleLibrary.dll.  Return to <strong>Visual Studio</strong>.  Let’s take a look at how the <code class="highlighter-rouge">Add</code> function is being called.</li>
   <li>
@@ -523,7 +523,7 @@
 <ol>
   <li>If you have not done so already, open the <strong>SampleNativeLibrary.sln</strong> in <strong>Xamarin Studio</strong>.</li>
   <li>The native <strong>SampleLibrary</strong> project cannot be built from Xamarin Studio.  As mentioned above, Xamarin Studio is a .NET only IDE; it cannot build C/C++ projects like Visual Studio.  (We will work around this limitation in a moment).</li>
-  <li>First, let’s turn our attention to the <strong>SampleRhino.Mac</strong> project.  Make sure that <strong>SampleRhino.Mac</strong> is set as the Startup Project and expand it so you can see the source files…<br />
+  <li>First, let’s turn our attention to the <strong>SampleRhino.Mac</strong> project.  Make sure that <strong>SampleRhino.Mac</strong> is set as the Startup Project and expand it so you can see the source files…
 <img src="/wip/images/wrapping_native_libraries_06.png" alt="SampleRhino on Mac" /></li>
   <li>Just as with <strong>SampleLibrary</strong>, <strong>SampleRhino</strong> is exactly the same source on both platform: the platform-specific <em>.csproj</em> files are referencing exactly the same <em>.cs</em> files.</li>
   <li><strong>Build</strong>, run, and test <strong>SampleRhinoCommand</strong> in Rhino for Mac.  Everything should work as expected.  No surprises here…all the code is the same (if you skipped the <a href="#windows-1">Windows section above</a>, read it now; all of it applies on OS X).</li>
@@ -540,7 +540,7 @@
     <p>…which declares a <code class="highlighter-rouge">lib</code> string member.  On Windows, it was necessary to explicitly state the name of the native dll being called.  On OS X, this works a little differently.  In order to understand what is different, let’s look at how <strong>SampleLibrary.dll</strong> gets built on OS X…</p>
   </li>
   <li>In the <a href="#mac">SampleLibrary (Mac) section above</a>, we built SampleLibrary using Xcode.  We mentioned in passing that we could build this using <code class="highlighter-rouge">xcodebuild</code> command line from Xamarin Studio.  Let’s take a look.</li>
-  <li>In the <strong>Solution Explorer</strong>, <strong>double-click</strong> the name of the <strong>SampleRhino.Mac</strong> project to bring up the <strong>Project Options</strong> dialog.  Navigate to the <strong>Build</strong> &gt; <strong>Custom Commands</strong> section…<br />
+  <li>In the <strong>Solution Explorer</strong>, <strong>double-click</strong> the name of the <strong>SampleRhino.Mac</strong> project to bring up the <strong>Project Options</strong> dialog.  Navigate to the <strong>Build</strong> &gt; <strong>Custom Commands</strong> section…
 <img src="/wip/images/wrapping_native_libraries_07.png" alt="SampleRhino.Mac Project Options" /></li>
   <li>There are 5 <strong>Custom Commands</strong>:
     <ol>

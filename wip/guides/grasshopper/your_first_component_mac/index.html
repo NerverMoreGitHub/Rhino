@@ -390,8 +390,8 @@
 <h4 id="step-by-step">Step-by-Step</h4>
 
 <ol>
-  <li>Download the pre-release <a href="https://github.com/mcneel/RhinoCommonXamarinStudioAddin/releases">RhinoXamarinStudioAddin from github</a>. Make sure to get the pre-release addin since this is the one that includes support for Grasshopper component development.<br />
- <img src="/wip/images/your_first_component_mac_01.png" alt="Pre-release addin" /><br />
+  <li>Download the pre-release <a href="https://github.com/mcneel/RhinoCommonXamarinStudioAddin/releases">RhinoXamarinStudioAddin from github</a>. Make sure to get the pre-release addin since this is the one that includes support for Grasshopper component development.
+ <img src="/wip/images/your_first_component_mac_01.png" alt="Pre-release addin" />
 <strong>NOTE: That this page states the addin is a pre-release</strong>: We will likely be making improvements to this addin over time.</li>
   <li>Launch <strong>Xamarin Studio</strong>.</li>
   <li>Navigate to <strong>Xamarin Studio</strong> &gt; <strong>Add-in Manager…</strong>…</li>
@@ -413,30 +413,30 @@
 
 <ol>
   <li>If you have not done so already, <strong>launch Xamarin Studio</strong>.</li>
-  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Solution</strong>…<br />
+  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Solution</strong>…
 <img src="/wip/images/your_first_plugin_mac_01.png" alt="File New Solution" /></li>
-  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Other</strong> &gt; <strong>Miscellaneous</strong> section.  Under General, select the Grasshopper Plug-In template…<br />
+  <li>A <strong>New Project</strong> wizard should appear.  In the left column, find the <strong>Other</strong> &gt; <strong>Miscellaneous</strong> section.  Under General, select the Grasshopper Plug-In template…
 <img src="/wip/images/your_first_component_mac_02.png" alt="New Project" /></li>
   <li>Click the <strong>Next</strong> button.</li>
-  <li>You will now <strong>Configure your new project</strong>.  For the purposes of this Guide, we will name our demo component <em>HelloGrasshopper</em>.  Fill in the <strong>Project Name</strong> field.  <strong>Browse</strong> and select a location for this plugin on your Mac…<br />
+  <li>You will now <strong>Configure your new project</strong>.  For the purposes of this Guide, we will name our demo component <em>HelloGrasshopper</em>.  Fill in the <strong>Project Name</strong> field.  <strong>Browse</strong> and select a location for this plugin on your Mac…
 <img src="/wip/images/your_first_component_mac_03.png" alt="Project Configuration" /></li>
   <li>Click the <strong>Create</strong> button.</li>
-  <li>A <strong>new solution</strong> called <strong>HelloGrasshopper</strong> should open…<br />
+  <li>A <strong>new solution</strong> called <strong>HelloGrasshopper</strong> should open…
 <img src="/wip/images/your_first_component_mac_04.png" alt="HelloRhinoCommon Solution" /></li>
 </ol>
 
 <h3 id="boilerplate-build">Boilerplate Build</h3>
 
 <ol>
-  <li>Before we do anything, let’s <strong>build</strong> and <strong>run</strong> HelloGrasshopper to make sure everything is working as expected.  We’ll just build the boilerplate Component template.  Click the large <strong>Build &gt; Run</strong> (play) button in the upper-left corner of Xamarin Studio…<br />
+  <li>Before we do anything, let’s <strong>build</strong> and <strong>run</strong> HelloGrasshopper to make sure everything is working as expected.  We’ll just build the boilerplate Component template.  Click the large <strong>Build &gt; Run</strong> (play) button in the upper-left corner of Xamarin Studio…
 <img src="/wip/images/your_first_plugin_mac_05.png" alt="Play Button" /></li>
-  <li><strong>Rhinoceros</strong> launches.  Create a <strong>New Model</strong>…<br />
+  <li><strong>Rhinoceros</strong> launches.  Create a <strong>New Model</strong>…
 <img src="/wip/images/your_first_plugin_mac_06.png" alt="New Model Button" /></li>
-  <li>Enter the <strong>ExplicitHistory</strong> command.  Notice that your new component is listed a loaded by Grasshopper…<br />
+  <li>Enter the <strong>ExplicitHistory</strong> command.  Notice that your new component is listed a loaded by Grasshopper…
 <img src="/wip/images/your_first_component_mac_05.png" alt="HelloGrasshopper Loaded" /></li>
-  <li>Go to the Curve tab in grasshopper and you should see a new blank icon for your new component…<br />
+  <li>Go to the Curve tab in grasshopper and you should see a new blank icon for your new component…
 <img src="/wip/images/your_first_component_mac_06.png" alt="Curve Tab" /></li>
-  <li>Drag this component on to the Grasshopper canvas to verify that it is working…<br />
+  <li>Drag this component on to the Grasshopper canvas to verify that it is working…
 <img src="/wip/images/your_first_component_mac_07.png" alt="Command Starts" /></li>
   <li><strong>Quit</strong> Rhinoceros.  This stops the session.  Go back to <strong>Xamarin Studio</strong>.  Let’s take a look at the…</li>
 </ol>
@@ -444,7 +444,7 @@
 <h3 id="component-anatomy">Component Anatomy</h3>
 
 <ol>
-  <li>Use the <strong>Solution Explorer</strong> to expand the <strong>Solution</strong> (<em>.sln</em>) so that it looks like this…<br />
+  <li>Use the <strong>Solution Explorer</strong> to expand the <strong>Solution</strong> (<em>.sln</em>) so that it looks like this…
 <img src="/wip/images/your_first_component_mac_08.png" alt="Solution Anatomy" /></li>
   <li>The <strong>HelloGrasshopper</strong> project (<em>.csproj</em>) has the same name as its parent solution…this is the project that was created for us by the <strong>Grasshopper Plugin</strong> template wizard earlier.</li>
   <li><strong>References</strong>: Just as with most projects, you will be referencing other libraries.  The <strong>Grasshopper Plugin</strong> template added the necessary references to create a basic Grasshopper component.</li>
@@ -463,13 +463,13 @@
 <h3 id="debugging">Debugging</h3>
 
 <ol>
-  <li>Set a breakpoint on line<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 100 of <em>HelloGrasshopperComponent.cs</em>.  You set breakpoints in Xamarin Studio by clicking in the gutter…<br />
+  <li>Set a breakpoint on line<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 100 of <em>HelloGrasshopperComponent.cs</em>.  You set breakpoints in Xamarin Studio by clicking in the gutter…
 <img src="/wip/images/your_first_component_mac_09.png" alt="Set a breakpoint" /></li>
-  <li><strong>Build</strong> and <strong>Run</strong>.  Drag one of your new components on to the Grasshopper canvas…as soon as you do, you should hit your breakpoint and pause…<br />
+  <li><strong>Build</strong> and <strong>Run</strong>.  Drag one of your new components on to the Grasshopper canvas…as soon as you do, you should hit your breakpoint and pause…
 <img src="/wip/images/your_first_component_mac_10.png" alt="Hit a breakpoint" /></li>
-  <li>With Rhino paused, in <strong>Xamarin Studio</strong> switch to the <strong>Locals</strong> tab.  In the list, you can inspect all of the values for the variables in your function…  <br />
+  <li>With Rhino paused, in <strong>Xamarin Studio</strong> switch to the <strong>Locals</strong> tab.  In the list, you can inspect all of the values for the variables in your function…<br />
 <img src="/wip/images/your_first_component_mac_11.png" alt="Locals panel" /></li>
-  <li><strong>Continue Executing</strong> in Rhino by pressing the <strong>Play</strong> button in the upper navigation menu of <strong>Xamarin Studio</strong>…<br />
+  <li><strong>Continue Executing</strong> in Rhino by pressing the <strong>Play</strong> button in the upper navigation menu of <strong>Xamarin Studio</strong>…
 <img src="/wip/images/your_first_plugin_mac_15.png" alt="Continue Executing" /></li>
   <li>Control is passed back to <strong>Rhino</strong> and your command finishes.  <strong>Quit</strong> Rhino or <strong>Stop</strong> the debugging session.</li>
   <li><strong>Remove</strong> the breakpoint you created above by clicking on it in the gutter.</li>
@@ -488,9 +488,9 @@
 <p>A single gha can contain more than one GH_Component derived class (and commonly does). The Xamarin Studio has support for adding more custom components to your project.</p>
 
 <ol>
-  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>File</strong>…<br />
+  <li>Navigate to <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>File</strong>…
 <img src="/wip/images/your_first_component_mac_12.png" alt="File New Solution" /></li>
-  <li>A <strong>New File</strong> wizard should appear.  In the left column, find the <strong>Rhinoceros</strong> section.  This should give you the ability to select an “Empty Grasshopper Component”…<br />
+  <li>A <strong>New File</strong> wizard should appear.  In the left column, find the <strong>Rhinoceros</strong> section.  This should give you the ability to select an “Empty Grasshopper Component”…
 <img src="/wip/images/your_first_component_mac_13.png" alt="New Project" /></li>
   <li>After deciding on a name for the component click the <strong>New</strong> button.</li>
 </ol>

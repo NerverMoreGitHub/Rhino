@@ -308,7 +308,7 @@
   <li>Launch <strong>Visual Studio</strong> and add a new Class Library project to your solution.</li>
   <li>In the new Class Library project, add a reference to <em>RhinoCommon.dll</em>, which is found in Rhino’s <em>System</em> folder. Note: make sure, after adding the reference, to set the properties of the reference to <strong>Copy Local = False</strong>.</li>
   <li>Create a new class that inherits from <code class="highlighter-rouge">Rhino.Runtime.Skin</code>.</li>
-  <li>Add a post build event to the project to rename the assembly from <em>.dll</em> to <em>.rhs</em>:<br />
+  <li>Add a post build event to the project to rename the assembly from <em>.dll</em> to <em>.rhs</em>:
 <code class="highlighter-rouge">(TargetPath)" "$(TargetDir)$(ProjectName).rhs" Erase "$(TargetPath)"</code></li>
 </ol>
 
