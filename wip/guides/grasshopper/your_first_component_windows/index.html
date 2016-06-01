@@ -220,6 +220,42 @@
                       
 
                       
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#create-your-component">Create your component</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#preparing-to-debug-your-component">Preparing to Debug Your C...</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#debugging-your-component">Debugging your Component</a>
+
+                          
+
+                        </li>
+                      
 
                     </ul>
 
@@ -242,7 +278,46 @@
         <article class="post-content">
           <h1 id="your-first-component-windows">Your First Component (Windows)</h1>
 
-<p>TODO</p>
+<h2 id="create-your-component">Create your component</h2>
+<ol>
+  <li>Open <em>Visual Studio</em></li>
+  <li>From the <em>File</em> menu, click <em>New</em> then click <em>Project…</em></li>
+  <li>In the New Project dialog box, select <em>Installed &gt; Templates &gt; Visual C# &gt; Rhinoceros</em> then select <em>Grasshopper Add-On for v6</em></li>
+  <li>Enter a name and location for the project</li>
+  <li>Click <em>OK</em></li>
+  <li>Fill out information about your first component:
+    <ol>
+      <li>Name: the name of the component as displayed in the ribbon bar and search menus</li>
+      <li>Nickname: the default name of the component when inserted into the canvas</li>
+      <li>Description: description shown in tooltip when mouse is over the component icon in the menu</li>
+      <li>Category: name of tab where component icon will be shown</li>
+      <li>Sub Category: name of group inside tab where icon will be shown</li>
+    </ol>
+  </li>
+  <li>Download <a href="http://s3.amazonaws.com/files.na.mcneel.com/grasshopper/1.0/docs/en/GrasshopperSDK.chm">GrasshopperSDK.chm</a> and read about how to set up component inputs, output, and solve the component in the Examples.</li>
+</ol>
+
+<h2 id="preparing-to-debug-your-component">Preparing to Debug Your Component</h2>
+<ol>
+  <li>Set your project as the start-up project in Visual Studio.</li>
+  <li>From the <em>Debug</em> menu in Visual Studio, click <em>Start Debugging</em></li>
+  <li>After Rhino starts, run the <em>GrasshopperDeveloperSettings</em> command</li>
+  <li>Clear the <em>Memory load .GHA assemblies using COFF byte arrays</em> checkbox</li>
+  <li>Click <em>Add Folder</em> and add the bin\Debug output folder of your project to Grasshopper’s search path</li>
+  <li>(Optional) Automatically start Grasshopper every time Rhino starts
+    <ol>
+      <li>From the <em>Tools</em> menu, click <em>Options</em>, then click <em>General</em></li>
+      <li>In the <em>Run these commands every time Rhino starts</em> text area, type <em>_Grasshopper</em> then click <em>OK</em></li>
+    </ol>
+  </li>
+  <li>Close Rhino</li>
+</ol>
+
+<h2 id="debugging-your-component">Debugging your Component</h2>
+<ol>
+  <li>Set breakpoints as needed</li>
+  <li>From the <em>Debug</em> menu in Visual Studio, click <em>Start Debugging</em></li>
+</ol>
 
         </article>
 
