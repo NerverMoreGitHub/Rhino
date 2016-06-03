@@ -24,7 +24,7 @@
   <!-- Bootstrap override -->
   <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
 
-  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/cpp/whats_new/">
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/rhinocommon/whats_new/">
   <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
 
   <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
@@ -71,7 +71,7 @@
     
 <div class="version-banner">
     Hey, you're viewing the <strong>wip</strong> version of this page!
-    <a href="/guides/cpp/whats_new/">View the current version instead.</a>
+    <a href="/guides/rhinocommon/whats_new/">View the current version instead.</a>
 </div>
 
 
@@ -199,7 +199,7 @@
               <li>
 
                 
-                  <a href="/wip/guides/#cpp">C/C++</a>
+                  <a href="/wip/guides/#c#">C#</a>
                 
                 <ul class="nav nav-stacked">
 
@@ -278,11 +278,11 @@
         <article class="post-content">
           <h1 id="whats-new">What’s New?</h1>
 
-<p>This brief guide outlines the new object types and features in the Rhino C/C++ SDK.</p>
+<p>This brief guide outlines the changes in the RhinoCommon SDK.</p>
 
 <h2 id="overview">Overview</h2>
 
-<p>The Rhino 6.0 C++ SDK is similar to the 5.0 SDK, but also has “breaking” changes. The following document attempts to describe what has been added, what has changed, and how to deal with these changes.</p>
+<p>The following document describes what has been added, what has changed, and how to deal with these changes in the RhinoCommon SDK. A lot of effort has been put into keeping the RhinoCommon SDK in Rhino 6 as compatible with the Rhino 5 version as possible, but in a small number of cases this was impossible. One goal of this document is to describe these breaking changes and what to do about them.</p>
 
 <h2 id="additions">Additions</h2>
 
@@ -290,158 +290,14 @@
 
 <h2 id="changes">Changes</h2>
 
-<p>TODO: The following list was compiled while attempting to update C++ samples from 5.0 to 6.0. This list is currently just a series of jotted down notes and needs to be updated with information.</p>
-
-<p>V5: ON_3dmView::m_target
-V6: ON_3dmView::TargetPoint()</p>
-
-<p>V5: CRhinoPageView::CreatePageView()
-V6: CRhinoDoc::CreatePageView()</p>
-
-<p>V5: ON::UnitScale(ON::inches, ON::millimeters)
-V6: ON::UnitScale(ON::LengthUnitSystem::Inches, ON::LengthUnitSystem::Millimeters)</p>
-
-<p>V5: ON_UnitSystem units(ON::millimeters);
-V6: ON_UnitSystem units(ON::LengthUnitSystem::Millimeters);</p>
-
-<p>V5: ON_TextDot::SetPoint(ON_3dPoint)
-V6: ON_TextDot::SetCenterPoint(ON_3dPoint)</p>
-
-<p>V5: ON_TextDot::SetTextString(const wchar_t<em>)
-V6: ON_TextDot::SetPrimaryText(const wchar_t</em>)</p>
-
-<p>V5: CRhinoUiDib
-V6: CRhinoDib</p>
-
-<p>V5: CRhinoGetPoint::DynamicDraw(HDC, CRhinoViewport&amp;, const ON_3dPoint&amp;)
-V6: CRhinoGetPoint::DynamicDraw(CRhinoDisplayPipeline&amp;, const ON_3dPoint&amp;)</p>
-
-<p>V5: ON_MeshParameters::Set(double, double)
-V6: ON_MeshParameters(double, double)</p>
-
-<p>V5: ON_DimStyle::m_dimstyle_id
-V6: ON_DimStyle::Id()</p>
-
-<p>CRhinoDimStyleTable::OverrideDimStyle - new function
-ON_DimStyle::SetFieldOverride - enum has changed
-ON_DimStyle::SetTextAlignment - enum has changed</p>
-
-<p>CRhinoDisplayPipeline::DrawString - different arguments</p>
-
-<p>V5: CRhinoViewport::GetPickXform
-V6: CRhinoViewport::SetClippingRegionTransformation</p>
-
-<p>RhinoCreateTaperedExtrude - new tolerance arguments</p>
-
-<p>V5: CRhinoHatchPatternTable::FindHatchPattern
-V6: CRhinoHatchPatternTable::HatchPatternFromName</p>
-
-<p>RhinoCreateHatches - new tolerance argument</p>
-
-<p>V5: CRhinoViewport::GetModelXform()
-V5: CRhinoViewport::SetModelXform()
-V6: CRhinoDisplayPipeline::PushModelTransform()
-V6: CRhinoDisplayPipeline::PopModelTransform()</p>
-
-<p>V5: CRhinoViewport::DrawColor()
-V6: CRhinoDisplayPipeline::ObjectColor()</p>
-
-<p>V5: CRhinoViewport::SetDrawColor()
-V6: CRhinoDisplayPipeline::SetObjectColor()</p>
-
-<p>V5: CRhinoObject::Draw(CRhinoViewport&amp;)
-V6: CRhinoObject::Draw(CRhinoDisplayPipeline&amp;)</p>
-
-<p>V5: CRhinoViewport::InterruptDrawing()
-V6: CRhinoDisplayPipeline::InterruptDrawing()</p>
-
-<p>V5: ON_Layer::SetLayerName()
-V5: ON_Layer::SetLayerIndex()
-V6: ON_Layer::SetName()
-V6: ON_Layer::SetIndex()</p>
-
-<p>ONX_Model has changed dramatically</p>
-
-<p>CRhinoDrawCallback is gone</p>
-
-<p>V5: CRhinoGetObject::meshvertex_object
-V6: CRhinoGetObject::meshvertex_filter</p>
-
-<p>V5: ON_MeshVertexRef
-V6: ON_MeshComponentRef</p>
-
-<p>V5: CRhinoObjRef::MeshVertex()
-V6: CRhinoObjRef::MeshComponentRef()</p>
-
-<p>V5: ON_Texture::m_filename
-V6: ON_Texture::m_image_file_reference</p>
-
-<p>V5: CRhinoGroup::IsReference()
-V6: CRhinoGroup::IsReferenceComponent()</p>
-
-<p>V5: CRhinoReduceMeshProgressContext</p>
-
-<p>CRhinoDisplayPipeline::Draw2dLine args have changed</p>
-
-<p>V5: CRhinoViewport::DisplayMode
-V6: CRhinoViewport::DisplayModeIsShaded, CRhinoViewport::View()::m_display_mode_id
-Or dp.DisplayAttrs()-&gt;m_bShadeSurface</p>
-
-<p>V5: CRhinoAppSettings::DefaultMaterial
-V6: CRhinoMaterialTable::DefaultMaterial, CRhinoMaterialTable::AddCopyOfDefaultMaterial</p>
-
-<p>CRhinoLayerTable::FindLayerFromUniqueName args changed</p>
-
-<p>CRhinoViewport::GhostedShade doesn’t exist.</p>
-
-<p>CRhinoFileWriteOptions::Mode doesn’t exist</p>
-
-<p>V6: CRhinoDisplayPipeline::GetRhinoVP returns a pointer</p>
-
-<p>V5: CRhinoObject::m_runtime_object_serial_number
-V6: CRhinoObject::RuntimeSerialNumber()</p>
-
-<p>V5: CRhinoEventWatcher::FontTableEvent
-V6: CRhinoEventWatcher::TextStyleTableEvent</p>
-
-<p>V5: ON::unit_system CRhinoDigitizerPlugIn::UnitSystem() const;
-V6: ON::LengthUnitSystem CRhinoDigitizerPlugIn::UnitSystem() const;</p>
-
-<p>V5: CRhinoFileWriteOptions::Mode(CRhinoFileWriteOptions::SelectedMode)
-V6: CRhinoFileWriteOptions::SelectedObjectFilter()</p>
-
-<p>V5: CRhinoViewport&amp; CRhinoDisplayPipeline::GetRhinoVP()
-V6: CRhinoViewport* CRhinoDisplayPipeline::GetRhinoVP()</p>
-
-<p>V5: ON_OBJECT_IMPLEMENT::m_##cls##<em>class_id
-V6: ON_OBJECT_IMPLEMENT::m</em>##cls##_class_rtti</p>
-
-<p>V5: CRhinoApp::ActiveDoc()
-V6: CRhinoDoc::FromRuntimeSerialNumber()</p>
-
-<p>V5: CRhinoDialog::SetEnableDisplayCommands(bool)
-V6: CRhinoDialog::SetEnableDisplayCommands(bool, unsigned int doc_sn)</p>
-
-<p>V5: CRhinoDisplayConduit::Enable()
-V6: CRhinoDisplayConduit::Enable(unsigned int doc_sn)</p>
-
-<p>V5: ON::display_mode,  ON::DisplayMode
-V6: ON_StandardDisplayModeId</p>
-
-<p>V5: CRhinoGetFileDialog::open_rhino_only_dialog
-V6: CRhinoGetFileDialog::open_rhino_3dm_file_dialog</p>
-
-<p>V5: ON_BinaryFile archive(ON::read3dm, archive_fp);
-V6: ON_BinaryFile archive(ON::archive_mode::read3dm, archive_fp);</p>
-
-<p>V5: CRhinoTabbedDockBarDialog::Icon()
-V6: CRhinoTabbedDockBarDialog::Icon(const CSize&amp; sizeInPixels)</p>
-
-<p>V5: CRhinoOptionsDialogPage::RunScript(CRhinoDoc&amp;)
-V6: CRhinoOptionsDialogPage::RunScript(const unsigned int rhino_doc_sn)</p>
-
-<p>V5: CRhinoObjectPropertiesDialogPageEx
-V6: CRhinoObjectPropertiesDialogPage</p>
+<ul>
+  <li>InstanceDefinition and InstanceDefinitionGeometry are no longer derived from GeometryBase
+    <ul>
+      <li>https://mcneel.myjetbrains.com/youtrack/issue/RH-34036</li>
+      <li>TODO: describe what this means</li>
+    </ul>
+  </li>
+</ul>
 
         </article>
 
@@ -463,7 +319,7 @@ V6: CRhinoObjectPropertiesDialogPage</p>
       
         <div class="row">
           <div class="col-md-4">
-            <p class="text">Author: <a href="mailto:dale@mcneel.com, steve@mcneel.com">dale@mcneel.com, steve@mcneel.com</a></p>
+            <p class="text">Author: <a href="mailto:steve@mcneel.com">steve@mcneel.com</a></p>
           </div>
           <div class="col-md-4 text-center">
             <span class="icon  icon--github">
@@ -471,7 +327,7 @@ V6: CRhinoObjectPropertiesDialogPage</p>
                 <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
               </svg>
             </span>
-            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/cpp/whats_new.md" target="_blank">Edit page on GitHub</a>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/rhinocommon/whats_new.md" target="_blank">Edit page on GitHub</a>
           </div>
             <div class="col-md-4">
               <span class="pull-right">
