@@ -373,37 +373,38 @@
         <article class="post-content">
           <h1 id="your-first-component-mac">Your First Component (Mac)</h1>
 
-<p>This guide walks you through your first Grasshopper Component for Rhino for Mac using RhinoCommon and Xamarin Studio.</p>
+<p>This guide walks you through your first Grasshopper component for Rhino for Mac using RhinoCommon and Xamarin Studio.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
-<p>Grasshopper for Mac Rhino only exists in the WIP until the next major version of Mac Rhino is released. Because of this, there are a few additional steps that need to be taken to install all of the tools needed to develop components on Mac Rhino. You will need to do the following:</p>
+
+<p>Grasshopper for Mac only exists in the RhinoWIP until the next major version of Rhino for Mac is released. Due to this, there are a few additional steps that need to be taken to install all of the tools needed to develop components. You will need to do the following:</p>
 
 <ol>
-  <li>Install the <a href="http://www.rhino3d.com/go/download/rhino-for-mac/wip/latest">Mac Rhino WIP</a>. The WIP can be safely installed along side the stable release of Mac Rhino.</li>
+  <li>Install the <a href="http://www.rhino3d.com/go/download/rhino-for-mac/wip/latest">latest RhinoWIP</a>. The WIP can be safely installed along side the stable release of Rhino for Mac.</li>
   <li>Install Xamarin Studio. Instructions on downloading and installing Xamarin Studio can be found on <a href="/wip/guides/rhinocommon/installing_tools_mac">Installing Tools (Mac)</a> page.</li>
 </ol>
 
 <h2 id="install-the-rhino-add-in-pre-release">Install the Rhino Add-in (pre-release)</h2>
 
-<p>The Rhino Xamarin Studio AddIn is required to debug your component code in an active session of Rhino for Mac.  Additionally, it contains project templates to get you started creating components quickly. This is a special “pre-release” add-in so you will need to get the add-in from the McNeel github site.</p>
+<p>The Rhino Xamarin Studio Add-in is required to debug your component code in an active session of Rhino for Mac.  Additionally, it contains project templates to get you started creating components quickly.  This is a special “pre-release” add-in so you will need to get the add-in from the McNeel github site.</p>
 
 <h4 id="step-by-step">Step-by-Step</h4>
 
 <ol>
-  <li>Download the pre-release <a href="https://github.com/mcneel/RhinoCommonXamarinStudioAddin/releases">RhinoXamarinStudioAddin from github</a>. Make sure to get the pre-release addin since this is the one that includes support for Grasshopper component development.
- <img src="/wip/images/your_first_component_mac_01.png" alt="Pre-release addin" />
-<strong>NOTE: That this page states the addin is a pre-release</strong>: We will likely be making improvements to this addin over time.</li>
+  <li>Download the pre-release <a href="https://github.com/mcneel/RhinoCommonXamarinStudioAddin/releases">RhinoXamarinStudioAddin from github</a>.  Make sure to get the pre-release add-in since this is the one that includes support for Grasshopper component development.
+ <img src="/wip/images/your_first_component_mac_01.png" alt="Pre-release add-in" />
+<strong>NOTE: That this page states the add-in is a pre-release</strong>: We will likely be making improvements to this add-in over time.</li>
   <li>Launch <strong>Xamarin Studio</strong>.</li>
-  <li>Navigate to <strong>Xamarin Studio</strong> &gt; <strong>Add-in Manager…</strong>…</li>
+  <li>Navigate to <strong>Xamarin Studio</strong> &gt; <strong>Add-in Manager…</strong></li>
   <li>Click the <strong>Install from file…</strong> button</li>
-  <li>Select the RhinoXamarinStudioAddin mpack file that you just downloaded from github. The addin should install</li>
+  <li>Select the RhinoXamarinStudioAddin mpack file that you just downloaded from github.  The add-in should install.</li>
   <li><strong>IMPORTANT</strong>: You must <strong>Quit</strong> and <strong>Restart</strong> Xamarin Studio.</li>
-  <li>Navigate to <strong>Xamarin Studio</strong> &gt; <strong>Add-in Manager..</strong> &gt; <strong>Install</strong> tab.  Verify that <strong>RhinoCommon Plugin Support</strong> exists under the <strong>Debugging</strong> category.  If it’s there, you have successfully installed the AddIn and you are <strong>DONE</strong>.</li>
+  <li>Navigate to <strong>Xamarin Studio</strong> &gt; <strong>Add-in Manager..</strong> &gt; <strong>Install</strong> tab.  Verify that <strong>RhinoCommon Plugin Support</strong> exists under the <strong>Debugging</strong> category.  If it’s there, you have successfully installed the add-in and you are <strong>DONE</strong>.</li>
 </ol>
 
 <h2 id="hellograsshopper">HelloGrasshopper</h2>
 
-<p>We will use the Rhino Xamarin Addin to create a new, basic, grasshopper component called HelloGrasshopper.</p>
+<p>We will use the Rhino Xamarin Add-in to create a new, basic, Grasshopper component called <em>HelloGrasshopper</em>.</p>
 
 <p>If you are familiar with Visual Studio or Xamarin Studio, these step-by-step instructions may be overly detailed for you.  The executive summary: create a new Solution using the Grasshopper Component template, build and run, and then make a change.</p>
 
@@ -450,14 +451,14 @@
   <li><strong>References</strong>: Just as with most projects, you will be referencing other libraries.  The <strong>Grasshopper Plugin</strong> template added the necessary references to create a basic Grasshopper component.</li>
   <li><strong>Eto</strong> is the cross-platform User Interface (UI) library Rhino uses.  If you examine its properties, you will notice it comes bundled as part of Rhino for Mac.</li>
   <li><strong>GH_IO</strong> is used for reading and writing Grasshopper definitions.</li>
-  <li><strong>Grasshopper</strong> is the Mac Rhino main grasshopper DLL. Classes in this DLL are subclassed and used by your custom component.</li>
+  <li><strong>Grasshopper</strong> is the Rhino for Mac main grasshopper DLL. Classes in this DLL are subclassed and used by your custom component.</li>
   <li><strong>Rhino.UI</strong> is the Rhino-specific User Interface (UI) library associated with…</li>
   <li><strong>RhinoCommon</strong> is used by your component to work with all of the geometry defined in Rhino.</li>
   <li><strong>System</strong>, <strong>System.Core</strong>, and <strong>System.Drawing</strong> are .NET foundational libraries…in this case, we are referencing the Mono versions of these libraries (on Windows, these references will point to the canonical, Microsoft-provided, versions).</li>
   <li><strong>Packages</strong> is used the the <a href="https://www.nuget.org/">NuGet</a> package-manager.  There are no referenced packages in this boilerplate project, but note that Xamarin Studio supports NuGet, just like Visual Studio does.</li>
   <li><strong>Properties</strong> contains the <strong>AssemblyInfo.cs</strong> source file.  This file contains general information about your component.</li>
-  <li><strong>HelloGrasshopperComponent.cs</strong> is where a custom Grasshopper.Kernal.GH_Component subclass is defined. Your project may contain multiple subclasses of GH_Component if you want to ship multiple components in a single gha.</li>
-  <li><strong>HelloGrasshopperInfo.cs</strong> defines general information about this gha.</li>
+  <li><strong>HelloGrasshopperComponent.cs</strong> is where a custom <code class="highlighter-rouge">Grasshopper.Kernal.GH_Component</code> subclass is defined. Your project may contain multiple subclasses of GH_Component if you want to ship multiple components in a single <em>gha</em>.</li>
+  <li><strong>HelloGrasshopperInfo.cs</strong> defines general information about this <em>gha</em>.</li>
 </ol>
 
 <h3 id="debugging">Debugging</h3>
@@ -499,7 +500,7 @@
 
 <h2 id="related-topics">Related topics</h2>
 
-<p>This article is focused on initial setup and debugging on Mac Rhino. For further reading on customizing your component please see: <strong>TODOO - provide good reference for component development</strong></p>
+<p>This article is focused on initial setup and debugging a Grasshopper component in Rhino for Mac.  For further reading on customizing your component please see: <strong>TODO - provide good reference for component development</strong></p>
 
 <ul>
   <li><a href="/wip/guides/rhinocommon/installing_tools_mac">Installing Tools (Mac)</a></li>
