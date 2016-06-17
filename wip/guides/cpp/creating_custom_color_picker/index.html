@@ -264,7 +264,7 @@
 
 <p>The following sample code demonstrates how to replace Rhino’s color picking dialog.  In this example, we will simply replace it with the Windows standard color picking dialog…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CMyColorDialog</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoReplaceColorDialog</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CMyColorDialog</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoReplaceColorDialog</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">CMyColorDialog</span><span class="p">()</span> <span class="o">:</span> <span class="n">CRhinoReplaceColorDialog</span><span class="p">(</span><span class="o">::</span><span class="n">AfxGetStaticModuleState</span><span class="p">())</span> <span class="p">{};</span>
@@ -286,7 +286,7 @@
 
 <p>Now, create a new Rhino command and add a pointer to the above class as a public data member. Do not forget to initialize it’s value to <code class="highlighter-rouge">NULL</code> in the command classes constructor.  For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CMyColorDialog</span><span class="o">*</span> <span class="n">m_pMyColorDialog</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CMyColorDialog</span><span class="o">*</span> <span class="n">m_pMyColorDialog</span><span class="p">;</span>
 <span class="c1">// ...
 </span><span class="n">CTestCommand</span><span class="o">::</span><span class="n">CTestCommand</span><span class="p">()</span> <span class="o">:</span> <span class="n">pMyColorDialog</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{}</span>
 </code></pre>
@@ -294,7 +294,7 @@
 
 <p>Finally, in your new command classes <code class="highlighter-rouge">RunCommand()</code> member, install the new color picker.  For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span> <span class="n">m_pMyColorDialog</span> <span class="p">)</span>
   <span class="p">{</span>

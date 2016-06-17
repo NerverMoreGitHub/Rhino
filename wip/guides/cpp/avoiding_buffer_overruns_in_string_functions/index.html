@@ -276,7 +276,7 @@
 
 <p>Consider the following function:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">GetName</span><span class="p">(</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">pInput</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">GetName</span><span class="p">(</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">pInput</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">pBuffer</span> <span class="o">=</span> <span class="p">(</span><span class="kt">wchar_t</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
   <span class="n">wcscpy</span><span class="p">(</span> <span class="n">pBuffer</span><span class="p">,</span> <span class="n">pInput</span> <span class="p">);</span> <span class="c1">// might overrun buffer!
@@ -292,7 +292,7 @@
 
 <p>Add a <code class="highlighter-rouge">size_t</code> argument for buffer size…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Pass pointer to buffer and buffer size
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">// Pass pointer to buffer and buffer size
 </span><span class="kt">int</span> <span class="n">GetName</span><span class="p">(</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">buffer_size</span> <span class="p">);</span>
 
 <span class="c1">// Ex:
@@ -322,7 +322,7 @@
 
 <p>Change buffer argument to use a string object reference…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Pass a reference to a ON_wString object
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">// Pass a reference to a ON_wString object
 </span><span class="kt">int</span> <span class="n">GetName</span><span class="p">(</span> <span class="n">ON_wString</span><span class="o">&amp;</span> <span class="n">str</span> <span class="p">);</span>
 <span class="c1">// Pass a reference to a CString object
 </span><span class="kt">int</span> <span class="n">GetName</span><span class="p">(</span> <span class="n">CString</span><span class="o">&amp;</span> <span class="n">str</span> <span class="p">);</span>
@@ -339,7 +339,7 @@
 
 <p>…change buffer argument to a fixed size array reference…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Pass a reference to a fixed size array
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">// Pass a reference to a fixed size array
 </span><span class="kt">int</span> <span class="n">GetName</span><span class="p">(</span> <span class="kt">wchar_t</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">)[</span><span class="mi">100</span><span class="p">]</span> <span class="p">);</span>
 
 <span class="c1">// Ex:
@@ -350,7 +350,7 @@
 
 <p>Change buffer point argument to reference to a pointer…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Pass a reference to a pointer
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">// Pass a reference to a pointer
 // API allocates buffer, caller required to free it
 </span><span class="kt">int</span> <span class="n">GetName</span><span class="p">(</span> <span class="kt">wchar_t</span><span class="o">*&amp;</span> <span class="n">pBuffer</span> <span class="p">);</span>
 

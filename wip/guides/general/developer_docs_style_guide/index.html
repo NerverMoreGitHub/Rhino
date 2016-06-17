@@ -241,6 +241,15 @@
                                 
                                 
                                 <li>
+                                    <a href="#site-file-naming">Site file naming</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
                                     <a href="#division-of-content">Division of content</a>
                                 </li>
                               
@@ -584,6 +593,14 @@
 
 <h2 id="conventions">Conventions</h2>
 
+<h3 id="site-file-naming">Site file naming</h3>
+
+<p>The naming convention for files - guides, samples, etc - is lowercase with <code class="highlighter-rouge">_</code> used as spaces.  This leads to more consistent and legible URLs.  For example, consider the name of this guide: “Developer Docs Style Guide”.  The file name for this guide is <code class="highlighter-rouge">developer_docs_style_guide</code>.</p>
+
+<p>In general, when considering new file names for <em>guides</em>, please imagine you are saying “Guide to _____”.  This often leads to verbs ending in “-ing”, the progressive or continuous verb tense.  Obviously, this is not a hard-and-fast rule, but rather a convention.</p>
+
+<p>In general, when considering new file names for <em>samples</em>, please imagine you are saying “_____ sample”.  As with guides, this is not a hard-and-fast rule, but rather a general convention.</p>
+
 <h3 id="division-of-content">Division of content</h3>
 
 <p><code class="highlighter-rouge"># Title</code> become H1 headers and are reserved for the title of the page only.</p>
@@ -627,7 +644,7 @@
 
 <p>Headers are created like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">## Headers</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1">## Headers</span>
 </code></pre>
 </div>
 
@@ -637,13 +654,13 @@
 
 <p>For headers with multiple words, Kramdown lowercases all the words and adds dashes for spaces. For example, if we had a header like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">## All Your Base Are Belong to Us</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1">## All Your Base Are Belong to Us</span>
 </code></pre>
 </div>
 
 <p>the resulting html anchor tag would be:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">#all-your-base-are-belong-to-us</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1">#all-your-base-are-belong-to-us</span>
 </code></pre>
 </div>
 
@@ -655,7 +672,7 @@
 
 <p>Sub Headers are created like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">### Sub Header</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1">### Sub Header</span>
 </code></pre>
 </div>
 
@@ -671,19 +688,19 @@
 
 <p>For example, to get the main title to show up in the TOC, you would type this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1"># The Title</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># The Title</span>
 </code></pre>
 </div>
 
 <p>To get a Header to show up in the TOC, you would type this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">## Cool Header</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1">## Cool Header</span>
 </code></pre>
 </div>
 
 <p>To get a Sub Header to show up in the TOC, you would type this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">### Sweet Sub Header</span>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1">### Sweet Sub Header</span>
 </code></pre>
 </div>
 
@@ -730,7 +747,7 @@
 
 <p>…followed by the code…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span> <span class="nf">AddCircle</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span> <span class="nf">AddCircle</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">Rhino</span><span class="p">.</span><span class="n">Geometry</span><span class="p">.</span><span class="n">Point3d</span> <span class="n">center</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Geometry</span><span class="p">.</span><span class="nf">Point3d</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
   <span class="k">const</span> <span class="kt">double</span> <span class="n">radius</span> <span class="p">=</span> <span class="m">10.0</span><span class="p">;</span>
@@ -934,7 +951,7 @@
 
 <p>Here is an example of using HTML elements:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"float: right"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"float: right"</span><span class="nt">&gt;</span>
 Something that stays right and is not wrapped in a para.
 <span class="nt">&lt;/div&gt;</span>
 
@@ -988,7 +1005,7 @@ This can contain only <em>span</em> level elements.
 
 <p>Warnings are used in text to call out major traps, gotchas, or caveats in guides.  HTML is required to create warnings.  For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bs-callout bs-callout-danger"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bs-callout bs-callout-danger"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;h4&gt;</span>WARNING<span class="nt">&lt;/h4&gt;</span>
   <span class="nt">&lt;p&gt;&lt;b&gt;</span>Early-adopters<span class="nt">&lt;/b&gt;</span>: the following steps will <span class="nt">&lt;b&gt;</span>NOT<span class="nt">&lt;/b&gt;</span> work with the currently released Rhinoceros (5.x.x).  You will need to use WIP version of Rhinoceros.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
@@ -1078,7 +1095,7 @@ This can contain only <em>span</em> level elements.
 
 <p>To create new anchors within the site, you can use html inline.  For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"top"</span><span class="nt">&gt;&lt;/a&gt;</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"top"</span><span class="nt">&gt;&lt;/a&gt;</span>
 </code></pre>
 </div>
 
@@ -1150,7 +1167,7 @@ This can contain only <em>span</em> level elements.
 
 <p>HTML is not only supported on the block-level but also on the span-level:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>This is <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">"color: red"</span><span class="nt">&gt;</span>written in red<span class="nt">&lt;/span&gt;</span>.
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>This is <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">"color: red"</span><span class="nt">&gt;</span>written in red<span class="nt">&lt;/span&gt;</span>.
 </code></pre>
 </div>
 
@@ -1164,7 +1181,7 @@ This can contain only <em>span</em> level elements.
 
 <p>As with a block-level element you can assign any attribute to a span-level elements using a <em>span inline attribute list</em> (or short: span IAL). A span IAL has the same syntax as a block IAL and must immediately follow the span-level element:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>This is *red*{: style="color: red"}.
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>This is *red*{: style="color: red"}.
 </code></pre>
 </div>
 
@@ -1180,7 +1197,7 @@ This can contain only <em>span</em> level elements.
 
 <p>For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">$$</span><span class="nb">y </span><span class="o">=</span><span class="nb"> </span><span class="p">{</span><span class="nv">\sqrt</span><span class="p">{</span><span class="nb">x</span><span class="p">^</span><span class="m">2</span><span class="o">+(</span><span class="nb">x</span><span class="o">-</span><span class="m">1</span><span class="o">)</span><span class="p">}</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> x</span><span class="o">-</span><span class="m">3</span><span class="p">}</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\left</span><span class="nb">| </span><span class="m">2</span><span class="nb">x </span><span class="nv">\over</span><span class="nb"> x</span><span class="p">^{</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">x</span><span class="p">}</span><span class="nb"> </span><span class="nv">\right</span><span class="nb">|</span><span class="p">$$</span>
+<div class="language-LaTeX highlighter-rouge"><pre class="highlight"><code><span class="p">$$</span><span class="nb">y </span><span class="o">=</span><span class="nb"> </span><span class="p">{</span><span class="nv">\sqrt</span><span class="p">{</span><span class="nb">x</span><span class="p">^</span><span class="m">2</span><span class="o">+(</span><span class="nb">x</span><span class="o">-</span><span class="m">1</span><span class="o">)</span><span class="p">}</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> x</span><span class="o">-</span><span class="m">3</span><span class="p">}</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\left</span><span class="nb">| </span><span class="m">2</span><span class="nb">x </span><span class="nv">\over</span><span class="nb"> x</span><span class="p">^{</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">x</span><span class="p">}</span><span class="nb"> </span><span class="nv">\right</span><span class="nb">|</span><span class="p">$$</span>
 </code></pre>
 </div>
 

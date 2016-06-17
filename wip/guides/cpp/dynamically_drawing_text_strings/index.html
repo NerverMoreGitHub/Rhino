@@ -286,7 +286,7 @@
 
 <p>The following example code demonstrates how to derive a new class from <code class="highlighter-rouge">CRhinoGetPoint</code>, override the <code class="highlighter-rouge">CRhinoGetPoint::DynamicDraw</code> member, and draw text dynamically.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CDrawStringGetPoint</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetPoint</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CDrawStringGetPoint</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetPoint</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">CDrawStringGetPoint</span><span class="p">()</span> <span class="p">{}</span>
@@ -321,7 +321,7 @@
 
 <p>You can use the above class as you would a <code class="highlighter-rouge">CRhinoGetPoint</code> object.  Just create a new <code class="highlighter-rouge">CDrawStringGetPoint</code> object, initialize the class by calling base class members, and call it’s <code class="highlighter-rouge">GetPoint</code> member.  For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CDrawStringGetPoint</span> <span class="n">gp</span><span class="p">;</span>
   <span class="n">gp</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Pick test point"</span> <span class="p">);</span>

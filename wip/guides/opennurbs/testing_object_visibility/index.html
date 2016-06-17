@@ -300,7 +300,7 @@
 
 <p>The following example code can be used to detect an object’s true visibility when using the openNURBS toolkit:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">bool</span> <span class="nf">IsLayerVisible</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_ObjectArray</span><span class="o">&lt;</span><span class="n">ON_Layer</span><span class="o">&gt;&amp;</span> <span class="n">layer_table</span><span class="p">,</span> <span class="kt">int</span> <span class="n">layer_index</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">bool</span> <span class="nf">IsLayerVisible</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_ObjectArray</span><span class="o">&lt;</span><span class="n">ON_Layer</span><span class="o">&gt;&amp;</span> <span class="n">layer_table</span><span class="p">,</span> <span class="kt">int</span> <span class="n">layer_index</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
   <span class="c1">// Validate the layer index
@@ -349,7 +349,7 @@
 
 <p>You can test the above static functions by adding the following sample code to the <em>Example_Read</em> project included with the openNURBS toolkit:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// create a text dump of the model
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">// create a text dump of the model
 </span><span class="k">if</span> <span class="p">(</span> <span class="n">bVerboseTextDump</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="c1">//dump-&gt;PushIndent();

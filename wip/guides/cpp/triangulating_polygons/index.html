@@ -280,7 +280,7 @@
 
 <p>The following sample code demonstrates how to triangulate a closed planar polygon that has more than three sides using the <code class="highlighter-rouge">RhinoTriangulate3dPolygon</code> function.  Although this sample demonstrates the function on polyline curves, the code could be easily converted to work on mesh vertices.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
   <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select closed planar polygon to triangulate"</span> <span class="p">);</span>

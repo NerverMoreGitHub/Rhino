@@ -285,7 +285,7 @@
 
 <p>The following code sample demonstrates how to override the default “color by layer” behavior and set an object to use “color by object.”</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span><span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
   <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select object"</span> <span class="p">);</span>
@@ -320,7 +320,7 @@
 
 <p>When adding new objects using the C/C++ SDK, you can specify the attributes of the object when adding it to Rhino.  Thus, if you want to override the default color behavior for new objects, just get a copy of the active document’s default new object attributes, modify it in whatever way you want, and pass it (along with the geometry) to the appropriate object creation function…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span><span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">ON_Circle</span> <span class="n">circle</span><span class="p">;</span>
   <span class="n">circle</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span> <span class="n">RhinoActiveCPlane</span><span class="p">(),</span> <span class="mf">5.0</span> <span class="p">);</span>

@@ -291,7 +291,7 @@
 
 <p>The following example code demonstrates how to add command line options to some user interaction.  In this example, we use the <code class="highlighter-rouge">CRhinoGetOption</code> class, which is only capable of displaying command line options.  But, we could have used any of the above <code class="highlighter-rouge">CRhinoGet</code> derived classes.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTestOptions</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span><span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTestOptions</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CRhinoCommandOptionValue</span> <span class="n">list_items</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
   <span class="n">list_items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">RHCMDOPTVALUE</span><span class="p">(</span><span class="s">L"Item0"</span><span class="p">);</span>

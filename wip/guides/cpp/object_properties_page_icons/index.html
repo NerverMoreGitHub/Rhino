@@ -290,7 +290,7 @@
 
 <p>Derive your custom object properties page from <code class="highlighter-rouge">CRhinoObjectPropertiesDialogPageEx</code>, which has a virtual <code class="highlighter-rouge">Icon()</code> member that you must override and implement.  You will want to implement this virtual function as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">HICON</span> <span class="n">CTestObjectPropertiesPageExDlg</span><span class="o">::</span><span class="n">Icon</span><span class="p">()</span> <span class="k">const</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">HICON</span> <span class="n">CTestObjectPropertiesPageExDlg</span><span class="o">::</span><span class="n">Icon</span><span class="p">()</span> <span class="k">const</span>
 <span class="p">{</span>
   <span class="n">AFX_MANAGE_STATE</span><span class="p">(</span> <span class="n">AfxGetStaticModuleState</span><span class="p">()</span> <span class="p">);</span>
   <span class="k">return</span> <span class="p">(</span><span class="n">HICON</span><span class="p">)</span><span class="o">::</span><span class="n">LoadImage</span><span class="p">(</span><span class="n">AfxGetInstanceHandle</span><span class="p">(),</span> <span class="n">MAKEINTRESOURCE</span><span class="p">(</span><span class="n">IDI_OBJPROPPAGE_DIALOG</span><span class="p">),</span> <span class="n">IMAGE_ICON</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="n">LR_SHARED</span><span class="p">);</span>

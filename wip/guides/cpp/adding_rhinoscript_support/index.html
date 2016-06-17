@@ -379,7 +379,7 @@ Once the Appwizard has completed creating the skeleton project, build the projec
 
 <p>The <em>Add Method Wizard</em> will create a placeholder for our <code class="highlighter-rouge">AddPoint</code> method in <em>TestScriptObject.cpp</em>.  Add the following code to your new method:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">VARIANT</span> <span class="n">CTestScriptObject</span><span class="o">::</span><span class="n">AddPoint</span><span class="p">(</span><span class="n">VARIANT</span><span class="o">*</span> <span class="n">vaPoint</span><span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">VARIANT</span> <span class="n">CTestScriptObject</span><span class="o">::</span><span class="n">AddPoint</span><span class="p">(</span><span class="n">VARIANT</span><span class="o">*</span> <span class="n">vaPoint</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">VARIANT</span> <span class="n">vaResult</span><span class="p">;</span>
   <span class="n">VariantInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vaResult</span><span class="p">);</span>
@@ -420,7 +420,7 @@ Once the Appwizard has completed creating the skeleton project, build the projec
 
 <p>Now that you have a COM object that implements <code class="highlighter-rouge">IDispatch</code> and has at least one method, we can allow access to it.  The easiest way is to put a copy of your new COM object on your plugin object as a data member.  For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CTestScriptPlugIn</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoUtilityPlugIn</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CTestScriptPlugIn</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoUtilityPlugIn</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">CTestScriptPlugIn</span><span class="p">();</span>
@@ -445,7 +445,7 @@ Once the Appwizard has completed creating the skeleton project, build the projec
 
 <p>Then, allow access to the object by overriding the <code class="highlighter-rouge">GetPlugInObjectInterface()</code> virtual function.  For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">LPUNKNOWN</span> <span class="n">CTestScriptPlugIn</span><span class="o">::</span><span class="n">GetPlugInObjectInterface</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_UUID</span><span class="o">&amp;</span> <span class="n">iid</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">LPUNKNOWN</span> <span class="n">CTestScriptPlugIn</span><span class="o">::</span><span class="n">GetPlugInObjectInterface</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_UUID</span><span class="o">&amp;</span> <span class="n">iid</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">LPUNKNOWN</span> <span class="n">lpUnknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 

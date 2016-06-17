@@ -317,7 +317,7 @@
 
 <p>In order to have stable plugins, developers must follow the rules for using <code class="highlighter-rouge">CRhinoDoc::AddCustomUndoEvent</code>…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Description:
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">// Description:
 //   If you want to your plugin to do something when the Rhino
 //   Undo/Redo command runs, the call AddCustomUndoEvent during
 //   your command.
@@ -353,7 +353,7 @@
 
 <p>This “plugin” has one piece of data, the account balance, and two commands, <em>EarnTenEuros</em> and <em>SpendFiveEuros</em>.  The commands use <code class="highlighter-rouge">CUndoEuroTransaction</code> class to provide integrated Undo/Redo support…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">////////////////////////////////////////////////////////////////
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 //
 // BEGIN CUndoEuroTransaction class definition
@@ -502,7 +502,7 @@
 
 <p>Using an event watcher to monitor undo events…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">////////////////////////////////////////////////////////////////
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 //
 // BEGIN CMyUndoSnooper undo event watcher

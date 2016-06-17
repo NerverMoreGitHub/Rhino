@@ -407,13 +407,13 @@
 
 <p>We define the <code class="highlighter-rouge">RH_C_FUNCTION</code> macro directive like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#define RH_C_FUNCTION extern "C" __declspec(dllexport)
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#define RH_C_FUNCTION extern "C" __declspec(dllexport)
 </span></code></pre>
 </div>
 
 <p>A typical exported C function will look like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_FUNCTION</span> <span class="kt">int</span> <span class="nf">ON_Brep_SplitEdgeAtParameters</span><span class="p">(</span><span class="n">ON_Brep</span><span class="o">*</span> <span class="n">pBrep</span><span class="p">,</span> <span class="kt">int</span> <span class="n">edge_index</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="cm">/*ARRAY*/</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">parameters</span><span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_FUNCTION</span> <span class="kt">int</span> <span class="nf">ON_Brep_SplitEdgeAtParameters</span><span class="p">(</span><span class="n">ON_Brep</span><span class="o">*</span> <span class="n">pBrep</span><span class="p">,</span> <span class="kt">int</span> <span class="n">edge_index</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="cm">/*ARRAY*/</span><span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">parameters</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">pBrep</span> <span class="o">&amp;&amp;</span> <span class="n">count</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">parameters</span><span class="p">)</span>
@@ -425,7 +425,7 @@
 
 <p>Inside <em>AutoNativeMethods.cs</em>, in an <code class="highlighter-rouge">_internal partial class_</code> called <code class="highlighter-rouge">UnsafeNativeMethods</code>, <em>methodgen.exe</em> will create these lines of code:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="na">[DllImport(Import.lib, CallingConvention=CallingConvention.Cdecl )]</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="na">[DllImport(Import.lib, CallingConvention=CallingConvention.Cdecl )]</span>
 <span class="k">internal</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">int</span> <span class="nf">ON_Brep_SplitEdgeAtParameters</span><span class="p">(</span><span class="n">IntPtr</span> <span class="n">pBrep</span><span class="p">,</span> <span class="kt">int</span> <span class="n">edgeIndex</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="kt">double</span><span class="p">[]</span> <span class="n">parameters</span><span class="p">);</span>
 </code></pre>
 </div>
@@ -449,7 +449,7 @@
 
 <p>For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="o">:</span> <span class="kt">int</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="o">:</span> <span class="kt">int</span>
 <span class="p">{</span>
   <span class="n">mbcHasVertexNormals</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
   <span class="n">mbcHasFaceNormals</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
@@ -464,7 +464,7 @@
 
 <p>This can then be used in <code class="highlighter-rouge">RH_C_FUNCTION</code> lines:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_FUNCTION</span> <span class="n">bool</span> <span class="nf">ON_Mesh_GetBool</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">pMesh</span><span class="p">,</span> <span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="n">which</span><span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_FUNCTION</span> <span class="n">bool</span> <span class="nf">ON_Mesh_GetBool</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">pMesh</span><span class="p">,</span> <span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="n">which</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">pMesh</span><span class="p">)</span>
@@ -483,7 +483,7 @@
 
 <p>and will result in this C# enum and the possibility to call it without using any enum value (just the field name)…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">internal</span> <span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="p">:</span> <span class="kt">int</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">internal</span> <span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="p">:</span> <span class="kt">int</span>
 <span class="p">{</span>
   <span class="n">HasVertexNormals</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
   <span class="n">HasFaceNormals</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
@@ -513,7 +513,7 @@
 
 <p>Again, every <em>.h</em> and <em>.cpp</em> file in <em>lib_C_dir</em> is parsed, looking for lines starting with <code class="highlighter-rouge">RH_C_SHARED_ENUM_PARSE_FILE</code>. <code class="highlighter-rouge">RH_C_SHARED_ENUM_PARSE_FILE</code> can be defined by you as an empty macro:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#define RH_C_SHARED_ENUM_PARSE_FILE(path)
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#define RH_C_SHARED_ENUM_PARSE_FILE(path)
 #define RH_C_SHARED_ENUM_PARSE_FILE3(path, sectionPrefix, sectionSuffix)
 </span></code></pre>
 </div>
@@ -522,7 +522,7 @@
 
 <p>The complete <code class="highlighter-rouge">RH_C_SHARED_ENUM</code> syntax will look like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#pragma region RH_C_SHARED_ENUM [full_cpp_type] [full_cs_type] [options]
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#pragma region RH_C_SHARED_ENUM [full_cpp_type] [full_cs_type] [options]
 </span>   <span class="c1">//... enum
 </span><span class="cp">#pragma endregion
 </span></code></pre>
@@ -566,13 +566,13 @@
 
 <p>To illustrate the above rules in action, in a parsed file, place:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_SHARED_ENUM_PARSE_FILE3</span><span class="p">(</span><span class="s">"../../../opennurbs/opennurbs_subd.h"</span><span class="p">,</span> <span class="s">"#if OPENNURBS_SUBD_WIP"</span><span class="p">,</span> <span class="s">"#endif"</span><span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_SHARED_ENUM_PARSE_FILE3</span><span class="p">(</span><span class="s">"../../../opennurbs/opennurbs_subd.h"</span><span class="p">,</span> <span class="s">"#if OPENNURBS_SUBD_WIP"</span><span class="p">,</span> <span class="s">"#endif"</span><span class="p">)</span>
 </code></pre>
 </div>
 
 <p>Then, within that <em>opennurbs_subd.h</em> file:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#pragma region RH_C_SHARED_ENUM [ON_SubD::SubDType] [Rhino.Geometry.SubD.SubDType] [nested:byte]
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#pragma region RH_C_SHARED_ENUM [ON_SubD::SubDType] [Rhino.Geometry.SubD.SubDType] [nested:byte]
 </span><span class="c1">/// &lt;summary&gt;
 /// Subdivision algorithm.
 /// &lt;/summary&gt;  

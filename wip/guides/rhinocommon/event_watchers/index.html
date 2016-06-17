@@ -278,7 +278,7 @@
 
 <p>Here is a C# sample of <code class="highlighter-rouge">RhinoDoc.AddRhinoObject</code> event handler that handles the thrown exception when called from a thread other than the UI thread…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">rhinoObjectAdded</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">rhinoObjectAdded</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">var</span> <span class="n">msg</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
         <span class="n">Thread</span><span class="p">.</span><span class="n">CurrentThread</span><span class="p">.</span><span class="n">ManagedThreadId</span><span class="p">,</span>
@@ -302,7 +302,7 @@
 
 <p>This is where <code class="highlighter-rouge">Dispatcher.Invoke</code> or <code class="highlighter-rouge">Dispatcher.BeginInvoke</code> comes into play. You can force the code that modifies the control to run from the UI thread. Here is a C# sample of how to do this…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">rhinoObjectAddedSafe</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">rhinoObjectAddedSafe</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">var</span> <span class="n">msg</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
         <span class="n">Thread</span><span class="p">.</span><span class="n">CurrentThread</span><span class="p">.</span><span class="n">ManagedThreadId</span><span class="p">,</span>
@@ -327,7 +327,7 @@
 
 <p>The above function could be rewritten to just always call the delegate…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">rhinoObjectAddedSafe</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">rhinoObjectAddedSafe</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">var</span> <span class="n">msg</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
         <span class="n">Thread</span><span class="p">.</span><span class="n">CurrentThread</span><span class="p">.</span><span class="n">ManagedThreadId</span><span class="p">,</span>
@@ -346,7 +346,7 @@
 
 <p>Here is the complete example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Rhino</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Rhino.Commands</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Rhino.DocObjects</span><span class="p">;</span>

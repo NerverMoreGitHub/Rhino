@@ -294,7 +294,7 @@
 
 <p>If the transformation is not a similarity, then convert the geometry into a form that can be accurately modified.  This can be done by using the <code class="highlighter-rouge">ON_Geometry::MakeDeformable()</code> override on the geometric object…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span> <span class="n">bNeedXform</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span> <span class="n">bNeedXform</span> <span class="p">)</span>
 <span class="p">{</span>
  <span class="c1">// If not a similarity transformation, make sure geometry
 </span> <span class="c1">// can be deformed. Generally, this involves convert non-NURBS
@@ -312,7 +312,7 @@
 
 <p>The following sample explodes a block in a 3dm file using the method outlined above…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include "../opennurbs.h"
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#include "../opennurbs.h"
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]</span> <span class="p">)</span>
 <span class="p">{</span>

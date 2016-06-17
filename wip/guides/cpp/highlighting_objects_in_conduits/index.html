@@ -278,7 +278,7 @@
 
 <p>Consider the following sample <code class="highlighter-rouge">CRhinoDisplayConduit</code> derived class:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CTestHighlightCurveConduit</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoDisplayConduit</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CTestHighlightCurveConduit</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoDisplayConduit</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">CTestHighlightCurveConduit</span><span class="p">();</span>
@@ -324,7 +324,7 @@
 
 <p>To use this conduit, you could write a command such as this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTestHighlightCurve</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTestHighlightCurve</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
   <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select curve to highlight"</span> <span class="p">);</span>

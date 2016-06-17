@@ -264,7 +264,7 @@
 
 <p>Mistakes using the <code class="highlighter-rouge">sizeof</code> operator when dealing with UNICODE strings is very common.  For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">char</span> <span class="n">szBuffer</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">char</span> <span class="n">szBuffer</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span>
 <span class="n">GetWindowText</span><span class="p">(</span> <span class="n">hWnd</span><span class="p">,</span> <span class="n">szBuffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">szBuffer</span><span class="p">)</span> <span class="p">);</span> <span class="c1">// OK
 </span>
 <span class="kt">wchar_t</span> <span class="n">wszBuffer</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span>
@@ -276,14 +276,14 @@
 
 <p>The following is the proper method for using the sizeof operator when using UNICODE text strings…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">wchar_t</span> <span class="n">wszBuffer</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">wchar_t</span> <span class="n">wszBuffer</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span>
 <span class="n">GetWindowText</span><span class="p">(</span> <span class="n">hWnd</span><span class="p">,</span> <span class="n">wszBuffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">wszBuffer</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">wchar_t</span><span class="p">)</span> <span class="p">);</span>
 </code></pre>
 </div>
 
 <p>If you find yourself writing the above statement frequently, you might consider adding the following macro to your project:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#define _countof(array) (sizeof(array)/sizeof(array[0]))
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#define _countof(array) (sizeof(array)/sizeof(array[0]))
 </span>
 <span class="kt">wchar_t</span> <span class="n">wszBuffer</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span>
 <span class="n">GetWindowText</span><span class="p">(</span> <span class="n">hWnd</span><span class="p">,</span> <span class="n">wszBuffer</span><span class="p">,</span> <span class="n">_countof</span><span class="p">(</span><span class="n">wszBuffer</span><span class="p">)</span> <span class="p">);</span>
@@ -294,7 +294,7 @@
 
 <p>To be safe in all cases, you should use the following convention when dealing with TCHARs:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">TCHAR</span> <span class="n">tchBuffer</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">TCHAR</span> <span class="n">tchBuffer</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span>
 <span class="n">GetWindowText</span><span class="p">(</span> <span class="n">hWnd</span><span class="p">,</span> <span class="n">tchBuffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">tchBuffer</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="n">TCHAR</span><span class="p">)</span> <span class="p">);</span>
 </code></pre>
 </div>

@@ -284,7 +284,7 @@
 
 <p>The following sample demonstrates how to derive a new class from <code class="highlighter-rouge">CRhinoGetPoint</code> and override <code class="highlighter-rouge">OnMouseMove()</code> and <code class="highlighter-rouge">DynamicDraw()</code> to dynamically draw geometry.  In this sample, we are going to dynamically draw a circle while the user is specifying its radius.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CGetCircleRadiusPoint</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetPoint</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CGetCircleRadiusPoint</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetPoint</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">CGetCircleRadiusPoint</span><span class="p">();</span>
@@ -357,7 +357,7 @@
 
 <p>Finally, here is our <code class="highlighter-rouge">CRhinoGetPoint</code> derived class in action:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span><span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CRhinoGetPoint</span> <span class="n">gp</span><span class="p">;</span>
   <span class="n">gp</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Center point"</span> <span class="p">);</span>

@@ -295,7 +295,7 @@
 
 <p>To save document user data your plugin must override three PlugIn base class functions:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">PlugIn</span><span class="p">.</span><span class="n">ShouldCallWriteDocument</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">PlugIn</span><span class="p">.</span><span class="n">ShouldCallWriteDocument</span>
 <span class="n">PlugIn</span><span class="p">.</span><span class="n">WriteDocument</span>
 <span class="n">PlugIn</span><span class="p">.</span><span class="n">ReadDocument</span>
 </code></pre>
@@ -323,7 +323,7 @@
 
 <p>In the case that you want to write your own private custom user data, you would derive a class from <code class="highlighter-rouge">Rhino.DocObjects.Custom.UserData</code>. Here’s a sample:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Rhino</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span>
 

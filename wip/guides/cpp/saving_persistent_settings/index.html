@@ -294,7 +294,7 @@
 
 <p>Lets say we have a sample plugin class declaration that looks something like the following:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CTestPlugIn</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoUtilityPlugIn</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CTestPlugIn</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoUtilityPlugIn</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">CTestPlugIn</span><span class="p">();</span>
@@ -321,14 +321,14 @@
 
 <p>Simply, overload the <code class="highlighter-rouge">CRhinoPlugIn::LoadProfile</code> and <code class="highlighter-rouge">CRhinoPlugIn::SaveProfile</code> virtual functions by adding the the following public declarations to our plugin class:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="n">LoadProfile</span><span class="p">(</span> <span class="n">LPCTSTR</span> <span class="n">lpszSection</span><span class="p">,</span> <span class="n">CRhinoProfileContext</span><span class="o">&amp;</span> <span class="n">pc</span> <span class="p">);</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="n">LoadProfile</span><span class="p">(</span> <span class="n">LPCTSTR</span> <span class="n">lpszSection</span><span class="p">,</span> <span class="n">CRhinoProfileContext</span><span class="o">&amp;</span> <span class="n">pc</span> <span class="p">);</span>
 <span class="kt">void</span> <span class="n">SaveProfile</span><span class="p">(</span> <span class="n">LPCTSTR</span> <span class="n">lpszSection</span><span class="p">,</span> <span class="n">CRhinoProfileContext</span><span class="o">&amp;</span> <span class="n">pc</span> <span class="p">);</span>
 </code></pre>
 </div>
 
 <p>Then, provide the definition:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="n">CTestPlugIn</span><span class="o">::</span><span class="n">LoadProfile</span><span class="p">(</span> <span class="n">LPCTSTR</span> <span class="n">lpszSection</span><span class="p">,</span> <span class="n">CRhinoProfileContext</span><span class="o">&amp;</span> <span class="n">pc</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="n">CTestPlugIn</span><span class="o">::</span><span class="n">LoadProfile</span><span class="p">(</span> <span class="n">LPCTSTR</span> <span class="n">lpszSection</span><span class="p">,</span> <span class="n">CRhinoProfileContext</span><span class="o">&amp;</span> <span class="n">pc</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">pc</span><span class="p">.</span><span class="n">LoadProfileBool</span><span class="p">(</span> <span class="n">lpszSection</span><span class="p">,</span> <span class="s">L"value0"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m_value0</span> <span class="p">);</span>
   <span class="n">pc</span><span class="p">.</span><span class="n">LoadProfileInt</span><span class="p">(</span> <span class="n">lpszSection</span><span class="p">,</span> <span class="s">L"value1"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m_value1</span> <span class="p">);</span>

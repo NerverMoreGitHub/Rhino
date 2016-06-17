@@ -533,7 +533,7 @@
 
 <p>If the user chooses not to run your skinned version of Rhino, you might want to prevent your Skin plugin loading.  You can do this by checking to see if the name of the scheme that Rhino is using matches your Skin’s scheme name.  Do this by checking in your plugin’s <code class="highlighter-rouge">CRhinoPlugIn::OnLoadPlugIn()</code> member:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">BOOL</span> <span class="n">CSkinPlugInSamplePlugIn</span><span class="o">::</span><span class="n">OnLoadPlugIn</span><span class="p">()</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">BOOL</span> <span class="n">CSkinPlugInSamplePlugIn</span><span class="o">::</span><span class="n">OnLoadPlugIn</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="n">ON_wString</span> <span class="n">scheme</span> <span class="o">=</span> <span class="n">RhinoApp</span><span class="p">().</span><span class="n">RegistrySchemeName</span><span class="p">();</span>
   <span class="k">if</span><span class="p">(</span> <span class="n">scheme</span><span class="p">.</span><span class="n">CompareNoCase</span><span class="p">(</span><span class="s">L"Scheme: MySkin"</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">)</span>

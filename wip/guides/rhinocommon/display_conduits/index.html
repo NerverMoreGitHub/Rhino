@@ -313,7 +313,7 @@
 
 <p>In the above image, the conduit overrode two event handlers; <code class="highlighter-rouge">CalculateBoundingBox</code> and <code class="highlighter-rouge">PostDrawObjects</code>. In RhinoCommon this conduit would look like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyConduit</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">DisplayConduit</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyConduit</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">DisplayConduit</span>
 <span class="p">{</span>
   <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">CalculateBoundingBoxEventArgs</span> <span class="n">e</span><span class="p">)</span>
   <span class="p">{</span>
@@ -332,14 +332,14 @@
 
 <p>By default, conduits are not enabled but it is easily done by setting the Enabled property of the DisplayConduit to true:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">var</span> <span class="n">conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MyConduit</span><span class="p">();</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">var</span> <span class="n">conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MyConduit</span><span class="p">();</span>
 <span class="n">conduit</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
 </code></pre>
 </div>
 
 <p>Once our conduit is constructed and enabled, the overriden methods will be called whenever the Rhino pipeline raises the event for which our overridden method is registered.  In our case, this method will always be called once with the <code class="highlighter-rouge">CalculateBoundingBox</code> and the <code class="highlighter-rouge">PostDrawObjects</code> events have been raised (the events have the same name as the overridden methods).  Here’s a simple example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyConduit</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">DisplayConduit</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyConduit</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">DisplayConduit</span>
 <span class="p">{</span>
   <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">CalculateBoundingBoxEventArgs</span> <span class="n">e</span><span class="p">)</span>
   <span class="p">{</span>
@@ -360,7 +360,7 @@
 
 <p>Let’s take a look at a more complex drawing routine:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">CalculateBoundingBoxEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">CalculateBoundingBoxEventArgs</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
    <span class="k">base</span><span class="p">.</span><span class="nf">CalculateBoundingBox</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
    <span class="n">e</span><span class="p">.</span><span class="n">BoundingBox</span><span class="p">.</span><span class="nf">Union</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">Viewport</span><span class="p">.</span><span class="nf">ConstructionPlane</span><span class="p">().</span><span class="n">Origin</span><span class="p">);</span>

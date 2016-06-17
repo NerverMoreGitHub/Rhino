@@ -280,7 +280,7 @@
 
 <p>The following example code demonstrates deriving from <code class="highlighter-rouge">CRhinoGetObject</code>.  In this example, we want to allow the user to only select closed polylines…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CRhGetClosedPolylineObject</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetObject</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CRhGetClosedPolylineObject</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetObject</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">bool</span> <span class="n">CustomGeometryFilter</span><span class="p">(</span>
@@ -328,7 +328,7 @@
 
 <p>We can use the above class as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhGetClosedPolylineObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhGetClosedPolylineObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select closed polyline"</span> <span class="p">);</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetGeometryFilter</span><span class="p">(</span> <span class="n">CRhinoGetObject</span><span class="o">::</span><span class="n">curve_object</span> <span class="p">);</span>
 <span class="n">go</span><span class="p">.</span><span class="n">GetObjects</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>

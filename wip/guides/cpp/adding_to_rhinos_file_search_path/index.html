@@ -290,7 +290,7 @@
 
 <p>Rhino’s file search path is held by Rhino’s <code class="highlighter-rouge">CRhinoDirectoryManager</code> object.  You can get the one and only <code class="highlighter-rouge">CRhinoDirectoryManager</code> singleton as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoDirectoryManager</span><span class="o">&amp;</span> <span class="n">dm</span> <span class="o">=</span> <span class="n">RhinoApp</span><span class="p">().</span><span class="n">RhinoDirectoryManager</span><span class="p">();</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoDirectoryManager</span><span class="o">&amp;</span> <span class="n">dm</span> <span class="o">=</span> <span class="n">RhinoApp</span><span class="p">().</span><span class="n">RhinoDirectoryManager</span><span class="p">();</span>
 </code></pre>
 </div>
 
@@ -298,7 +298,7 @@
 
 <p>The following utility function demonstrates how to add (insert append or insert) to Rhino’s file search path:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">RhAddSearchPath</span><span class="p">(</span> <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">pszFolder</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">RhAddSearchPath</span><span class="p">(</span> <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">pszFolder</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
   <span class="k">if</span><span class="p">(</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">pszFolder</span> <span class="o">||</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">pszFolder</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>

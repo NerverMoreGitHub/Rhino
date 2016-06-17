@@ -278,7 +278,7 @@
 
 <p>The first step is to, on your CDialog-drived class, override the <code class="highlighter-rouge">CWnd::PreTranslateMessage</code> virtual function.  This function is used translate window messages before they are dispatched to the <code class="highlighter-rouge">TranslateMessage</code> and <code class="highlighter-rouge">DispatchMessage</code> Windows functions.  Then, add the following block of code:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">BOOL</span> <span class="n">CMyModalDialog</span><span class="o">::</span><span class="n">PreTranslateMessage</span><span class="p">(</span> <span class="n">MSG</span><span class="o">*</span> <span class="n">pMsg</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">BOOL</span> <span class="n">CMyModalDialog</span><span class="o">::</span><span class="n">PreTranslateMessage</span><span class="p">(</span> <span class="n">MSG</span><span class="o">*</span> <span class="n">pMsg</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span> <span class="n">pMsg</span> <span class="p">)</span>
   <span class="p">{</span>
