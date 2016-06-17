@@ -279,7 +279,7 @@
 
 <p>Below is some sample code that draws a 2D arrowhead at the end of a line similar to a leader object.  Perhaps this will give you an idea how to implement arrowhead drawing in your project.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#pragma region SampleDrawArrowheadConduit conduit
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#pragma region SampleDrawArrowheadConduit conduit
 </span>
 <span class="k">class</span> <span class="nc">CSampleDrawArrowheadConduit</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoDisplayConduit</span>
 <span class="p">{</span>
@@ -366,7 +366,7 @@
 
 <p>Here is the above sample conduit used in a test command…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandSampleDrawArrowhead</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandSampleDrawArrowhead</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">ON_Line</span> <span class="n">line</span><span class="p">;</span>
   <span class="n">ON_Plane</span> <span class="n">plane</span><span class="p">;</span>

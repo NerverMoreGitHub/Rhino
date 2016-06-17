@@ -301,7 +301,7 @@
 
 <p>The following sample code demonstrates a simple class, derived from <code class="highlighter-rouge">CRhinoGetPoint</code>, that dynamically draws a polyline based on the points picked by a user.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">/////////////////////////////////////////////////////////////////////////////
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">/////////////////////////////////////////////////////////////////////////////
 // CRhGetPoints declaration
 </span>
 <span class="k">class</span> <span class="nc">CRhGetPoints</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetPoint</span>
@@ -394,7 +394,7 @@
 
 <p>You would use the above class as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CRhGetPoints</span> <span class="n">gp</span><span class="p">;</span>
   <span class="n">CRhinoGet</span><span class="o">::</span><span class="n">result</span> <span class="n">res</span> <span class="o">=</span> <span class="n">gp</span><span class="p">.</span><span class="n">GetPoints</span><span class="p">();</span>

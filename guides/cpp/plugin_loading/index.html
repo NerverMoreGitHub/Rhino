@@ -255,7 +255,7 @@
 
 <p>Rhino plugins are loaded twice.  The first time as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">hModule</span> <span class="o">=</span> <span class="o">::</span><span class="n">LoadLibraryEx</span><span class="p">(</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">hModule</span> <span class="o">=</span> <span class="o">::</span><span class="n">LoadLibraryEx</span><span class="p">(</span>
     <span class="n">lpFileName</span><span class="p">,</span>
     <span class="mi">0</span><span class="p">,</span>
     <span class="n">DONT_RESOLVE_DLL_REFERENCES</span> <span class="o">|</span> <span class="n">LOAD_WITH_ALTERED_SEARCH_PATH</span>
@@ -269,13 +269,13 @@
 
 <p>The plugin module is freed as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">::</span><span class="n">FreeLibrary</span><span class="p">(</span> <span class="n">hModule</span> <span class="p">);</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="o">::</span><span class="n">FreeLibrary</span><span class="p">(</span> <span class="n">hModule</span> <span class="p">);</span>
 </code></pre>
 </div>
 
 <p>If the above was successful, the plugin is loaded for a final time as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">hModule</span> <span class="o">=</span> <span class="o">::</span><span class="n">LoadLibraryEx</span><span class="p">(</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">hModule</span> <span class="o">=</span> <span class="o">::</span><span class="n">LoadLibraryEx</span><span class="p">(</span>
     <span class="n">lpFileName</span><span class="p">,</span>
     <span class="mi">0</span><span class="p">,</span>
     <span class="n">LOAD_WITH_ALTERED_SEARCH_PATH</span>

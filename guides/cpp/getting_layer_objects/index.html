@@ -292,7 +292,7 @@
 
 <h2 id="sample">Sample</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">ON_wString</span> <span class="n">layer_name</span> <span class="o">=</span> <span class="s">L"Default"</span><span class="p">;</span> <span class="c1">// some layer name to search for
 </span>  <span class="kt">int</span> <span class="n">layer_index</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">m_layer_table</span><span class="p">.</span><span class="n">FindLayer</span><span class="p">(</span> <span class="n">layer_name</span> <span class="p">);</span>

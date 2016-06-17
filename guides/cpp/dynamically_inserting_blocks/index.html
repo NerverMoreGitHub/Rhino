@@ -279,7 +279,7 @@
 
 <p>To dynamically insert and draw blocks, you can take advantage of the new display pipeline technology, which is capable of drawing block instance definitions.  For example, the following code demonstrates how to draw a block instance definition from a <code class="highlighter-rouge">CRhinoGetPoint</code>-derived object’s DynamicDraw member…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CGetBlockInsertPoint</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetPoint</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CGetBlockInsertPoint</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetPoint</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">CGetBlockInsertPoint</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoInstanceDefinition</span><span class="o">*</span> <span class="n">idef</span> <span class="p">);</span>
@@ -354,7 +354,7 @@
 
 <p>The following sample code demonstrates how to insert a block definition into the Rhino document and allow the user to interactively pick the insertion point.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="c1">// Prompt for instance definition to insert
 </span>  <span class="n">CRhinoGetString</span> <span class="n">gs</span><span class="p">;</span>

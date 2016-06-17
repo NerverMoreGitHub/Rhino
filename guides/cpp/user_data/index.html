@@ -379,7 +379,7 @@
 
 <p>To save document user data your plugin must override three <code class="highlighter-rouge">CRhinoPlugIn</code> base class functions:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoPlugIn</span><span class="o">::</span><span class="n">CallWriteDocument</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoPlugIn</span><span class="o">::</span><span class="n">CallWriteDocument</span>
 <span class="n">CRhinoPlugIn</span><span class="o">::</span><span class="n">WriteDocument</span>
 <span class="n">CRhinoPlugIn</span><span class="o">::</span><span class="n">ReadDocument</span>
 </code></pre>
@@ -421,7 +421,7 @@
 
 <h3 id="cmyuserdata1">CMyUserData1</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CMyUserData1</span> <span class="o">:</span> <span class="k">public</span> <span class="n">ON_UserData</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CMyUserData1</span> <span class="o">:</span> <span class="k">public</span> <span class="n">ON_UserData</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
 
@@ -445,7 +445,7 @@
 
 <p>The <code class="highlighter-rouge">CMyUserData1</code> class must always be on the heap (constructed by calling the C/C++ new operator).  The class’s constructor must initialize two <code class="highlighter-rouge">ON_UserData</code> fields, <code class="highlighter-rouge">m_userdata_uuid</code>, <code class="highlighter-rouge">m_application_uuid</code>.  In addition, if you want the object user data copied whenever its parent object is copied, you have to set <code class="highlighter-rouge">m_userdata_copycount</code> to one…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">ON_UUID</span> <span class="n">CMyUserData1</span><span class="o">::</span><span class="n">Id</span><span class="p">()</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">ON_UUID</span> <span class="n">CMyUserData1</span><span class="o">::</span><span class="n">Id</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="c1">// Use Microsoft's guidgen to get a unique id.
 </span>  <span class="c1">// {1129B130-B840-...}
@@ -466,7 +466,7 @@
 
 <p>Attaching object user data to a parent object is a simple matter…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">pMesh</span> <span class="o">=</span> <span class="p">...;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">pMesh</span> <span class="o">=</span> <span class="p">...;</span>
 <span class="n">CMyUserData1</span><span class="o">*</span> <span class="n">pMyUserData1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CMyUserData1</span><span class="p">();</span>
 <span class="n">pMyUserData1</span><span class="o">-&gt;</span><span class="n">m_my_string</span> <span class="o">=</span> <span class="s">L"How, now, brown cow?"</span><span class="p">;</span>
 <span class="k">if</span> <span class="p">(</span> <span class="n">pMesh</span><span class="o">-&gt;</span><span class="n">AttachUserData</span><span class="p">(</span><span class="n">pMyUserData1</span><span class="p">)</span> <span class="p">)</span>
@@ -489,7 +489,7 @@
 
 <p>The user data’s <em>UUID</em> is used to retrieve the user data from a parent object…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">pMesh</span> <span class="o">=</span> <span class="p">...;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">pMesh</span> <span class="o">=</span> <span class="p">...;</span>
 <span class="n">ON_UserData1</span><span class="o">*</span> <span class="n">pUserData</span> <span class="o">=</span> <span class="n">pMesh</span><span class="o">-&gt;</span><span class="n">GetUserData</span><span class="p">(</span><span class="n">CMyUserData1</span><span class="o">::</span><span class="n">Id</span><span class="p">());</span>
 <span class="n">CMyUserData1</span><span class="o">**</span> <span class="n">pMyUserData1</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">CMyUserData1</span><span class="o">**&gt;</span><span class="p">(</span><span class="n">pUserData</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span> <span class="n">pMyUserData1</span> <span class="p">)</span>
@@ -509,7 +509,7 @@
 
 <p>To have your user data saved in files, you have to add several IO related functions and add full openNURBS object support to your class…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CMyUserData2</span> <span class="o">:</span> <span class="k">public</span> <span class="n">ON_UserData</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CMyUserData2</span> <span class="o">:</span> <span class="k">public</span> <span class="n">ON_UserData</span>
 <span class="p">{</span>
   <span class="c1">// openNURBS classes that are saved in .3dm files require
 </span>  <span class="c1">// an ON_OBJECT_DECLARE call in their declaration.
@@ -543,13 +543,13 @@
 
 <p>The cpp file where the class is implemented must contain the <code class="highlighter-rouge">ON_OBJECT_IMPLEMENT</code> macro shown here:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">ON_OBJECT_IMPLEMENT</span><span class="p">(</span><span class="n">CMyUserData2</span><span class="p">,</span><span class="n">ON_UserData</span><span class="p">,</span><span class="s">"0D8FA7AB-F8A4-..."</span><span class="p">);</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">ON_OBJECT_IMPLEMENT</span><span class="p">(</span><span class="n">CMyUserData2</span><span class="p">,</span><span class="n">ON_UserData</span><span class="p">,</span><span class="s">"0D8FA7AB-F8A4-..."</span><span class="p">);</span>
 </code></pre>
 </div>
 
 <p>The construction code for <code class="highlighter-rouge">CMyUserData2</code> looks like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">ON_UUID</span> <span class="n">CMyUserData2</span><span class="o">::</span><span class="n">Id</span><span class="p">()</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">ON_UUID</span> <span class="n">CMyUserData2</span><span class="o">::</span><span class="n">Id</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="k">return</span> <span class="n">CMyUserData2</span><span class="o">::</span><span class="n">m_CMyUserData2_class_id</span><span class="p">.</span><span class="n">Uuid</span><span class="p">();</span>
 <span class="p">}</span>
@@ -568,7 +568,7 @@
 
 <p>The <code class="highlighter-rouge">CMyUserData2::Archive()</code>, <code class="highlighter-rouge">CMyUserData2::Read()</code>, <code class="highlighter-rouge">CMyUserData2::Write()</code> functions look something like this…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">BOOL</span> <span class="n">CMyUserData2</span><span class="o">::</span><span class="n">Archive</span><span class="p">()</span> <span class="k">const</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">BOOL</span> <span class="n">CMyUserData2</span><span class="o">::</span><span class="n">Archive</span><span class="p">()</span> <span class="k">const</span>
 <span class="p">{</span>
   <span class="c1">// If false is returned, nothing will be saved in 3dm archives.
 </span>  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
@@ -653,7 +653,7 @@
 
 <p>The main reason you have to explicitly implement a copy constructor and <code class="highlighter-rouge">operator=</code> is to handle fields that involve explicit heap allocation and deallocation.  In the sample below, the field <code class="highlighter-rouge">m_i_array</code> is an array of integers that is on the heap.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CMyUserData3</span> <span class="o">:</span> <span class="k">public</span> <span class="n">ON_UserData</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CMyUserData3</span> <span class="o">:</span> <span class="k">public</span> <span class="n">ON_UserData</span>
 <span class="p">{</span>
   <span class="n">ON_OBJECT_DECLARE</span><span class="p">(</span><span class="n">CMyUserData3</span><span class="p">);</span>
 <span class="k">public</span><span class="o">:</span>
@@ -716,7 +716,7 @@
 
 <p>When the copy constructor is called, the memory for “this” is not initialized.  You must call the base class copy constructor, initialize all your class’s fields, and then copy your class’s fields…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CMyUserData3</span><span class="o">::</span><span class="n">CMyUserData3</span><span class="p">(</span><span class="k">const</span> <span class="n">CMyUserData3</span><span class="o">&amp;</span> <span class="n">src</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CMyUserData3</span><span class="o">::</span><span class="n">CMyUserData3</span><span class="p">(</span><span class="k">const</span> <span class="n">CMyUserData3</span><span class="o">&amp;</span> <span class="n">src</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">m_userdata_uuid</span> <span class="o">=</span> <span class="n">CMyUserData3</span><span class="o">::</span><span class="n">Id</span><span class="p">();</span>
   <span class="n">m_application_uuid</span> <span class="o">=</span> <span class="n">CMyUserData3</span><span class="o">::</span><span class="n">ApplicationId</span><span class="p">();</span>
@@ -746,7 +746,7 @@
 
 <p>When <code class="highlighter-rouge">operator=</code> is called, “this” has already been constructed and may already have been used.  You must destroy any existing information, call the the base class <code class="highlighter-rouge">operator=</code>, and then copy your class’s fields…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CMyUserData3</span><span class="o">&amp;</span> <span class="n">CMyUserData3</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">CMyUserData3</span><span class="o">&amp;</span> <span class="n">src</span><span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CMyUserData3</span><span class="o">&amp;</span> <span class="n">CMyUserData3</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">CMyUserData3</span><span class="o">&amp;</span> <span class="n">src</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span> <span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">src</span> <span class="p">)</span>
   <span class="p">{</span>
@@ -793,7 +793,7 @@
 
 <p>For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">ON_UUID</span> <span class="n">CPlugInUserData</span><span class="o">::</span><span class="n">PlugInId</span><span class="p">()</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">ON_UUID</span> <span class="n">CPlugInUserData</span><span class="o">::</span><span class="n">PlugInId</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="c1">// Copied from PlugIn1PlugIn.cpp
 </span>

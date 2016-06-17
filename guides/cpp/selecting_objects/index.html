@@ -275,7 +275,7 @@
 
 <p>This sample selects a single object…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select object"</span> <span class="p">);</span>
 <span class="n">CRhinoGet</span><span class="o">::</span><span class="n">result</span> <span class="n">res</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">GetObjects</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
 <span class="k">if</span><span class="p">(</span> <span class="n">res</span> <span class="o">==</span> <span class="n">CRhinoGet</span><span class="o">::</span><span class="n">object</span> <span class="p">)</span>
@@ -292,7 +292,7 @@
 
 <p>This sample selects one or more objects…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select objects"</span> <span class="p">);</span>
 <span class="n">CRhinoGet</span><span class="o">::</span><span class="n">result</span> <span class="n">res</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">GetObjects</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span> <span class="p">);</span>
 <span class="k">if</span><span class="p">(</span> <span class="n">res</span> <span class="o">==</span> <span class="n">CRhinoGet</span><span class="o">::</span><span class="n">object</span> <span class="p">)</span>
@@ -313,7 +313,7 @@
 
 <p>This sample selects a single curve object…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select curve"</span> <span class="p">);</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetGeometryFilter</span><span class="p">(</span> <span class="n">CRhinoGetObject</span><span class="o">::</span><span class="n">curve_object</span> <span class="p">);</span>
 <span class="n">CRhinoGet</span><span class="o">::</span><span class="n">result</span> <span class="n">res</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">GetObjects</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>

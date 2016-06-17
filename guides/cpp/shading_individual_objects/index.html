@@ -273,7 +273,7 @@
 
 <p>The following sample code demonstrates how to shade individual objects using the Rhino C/C++ SDK.  This shading is independent of the viewport’s current display mode, or display attribute.  Is is accomplished by adding a <code class="highlighter-rouge">ON_DisplayMaterialRef</code> object to an object’s attributes.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="c1">// Get a list of available display attributes
 </span>  <span class="n">DisplayAttrsMgrList</span> <span class="n">attrs_list</span><span class="p">;</span>

@@ -295,7 +295,7 @@
 
 <p>The following example demonstrates how to periodically test to see if the user pressed the <kbd>ESC</kbd> key by “peeking” in Rhino’s message queue…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//  -1 = Quit Rhino
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//  -1 = Quit Rhino
 //   1 = Escape key pressed
 //   0 = Okay to proceed
 </span><span class="kt">int</span> <span class="nf">EscapeKeyPressed</span><span class="p">()</span>
@@ -324,7 +324,7 @@
 
 <p>The following sample class demonstrates how to hook the Windows keyboard from a Rhino plugin and check for the <kbd>ESC</kbd> key.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//
 // rhinoEscapeKey.h
 //
 </span>
@@ -412,7 +412,7 @@
 
 <p>The following sample code demonstrates using the <code class="highlighter-rouge">CRhinoEscapeKey</code> class within a Rhino command…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CRhinoEscapeKey</span> <span class="n">escape</span><span class="p">;</span>
   <span class="n">escape</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>

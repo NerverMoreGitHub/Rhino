@@ -278,7 +278,7 @@
 
 <p>If you inside of a <code class="highlighter-rouge">CRhinoCommand</code>-derived object’s <code class="highlighter-rouge">RunCommand()</code> member, you can get the current units system as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">const</span> <span class="n">CRhinoDocProperties</span><span class="o">&amp;</span> <span class="n">doc_props</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">Properties</span><span class="p">();</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">const</span> <span class="n">CRhinoDocProperties</span><span class="o">&amp;</span> <span class="n">doc_props</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">Properties</span><span class="p">();</span>
 <span class="k">const</span> <span class="n">ON_3dmUnitsAndTolerances</span><span class="o">&amp;</span> <span class="n">units</span> <span class="o">=</span> <span class="n">doc_props</span><span class="p">.</span><span class="n">ModelUnitsAndTolerances</span><span class="p">();</span>
 <span class="n">ON</span><span class="o">::</span><span class="n">unit_system</span> <span class="n">units_system</span> <span class="o">=</span> <span class="n">units</span><span class="p">.</span><span class="n">m_unit_system</span><span class="p">;</span>
 </code></pre>
@@ -286,13 +286,13 @@
 
 <p>As a shortcut, you can do the following:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">ON</span><span class="o">::</span><span class="n">unit_system</span> <span class="n">units_system</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">UnitSystem</span><span class="p">();</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">ON</span><span class="o">::</span><span class="n">unit_system</span> <span class="n">units_system</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">UnitSystem</span><span class="p">();</span>
 </code></pre>
 </div>
 
 <p>If you outside of a <code class="highlighter-rouge">CRhinoCommand</code>-derived object’s <code class="highlighter-rouge">RunCommand()</code> member, you can get the current units system as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoDoc</span><span class="o">*</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">RhinoApp</span><span class="p">().</span><span class="n">ActiveDoc</span><span class="p">();</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoDoc</span><span class="o">*</span> <span class="n">doc</span> <span class="o">=</span> <span class="n">RhinoApp</span><span class="p">().</span><span class="n">ActiveDoc</span><span class="p">();</span>
 <span class="k">if</span><span class="p">(</span> <span class="n">doc</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">ON</span><span class="o">::</span><span class="n">unit_system</span> <span class="n">units_system</span> <span class="o">=</span> <span class="n">doc</span><span class="o">-&gt;</span><span class="n">UnitSystem</span><span class="p">();</span>

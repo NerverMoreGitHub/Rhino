@@ -275,7 +275,7 @@
 
 <p>Here is a simple example of a function that might work for you:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="kt">int</span> <span class="nf">MyObjectPicker</span><span class="p">(</span> <span class="n">CRhinoDoc</span><span class="o">&amp;</span> <span class="n">doc</span><span class="p">,</span> <span class="n">CRhinoView</span><span class="o">*</span> <span class="n">view</span><span class="p">,</span> <span class="n">POINT</span> <span class="n">point</span><span class="p">,</span> <span class="n">CRhinoObjRefArray</span><span class="o">&amp;</span> <span class="n">pick_list</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="kt">int</span> <span class="nf">MyObjectPicker</span><span class="p">(</span> <span class="n">CRhinoDoc</span><span class="o">&amp;</span> <span class="n">doc</span><span class="p">,</span> <span class="n">CRhinoView</span><span class="o">*</span> <span class="n">view</span><span class="p">,</span> <span class="n">POINT</span> <span class="n">point</span><span class="p">,</span> <span class="n">CRhinoObjRefArray</span><span class="o">&amp;</span> <span class="n">pick_list</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">view</span> <span class="p">)</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -309,7 +309,7 @@
 
 <p>And, here is a sample of its use:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CRhinoGetPoint</span> <span class="n">gp</span><span class="p">;</span>
   <span class="n">gp</span><span class="p">.</span><span class="n">GetPoint</span><span class="p">();</span>

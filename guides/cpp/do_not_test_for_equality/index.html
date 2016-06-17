@@ -255,7 +255,7 @@
 
 <p>You almost never want to write code like the following:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">x</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">x</span><span class="p">;</span>
 <span class="kt">double</span> <span class="n">y</span><span class="p">;</span>
 <span class="p">...</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="p">{...}</span>
@@ -264,7 +264,7 @@
 
 <p>Most floating point operations involve at least a tiny loss of precision and so even if two numbers are equal for all practical purposes, they may not be exactly equal down to the last bit, and so the equality test is likely to fail.  For example, the following code snippet prints <code class="highlighter-rouge">-1.778636e-015</code>.  Although in theory, squaring should undo a square root, the round-trip operation is slightly inaccurate.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 <span class="n">y</span> <span class="o">*=</span> <span class="n">y</span><span class="p">;</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
@@ -276,7 +276,7 @@
 
 <p>In most cases, the equality test above should be written as something like the following:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">tolerance</span> <span class="o">=</span> <span class="p">...</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">double</span> <span class="n">tolerance</span> <span class="o">=</span> <span class="p">...</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">)</span> <span class="p">{...}</span>
 </code></pre>
 </div>

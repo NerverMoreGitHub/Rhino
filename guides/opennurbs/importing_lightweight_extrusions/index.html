@@ -271,7 +271,7 @@
 
 <p>In most cases, you will want to convert the extrusion object to a Brep and then just pass the Brep to the Brep handling code that you’ve already written, for example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">for</span><span class="p">(</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">model</span><span class="p">.</span><span class="n">m_object_table</span><span class="p">.</span><span class="n">Count</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="k">const</span> <span class="n">ONX_Model_Object</span><span class="o">&amp;</span> <span class="n">model_object</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">m_object_table</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>

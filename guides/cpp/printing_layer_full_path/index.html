@@ -273,7 +273,7 @@
 
 <p>The following sample function ought to do the trick:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">ON_wString</span> <span class="nf">RhinoFullLayerPath</span><span class="p">(</span> <span class="n">CRhinoDoc</span><span class="o">&amp;</span> <span class="n">doc</span><span class="p">,</span> <span class="k">const</span> <span class="n">CRhinoLayer</span><span class="o">&amp;</span> <span class="n">layer</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">ON_wString</span> <span class="nf">RhinoFullLayerPath</span><span class="p">(</span> <span class="n">CRhinoDoc</span><span class="o">&amp;</span> <span class="n">doc</span><span class="p">,</span> <span class="k">const</span> <span class="n">CRhinoLayer</span><span class="o">&amp;</span> <span class="n">layer</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">ON_wString</span> <span class="n">layer_path</span><span class="p">;</span>
 
@@ -298,7 +298,7 @@
 
 <p>You can use the function like this…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">ON_wString</span> <span class="n">s</span> <span class="o">=</span> <span class="n">RhinoFullLayerPath</span><span class="p">(</span> <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">,</span> <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">m_layer_table</span><span class="p">.</span><span class="n">CurrentLayer</span><span class="p">()</span> <span class="p">);</span>
   <span class="n">RhinoApp</span><span class="p">().</span><span class="n">Print</span><span class="p">(</span> <span class="s">L"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">Array</span><span class="p">()</span> <span class="p">);</span>

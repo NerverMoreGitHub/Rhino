@@ -267,7 +267,7 @@
 
 <p>You would like to pick a brep component (e.g. face or edge) and then take action depending on what was picked.  If you write an object picker as such:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select face or edge"</span> <span class="p">);</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetGeometryFilter</span><span class="p">(</span> <span class="n">CRhinoGetObject</span><span class="o">::</span><span class="n">surface_object</span> <span class="o">|</span>
 <span class="n">CRhinoGetObject</span><span class="o">::</span><span class="n">edge_object</span> <span class="p">);</span>
@@ -282,7 +282,7 @@
 
 <p>You need to enable “choose one question” to get multiple subobject types on one brep to work.  So, this should work:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select face or edge"</span> <span class="p">);</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetGeometryFilter</span><span class="p">(</span> <span class="n">CRhinoGetObject</span><span class="o">::</span><span class="n">surface_object</span> <span class="o">|</span>
 <span class="n">CRhinoGetObject</span><span class="o">::</span><span class="n">edge_object</span> <span class="p">);</span>

@@ -287,14 +287,14 @@
 
 <p>For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">const</span> <span class="n">CBase</span><span class="o">*</span> <span class="n">a</span> <span class="o">=</span> <span class="p">...;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">const</span> <span class="n">CBase</span><span class="o">*</span> <span class="n">a</span> <span class="o">=</span> <span class="p">...;</span>
 <span class="k">const</span> <span class="n">CDerived</span><span class="o">*</span> <span class="n">b</span> <span class="o">=</span> <span class="n">CDerived</span><span class="o">::</span><span class="n">Cast</span><span class="p">(</span> <span class="n">a</span> <span class="p">);</span>
 </code></pre>
 </div>
 
 <h2 id="samples">Samples</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select something"</span> <span class="p">);</span>
 <span class="n">go</span><span class="p">.</span><span class="n">GetObjects</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
 <span class="k">if</span><span class="p">(</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">success</span> <span class="o">==</span> <span class="n">go</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">()</span> <span class="p">)</span>
@@ -350,7 +350,7 @@
 
 <p>and…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select something"</span> <span class="p">);</span>
 <span class="n">go</span><span class="p">.</span><span class="n">GetObjects</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
 <span class="k">if</span><span class="p">(</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">success</span> <span class="o">==</span> <span class="n">go</span><span class="p">.</span><span class="n">CommandResult</span><span class="p">()</span> <span class="p">)</span>

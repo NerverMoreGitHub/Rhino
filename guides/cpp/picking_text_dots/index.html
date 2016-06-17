@@ -287,7 +287,7 @@
 
 <p>The following example code demonstrates how to derive a new class from <code class="highlighter-rouge">CRhinoGetObject</code> and override the <code class="highlighter-rouge">CustomGeometryFilter</code> virtual function in order to allow for selection of just text dot objects.  That is, those objects whose geometry member is <code class="highlighter-rouge">ON_TextDot</code>…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CGetTextDotObject</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetObject</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CGetTextDotObject</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetObject</span>
 <span class="p">{</span>
   <span class="n">bool</span> <span class="n">CustomGeometryFilter</span><span class="p">(</span>
 <span class="k">const</span> <span class="n">CRhinoObject</span><span class="o">*</span> <span class="n">object</span><span class="p">,</span>
@@ -316,7 +316,7 @@
 
 <p>The following example code demonstrates how you can use the new class…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CGetTextDotObject</span> <span class="n">go</span><span class="p">;</span>
   <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select text dots"</span> <span class="p">);</span>

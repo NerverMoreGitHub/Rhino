@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Advanced Display Settings</title>
+  <meta name="description" content="```cspartial class Examples{  // The following example code demonstrates how to modify advanced display settings using  // the Rhino SDK. In this example, a ...">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/samples/rhinocommon/advanced_display_settings/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/"><img src="/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/">Welcome</a>-->
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                <a class="page-link" href="/guides/">Guides</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/api/">API</a>
+              
+            
+          
+        
+          
+            
+              
+                <a class="page-link" href="/samples/">Samples</a>
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <h3>Advanced Display Settings</h3>
+
+<p></p>
+
+<ul class="nav nav-pills">
+  <li class="active"><a href="#cs" data-toggle="pill">C#</a></li>
+  <li><a href="#vb" data-toggle="pill">VB.NET</a></li>
+  <li><a href="#py" data-toggle="pill">Python</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="language-cs tab-pane fade in active highlighter-rouge" id="cs"><pre class="highlight"><code><span class="k">partial</span> <span class="k">class</span> <span class="nc">Examples</span>
+<span class="p">{</span>
+  <span class="c1">// The following example code demonstrates how to modify advanced display settings using
+</span>  <span class="c1">// the Rhino SDK. In this example, a display mode's mesh wireframe thickness (in pixels)
+</span>  <span class="c1">// will be modified.
+</span>  <span class="k">public</span> <span class="k">static</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span> <span class="nf">AdvancedDisplay</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Use the display attributes manager to build a list of display modes.
+</span>    <span class="c1">// Note, these are copies of the originals...
+</span>    <span class="n">DisplayModeDescription</span><span class="p">[]</span> <span class="n">display_modes</span> <span class="p">=</span> <span class="n">DisplayModeDescription</span><span class="p">.</span><span class="nf">GetDisplayModes</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">display_modes</span><span class="p">==</span><span class="k">null</span> <span class="p">||</span> <span class="n">display_modes</span><span class="p">.</span><span class="n">Length</span><span class="p">&lt;</span><span class="m">1</span> <span class="p">)</span>
+      <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
+
+    <span class="c1">// Construct an options picker so the user can pick which
+</span>    <span class="c1">// display mode they want modified
+</span>    <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="n">GetOption</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetOption</span><span class="p">();</span>
+    <span class="n">go</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Display mode to modify mesh thickness"</span><span class="p">);</span>
+    <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">opt_list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span>
+
+    <span class="k">for</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i</span><span class="p">=</span><span class="m">0</span><span class="p">;</span> <span class="n">i</span><span class="p">&lt;</span><span class="n">display_modes</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++</span> <span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kt">string</span> <span class="n">english_name</span> <span class="p">=</span> <span class="n">display_modes</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">EnglishName</span><span class="p">;</span>
+      <span class="n">english_name</span> <span class="p">=</span> <span class="n">english_name</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">"_"</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+      <span class="n">english_name</span> <span class="p">=</span> <span class="n">english_name</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">" "</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+      <span class="n">english_name</span> <span class="p">=</span> <span class="n">english_name</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">"-"</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+      <span class="n">english_name</span> <span class="p">=</span> <span class="n">english_name</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">","</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+      <span class="n">english_name</span> <span class="p">=</span> <span class="n">english_name</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">"."</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+      <span class="kt">int</span> <span class="n">index</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">AddOption</span><span class="p">(</span><span class="n">english_name</span><span class="p">);</span>
+      <span class="n">opt_list</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Get the command option
+</span>    <span class="n">go</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span> <span class="p">)</span>
+      <span class="k">return</span> <span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
+
+    <span class="kt">int</span> <span class="n">selected_index</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">Option</span><span class="p">().</span><span class="n">Index</span><span class="p">;</span>
+    <span class="n">DisplayModeDescription</span> <span class="n">selected_description</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i</span><span class="p">=</span><span class="m">0</span><span class="p">;</span> <span class="n">i</span><span class="p">&lt;</span><span class="n">opt_list</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++</span> <span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span> <span class="n">opt_list</span><span class="p">[</span><span class="n">i</span><span class="p">]==</span><span class="n">selected_index</span> <span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">selected_description</span> <span class="p">=</span> <span class="n">display_modes</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Validate...
+</span>    <span class="k">if</span><span class="p">(</span> <span class="n">selected_description</span><span class="p">==</span><span class="k">null</span> <span class="p">)</span>
+      <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
+
+    <span class="c1">// Modify the desired display mode. In this case, we
+</span>    <span class="c1">// will just set the mesh wireframe thickness to zero.
+</span>    <span class="n">selected_description</span><span class="p">.</span><span class="n">DisplayAttributes</span><span class="p">.</span><span class="n">MeshSpecificAttributes</span><span class="p">.</span><span class="n">MeshWireThickness</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="c1">// Use the display attributes manager to update the display mode.
+</span>    <span class="n">DisplayModeDescription</span><span class="p">.</span><span class="nf">UpdateDisplayMode</span><span class="p">(</span><span class="n">selected_description</span><span class="p">);</span>
+
+    <span class="c1">// Force the document to regenerate.
+</span>    <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<pre class="tab-pane fade in" id="vb"><code class="language-vbnet">Partial Friend Class Examples
+  ' The following example code demonstrates how to modify advanced display settings using
+  ' the Rhino SDK. In this example, a display mode's mesh wireframe thickness (in pixels)
+  ' will be modified.
+  Public Shared Function AdvancedDisplay(ByVal doc As Rhino.RhinoDoc) As Rhino.Commands.Result
+	' Use the display attributes manager to build a list of display modes.
+	' Note, these are copies of the originals...
+	Dim display_modes() As DisplayModeDescription = DisplayModeDescription.GetDisplayModes()
+	If display_modes Is Nothing OrElse display_modes.Length&lt;1 Then
+	  Return Rhino.Commands.Result.Failure
+	End If
+
+	' Construct an options picker so the user can pick which
+	' display mode they want modified
+	Dim go As New Rhino.Input.Custom.GetOption()
+	go.SetCommandPrompt("Display mode to modify mesh thickness")
+	Dim opt_list As New List(Of Integer)()
+
+	For i As Integer = 0 To display_modes.Length - 1
+	  Dim english_name As String = display_modes(i).EnglishName
+	  english_name = english_name.Replace("_", "")
+	  english_name = english_name.Replace(" ", "")
+	  english_name = english_name.Replace("-", "")
+	  english_name = english_name.Replace(",", "")
+	  english_name = english_name.Replace(".", "")
+	  Dim index As Integer = go.AddOption(english_name)
+	  opt_list.Add(index)
+	Next i
+
+	' Get the command option
+	go.Get()
+	If go.CommandResult() &lt;&gt; Rhino.Commands.Result.Success Then
+	  Return go.CommandResult()
+	End If
+
+	Dim selected_index As Integer = go.Option().Index
+	Dim selected_description As DisplayModeDescription = Nothing
+	For i As Integer = 0 To opt_list.Count - 1
+	  If opt_list(i)=selected_index Then
+		selected_description = display_modes(i)
+		Exit For
+	  End If
+	Next i
+
+	' Validate...
+	If selected_description Is Nothing Then
+	  Return Rhino.Commands.Result.Failure
+	End If
+
+	' Modify the desired display mode. In this case, we
+	' will just set the mesh wireframe thickness to zero.
+	selected_description.DisplayAttributes.MeshSpecificAttributes.MeshWireThickness = 0
+	' Use the display attributes manager to update the display mode.
+	DisplayModeDescription.UpdateDisplayMode(selected_description)
+
+	' Force the document to regenerate.
+	doc.Views.Redraw()
+	Return Rhino.Commands.Result.Success
+  End Function
+End Class
+</code></pre>
+
+<div class="language-python tab-pane fade in highlighter-rouge" id="py"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">Rhino</span>
+<span class="kn">import</span> <span class="nn">scriptcontext</span>
+
+<span class="c"># The following example demonstrates how to modify advanced display settings</span>
+<span class="c"># using RhinoCommon. In this example, a display mode's mesh wireframe thickness</span>
+<span class="c"># (in pixels) will be modified.</span>
+<span class="k">def</span> <span class="nf">AdvancedDisplay</span><span class="p">():</span>
+    <span class="c"># Use the display attributes manager to build a list of display modes.</span>
+    <span class="c"># Note, these are copies of the originals...</span>
+    <span class="n">display_modes</span> <span class="o">=</span> <span class="n">Rhino</span><span class="o">.</span><span class="n">Display</span><span class="o">.</span><span class="n">DisplayModeDescription</span><span class="o">.</span><span class="n">GetDisplayModes</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">display_modes</span><span class="p">:</span> <span class="k">return</span> <span class="n">Rhino</span><span class="o">.</span><span class="n">Commands</span><span class="o">.</span><span class="n">Result</span><span class="o">.</span><span class="n">Failure</span>
+
+    <span class="c"># Construct an options picker so the user can pick which</span>
+    <span class="c"># display mode they want modified</span>
+    <span class="n">go</span> <span class="o">=</span> <span class="n">Rhino</span><span class="o">.</span><span class="n">Input</span><span class="o">.</span><span class="n">Custom</span><span class="o">.</span><span class="n">GetOption</span><span class="p">()</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span><span class="s">"Display mode to modify mesh thickness"</span><span class="p">)</span>
+    <span class="n">opt_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">mode</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">display_modes</span><span class="p">):</span>
+        <span class="n">english_name</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">EnglishName</span>
+        <span class="n">english_name</span> <span class="o">=</span> <span class="n">english_name</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s">"_ -,."</span><span class="p">)</span>
+        <span class="n">opt_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">go</span><span class="o">.</span><span class="n">AddOption</span><span class="p">(</span><span class="n">english_name</span><span class="p">)</span> <span class="p">)</span>
+
+    <span class="c"># Get the command option</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">go</span><span class="o">.</span><span class="n">CommandResult</span><span class="p">()</span><span class="o">!=</span><span class="n">Rhino</span><span class="o">.</span><span class="n">Commands</span><span class="o">.</span><span class="n">Result</span><span class="o">.</span><span class="n">Success</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">go</span><span class="o">.</span><span class="n">CommandResult</span><span class="p">();</span>
+
+    <span class="n">selected_index</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Option</span><span class="p">()</span><span class="o">.</span><span class="n">Index</span>
+    <span class="n">selected_description</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">option</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">opt_list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">option</span><span class="o">==</span><span class="n">selected_index</span><span class="p">:</span>
+            <span class="n">selected_description</span> <span class="o">=</span> <span class="n">display_modes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">break</span>
+    <span class="c"># Validate...</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">selected_description</span><span class="p">:</span> <span class="k">return</span> <span class="n">Rhino</span><span class="o">.</span><span class="n">Commands</span><span class="o">.</span><span class="n">Result</span><span class="o">.</span><span class="n">Failure</span>
+
+    <span class="c"># Modify the desired display mode. In this case, we</span>
+    <span class="c"># will just set the mesh wireframe thickness to zero.</span>
+    <span class="n">selected_description</span><span class="o">.</span><span class="n">DisplayAttributes</span><span class="o">.</span><span class="n">MeshSpecificAttributes</span><span class="o">.</span><span class="n">MeshWireThickness</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c"># Use the display attributes manager to update the display mode.</span>
+    <span class="n">Rhino</span><span class="o">.</span><span class="n">Display</span><span class="o">.</span><span class="n">DisplayModeDescription</span><span class="o">.</span><span class="n">UpdateDisplayMode</span><span class="p">(</span><span class="n">selected_description</span><span class="p">)</span>
+    <span class="c"># Force the document to regenerate.</span>
+    <span class="n">scriptcontext</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">Views</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">Rhino</span><span class="o">.</span><span class="n">Commands</span><span class="o">.</span><span class="n">Result</span><span class="o">.</span><span class="n">Success</span>
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">AdvancedDisplay</span><span class="p">()</span>
+</code></pre>
+</div>
+
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+
+        <div class="row">
+          <div class="col-md-3">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+              <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_samples/rhinocommon/advanced_display_settings.md" target="_blank">Edit on GitHub</a>
+          </div>
+
+          <div class="col-md-6 text-center">
+            © 1997 - 2016 Robert McNeel &amp; Associates
+          </div>
+
+          <div class="col-md-3">
+            <span class="pull-right">
+              <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+            </span>
+          </div>
+
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>

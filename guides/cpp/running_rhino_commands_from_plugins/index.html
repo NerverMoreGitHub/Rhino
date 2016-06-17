@@ -299,19 +299,19 @@
 
 <p>Derive your command class from CRhinoScriptCommand instead of CRhinoCommand. In other words, instead of defining your command class like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CCommandTest</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoCommand</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CCommandTest</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoCommand</span>
 </code></pre>
 </div>
 
 <p>Define your command class like this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CCommandTest</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoScriptCommand</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CCommandTest</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoScriptCommand</span>
 </code></pre>
 </div>
 
 <p>Then, from within your command class’s <code class="highlighter-rouge">RunCommand()</code> member, you can call <code class="highlighter-rouge">CRhinoApp::RunScript()</code> to script the running of a Rhino command.  For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">RhinoApp</span><span class="p">().</span><span class="n">RunScript</span><span class="p">(</span> <span class="s">L"_-Line 0,0,0 10,10,10"</span><span class="p">,</span> <span class="mi">0</span> <span class="p">);</span>
   <span class="k">return</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">success</span><span class="p">;</span>
@@ -342,7 +342,7 @@
 
 <p>Here’s good scoping practice when your command is a script command.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="p">{</span>
     <span class="n">section</span> <span class="n">A</span>

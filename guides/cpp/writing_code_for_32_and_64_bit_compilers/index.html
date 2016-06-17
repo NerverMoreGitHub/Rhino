@@ -343,7 +343,7 @@
 
 <p>The return type of string length functions like <code class="highlighter-rouge">strlen</code> and <code class="highlighter-rouge">wcslen</code> is a <code class="highlighter-rouge">size_t</code>.  Since we will never have null terminated strings with more than 2,147,483,647 characters, simply use a cast like so:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">wcslen</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>  <span class="c1">//(int) cast for 64 bit compilers
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">wcslen</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>  <span class="c1">//(int) cast for 64 bit compilers
 </span></code></pre>
 </div>
 
@@ -351,7 +351,7 @@
 
 <p>The return type of <code class="highlighter-rouge">fread</code> and <code class="highlighter-rouge">fwrite</code> is a <code class="highlighter-rouge">size_t</code>.  Design your calls to <code class="highlighter-rouge">fread</code> and <code class="highlighter-rouge">fwrite</code> so that the count argument is never &gt; 2,147,483,648 and use an int cast on the return type like so:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="p">...;</span>  <span class="n">some</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">483</span><span class="p">,</span><span class="mi">648</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="p">...;</span>  <span class="n">some</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">483</span><span class="p">,</span><span class="mi">648</span>
 <span class="k">if</span> <span class="p">(</span> <span class="n">count</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">fread</span><span class="p">(</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">fp</span> <span class="p">)</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="c1">//fread failed
@@ -362,7 +362,7 @@
 
 <p>or</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="p">...;</span>  <span class="n">some</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">483</span><span class="p">,</span><span class="mi">648</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="p">...;</span>  <span class="n">some</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">483</span><span class="p">,</span><span class="mi">648</span>
 <span class="k">if</span> <span class="p">(</span> <span class="n">count</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">fwrite</span><span class="p">(</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">fp</span> <span class="p">)</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="c1">//fwrite failed
@@ -373,7 +373,7 @@
 
 <p>If you are compelled to write 9,223,372,036,854,775,808 bytes in a single call to <code class="highlighter-rouge">fwrite</code>, you can do so with:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">size_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">9223372036854775808</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">size_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">9223372036854775808</span><span class="p">;</span>
 <span class="kt">void</span><span class="o">*</span> <span class="n">buffer</span> <span class="o">=</span> <span class="p">...;</span>
 <span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="p">...;</span>
 <span class="k">if</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">!=</span> <span class="n">fwrite</span><span class="p">(</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fp</span> <span class="p">)</span> <span class="p">)</span>
@@ -388,7 +388,7 @@
 
 <p>Use <code class="highlighter-rouge">INT_PTR</code> to store the difference between two pointers.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//Sort functions have to return 32 bit ints
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//Sort functions have to return 32 bit ints
 </span><span class="k">static</span> <span class="kt">int</span> <span class="nf">compar</span><span class="p">(</span> <span class="k">const</span> <span class="kt">void</span><span class="o">**</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span><span class="o">**</span> <span class="n">b</span> <span class="p">)</span>
 <span class="p">{</span>
 <span class="c1">//pointer differences have to be INT_PTR (64 bit int on x64)
@@ -407,7 +407,7 @@
 
 <p>You really need to pay attention to the size of your integer arguments to formatted printing strings.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="p">...;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="p">...;</span>
 <span class="kt">size_t</span> <span class="n">sz</span> <span class="o">=</span> <span class="p">...;</span>
 <span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="p">...;</span>
 <span class="n">INT_PTR</span> <span class="n">ip</span> <span class="o">=</span> <span class="p">...;</span>
@@ -422,7 +422,7 @@
 
 <p>If you cast the <code class="highlighter-rouge">WPARAM</code> and <code class="highlighter-rouge">LPARAM</code> arguments as (<code class="highlighter-rouge">WPARAM</code>) and (<code class="highlighter-rouge">LPARAM</code>), and put the return value in an <code class="highlighter-rouge">LRESULT</code>, everything works perfectly for both the 32- and 64-bit compilers.  Since the value of <code class="highlighter-rouge">smresult</code> can be an <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">pointer</code>, <code class="highlighter-rouge">handle</code>, whatever, cast <code class="highlighter-rouge">smresult</code> as shown below.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">LRESULT</span> <span class="n">smresult</span> <span class="o">=</span> <span class="n">SendMessage</span><span class="p">((</span><span class="n">UNIT</span><span class="p">)</span><span class="n">id</span><span class="p">,</span> <span class="p">(</span><span class="n">WPARAM</span><span class="p">)</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">,</span> <span class="p">(</span><span class="n">LPARAM</span><span class="p">)</span><span class="n">sText</span><span class="p">);</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">LRESULT</span> <span class="n">smresult</span> <span class="o">=</span> <span class="n">SendMessage</span><span class="p">((</span><span class="n">UNIT</span><span class="p">)</span><span class="n">id</span><span class="p">,</span> <span class="p">(</span><span class="n">WPARAM</span><span class="p">)</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">,</span> <span class="p">(</span><span class="n">LPARAM</span><span class="p">)</span><span class="n">sText</span><span class="p">);</span>
 <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">smresult</span> <span class="p">;</span>  <span class="c1">//In this case, I the rest of the code want
 </span><span class="n">HWND</span> <span class="n">hwnd</span> <span class="o">=</span> <span class="p">(</span><span class="n">HWND</span><span class="p">)</span><span class="n">smresult</span><span class="p">;</span>
 <span class="kt">char</span><span class="o">**</span> <span class="n">ptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="o">**</span><span class="p">)</span><span class="n">smresult</span><span class="p">;</span>
@@ -433,7 +433,7 @@
 
 <p>Replace every single instance of Windows calls that pass pointers as mystery meat with the <code class="highlighter-rouge">Ptr</code> versions.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//BAD            //GOOD
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//BAD            //GOOD
 </span><span class="n">SetWindowLong</span> <span class="o">-&gt;</span> <span class="n">SetWindowLongPtr</span>
 <span class="n">GetWindowLong</span> <span class="o">-&gt;</span> <span class="n">GetWindowLongPtr</span>
 </code></pre>
@@ -445,7 +445,7 @@
 
 <p>Bad:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">SetWindowLong</span><span class="p">(</span> <span class="o">*</span><span class="n">pDockFrame</span><span class="p">,</span> <span class="n">GWL_USERDATA</span><span class="p">,</span> <span class="p">(</span><span class="n">LONG</span><span class="p">)</span><span class="k">this</span><span class="p">);</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">SetWindowLong</span><span class="p">(</span> <span class="o">*</span><span class="n">pDockFrame</span><span class="p">,</span> <span class="n">GWL_USERDATA</span><span class="p">,</span> <span class="p">(</span><span class="n">LONG</span><span class="p">)</span><span class="k">this</span><span class="p">);</span>
  <span class="n">WNDPROC</span> <span class="n">wp</span> <span class="o">=</span> <span class="p">(</span><span class="n">WNDPROC</span><span class="p">)</span><span class="o">::</span><span class="n">GetWindowLong</span><span class="p">(</span> <span class="o">*</span><span class="n">pDockFrame</span><span class="p">,</span> <span class="n">GWL_WNDPROC</span><span class="p">);</span>
  <span class="n">DWORD</span> <span class="n">dwStyle</span> <span class="o">=</span> <span class="o">::</span><span class="n">GetWindowLong</span><span class="p">(</span> <span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">hwnd</span><span class="p">,</span> <span class="n">GWL_STYLE</span><span class="p">)</span>
 </code></pre>
@@ -453,7 +453,7 @@
 
 <p>Good:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">SetWindowLongPtr</span><span class="p">(</span> <span class="n">hwnd</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="p">(</span><span class="n">LONG_PTR</span><span class="p">)</span><span class="k">this</span><span class="p">);</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">SetWindowLongPtr</span><span class="p">(</span> <span class="n">hwnd</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="p">(</span><span class="n">LONG_PTR</span><span class="p">)</span><span class="k">this</span><span class="p">);</span>
 <span class="n">WNDPROC</span> <span class="n">wp</span> <span class="o">=</span> <span class="p">(</span><span class="n">WNDPROC</span><span class="p">)</span><span class="o">::</span><span class="n">GetWindowLongPtr</span><span class="p">(</span> <span class="o">*</span><span class="n">pDockFrame</span><span class="p">,</span> <span class="n">GWL_WNDPROC</span><span class="p">);</span>
 <span class="n">DWORD</span> <span class="n">dwStyle</span> <span class="o">=</span> <span class="p">(</span><span class="n">DWORD</span><span class="p">)</span><span class="o">::</span><span class="n">GetWindowLongPtr</span><span class="p">(</span> <span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">hwnd</span><span class="p">,</span> <span class="n">GWL_STYLE</span><span class="p">)</span>
 </code></pre>

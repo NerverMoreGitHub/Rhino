@@ -372,7 +372,7 @@
   <li>Open <strong>HelloRhinoCommonPlugin.cs</strong> and remove the period (<code class="highlighter-rouge">.</code>) between the <code class="highlighter-rouge">HelloRhino</code> and the <code class="highlighter-rouge">Common</code>:</li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">HelloRhinoCommonPlugin</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">PlugIns</span><span class="p">.</span><span class="n">PlugIn</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">HelloRhinoCommonPlugin</span> <span class="p">:</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">PlugIns</span><span class="p">.</span><span class="n">PlugIn</span>
   <span class="p">{</span>  
     <span class="c1">///&lt;summary&gt;Gets the only instance of the HelloRhinoCommonPlugin plugin.&lt;/summary&gt;
 </span>    <span class="k">public</span> <span class="k">static</span> <span class="n">HelloRhinoCommonPlugin</span> <span class="n">Instance</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
@@ -477,7 +477,7 @@
 
 <p>The cloned projects have platform-specific defines and platform-specific references, but otherwise reference the same shared (common) code.  Notice that the namespace of your common code is:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">HelloRhino.Common</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">HelloRhino.Common</span>
 </code></pre>
 </div>
 

@@ -271,7 +271,7 @@
 
 <p>To make picking text entities easier for the user, we will use a custom object picker that just filters <code class="highlighter-rouge">CRhinoAnnotationText</code> objects…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CRhGetTextObject</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetObject</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CRhGetTextObject</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CRhinoGetObject</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="n">bool</span> <span class="n">CustomGeometryFilter</span><span class="p">(</span>
@@ -290,7 +290,7 @@
 
 <p>Here is the portion of the command that creates points from the text entities…</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandTest</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="n">CRhGetTextObject</span> <span class="n">go</span><span class="p">;</span>
   <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select text"</span> <span class="p">);</span>

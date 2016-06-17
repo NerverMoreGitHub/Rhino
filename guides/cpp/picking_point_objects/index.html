@@ -255,7 +255,7 @@
 
 <p>If you need the user to define a 3D point location, you can use a <code class="highlighter-rouge">CRhinoGetPoint</code> object.  But, if the points already exist as objects in Rhino, you will need to use a <code class="highlighter-rouge">CRhinoGetObject</code> object to pick them.  Then, you can determine the 3D coordinates of that point object, for example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select point"</span> <span class="p">);</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetGeometryFilter</span><span class="p">(</span> <span class="n">CRhinoGetObject</span><span class="o">::</span><span class="n">point_object</span> <span class="p">);</span>
 <span class="n">CRhinoGet</span><span class="o">::</span><span class="n">result</span> <span class="n">res</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">GetObjects</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
@@ -271,7 +271,7 @@
 
 <p>If you needed access to the <code class="highlighter-rouge">CRhinoPointObject</code> object, you could do this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select point"</span> <span class="p">);</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetGeometryFilter</span><span class="p">(</span> <span class="n">CRhinoGetObject</span><span class="o">::</span><span class="n">point_object</span> <span class="p">);</span>
 <span class="n">CRhinoGet</span><span class="o">::</span><span class="n">result</span> <span class="n">res</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">GetObjects</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
@@ -290,7 +290,7 @@
 
 <p>Here is how you can pick one or more point objects:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">CRhinoGetObject</span> <span class="n">go</span><span class="p">;</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetCommandPrompt</span><span class="p">(</span> <span class="s">L"Select points"</span> <span class="p">);</span>
 <span class="n">go</span><span class="p">.</span><span class="n">SetGeometryFilter</span><span class="p">(</span> <span class="n">CRhinoGetObject</span><span class="o">::</span><span class="n">point_object</span> <span class="p">);</span>
 <span class="n">CRhinoGet</span><span class="o">::</span><span class="n">result</span> <span class="n">res</span> <span class="o">=</span> <span class="n">go</span><span class="p">.</span><span class="n">GetObjects</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span> <span class="p">);</span>
