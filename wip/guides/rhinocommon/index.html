@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Administration</title>
-  <meta name="description" content="">
+  <title>RhinoCommon Guides</title>
+  <meta name="description" content="Overview">
 
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
@@ -24,7 +24,7 @@
   <!-- Bootstrap override -->
   <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
 
-  <link rel="canonical" href="http://developer.rhino3d.com/wip/admin/">
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/rhinocommon/">
   <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
 
   <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
@@ -73,7 +73,7 @@
     
 <div class="version-banner">
     Hey, you're viewing the <strong>wip</strong> version of this page!
-    <a href="/admin/">View the current version instead.</a>
+    <a href="/guides/rhinocommon/">View the current version instead.</a>
 </div>
 
 
@@ -180,916 +180,51 @@
 
       <div class="page-content">
         <!--div class="wrapper"-->
-          <div class="tab-content">
-  <h1 id="administration">Administration</h1>
+          <div class="container-fluid">
 
-<p>The goal of this site is to consolidate all the (now) scattered developer documentation into a single canonical site that is clear, easy-to-navigate, with consistent formatting and nomenclature.</p>
+  <h1>RhinoCommon Guides
+  
+    <img src="/wip/images/win_logo_small.png" alt="Windows" class="guide_icon">
+  
+  
+    <img src="/wip/images/mac_logo_small.png" alt="OS X" class="guide_icon">
+  
+  
+  
+  </h1>
 
-<p>The sources of content-to-be-consolidated are:</p>
+  <p>RhinoCommon is the cross-platform .NET plugin SDK for Rhino.</p>
+  
 
-<ul>
-  <li>
-    <strike>Rhino Developer wiki</strike>
-  </li>
-  <li><a href="http://4.rhino3d.com/5/rhinocommon/">RhinoCommon API references</a>…underway</li>
-  <li><a href="http://4.rhino3d.com/5/rhinocppsdk/idx.html">C++ SDK API references</a></li>
-  <li>
-    <strike>RhinoCommon samples on GitHub</strike>
-  </li>
-  <li><a href="https://github.com/dalefugier/SampleCsCommands/">DaleF’s CsCommands</a></li>
-  <li><a href="http://phab.mcneel.com/docs/rhino/6/rhinocommon/">Doxygen Docs (on McNeel intranet)</a></li>
-  <li>Dale Lear’s Developer Meeting Notes</li>
-  <li>RhinoScript and Rhino.Python Primers</li>
-  <li>Mitch’s MicMac tools: http://wiki.mcneel.com/people/mitchheynick</li>
-  <li><a href="http://s3.amazonaws.com/files.na.mcneel.com/grasshopper/1.0/docs/en/GrasshopperSDK.chm">Grasshopper SDK Help file (chm)</a>.</li>
-  <li>Grasshopper posts (<a href="http://www.grasshopper3d.com/forum/topics/the-why-and-how-of-data-trees">How and Why of Datatrees</a>), etc.</li>
-  <li>Macros documentation sources: <a href="http://docs.mcneel.com/rhino/5/help/en-us/information/rhinoscripting.htm">Macros in Helpfile</a>, <a href="http://wiki.mcneel.com/rhino/basicmacros">Macros in Wiki</a>, <a href="http://wiki.mcneel.com/developer/macroscriptsetup">Using the MacroEditor</a></li>
-</ul>
-
-<p><strong>DO NOT</strong> port any content that relates to pre-Rhino 5: this is old information.  Visual Studio 2010 for the C/C++ SDK was used for Rhino 5.</p>
-
-<hr />
-
-<h2 id="dev-docs-guides">Dev Docs Guides</h2>
+  <div class="row-fluid">
+    <div class="col-md-4">
+      <h3 id="overview">Overview</h3>
 
 <ul>
-  <li><a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/README.md">Getting Started with Developer Docs</a></li>
-  <li><a href="/wip/guides/general/how_this_site_works">How This Site Works</a></li>
-  <li><a href="/wip/guides/general/developer_docs_style_guide">Developer Docs Style Guide</a></li>
+  <li><a href="/wip/guides/rhinocommon/what_is_rhinocommon/">What is RhinoCommon?</a></li>
+  <li><a href="/wip/guides/rhinocommon/what_are_mono_and_xamarin/">What are Mono &amp; Xamarin?</a></li>
+  <li><a href="/wip/guides/rhinocommon/whats_new/">What’s New/Changes?</a></li>
 </ul>
 
-<hr />
+<h3 id="getting-started">Getting Started</h3>
 
-<h2 id="todo-list">TODO List</h2>
+<ul>
+  <li>Installing Tools (<a href="/wip/guides/rhinocommon/installing_tools_windows/">Windows</a>, <a href="/wip/guides/rhinocommon/installing_tools_mac/">Mac</a>)</li>
+  <li>Your First Plugin (<a href="/wip/guides/rhinocommon/your_first_plugin_windows/">Windows</a>, <a href="/wip/guides/rhinocommon/your_first_plugin_mac/">Mac</a>, <a href="/wip/guides/rhinocommon/your_first_plugin_crossplatform/">Cross-Platform</a>)</li>
+  <li>Plugin Installers (<a href="/wip/guides/rhinocommon/plugin_installers_windows/">Windows</a>, <a href="/wip/guides/rhinocommon/plugin_installers_mac/">Mac</a>)</li>
+</ul>
 
-<h3 id="guides">Guides</h3>
 
-<p>The following guides have TODO items:</p>
+    </div>
 
-<div class="trigger">
-  <ol>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C#) <a class="page-link" href="/wip/guides/rhinocommon/whats_new/">What's New?</a> needs review 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/adding_nurbs_curve_from_control_points/">Adding a NURBS Curve from Control Points</a> needs more explanation in order to be a guide 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/brep_data_structure/">Brep Data Structure</a> needs explanation, diagram style update 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/adding_rhinoscript_support/">Adding RhinoScript Support</a> needs to be reviewed to check to see if steps are up to date.  New screencaptures as well. 
-      </li>
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/plugin_search_order/">Plugin Search Order</a> needs to be reviewed and consolidated with other plugin guides 
-      </li>
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/calculating_angle_between_two_points/">Calculating the Angle Between Two Points</a> image needs updating. 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/plugin_loading/">Plugin Loading</a> needs to be reviewed or consolidated with other plugin guides 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/plugin_installers_windows/">Plugin Installers (Windows)</a> needs porting - see additional TODO 
-      </li>
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/plugin_build_configurations/">Plugin Build Configurations</a> needs to be reviewed for accuracy and considered for consolidation with other plugin topics 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/whats_new/">What's New?</a> needs review and the original contained links to empty wiki entries. 
-      </li>
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/crash_dump_analysis/">Crash Dump Analysis</a> needs screen-capture update and overall review. 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/what_is_the_rdk/">What is the RDK?</a> needs cleanup, standardization, editing, new images, etc. 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/what_is_the_cpp_sdk/">What is the C/C++ SDK?</a> needs to be written 
-      </li>
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/creating_zoo_plugins/">Creating Zoo Plugins</a> needs to be compared to RhinoCommon version 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/your_first_plugin_windows/">Creating your first C/C++ plugin for Rhino</a> needs new screenshots, review, and cleanup.  Consider breaking out Adding Commands. 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/your_first_renderer_plugin_windows/">Your First Renderer Plugin (Windows)</a> needs porting  from: <a href="http://developer.rhino3d.com/files/rhino_rdk_documentation.pdf">http://developer.rhino3d.com/files/rhino_rdk_documentation.pdf</a>
-      </li>
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/defining_new_plugin_commands/">Defining New Plugin Commands</a> needs to be reviewed for accuracy and considered for consolidation with other plugin topics 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/running_rhino_from_command_line/">Running Rhino from the Command Line</a> needs to be reclassified as a General guide if we can add OS X specifics 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/failed_to_locate_cl_exe_error/">Failed to locate CL.exe error</a> needs updated screen captures 
-      </li>
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/user_data/">User Data</a> downloadable samples should be moved to GitHub and linked 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/transforming_breps/">Transforming Breps</a> needs more explanatory content. 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/textures_and_mappings/">Textures and Mappings</a> needs review and more explanatory content. 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/material_environment_and_texture_editors/">Material, Environment, and Texture Editors</a> needs porting  from: <a href="http://developer.rhino3d.com/files/rhino_rdk_documentation.pdf">http://developer.rhino3d.com/files/rhino_rdk_documentation.pdf</a>
-      </li>
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++) <a class="page-link" href="/wip/guides/cpp/installing_tools_windows/">Installing Tools (Windows)</a> needs to be written. 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (C/C++RhinoScript) <a class="page-link" href="/wip/guides/rhinoscript/scripting_methods_for_rdk/">Scripting Methods for RDK (Windows)</a> needs cleanup and formatting work and to be added to rhinoscript guides 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (General) <a class="page-link" href="/wip/guides/general/contributing/">Contributing</a> needs review 
-      </li>
-    
-  
-    
-  
-    
-      <li>
-        (General) <a class="page-link" href="/wip/guides/general/rhino_installer_engine/">Rhino Installer Engine</a> needs review for technical accuracy, mac info needed. 
-      </li>
-    
-  
-    
-  
-    
-      <li>
-        (Grasshopper) <a class="page-link" href="/wip/guides/grasshopper/your_first_component_mac/">Your First Component (Mac)</a> Needs review and image work.  Reported bug with missing step for copy components to library. 
-      </li>
-    
-  
-    
-      <li>
-        (Grasshopper) <a class="page-link" href="/wip/guides/grasshopper/your_first_component_windows/">Your First Component (Windows)</a> Needs testing and elaboration.  Should be back-ported to master (Rhino 5) 
-      </li>
-    
-  
-    
-      <li>
-        (Grasshopper) <a class="page-link" href="/wip/guides/grasshopper/installing_tools_windows/">Installing Tools (Windows)</a> needs to be written 
-      </li>
-    
-  
-    
-      <li>
-        (Grasshopper) <a class="page-link" href="/wip/guides/grasshopper/component_installers_windows/">Component Installers (Windows)</a> needs to be written 
-      </li>
-    
-  
-    
-      <li>
-        (Grasshopper) <a class="page-link" href="/wip/guides/grasshopper/what_is_a_grasshopper_component/">What is a Grasshopper Component?</a> needs to be written.  Draw upon sources from origin, but most things are out-of-date 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (RhinoCommon) <a class="page-link" href="/wip/guides/rhinocommon/plugin_installers_windows/">Plugin Installers (Windows)</a> needs updating and/or review. 
-      </li>
-    
-  
-    
-      <li>
-        (RhinoCommon) <a class="page-link" href="/wip/guides/rhinocommon/rhinocommon_zoo_plugins/">RhinoCommon Zoo Plugins</a> needs to be compared with creating_zoo_plugins 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (RhinoCommonC/C++) <a class="page-link" href="/wip/guides/rhinocommon/digitally_signing_plugins_for_zoo/">Digitally Signing Zoo Plugins</a> move out of Zoo because it applies to both Zoo and Rhino plugins 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (RhinoPython) <a class="page-link" href="/wip/guides/rhinopython/apis_for_python/">APIs Available to Python</a> needs reorganization with regard to other guides 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (RhinoPython) <a class="page-link" href="/wip/guides/rhinopython/get_started_with_rhinopython/">Getting Started with Rhino.Python on the Mac</a> needs update, adding more resource links, etc. 
-      </li>
-    
-  
-    
-      <li>
-        (RhinoPython) <a class="page-link" href="/wip/guides/rhinopython/what_is_rhinopython/">What is Rhino.Python?</a> needs more GHPython info. Resources should be moved. 
-      </li>
-    
-  
-    
-      <li>
-        (RhinoPythonRhinoCommon) <a class="page-link" href="/wip/guides/rhinopython/using_rhinocommon_from_python/">Using RhinoCommon from Python</a> needs more information. 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (RhinoScript) <a class="page-link" href="/wip/guides/rhinoscript/running_scripts_from_macros/">Running Scripts from Macros</a> needs review and updated screencaptures 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (RhinoScript) <a class="page-link" href="/wip/guides/rhinoscript/what_are_vbscript_rhinoscript/">What are VBScript and RhinoScript?</a> needs a bit more information to guide users through how to learn VBS. 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <li>
-        (openNURBS) <a class="page-link" href="/wip/guides/opennurbs/what_is_rhino3dmio/">What is Rhino3dmIO?</a> needs porting  from: <a href="https://github.com/mcneel/rhinocommon/wiki/Rhino3dmIO-Toolkit-(OpenNURBS-build)">https://github.com/mcneel/rhinocommon/wiki/Rhino3dmIO-Toolkit-(OpenNURBS-build)</a>
-      </li>
-    
-  
-    
-      <li>
-        (openNURBS) <a class="page-link" href="/wip/guides/opennurbs/getting_started/">Getting Started</a> needs an image for ON_Mesh vertices. 
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  </ol>
-</div>
+    <div class="col-md-4">
+      
 
-<h3 id="samples">Samples</h3>
-
-<p>The following samples have TODO items:</p>
+<h3 id="fundamentals">Fundamentals</h3>
 
 <div class="trigger">
-  <ol>
   
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
+  <ul>
   
     
   
@@ -1422,39 +557,9 @@
     
   
     
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/object_selection_options/" title="This guide covers how to pick some objects, select command options, return to picking more objects, all while keeping your current selection set.">Object Selection with Options</a></li>
+      
     
   
     
@@ -1462,15 +567,15 @@
     
   
     
-  
-    
-  
-    
-  
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/plugin_user_data/" title="This guide gives an overview of user data and how to use it with RhinoCommon.">Plugin User Data</a></li>
+      
     
   
     
-  
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/registering_plugins_windows/" title="This guide provides instructions for registering plugins for Windows.">Registering Plugins (Windows)</a></li>
+      
     
   
     
@@ -1550,7 +655,9 @@
     
   
     
-  
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/commas_and_periods/" title="This guide demonstrates how to consistently read/write numbers to strings.">Commas &amp; Periods</a></li>
+      
     
   
     
@@ -1614,7 +721,9 @@
     
   
     
-  
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/event_watchers/" title="This guide covers how to synchronize a control's appearance with what is going on in Rhino using event watchers.">Event Watchers</a></li>
+      
     
   
     
@@ -1646,7 +755,9 @@
     
   
     
-  
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/adding_commands_to_projects/" title="This brief guide demonstrates how to add additional commands to a RhinoCommon plugin project.">Adding Commands to Projects</a></li>
+      
     
   
     
@@ -1660,7 +771,9 @@
     
   
     
-  
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/loading_tool_palettes_mac/" title="This guide covers how to create and load a tool palette collection from your RhinoCommon plugin in Rhino for Mac.">Loading Tool Palettes (Mac)</a></li>
+      
     
   
     
@@ -1672,7 +785,9 @@
     
   
     
-  
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/uninstalling_plugins_mac/" title="This guide explains how to uninstall or remove plugins in Rhino for Mac.">Uninstalling Plugins (Mac)</a></li>
+      
     
   
     
@@ -1693,13 +808,1180 @@
   
     
   
-  </ol>
+  </ul>
 </div>
 
-<h3 id="misc">Misc</h3>
+<h3 id="advanced">Advanced</h3>
 
-<p>See <a href="http://mcneel.myjetbrains.com/youtrack/issues?q=project%3A+WWW+subsystem%3A+developer.rhino3d.com+%23unresolved">YouTrack: project: WWW subsystem: developer.rhino3d.com #unresolved</a></p>
+<div class="trigger">
+  
+  <ul>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/debug_rhinowip_mac/" title="This guide explains how to debug using the RhinoWIP for Mac.">Debug in RhinoWIP (Mac)</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/run_rhino_command_from_plugin/" title="This guide covers the proper techniques when running a Rhino command from within the context of a plugin command.">Run a Rhino command from a Plugin</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinopython/using_rhinocommon_from_python/" title="This brief guide cover using RhinoCommon from Python.">Using RhinoCommon from Python</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/creating_a_skin/" title="This guide outlines the tools for RhinoCommon developers to wrap their application around Rhino by creating custom Skin.  Custom skins are supported on Windows only.">Creating a Skin (Windows)</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/display_conduits/" title="This guide gives an overview of Display Conduits and how to use them to access Rhino's display pipeline.">Display Conduits</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/wrapping_native_libraries/" title="This guide demonstrates how to wrap a C/C++ library in order to call into it from .NET.">Wrapping Native Libraries</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/using_methodgen/" title="This guide covers the automatic pInvoke call generator and enum synchronization utility called methodgen.">Using methodgen</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  </ul>
+</div>
 
+
+    </div>
+
+    <div class="col-md-4">
+      
+
+<h3 id="zoo">Zoo</h3>
+
+<div class="trigger">
+  
+  <ul>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/what_is_a_zoo_plugin/" title="This guide describes what a Zoo Plugin is and what is does.">What is a Zoo Plugin?</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/creating_zoo_plugins/" title="This guide discusses how to create plugins for Zoo.">Creating Zoo Plugins</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/rhinocommon_zoo_plugins/" title="This guide discusses how to create RhinoCommon plugins that can obtain licenses the Zoo.">RhinoCommon Zoo Plugins</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+        <li><a class="page-link" href="/wip/guides/rhinocommon/digitally_signing_plugins_for_zoo/" title="This guide discusses how to digitally sign Zoo and Rhino plugins.">Digitally Signing Zoo Plugins</a></li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  </ul>
+</div>
+
+    </div>
+
+  </div>
 </div>
 
         <!--/div-->
@@ -1720,7 +2002,7 @@
                   <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
                 </svg>
               </span>
-              <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/admin.md" target="_blank">Edit on GitHub</a>
+              <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/rhinocommon.md" target="_blank">Edit on GitHub</a>
           </div>
 
           <div class="col-md-6 text-center">
