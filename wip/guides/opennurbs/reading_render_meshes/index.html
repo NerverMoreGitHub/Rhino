@@ -100,7 +100,19 @@
     
 <div class="version-banner">
     Hey, you're viewing the <strong>wip</strong> version of this page!
-    <a href="/guides/opennurbs/reading_render_meshes/">View the current version instead.</a>
+    <script>
+      function() {
+        var splitPath = window.location.pathname.split("/");
+  	    var nonWipURL = "/" + splitPath.splice(2,splitPath.length-2).join("/");
+
+  	    $.get(nonWipURL).fail(function ()
+  	    {
+          <a href="">View the current site instead.</a>
+        } else {
+          <a href="/guides/opennurbs/reading_render_meshes/">View the current version instead.</a>
+        });
+      }
+    </script>
 </div>
 
 
