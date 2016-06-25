@@ -41,22 +41,6 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
-  <!-- Check the version banner for broken links and remove the link if found -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script>
-  $(document).ready(function()
-  {
-  	var splitPath = window.location.pathname.split("/");
-  	var nonWipURL = "/" + splitPath.splice(2,splitPath.length-2).join("/");
-
-  	$.get(nonWipURL).fail(function ()
-  	{
-      var $aTag = $("div.version-banner > a");
-  		$aTag.remove();
-  	});
-  });
-  </script>
-
   <!-- Overridden theme -->
   <link rel="stylesheet" href="/wip/css/main.css">
 
@@ -118,6 +102,23 @@
     Hey, you're viewing the <strong>wip</strong> version of this page!
     <a href="/samples/rhinocommon/modify_object_color/">View the current version instead.</a>
 </div>
+
+<!-- Check the version banner for broken links and remove the link if found -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function()
+{
+  var splitPath = window.location.pathname.split("/");
+  var nonWipURL = "/" + splitPath.splice(2,splitPath.length-2).join("/");
+
+  $.get(nonWipURL).fail(function ()
+  {
+    var $aTag = $("div.version-banner > a");
+    $aTag.remove();
+  });
+});
+</script>
+
 
 
 
