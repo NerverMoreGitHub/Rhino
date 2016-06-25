@@ -348,6 +348,10 @@
 
 <h2 id="changes">Changes</h2>
 
+<ul>
+  <li>CRhinoDisplayPipeline::GetRhinoVP() returns a CRhinoViewport* instead of a CRhinoViewport&amp; - there was a potential case where a null pointer dereference could occur</li>
+</ul>
+
 <p>TODO: The following list was compiled while attempting to update C++ samples from 5.0 to 6.0. This list is currently just a series of jotted down notes and needs to be updated with information.</p>
 
 <p>V5: ON_3dmView::m_target
@@ -400,18 +404,6 @@ V6: CRhinoHatchPatternTable::HatchPatternFromName</p>
 V5: CRhinoViewport::SetModelXform()
 V6: CRhinoDisplayPipeline::PushModelTransform()
 V6: CRhinoDisplayPipeline::PopModelTransform()</p>
-
-<p>V5: CRhinoViewport::DrawColor()
-V6: CRhinoDisplayPipeline::ObjectColor()</p>
-
-<p>V5: CRhinoViewport::SetDrawColor()
-V6: CRhinoDisplayPipeline::SetObjectColor()</p>
-
-<p>V5: CRhinoObject::Draw(CRhinoViewport&amp;)
-V6: CRhinoObject::Draw(CRhinoDisplayPipeline&amp;)</p>
-
-<p>V5: CRhinoViewport::InterruptDrawing()
-V6: CRhinoDisplayPipeline::InterruptDrawing()</p>
 
 <p>V5: ON_Layer::SetLayerName()
 V5: ON_Layer::SetLayerIndex()
@@ -467,9 +459,6 @@ V6: ON::LengthUnitSystem CRhinoDigitizerPlugIn::UnitSystem() const;</p>
 
 <p>V5: CRhinoFileWriteOptions::Mode(CRhinoFileWriteOptions::SelectedMode)
 V6: CRhinoFileWriteOptions::SelectedObjectFilter()</p>
-
-<p>V5: CRhinoViewport&amp; CRhinoDisplayPipeline::GetRhinoVP()
-V6: CRhinoViewport* CRhinoDisplayPipeline::GetRhinoVP()</p>
 
 <p>V5: ON_OBJECT_IMPLEMENT::m_##cls##<em>class_id
 V6: ON_OBJECT_IMPLEMENT::m</em>##cls##_class_rtti</p>
