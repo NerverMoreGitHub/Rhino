@@ -9,17 +9,17 @@ layout: bootstrap
     <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
         <ul id="sidebar" class="nav nav-stacked fixed">
 
-          <li>
+          <!-- <li>
             <a href="{{ site.baseurl }}/guides/">Guides</a>
 
-            <ul class="nav nav-stacked">
+            <ul class="nav nav-stacked"> -->
 
               <li>
 
                 {% if page.apis.first == 'C/C++' %}
-                  <a href="{{ site.baseurl }}/guides/#cpp">C/C++</a>
+                  </span><a href="{{ site.baseurl }}/guides/#cpp">C/C++</a>
                 {% else %}
-                  <a href="{{ site.baseurl }}/guides/#{{ page.apis.first | handle | downcase | replace: ' ', '-' }}">{{ page.apis.first }}</a>
+                  <a href="{{ site.baseurl }}/guides/#{{ page.apis.first | handle | downcase | replace: ' ', '-' }}"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">{{ page.apis.first }}</a>
                 {% endif %}
                 <ul class="nav nav-stacked">
 
@@ -77,9 +77,9 @@ layout: bootstrap
 
               </li>
 
-            </ul>
+            <!-- </ul>
 
-          </li>
+          </li> -->
 
         </ul>
     </nav>

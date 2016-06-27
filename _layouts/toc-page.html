@@ -10,7 +10,7 @@ layout: bootstrap
         <ul id="sidebar" class="nav nav-stacked fixed">
 
           <!-- Find the h1 handle and title -->
-          {% if content contains '<h1 id="' %}
+          <!-- {% if content contains '<h1 id="' %}
           {% assign splitAtFirstHeader = content | split:'<h1 id="' %}
           {% assign firstSideOfFirstHeader = splitAtFirstHeader[1] %}
           {% assign dividedMainTitle = firstSideOfFirstHeader | split:'<' %}
@@ -21,7 +21,7 @@ layout: bootstrap
           <li>
             <a href="#{{ mainTitleHandle }}">{{ mainTitleTitle }}</a>
 
-            <ul class="nav nav-stacked">
+            <ul class="nav nav-stacked"> -->
               <!-- Find the h2 group and any h3 subgroups -->
               {% assign groups = content | split:'<h2 id="' %}
 
@@ -90,9 +90,9 @@ layout: bootstrap
               {% endfor %}
             {% endif %}
 
-            </ul>
+            <!-- </ul>
 
-          </li>
+          </li> -->
 
         </ul>
     </nav>
