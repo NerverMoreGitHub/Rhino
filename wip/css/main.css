@@ -136,6 +136,9 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 .version-banner a, .version-banner a:hover, .version-banner a:visited { color: #9ac0f1; }
 
+h1[id]:before, h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before, h6[id]:before { display: block; content: ""; margin-top: -36px; height: 36px; visibility: hidden; }
+@media screen and (max-width: 600px) { h1[id]:before, h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before, h6[id]:before { margin-top: -61px; height: 61px; } }
+
 /** Syntax highlighting styles */
 .highlight { background: #fff; }
 .highlight .c { color: #998; font-style: italic; }
