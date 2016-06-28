@@ -65,8 +65,9 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 .site-nav { float: right; line-height: 56px; }
 .site-nav .menu-icon { display: none; }
-.site-nav .page-link { color: #111; line-height: 1.5; }
+.site-nav .page-link { color: #111; line-height: 1.5; padding-bottom: 16px; }
 .site-nav .page-link:not(:first-child) { margin-left: 20px; }
+.site-nav .page-link.active { border-bottom: 2px solid #e8e8e8; }
 @media screen and (max-width: 600px) { .site-nav { position: absolute; top: 9px; right: 30px; background-color: #fdfdfd; border: 0px solid #e8e8e8; border-radius: 5px; text-align: right; z-index: 10; }
   .site-nav .menu-icon { display: block; float: right; width: 36px; height: 26px; line-height: 0; padding-top: 12px; text-align: center; border-style: none; }
   .site-nav .menu-icon > svg { width: 18px; height: 15px; }
