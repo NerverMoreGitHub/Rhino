@@ -372,9 +372,9 @@
     <span class="n">e</span><span class="p">.</span><span class="n">BoundingBox</span><span class="p">.</span><span class="nf">Union</span><span class="p">(</span><span class="k">new</span> <span class="nf">Point3d</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">);</span>
   <span class="p">}</span>
 
-  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">DrawEventArgs</span> <span class="n">e</span><span class="p">)</span>
+  <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">PostDrawObjects</span><span class="p">(</span><span class="n">DrawEventArgs</span> <span class="n">e</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="k">base</span><span class="p">.</span><span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">PostDrawObjects</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
     <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">DrawPoint</span><span class="p">(</span><span class="k">new</span> <span class="nf">Point3d</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -391,9 +391,9 @@
    <span class="n">e</span><span class="p">.</span><span class="n">BoundingBox</span><span class="p">.</span><span class="nf">Union</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">Viewport</span><span class="p">.</span><span class="nf">ConstructionPlane</span><span class="p">().</span><span class="n">Origin</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">DrawEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">PostDrawObjects</span><span class="p">(</span><span class="n">DrawEventArgs</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">base</span><span class="p">.</span><span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+  <span class="k">base</span><span class="p">.</span><span class="nf">PostDrawObjects</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
 
   <span class="n">var</span> <span class="n">cPlane</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">Viewport</span><span class="p">.</span><span class="nf">ConstructionPlane</span><span class="p">();</span>
   <span class="n">var</span> <span class="n">xColor</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">GridXAxisLineColor</span><span class="p">;</span>
