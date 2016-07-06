@@ -281,7 +281,7 @@ $(document).ready(function()
     <span class="k">else</span>
     <span class="p">{</span>
       <span class="c1">// get arrow head size
-</span>      <span class="n">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetOption</span><span class="p">();</span>
+</span>      <span class="kt">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetOption</span><span class="p">();</span>
       <span class="n">go</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"ArrowHead length in screen size (pixels) or world size (percentage of arrow length)?"</span><span class="p">);</span>
       <span class="n">go</span><span class="p">.</span><span class="nf">AddOption</span><span class="p">(</span><span class="s">"screen"</span><span class="p">);</span>
       <span class="n">go</span><span class="p">.</span><span class="nf">AddOption</span><span class="p">(</span><span class="s">"world"</span><span class="p">);</span>
@@ -293,7 +293,7 @@ $(document).ready(function()
       <span class="kt">double</span> <span class="n">world_size</span> <span class="p">=</span> <span class="m">0.0</span><span class="p">;</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">go</span><span class="p">.</span><span class="nf">Option</span><span class="p">().</span><span class="n">EnglishName</span> <span class="p">==</span> <span class="s">"screen"</span><span class="p">)</span>
       <span class="p">{</span>
-        <span class="n">var</span> <span class="n">gi</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetInteger</span><span class="p">();</span>
+        <span class="kt">var</span> <span class="n">gi</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetInteger</span><span class="p">();</span>
         <span class="n">gi</span><span class="p">.</span><span class="nf">SetLowerLimit</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
         <span class="n">gi</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Length of arrow head in pixels"</span><span class="p">);</span>
         <span class="n">gi</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
@@ -303,7 +303,7 @@ $(document).ready(function()
       <span class="p">}</span>
       <span class="k">else</span>
       <span class="p">{</span>
-        <span class="n">var</span> <span class="n">gi</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetInteger</span><span class="p">();</span>
+        <span class="kt">var</span> <span class="n">gi</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetInteger</span><span class="p">();</span>
         <span class="n">gi</span><span class="p">.</span><span class="nf">SetLowerLimit</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
         <span class="n">gi</span><span class="p">.</span><span class="nf">SetUpperLimit</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
         <span class="n">gi</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Length of arrow head in percentage of total arrow length"</span><span class="p">);</span>
@@ -315,12 +315,12 @@ $(document).ready(function()
 
 
       <span class="c1">// get arrow start and end points
-</span>      <span class="n">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetPoint</span><span class="p">();</span>
+</span>      <span class="kt">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetPoint</span><span class="p">();</span>
       <span class="n">gp</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Start of line"</span><span class="p">);</span>
       <span class="n">gp</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-      <span class="n">var</span> <span class="n">start_point</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
+      <span class="kt">var</span> <span class="n">start_point</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
 
       <span class="n">gp</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"End of line"</span><span class="p">);</span>
       <span class="n">gp</span><span class="p">.</span><span class="nf">SetBasePoint</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
@@ -328,13 +328,13 @@ $(document).ready(function()
       <span class="n">gp</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-      <span class="n">var</span> <span class="n">end_point</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
+      <span class="kt">var</span> <span class="n">end_point</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
 
-      <span class="n">var</span> <span class="n">v</span> <span class="p">=</span> <span class="n">end_point</span> <span class="p">-</span> <span class="n">start_point</span><span class="p">;</span>
+      <span class="kt">var</span> <span class="n">v</span> <span class="p">=</span> <span class="n">end_point</span> <span class="p">-</span> <span class="n">start_point</span><span class="p">;</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="nf">IsTiny</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">RhinoMath</span><span class="p">.</span><span class="n">ZeroTolerance</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
 
-      <span class="n">var</span> <span class="n">line</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Line</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">line</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Line</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">);</span>
 
       <span class="n">m_draw_conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DrawArrowHeadsConduit</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">screen_size</span><span class="p">,</span> <span class="n">world_size</span><span class="p">);</span>
       <span class="c1">// toggle conduit on/off

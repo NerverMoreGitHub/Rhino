@@ -257,7 +257,7 @@ $(document).ready(function()
     <span class="c1">// only use a custom geometry filter if no simpler filter does the job
 </span>
     <span class="c1">// only curves
-</span>    <span class="n">var</span> <span class="n">gc</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">gc</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">gc</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"select curve"</span><span class="p">);</span>
     <span class="n">gc</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">;</span>
     <span class="n">gc</span><span class="p">.</span><span class="nf">DisablePreSelect</span><span class="p">();</span>
@@ -270,7 +270,7 @@ $(document).ready(function()
     <span class="n">Rhino</span><span class="p">.</span><span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"curve was selected"</span><span class="p">);</span>
 
     <span class="c1">// only closed curves
-</span>    <span class="n">var</span> <span class="n">gcc</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">gcc</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">gcc</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"select closed curve"</span><span class="p">);</span>
     <span class="n">gcc</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">;</span>
     <span class="n">gcc</span><span class="p">.</span><span class="n">GeometryAttributeFilter</span> <span class="p">=</span> <span class="n">GeometryAttributeFilter</span><span class="p">.</span><span class="n">ClosedCurve</span><span class="p">;</span>
@@ -284,7 +284,7 @@ $(document).ready(function()
     <span class="n">Rhino</span><span class="p">.</span><span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"closed curve was selected"</span><span class="p">);</span>
 
     <span class="c1">// only circles with a radius of 10
-</span>    <span class="n">var</span> <span class="n">gcc10</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">gcc10</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">gcc10</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"select circle with radius of 10"</span><span class="p">);</span>
     <span class="n">gc</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">;</span>
     <span class="n">gcc10</span><span class="p">.</span><span class="nf">SetCustomGeometryFilter</span><span class="p">(</span><span class="n">CircleWithRadiusOf10GeometryFilter</span><span class="p">);</span> <span class="c1">// custom geometry filter

@@ -382,7 +382,7 @@ $(document).ready(function()
 
 <p>By default, conduits are not enabled but it is easily done by setting the Enabled property of the DisplayConduit to true:</p>
 
-<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">var</span> <span class="n">conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MyConduit</span><span class="p">();</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MyConduit</span><span class="p">();</span>
 <span class="n">conduit</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
 </code></pre>
 </div>
@@ -420,10 +420,10 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">base</span><span class="p">.</span><span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
 
-  <span class="n">var</span> <span class="n">cPlane</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">Viewport</span><span class="p">.</span><span class="nf">ConstructionPlane</span><span class="p">();</span>
-  <span class="n">var</span> <span class="n">xColor</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">GridXAxisLineColor</span><span class="p">;</span>
-  <span class="n">var</span> <span class="n">yColor</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">GridYAxisLineColor</span><span class="p">;</span>
-  <span class="n">var</span> <span class="n">zColor</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">GridZAxisLineColor</span><span class="p">;</span>
+  <span class="kt">var</span> <span class="n">cPlane</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">Viewport</span><span class="p">.</span><span class="nf">ConstructionPlane</span><span class="p">();</span>
+  <span class="kt">var</span> <span class="n">xColor</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">GridXAxisLineColor</span><span class="p">;</span>
+  <span class="kt">var</span> <span class="n">yColor</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">GridYAxisLineColor</span><span class="p">;</span>
+  <span class="kt">var</span> <span class="n">zColor</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">GridZAxisLineColor</span><span class="p">;</span>
 
   <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">EnableDepthWriting</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
   <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">EnableDepthTesting</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>

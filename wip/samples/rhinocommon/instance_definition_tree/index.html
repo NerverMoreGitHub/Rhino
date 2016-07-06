@@ -251,8 +251,8 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">InstanceDefinitionTree</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">instance_definitions</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">InstanceDefinitions</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">instance_definition_count</span> <span class="p">=</span> <span class="n">instance_definitions</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">instance_definitions</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">InstanceDefinitions</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">instance_definition_count</span> <span class="p">=</span> <span class="n">instance_definitions</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">instance_definition_count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
     <span class="p">{</span>
@@ -260,7 +260,7 @@ $(document).ready(function()
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">var</span> <span class="n">dump</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TextLog</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">dump</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TextLog</span><span class="p">();</span>
     <span class="n">dump</span><span class="p">.</span><span class="n">IndentSize</span> <span class="p">=</span> <span class="m">4</span><span class="p">;</span>
 
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">instance_definition_count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
@@ -283,7 +283,7 @@ $(document).ready(function()
         <span class="n">dump</span><span class="p">.</span><span class="nf">PushIndent</span><span class="p">();</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">instanceDefinition</span><span class="p">.</span><span class="n">ObjectCount</span> <span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
         <span class="p">{</span>
-          <span class="n">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">instanceDefinition</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+          <span class="kt">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">instanceDefinition</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
           <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
           <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="k">is</span> <span class="n">InstanceObject</span><span class="p">)</span>
             <span class="nf">DumpInstanceDefinition</span><span class="p">((</span><span class="n">obj</span> <span class="k">as</span> <span class="n">InstanceObject</span><span class="p">).</span><span class="n">InstanceDefinition</span><span class="p">,</span> <span class="k">ref</span> <span class="n">dump</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span> <span class="c1">// Recursive...

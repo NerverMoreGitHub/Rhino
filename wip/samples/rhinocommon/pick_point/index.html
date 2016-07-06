@@ -252,21 +252,21 @@ $(document).ready(function()
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">PickPoint</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="c1">// this creates a point where the mouse is clicked.
-</span>    <span class="n">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetPoint</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetPoint</span><span class="p">();</span>
     <span class="n">gp</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Click for new point"</span><span class="p">);</span>
     <span class="n">gp</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-    <span class="n">var</span> <span class="n">point3d</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">point3d</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
     <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">AddPoint</span><span class="p">(</span><span class="n">point3d</span><span class="p">);</span>
     <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
 
     <span class="c1">// selects a point that already exists
 </span>    <span class="n">ObjRef</span> <span class="n">obj_ref</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select point"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Point</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select point"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Point</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">point</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">point</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
     <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Point: x:{0}, y:{1}, z:{2}"</span><span class="p">,</span>
       <span class="n">point</span><span class="p">.</span><span class="n">Location</span><span class="p">.</span><span class="n">X</span><span class="p">,</span>
       <span class="n">point</span><span class="p">.</span><span class="n">Location</span><span class="p">.</span><span class="n">Y</span><span class="p">,</span>
@@ -278,7 +278,7 @@ $(document).ready(function()
     <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetMultipleObjects</span><span class="p">(</span><span class="s">"Select point"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Point</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_refs</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">o_ref</span> <span class="k">in</span> <span class="n">obj_refs</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">o_ref</span> <span class="k">in</span> <span class="n">obj_refs</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">point</span> <span class="p">=</span> <span class="n">o_ref</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
       <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Point: x:{0}, y:{1}, z:{2}"</span><span class="p">,</span>
@@ -290,13 +290,13 @@ $(document).ready(function()
 
     <span class="c1">// also selects a point that already exists.
 </span>    <span class="c1">// Used when RhinoGet doesn't provide enough control
-</span>    <span class="n">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Select point"</span><span class="p">);</span>
     <span class="n">go</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Point</span><span class="p">;</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">GetMultiple</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">o_ref</span> <span class="k">in</span>  <span class="n">go</span><span class="p">.</span><span class="nf">Objects</span><span class="p">())</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">o_ref</span> <span class="k">in</span>  <span class="n">go</span><span class="p">.</span><span class="nf">Objects</span><span class="p">())</span>
     <span class="p">{</span>
       <span class="n">point</span> <span class="p">=</span> <span class="n">o_ref</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">point</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>

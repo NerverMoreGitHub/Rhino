@@ -251,14 +251,14 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">Ortho</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetPoint</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetPoint</span><span class="p">();</span>
     <span class="n">gp</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Start of line"</span><span class="p">);</span>
     <span class="n">gp</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-    <span class="n">var</span> <span class="n">start_point</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">start_point</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
 
-    <span class="n">var</span> <span class="n">original_ortho</span> <span class="p">=</span> <span class="n">ModelAidSettings</span><span class="p">.</span><span class="n">Ortho</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">original_ortho</span> <span class="p">=</span> <span class="n">ModelAidSettings</span><span class="p">.</span><span class="n">Ortho</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(!</span><span class="n">original_ortho</span><span class="p">)</span>
       <span class="n">ModelAidSettings</span><span class="p">.</span><span class="n">Ortho</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
 
@@ -268,7 +268,7 @@ $(document).ready(function()
     <span class="n">gp</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-    <span class="n">var</span> <span class="n">end_point</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">end_point</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">ModelAidSettings</span><span class="p">.</span><span class="n">Ortho</span> <span class="p">!=</span> <span class="n">original_ortho</span><span class="p">)</span>
       <span class="n">ModelAidSettings</span><span class="p">.</span><span class="n">Ortho</span> <span class="p">=</span> <span class="n">original_ortho</span><span class="p">;</span>

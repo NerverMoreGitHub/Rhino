@@ -285,7 +285,7 @@ $(document).ready(function()
 </span>  <span class="n">args</span><span class="p">.</span><span class="n">SetPatternRotation</span><span class="p">(</span> <span class="mf">0.0</span> <span class="p">);</span> <span class="c1">// default
 </span>
   <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_Hatch</span><span class="o">*&gt;</span> <span class="n">hatches</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">RhinoCreateHatches</span><span class="p">(</span> <span class="n">args</span><span class="p">,</span> <span class="n">hatches</span> <span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">RhinoCreateHatches</span><span class="p">(</span> <span class="n">args</span><span class="p">,</span> <span class="n">hatches</span> <span class="p">);</span>
   <span class="k">if</span><span class="p">(</span> <span class="n">rc</span> <span class="o">&amp;&amp;</span> <span class="n">hatches</span><span class="p">.</span><span class="n">Count</span><span class="p">()</span> <span class="p">)</span>
   <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">num_added</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>

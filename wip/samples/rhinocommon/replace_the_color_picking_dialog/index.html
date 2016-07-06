@@ -262,7 +262,7 @@ $(document).ready(function()
     <span class="n">m_dlg</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ColorDialog</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">m_dlg</span><span class="p">.</span><span class="nf">ShowDialog</span><span class="p">(</span><span class="k">null</span><span class="p">)</span> <span class="p">==</span> <span class="n">DialogResult</span><span class="p">.</span><span class="n">Ok</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">c</span> <span class="p">=</span> <span class="n">m_dlg</span><span class="p">.</span><span class="n">Color</span><span class="p">;</span>
+      <span class="kt">var</span> <span class="n">c</span> <span class="p">=</span> <span class="n">m_dlg</span><span class="p">.</span><span class="n">Color</span><span class="p">;</span>
       <span class="n">e</span><span class="p">.</span><span class="n">SelectedColor</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Color</span><span class="p">.</span><span class="nf">FromArgb</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">Ab</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="n">Rb</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="n">Gb</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="n">Bb</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>

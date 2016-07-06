@@ -514,9 +514,9 @@ $(document).ready(function()
 
 <p>This can then be used in <code class="highlighter-rouge">RH_C_FUNCTION</code> lines:</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_FUNCTION</span> <span class="n">bool</span> <span class="nf">ON_Mesh_GetBool</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">pMesh</span><span class="p">,</span> <span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="n">which</span><span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">RH_C_FUNCTION</span> <span class="kt">bool</span> <span class="nf">ON_Mesh_GetBool</span><span class="p">(</span><span class="k">const</span> <span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">pMesh</span><span class="p">,</span> <span class="k">enum</span> <span class="n">MeshBoolConst</span> <span class="n">which</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">pMesh</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">which</span><span class="p">)</span>

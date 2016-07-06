@@ -252,15 +252,15 @@ $(document).ready(function()
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">ModifyLightColor</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">ObjRef</span> <span class="n">obj_ref</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select light to change color"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select light to change color"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span>
       <span class="n">ObjectType</span><span class="p">.</span><span class="n">Light</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">light</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Light</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">light</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Light</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">light</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">diffuse_color</span> <span class="p">=</span> <span class="n">light</span><span class="p">.</span><span class="n">Diffuse</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">diffuse_color</span> <span class="p">=</span> <span class="n">light</span><span class="p">.</span><span class="n">Diffuse</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">Dialogs</span><span class="p">.</span><span class="nf">ShowColorDialog</span><span class="p">(</span><span class="k">ref</span> <span class="n">diffuse_color</span><span class="p">))</span>
     <span class="p">{</span>
       <span class="n">light</span><span class="p">.</span><span class="n">Diffuse</span> <span class="p">=</span> <span class="n">diffuse_color</span><span class="p">;</span>

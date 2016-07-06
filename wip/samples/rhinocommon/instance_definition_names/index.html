@@ -251,11 +251,11 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">InstanceDefinitionNames</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">instance_definition_names</span> <span class="p">=</span> <span class="p">(</span><span class="n">from</span> <span class="n">instance_definition</span> <span class="k">in</span> <span class="n">doc</span><span class="p">.</span><span class="n">InstanceDefinitions</span>
-                                     <span class="n">where</span> <span class="n">instance_definition</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">instance_definition</span><span class="p">.</span><span class="n">IsDeleted</span>
-                                     <span class="n">select</span> <span class="n">instance_definition</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">instance_definition_names</span> <span class="p">=</span> <span class="p">(</span><span class="k">from</span> <span class="n">instance_definition</span> <span class="k">in</span> <span class="n">doc</span><span class="p">.</span><span class="n">InstanceDefinitions</span>
+                                     <span class="k">where</span> <span class="n">instance_definition</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">instance_definition</span><span class="p">.</span><span class="n">IsDeleted</span>
+                                     <span class="k">select</span> <span class="n">instance_definition</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
 
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">n</span> <span class="k">in</span> <span class="n">instance_definition_names</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">n</span> <span class="k">in</span> <span class="n">instance_definition_names</span><span class="p">)</span>
       <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Instance definition = {0}"</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>

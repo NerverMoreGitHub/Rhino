@@ -375,7 +375,7 @@ $(document).ready(function()
   <span class="n">ON_BinaryFile</span> <span class="n">archive</span><span class="p">(</span> <span class="n">ON</span><span class="o">::</span><span class="n">read3dm</span><span class="p">,</span> <span class="n">archive_fp</span> <span class="p">);</span>
 
   <span class="n">ONX_Model</span> <span class="n">model</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">Read</span><span class="p">(</span> <span class="n">archive</span> <span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">Read</span><span class="p">(</span> <span class="n">archive</span> <span class="p">);</span>
 
   <span class="n">ON</span><span class="o">::</span><span class="n">CloseFile</span><span class="p">(</span> <span class="n">archive_fp</span> <span class="p">);</span>
 
@@ -393,7 +393,7 @@ $(document).ready(function()
       <span class="k">continue</span><span class="p">;</span>
 
     <span class="n">ON_Xform</span> <span class="n">xform</span> <span class="o">=</span> <span class="n">iref</span><span class="o">-&gt;</span><span class="n">m_xform</span><span class="p">;</span>
-    <span class="k">const</span> <span class="n">bool</span> <span class="n">bNeedXform</span> <span class="o">=</span> <span class="p">(</span> <span class="n">xform</span><span class="p">.</span><span class="n">IsValid</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">xform</span><span class="p">.</span><span class="n">IsZero</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">xform</span><span class="p">.</span><span class="n">IsIdentity</span><span class="p">()</span> <span class="p">);</span>
+    <span class="k">const</span> <span class="kt">bool</span> <span class="n">bNeedXform</span> <span class="o">=</span> <span class="p">(</span> <span class="n">xform</span><span class="p">.</span><span class="n">IsValid</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">xform</span><span class="p">.</span><span class="n">IsZero</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">xform</span><span class="p">.</span><span class="n">IsIdentity</span><span class="p">()</span> <span class="p">);</span>
 
     <span class="kt">int</span> <span class="n">idef_index</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">IDefIndex</span><span class="p">(</span> <span class="n">iref</span><span class="o">-&gt;</span><span class="n">m_instance_definition_uuid</span> <span class="p">);</span>
     <span class="k">if</span><span class="p">(</span> <span class="n">idef_index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">)</span>

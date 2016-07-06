@@ -278,10 +278,10 @@ $(document).ready(function()
 
   <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_Brep</span><span class="o">*&gt;</span> <span class="n">OutBreps</span><span class="p">;</span>
   <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">InputIndexForOutput</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">something_happened</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">something_happened</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
   <span class="kt">double</span> <span class="n">tolerance</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">AbsoluteTolerance</span><span class="p">();</span>
 
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">RhinoBooleanDifference</span><span class="p">(</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">RhinoBooleanDifference</span><span class="p">(</span>
         <span class="n">InBreps0</span><span class="p">,</span>
         <span class="n">InBreps1</span><span class="p">,</span>
         <span class="n">tolerance</span><span class="p">,</span>

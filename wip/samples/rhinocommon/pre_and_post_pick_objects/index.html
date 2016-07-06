@@ -251,7 +251,7 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">PrePostPick</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Select objects"</span><span class="p">);</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">EnablePreSelect</span><span class="p">(</span><span class="k">true</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">EnablePostSelect</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
@@ -259,7 +259,7 @@ $(document).ready(function()
     <span class="k">if</span> <span class="p">(</span><span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
 
-    <span class="n">var</span> <span class="n">selected_objects</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">Objects</span><span class="p">().</span><span class="nf">ToList</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">selected_objects</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">Objects</span><span class="p">().</span><span class="nf">ToList</span><span class="p">();</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">go</span><span class="p">.</span><span class="n">ObjectsWerePreselected</span><span class="p">)</span>
     <span class="p">{</span>
@@ -269,7 +269,7 @@ $(document).ready(function()
       <span class="n">go</span><span class="p">.</span><span class="nf">GetMultiple</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">==</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="p">{</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">obj</span> <span class="k">in</span> <span class="n">go</span><span class="p">.</span><span class="nf">Objects</span><span class="p">())</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">obj</span> <span class="k">in</span> <span class="n">go</span><span class="p">.</span><span class="nf">Objects</span><span class="p">())</span>
         <span class="p">{</span>
           <span class="n">selected_objects</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
           <span class="c1">// The normal behavior of commands is that when they finish,

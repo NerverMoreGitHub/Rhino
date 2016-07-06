@@ -292,7 +292,7 @@ $(document).ready(function()
   <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">myface</span> <span class="p">)</span>
     <span class="k">return</span> <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">failure</span><span class="p">;</span>
 
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">RhinoExtendSurface</span><span class="p">(</span> <span class="n">myface</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>  
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">RhinoExtendSurface</span><span class="p">(</span> <span class="n">myface</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>  
   <span class="k">if</span><span class="p">(</span> <span class="n">rc</span> <span class="p">)</span>
   <span class="p">{</span>
     <span class="n">ON_Brep</span><span class="o">*</span> <span class="n">mybrep</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ON_Brep</span><span class="p">();</span>

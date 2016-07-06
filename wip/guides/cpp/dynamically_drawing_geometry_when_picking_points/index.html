@@ -339,7 +339,7 @@ $(document).ready(function()
 <span class="k">public</span><span class="o">:</span>
   <span class="n">CGetCircleRadiusPoint</span><span class="p">();</span>
   <span class="kt">void</span> <span class="n">SetCenterPoint</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_3dPoint</span> <span class="n">center_point</span> <span class="p">);</span>
-  <span class="n">bool</span> <span class="n">CalculateCircle</span><span class="p">(</span> <span class="n">CRhinoViewport</span><span class="o">&amp;</span> <span class="n">vp</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">pt</span> <span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">CalculateCircle</span><span class="p">(</span> <span class="n">CRhinoViewport</span><span class="o">&amp;</span> <span class="n">vp</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">pt</span> <span class="p">);</span>
 
   <span class="kt">void</span> <span class="n">OnMouseMove</span><span class="p">(</span> <span class="n">CRhinoViewport</span><span class="o">&amp;</span> <span class="n">vp</span><span class="p">,</span>
                     <span class="n">UINT</span> <span class="n">flags</span><span class="p">,</span>
@@ -351,7 +351,7 @@ $(document).ready(function()
 <span class="k">private</span><span class="o">:</span>
   <span class="n">ON_Circle</span> <span class="n">m_circle</span><span class="p">;</span>
   <span class="n">ON_3dPoint</span> <span class="n">m_center_point</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">m_draw_circle</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">m_draw_circle</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="n">CGetCircleRadiusPoint</span><span class="o">::</span><span class="n">CGetCircleRadiusPoint</span><span class="p">()</span>
@@ -364,7 +364,7 @@ $(document).ready(function()
   <span class="n">m_center_point</span> <span class="o">=</span> <span class="n">center_point</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">bool</span> <span class="n">CGetCircleRadiusPoint</span><span class="o">::</span><span class="n">CalculateCircle</span><span class="p">(</span> <span class="n">CRhinoViewport</span><span class="o">&amp;</span> <span class="n">vp</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">pt</span> <span class="p">)</span>
+<span class="kt">bool</span> <span class="n">CGetCircleRadiusPoint</span><span class="o">::</span><span class="n">CalculateCircle</span><span class="p">(</span> <span class="n">CRhinoViewport</span><span class="o">&amp;</span> <span class="n">vp</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">pt</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="kt">double</span> <span class="n">radius</span> <span class="o">=</span> <span class="n">m_center_point</span><span class="p">.</span><span class="n">DistanceTo</span><span class="p">(</span> <span class="n">pt</span> <span class="p">);</span>
   <span class="k">if</span><span class="p">(</span> <span class="n">radius</span> <span class="o">&lt;</span> <span class="n">ON_SQRT_EPSILON</span> <span class="p">)</span>

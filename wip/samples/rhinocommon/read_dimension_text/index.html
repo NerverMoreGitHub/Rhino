@@ -251,13 +251,13 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">ReadDimensionText</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Select annotation"</span><span class="p">);</span>
     <span class="n">go</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Annotation</span><span class="p">;</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">annotation</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="nf">Object</span><span class="p">()</span> <span class="k">as</span> <span class="n">AnnotationObjectBase</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">annotation</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="nf">Object</span><span class="p">()</span> <span class="k">as</span> <span class="n">AnnotationObjectBase</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">annotation</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 

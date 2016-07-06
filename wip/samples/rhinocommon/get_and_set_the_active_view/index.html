@@ -252,25 +252,25 @@ $(document).ready(function()
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">SetActiveView</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="c1">// view and view names
-</span>    <span class="n">var</span> <span class="n">active_view_name</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="n">ActiveView</span><span class="p">.</span><span class="n">ActiveViewport</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
+</span>    <span class="kt">var</span> <span class="n">active_view_name</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="n">ActiveView</span><span class="p">.</span><span class="n">ActiveViewport</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">non_active_views</span> <span class="p">=</span>
+    <span class="kt">var</span> <span class="n">non_active_views</span> <span class="p">=</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">Views</span>
       <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">v</span> <span class="p">=&gt;</span> <span class="n">v</span><span class="p">.</span><span class="n">ActiveViewport</span><span class="p">.</span><span class="n">Name</span> <span class="p">!=</span> <span class="n">active_view_name</span><span class="p">)</span>
       <span class="p">.</span><span class="nf">ToDictionary</span><span class="p">(</span><span class="n">v</span> <span class="p">=&gt;</span> <span class="n">v</span><span class="p">.</span><span class="n">ActiveViewport</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">v</span> <span class="p">=&gt;</span> <span class="n">v</span><span class="p">);</span>
 
     <span class="c1">// get name of view to set active
-</span>    <span class="n">var</span> <span class="n">gs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetString</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">gs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetString</span><span class="p">();</span>
     <span class="n">gs</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Name of view to set active"</span><span class="p">);</span>
     <span class="n">gs</span><span class="p">.</span><span class="nf">AcceptNothing</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
     <span class="n">gs</span><span class="p">.</span><span class="nf">SetDefaultString</span><span class="p">(</span><span class="n">active_view_name</span><span class="p">);</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">view_name</span> <span class="k">in</span> <span class="n">non_active_views</span><span class="p">.</span><span class="n">Keys</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">view_name</span> <span class="k">in</span> <span class="n">non_active_views</span><span class="p">.</span><span class="n">Keys</span><span class="p">)</span>
       <span class="n">gs</span><span class="p">.</span><span class="nf">AddOption</span><span class="p">(</span><span class="n">view_name</span><span class="p">);</span>
-    <span class="n">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">gs</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">gs</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">gs</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gs</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
 
-    <span class="n">var</span> <span class="n">selected_view_name</span> <span class="p">=</span>
+    <span class="kt">var</span> <span class="n">selected_view_name</span> <span class="p">=</span>
       <span class="n">result</span> <span class="p">==</span> <span class="n">GetResult</span><span class="p">.</span><span class="n">Option</span> <span class="p">?</span> <span class="n">gs</span><span class="p">.</span><span class="nf">Option</span><span class="p">().</span><span class="n">EnglishName</span> <span class="p">:</span> <span class="n">gs</span><span class="p">.</span><span class="nf">StringResult</span><span class="p">();</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">selected_view_name</span> <span class="p">!=</span> <span class="n">active_view_name</span><span class="p">)</span>

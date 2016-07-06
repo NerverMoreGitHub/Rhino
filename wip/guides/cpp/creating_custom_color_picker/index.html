@@ -319,9 +319,9 @@ $(document).ready(function()
 <span class="k">public</span><span class="o">:</span>
   <span class="n">CMyColorDialog</span><span class="p">()</span> <span class="o">:</span> <span class="n">CRhinoReplaceColorDialog</span><span class="p">(</span><span class="o">::</span><span class="n">AfxGetStaticModuleState</span><span class="p">())</span> <span class="p">{};</span>
   <span class="k">virtual</span> <span class="o">~</span><span class="n">CMyColorDialog</span><span class="p">()</span> <span class="p">{};</span>
-  <span class="n">bool</span> <span class="n">CMyColorDialog</span><span class="o">::</span><span class="n">ColorDialog</span><span class="p">(</span> <span class="n">HWND</span> <span class="n">hWndParent</span><span class="p">,</span>
+  <span class="kt">bool</span> <span class="n">CMyColorDialog</span><span class="o">::</span><span class="n">ColorDialog</span><span class="p">(</span> <span class="n">HWND</span> <span class="n">hWndParent</span><span class="p">,</span>
                                     <span class="n">ON_Color</span><span class="o">&amp;</span> <span class="n">color</span><span class="p">,</span>
-                                    <span class="n">bool</span> <span class="n">bIncludeButtonColors</span><span class="p">,</span>
+                                    <span class="kt">bool</span> <span class="n">bIncludeButtonColors</span><span class="p">,</span>
                                     <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">lpsDialogTitle</span> <span class="p">)</span>
   <span class="p">{</span>
     <span class="n">CColorDialog</span> <span class="n">dlg</span><span class="p">(</span> <span class="n">color</span><span class="p">,</span> <span class="n">CC_ANYCOLOR</span><span class="o">|</span><span class="n">CC_FULLOPEN</span><span class="p">,</span> <span class="n">CWnd</span><span class="o">::</span><span class="n">FromHandle</span><span class="p">(</span><span class="n">hWndParent</span><span class="p">)</span> <span class="p">);</span>

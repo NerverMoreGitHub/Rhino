@@ -251,7 +251,7 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">ViewportResolution</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">active_viewport</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="n">ActiveView</span><span class="p">.</span><span class="n">ActiveViewport</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">active_viewport</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="n">ActiveView</span><span class="p">.</span><span class="n">ActiveViewport</span><span class="p">;</span>
     <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Name = {0}: Width = {1}, Height = {2}"</span><span class="p">,</span>
       <span class="n">active_viewport</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">active_viewport</span><span class="p">.</span><span class="n">Size</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">active_viewport</span><span class="p">.</span><span class="n">Size</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
     <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>

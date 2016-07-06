@@ -251,7 +251,7 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">CurveSurfaceIntersect</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">gs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">gs</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"select brep"</span><span class="p">);</span>
     <span class="n">gs</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Brep</span><span class="p">;</span>
     <span class="n">gs</span><span class="p">.</span><span class="nf">DisablePreSelect</span><span class="p">();</span>
@@ -259,9 +259,9 @@ $(document).ready(function()
     <span class="n">gs</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">gs</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gs</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-    <span class="n">var</span> <span class="n">brep</span> <span class="p">=</span> <span class="n">gs</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="nf">Brep</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">brep</span> <span class="p">=</span> <span class="n">gs</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="nf">Brep</span><span class="p">();</span>
 
-    <span class="n">var</span> <span class="n">gc</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gc</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">gc</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"select curve"</span><span class="p">);</span>
     <span class="n">gc</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">;</span>
     <span class="n">gc</span><span class="p">.</span><span class="nf">DisablePreSelect</span><span class="p">();</span>
@@ -269,12 +269,12 @@ $(document).ready(function()
     <span class="n">gc</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">gc</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gc</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-    <span class="n">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">gc</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="nf">Curve</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">gc</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="nf">Curve</span><span class="p">();</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">brep</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">curve</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">tolerance</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">tolerance</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">;</span>
 
     <span class="n">Point3d</span><span class="p">[]</span> <span class="n">intersection_points</span><span class="p">;</span>
     <span class="n">Curve</span><span class="p">[]</span> <span class="n">overlap_curves</span><span class="p">;</span>
@@ -284,9 +284,9 @@ $(document).ready(function()
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">overlap_curve</span> <span class="k">in</span> <span class="n">overlap_curves</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">overlap_curve</span> <span class="k">in</span> <span class="n">overlap_curves</span><span class="p">)</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">AddCurve</span><span class="p">(</span><span class="n">overlap_curve</span><span class="p">);</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">intersection_point</span> <span class="k">in</span> <span class="n">intersection_points</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">intersection_point</span> <span class="k">in</span> <span class="n">intersection_points</span><span class="p">)</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">AddPoint</span><span class="p">(</span><span class="n">intersection_point</span><span class="p">);</span>
 
     <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0} overlap curves, and {1} intersection points"</span><span class="p">,</span> <span class="n">overlap_curves</span><span class="p">.</span><span class="n">Length</span><span class="p">,</span> <span class="n">intersection_points</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>

@@ -252,13 +252,13 @@ $(document).ready(function()
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">MovePointObjectsNonUniform</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">ObjRef</span><span class="p">[]</span> <span class="n">obj_refs</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetMultipleObjects</span><span class="p">(</span><span class="s">"Select points to move"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Point</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_refs</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetMultipleObjects</span><span class="p">(</span><span class="s">"Select points to move"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Point</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_refs</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span> <span class="p">||</span> <span class="n">obj_refs</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
 
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">obj_ref</span> <span class="k">in</span> <span class="n">obj_refs</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">obj_ref</span> <span class="k">in</span> <span class="n">obj_refs</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">point3d</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Point</span><span class="p">().</span><span class="n">Location</span><span class="p">;</span>
+      <span class="kt">var</span> <span class="n">point3d</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Point</span><span class="p">().</span><span class="n">Location</span><span class="p">;</span>
       <span class="c1">// modify the point coordinates in some way ...
 </span>      <span class="n">point3d</span><span class="p">.</span><span class="n">X</span><span class="p">++;</span>
       <span class="n">point3d</span><span class="p">.</span><span class="n">Y</span><span class="p">++;</span>

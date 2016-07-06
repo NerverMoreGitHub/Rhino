@@ -243,7 +243,7 @@ $(document).ready(function()
 <p style="color:#337ab7; padding-left:10px">C/C++</p>
 
 <div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">// Helper function to calculate rail parameters
-</span><span class="n">bool</span> <span class="nf">GetShapeParameterOnRail</span><span class="p">(</span>
+</span><span class="kt">bool</span> <span class="nf">GetShapeParameterOnRail</span><span class="p">(</span>
   <span class="k">const</span> <span class="n">ON_Curve</span><span class="o">&amp;</span> <span class="n">shape</span><span class="p">,</span>
   <span class="k">const</span> <span class="n">ON_Curve</span><span class="o">&amp;</span> <span class="n">rail</span><span class="p">,</span>
   <span class="kt">double</span> <span class="n">tol</span><span class="p">,</span>
@@ -253,7 +253,7 @@ $(document).ready(function()
   <span class="n">ON_Interval</span> <span class="n">rail_domain</span> <span class="o">=</span> <span class="n">rail</span><span class="p">.</span><span class="n">Domain</span><span class="p">();</span>
 
   <span class="c1">// Test start point
-</span>  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">rail</span><span class="p">.</span><span class="n">GetClosestPoint</span><span class="p">(</span> <span class="n">shape</span><span class="p">.</span><span class="n">PointAtStart</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">,</span> <span class="n">tol</span> <span class="p">);</span>
+</span>  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">rail</span><span class="p">.</span><span class="n">GetClosestPoint</span><span class="p">(</span> <span class="n">shape</span><span class="p">.</span><span class="n">PointAtStart</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">,</span> <span class="n">tol</span> <span class="p">);</span>
   <span class="k">if</span><span class="p">(</span> <span class="n">rc</span> <span class="p">)</span>
   <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span> <span class="n">rail</span><span class="p">.</span><span class="n">IsClosed</span><span class="p">()</span> <span class="p">)</span>
@@ -297,7 +297,7 @@ $(document).ready(function()
 <span class="p">}</span>
 
 <span class="c1">// RhinoSweep2 wrapper function
-</span><span class="n">bool</span> <span class="nf">MySweep2</span><span class="p">(</span>
+</span><span class="kt">bool</span> <span class="nf">MySweep2</span><span class="p">(</span>
   <span class="k">const</span> <span class="n">ON_Curve</span><span class="o">*</span> <span class="n">Rail1</span><span class="p">,</span>
   <span class="k">const</span> <span class="n">CRhinoObject</span><span class="o">*</span> <span class="n">Rail1_obj</span><span class="p">,</span>
   <span class="k">const</span> <span class="n">ON_Curve</span><span class="o">*</span> <span class="n">Rail2</span><span class="p">,</span>

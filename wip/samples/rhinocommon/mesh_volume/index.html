@@ -251,7 +251,7 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">MeshVolume</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">gm</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gm</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">gm</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Select solid meshes for volume calculation"</span><span class="p">);</span>
     <span class="n">gm</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Mesh</span><span class="p">;</span>
     <span class="n">gm</span><span class="p">.</span><span class="n">GeometryAttributeFilter</span> <span class="p">=</span> <span class="n">GeometryAttributeFilter</span><span class="p">.</span><span class="n">ClosedMesh</span><span class="p">;</span>
@@ -263,11 +263,11 @@ $(document).ready(function()
 
     <span class="kt">double</span> <span class="n">volume</span> <span class="p">=</span> <span class="m">0.0</span><span class="p">;</span>
     <span class="kt">double</span> <span class="n">volume_error</span> <span class="p">=</span> <span class="m">0.0</span><span class="p">;</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">obj_ref</span> <span class="k">in</span> <span class="n">gm</span><span class="p">.</span><span class="nf">Objects</span><span class="p">())</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">obj_ref</span> <span class="k">in</span> <span class="n">gm</span><span class="p">.</span><span class="nf">Objects</span><span class="p">())</span>
     <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">obj_ref</span><span class="p">.</span><span class="nf">Mesh</span><span class="p">()</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
       <span class="p">{</span>
-        <span class="n">var</span> <span class="n">mass_properties</span> <span class="p">=</span> <span class="n">VolumeMassProperties</span><span class="p">.</span><span class="nf">Compute</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">.</span><span class="nf">Mesh</span><span class="p">());</span>
+        <span class="kt">var</span> <span class="n">mass_properties</span> <span class="p">=</span> <span class="n">VolumeMassProperties</span><span class="p">.</span><span class="nf">Compute</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">.</span><span class="nf">Mesh</span><span class="p">());</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">mass_properties</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
         <span class="p">{</span>
           <span class="n">volume</span> <span class="p">+=</span> <span class="n">mass_properties</span><span class="p">.</span><span class="n">Volume</span><span class="p">;</span>

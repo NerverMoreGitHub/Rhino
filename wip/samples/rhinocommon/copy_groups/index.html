@@ -251,7 +251,7 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">CopyGroups</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Select objects to copy in place"</span><span class="p">);</span>
     <span class="n">go</span><span class="p">.</span><span class="n">GroupSelect</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
     <span class="n">go</span><span class="p">.</span><span class="n">SubObjectSelect</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
@@ -259,15 +259,15 @@ $(document).ready(function()
     <span class="k">if</span> <span class="p">(</span><span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
 
-    <span class="n">var</span> <span class="n">xform</span> <span class="p">=</span> <span class="n">Transform</span><span class="p">.</span><span class="n">Identity</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">group_map</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">&gt;();</span>
+    <span class="kt">var</span> <span class="n">xform</span> <span class="p">=</span> <span class="n">Transform</span><span class="p">.</span><span class="n">Identity</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">group_map</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">&gt;();</span>
 
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">obj_ref</span> <span class="k">in</span> <span class="n">go</span><span class="p">.</span><span class="nf">Objects</span><span class="p">())</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">obj_ref</span> <span class="k">in</span> <span class="n">go</span><span class="p">.</span><span class="nf">Objects</span><span class="p">())</span>
     <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">obj_ref</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
       <span class="p">{</span>
-        <span class="n">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Object</span><span class="p">();</span>
-        <span class="n">var</span> <span class="n">duplicate</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">Transform</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">.</span><span class="n">ObjectId</span><span class="p">,</span> <span class="n">xform</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Object</span><span class="p">();</span>
+        <span class="kt">var</span> <span class="n">duplicate</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">Transform</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">.</span><span class="n">ObjectId</span><span class="p">,</span> <span class="n">xform</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
         <span class="nf">RhinoUpdateObjectGroups</span><span class="p">(</span><span class="k">ref</span> <span class="n">obj</span><span class="p">,</span> <span class="k">ref</span> <span class="n">group_map</span><span class="p">);</span>
       <span class="p">}</span>
     <span class="p">}</span>
@@ -282,10 +282,10 @@ $(document).ready(function()
     <span class="kt">int</span> <span class="n">attrib_group_count</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">Attributes</span><span class="p">.</span><span class="n">GroupCount</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">attrib_group_count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">doc</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">Document</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">doc</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">Document</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">doc</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">groups</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Groups</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">groups</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Groups</span><span class="p">;</span>
 
     <span class="kt">int</span> <span class="n">group_count</span> <span class="p">=</span> <span class="n">groups</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">group_count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
@@ -294,8 +294,8 @@ $(document).ready(function()
       <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">group_count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
         <span class="n">group_map</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">-</span><span class="m">1</span><span class="p">);</span>
 
-    <span class="n">var</span> <span class="n">attributes</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">Attributes</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">group_list</span> <span class="p">=</span> <span class="n">attributes</span><span class="p">.</span><span class="nf">GetGroupList</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">attributes</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">Attributes</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">group_list</span> <span class="p">=</span> <span class="n">attributes</span><span class="p">.</span><span class="nf">GetGroupList</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">group_list</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
     <span class="n">attrib_group_count</span> <span class="p">=</span> <span class="n">group_list</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
 

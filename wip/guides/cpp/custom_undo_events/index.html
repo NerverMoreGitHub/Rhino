@@ -421,7 +421,7 @@ $(document).ready(function()
 </span>  <span class="kt">void</span> <span class="n">Undo</span><span class="p">(</span>
     <span class="k">const</span> <span class="n">CRhinoCommand</span><span class="o">*</span> <span class="n">cmd</span><span class="p">,</span>
     <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">action_description</span><span class="p">,</span>
-    <span class="n">bool</span> <span class="n">bCreatedByRedo</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">bCreatedByRedo</span><span class="p">,</span>
     <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">undo_event_sn</span>
     <span class="p">);</span>
 
@@ -440,7 +440,7 @@ $(document).ready(function()
 <span class="kt">void</span> <span class="n">CUndoEuroTransaction</span><span class="o">::</span><span class="n">Undo</span><span class="p">(</span>
   <span class="k">const</span> <span class="n">CRhinoCommand</span><span class="o">*</span> <span class="n">cmd</span><span class="p">,</span>
   <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">action_description</span><span class="p">,</span>
-  <span class="n">bool</span> <span class="n">bCreatedByRedo</span><span class="p">,</span>
+  <span class="kt">bool</span> <span class="n">bCreatedByRedo</span><span class="p">,</span>
   <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">undo_event_sn</span>
   <span class="p">)</span>
 <span class="p">{</span>
@@ -648,7 +648,7 @@ $(document).ready(function()
   <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="p">);</span>
 
   <span class="n">CMyUndoSnooper</span> <span class="n">m_snooper</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">m_bRegistered</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">m_bRegistered</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="c1">// The one and only CCommandTestUndoSnoop object

@@ -252,7 +252,7 @@ $(document).ready(function()
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">MoveObjectsToCurrentLayer</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="c1">// all non-light objects that are selected
-</span>    <span class="n">var</span> <span class="n">object_enumerator_settings</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ObjectEnumeratorSettings</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">object_enumerator_settings</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ObjectEnumeratorSettings</span><span class="p">();</span>
     <span class="n">object_enumerator_settings</span><span class="p">.</span><span class="n">IncludeLights</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
     <span class="n">object_enumerator_settings</span><span class="p">.</span><span class="n">IncludeGrips</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
     <span class="n">object_enumerator_settings</span><span class="p">.</span><span class="n">NormalObjects</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
@@ -260,10 +260,10 @@ $(document).ready(function()
     <span class="n">object_enumerator_settings</span><span class="p">.</span><span class="n">HiddenObjects</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
     <span class="n">object_enumerator_settings</span><span class="p">.</span><span class="n">ReferenceObjects</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
     <span class="n">object_enumerator_settings</span><span class="p">.</span><span class="n">SelectedObjectsFilter</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">selected_objects</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">GetObjectList</span><span class="p">(</span><span class="n">object_enumerator_settings</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">selected_objects</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">GetObjectList</span><span class="p">(</span><span class="n">object_enumerator_settings</span><span class="p">);</span>
 
-    <span class="n">var</span> <span class="n">current_layer_index</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Layers</span><span class="p">.</span><span class="n">CurrentLayerIndex</span><span class="p">;</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">selected_object</span> <span class="k">in</span> <span class="n">selected_objects</span><span class="p">)</span>
+    <span class="kt">var</span> <span class="n">current_layer_index</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Layers</span><span class="p">.</span><span class="n">CurrentLayerIndex</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">selected_object</span> <span class="k">in</span> <span class="n">selected_objects</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">selected_object</span><span class="p">.</span><span class="n">Attributes</span><span class="p">.</span><span class="n">LayerIndex</span> <span class="p">=</span> <span class="n">current_layer_index</span><span class="p">;</span>
       <span class="n">selected_object</span><span class="p">.</span><span class="nf">CommitChanges</span><span class="p">();</span>

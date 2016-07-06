@@ -253,10 +253,10 @@ $(document).ready(function()
 
   <span class="k">public</span> <span class="k">static</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span> <span class="nf">PickPoints</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PointsConduit</span><span class="p">(</span><span class="n">m_conduit_points</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PointsConduit</span><span class="p">(</span><span class="n">m_conduit_points</span><span class="p">);</span>
     <span class="n">conduit</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetPoint</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetPoint</span><span class="p">();</span>
     <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">gp</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"click location to create point. (&lt;ESC&gt; exit)"</span><span class="p">);</span>
@@ -268,7 +268,7 @@ $(document).ready(function()
       <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="n">var</span> <span class="n">gcp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetConduitPoint</span><span class="p">(</span><span class="n">m_conduit_points</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">gcp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetConduitPoint</span><span class="p">(</span><span class="n">m_conduit_points</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">gcp</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"select conduit point. (&lt;ESC&gt; to exit)"</span><span class="p">);</span>
@@ -306,15 +306,15 @@ $(document).ready(function()
   <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnMouseDown</span><span class="p">(</span><span class="n">GetPointMouseEventArgs</span> <span class="n">e</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="k">base</span><span class="p">.</span><span class="nf">OnMouseDown</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
-    <span class="n">var</span> <span class="n">picker</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PickContext</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">picker</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PickContext</span><span class="p">();</span>
     <span class="n">picker</span><span class="p">.</span><span class="n">View</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Viewport</span><span class="p">.</span><span class="n">ParentView</span><span class="p">;</span>
 
     <span class="n">picker</span><span class="p">.</span><span class="n">PickStyle</span> <span class="p">=</span> <span class="n">PickStyle</span><span class="p">.</span><span class="n">PointPick</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">xform</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Viewport</span><span class="p">.</span><span class="nf">GetPickTransform</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">WindowPoint</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">xform</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Viewport</span><span class="p">.</span><span class="nf">GetPickTransform</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">WindowPoint</span><span class="p">);</span>
     <span class="n">picker</span><span class="p">.</span><span class="nf">SetPickTransform</span><span class="p">(</span><span class="n">xform</span><span class="p">);</span>
 
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">cp</span> <span class="k">in</span> <span class="n">m_conduit_points</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cp</span> <span class="k">in</span> <span class="n">m_conduit_points</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="kt">double</span> <span class="n">depth</span><span class="p">;</span>
       <span class="kt">double</span> <span class="n">distance</span><span class="p">;</span>
@@ -338,7 +338,7 @@ $(document).ready(function()
   <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">DrawForeground</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">DrawEventArgs</span> <span class="n">e</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">m_conduit_points</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-      <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">cp</span> <span class="k">in</span> <span class="n">m_conduit_points</span><span class="p">)</span>
+      <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cp</span> <span class="k">in</span> <span class="n">m_conduit_points</span><span class="p">)</span>
       <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">DrawPoint</span><span class="p">(</span><span class="n">cp</span><span class="p">.</span><span class="n">Point</span><span class="p">,</span> <span class="n">PointStyle</span><span class="p">.</span><span class="n">Simple</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="n">cp</span><span class="p">.</span><span class="n">Color</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>

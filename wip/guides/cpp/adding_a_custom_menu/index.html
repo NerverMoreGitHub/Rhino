@@ -389,7 +389,7 @@ $(document).ready(function()
 
 <span class="n">CRhinoCommand</span><span class="o">::</span><span class="n">result</span> <span class="n">CCommandMyMenu</span><span class="o">::</span><span class="n">RunCommand</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoCommandContext</span><span class="o">&amp;</span> <span class="n">context</span> <span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">bool</span> <span class="n">bVisible</span> <span class="o">=</span> <span class="p">(</span> <span class="n">m_menu</span><span class="p">.</span><span class="n">GetSafeHmenu</span><span class="p">()</span> <span class="p">)</span> <span class="o">?</span> <span class="nb">true</span> <span class="o">:</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">bVisible</span> <span class="o">=</span> <span class="p">(</span> <span class="n">m_menu</span><span class="p">.</span><span class="n">GetSafeHmenu</span><span class="p">()</span> <span class="p">)</span> <span class="o">?</span> <span class="nb">true</span> <span class="o">:</span> <span class="nb">false</span><span class="p">;</span>
 
   <span class="n">ON_wString</span> <span class="n">prompt</span><span class="p">;</span>
   <span class="n">prompt</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span> <span class="s">L"%s is %s. New value"</span><span class="p">,</span>

@@ -251,7 +251,7 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">EdgeSrf</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Select 2, 3, or 4 open curves"</span><span class="p">);</span>
     <span class="n">go</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">;</span>
     <span class="n">go</span><span class="p">.</span><span class="n">GeometryAttributeFilter</span> <span class="p">=</span> <span class="n">GeometryAttributeFilter</span><span class="p">.</span><span class="n">OpenCurve</span><span class="p">;</span>
@@ -259,9 +259,9 @@ $(document).ready(function()
     <span class="k">if</span> <span class="p">(</span><span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
 
-    <span class="n">var</span> <span class="n">curves</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">Objects</span><span class="p">().</span><span class="nf">Select</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="n">o</span><span class="p">.</span><span class="nf">Curve</span><span class="p">());</span>
+    <span class="kt">var</span> <span class="n">curves</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">Objects</span><span class="p">().</span><span class="nf">Select</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span> <span class="n">o</span><span class="p">.</span><span class="nf">Curve</span><span class="p">());</span>
 
-    <span class="n">var</span> <span class="n">brep</span> <span class="p">=</span> <span class="n">Brep</span><span class="p">.</span><span class="nf">CreateEdgeSurface</span><span class="p">(</span><span class="n">curves</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">brep</span> <span class="p">=</span> <span class="n">Brep</span><span class="p">.</span><span class="nf">CreateEdgeSurface</span><span class="p">(</span><span class="n">curves</span><span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">brep</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
     <span class="p">{</span>

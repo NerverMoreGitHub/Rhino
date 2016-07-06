@@ -252,11 +252,11 @@ $(document).ready(function()
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">TightBoundingBox</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">ObjRef</span> <span class="n">obj_ref</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span>
       <span class="s">"Select surface to split"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Surface</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">surface</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Surface</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">surface</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Surface</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">surface</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
@@ -265,15 +265,15 @@ $(document).ready(function()
       <span class="s">"Select cutting curve"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">curve</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">brep_face</span> <span class="p">=</span> <span class="n">surface</span> <span class="k">as</span> <span class="n">BrepFace</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">brep_face</span> <span class="p">=</span> <span class="n">surface</span> <span class="k">as</span> <span class="n">BrepFace</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">brep_face</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">split_brep</span> <span class="p">=</span> <span class="n">brep_face</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span>
+    <span class="kt">var</span> <span class="n">split_brep</span> <span class="p">=</span> <span class="n">brep_face</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span>
       <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Curve</span><span class="p">&gt;</span> <span class="p">{</span><span class="n">curve</span><span class="p">},</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">split_brep</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
     <span class="p">{</span>
@@ -281,11 +281,11 @@ $(document).ready(function()
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">var</span> <span class="n">meshes</span> <span class="p">=</span> <span class="n">Mesh</span><span class="p">.</span><span class="nf">CreateFromBrep</span><span class="p">(</span><span class="n">split_brep</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">meshes</span> <span class="p">=</span> <span class="n">Mesh</span><span class="p">.</span><span class="nf">CreateFromBrep</span><span class="p">(</span><span class="n">split_brep</span><span class="p">);</span>
 
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">mesh</span> <span class="k">in</span> <span class="n">meshes</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">mesh</span> <span class="k">in</span> <span class="n">meshes</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">bbox</span> <span class="p">=</span> <span class="n">mesh</span><span class="p">.</span><span class="nf">GetBoundingBox</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">bbox</span> <span class="p">=</span> <span class="n">mesh</span><span class="p">.</span><span class="nf">GetBoundingBox</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
       <span class="k">switch</span> <span class="p">(</span><span class="n">bbox</span><span class="p">.</span><span class="nf">IsDegenerate</span><span class="p">(</span><span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">))</span>
       <span class="p">{</span>
         <span class="k">case</span> <span class="m">3</span><span class="p">:</span>
@@ -294,7 +294,7 @@ $(document).ready(function()
         <span class="k">case</span> <span class="m">1</span><span class="p">:</span>
           <span class="c1">// rectangle
 </span>          <span class="c1">// box with 8 corners flattened to rectangle with 4 corners
-</span>          <span class="n">var</span> <span class="n">rectangle_corners</span> <span class="p">=</span> <span class="n">bbox</span><span class="p">.</span><span class="nf">GetCorners</span><span class="p">().</span><span class="nf">Distinct</span><span class="p">().</span><span class="nf">ToList</span><span class="p">();</span>
+</span>          <span class="kt">var</span> <span class="n">rectangle_corners</span> <span class="p">=</span> <span class="n">bbox</span><span class="p">.</span><span class="nf">GetCorners</span><span class="p">().</span><span class="nf">Distinct</span><span class="p">().</span><span class="nf">ToList</span><span class="p">();</span>
           <span class="c1">// add 1st point as last to close the loop
 </span>          <span class="n">rectangle_corners</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">rectangle_corners</span><span class="p">[</span><span class="m">0</span><span class="p">]);</span>
           <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">AddPolyline</span><span class="p">(</span><span class="n">rectangle_corners</span><span class="p">);</span>
@@ -302,7 +302,7 @@ $(document).ready(function()
           <span class="k">break</span><span class="p">;</span>
         <span class="k">case</span> <span class="m">0</span><span class="p">:</span>
           <span class="c1">// box
-</span>          <span class="n">var</span> <span class="n">brep_box</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Box</span><span class="p">(</span><span class="n">bbox</span><span class="p">).</span><span class="nf">ToBrep</span><span class="p">();</span>
+</span>          <span class="kt">var</span> <span class="n">brep_box</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Box</span><span class="p">(</span><span class="n">bbox</span><span class="p">).</span><span class="nf">ToBrep</span><span class="p">();</span>
           <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">AddBrep</span><span class="p">(</span><span class="n">brep_box</span><span class="p">);</span>
           <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
           <span class="k">break</span><span class="p">;</span>

@@ -317,10 +317,10 @@ $(document).ready(function()
     <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="k">static</span> <span class="n">Curve</span> <span class="nf">TwistedCubeEdgeCurve</span><span class="p">(</span><span class="n">Point3d</span> <span class="n">from</span><span class="p">,</span> <span class="n">Point3d</span> <span class="n">to</span><span class="p">)</span>
+  <span class="k">static</span> <span class="n">Curve</span> <span class="nf">TwistedCubeEdgeCurve</span><span class="p">(</span><span class="n">Point3d</span> <span class="k">from</span><span class="p">,</span> <span class="n">Point3d</span> <span class="n">to</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="c1">// Create a 3d line segment to be used as a 3d curve in a Brep
-</span>    <span class="k">return</span> <span class="k">new</span> <span class="nf">LineCurve</span><span class="p">(</span><span class="n">from</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span> <span class="p">{</span> <span class="n">Domain</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Interval</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span> <span class="p">};</span>
+</span>    <span class="k">return</span> <span class="k">new</span> <span class="nf">LineCurve</span><span class="p">(</span><span class="k">from</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span> <span class="p">{</span> <span class="n">Domain</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Interval</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span> <span class="p">};</span>
   <span class="p">}</span>
 
   <span class="k">static</span> <span class="k">void</span> <span class="nf">MakeTwistedCubeEdges</span><span class="p">(</span><span class="k">ref</span> <span class="n">Brep</span> <span class="n">brep</span><span class="p">)</span>
@@ -346,7 +346,7 @@ $(document).ready(function()
 
   <span class="k">static</span> <span class="n">Surface</span> <span class="nf">TwistedCubeSideSurface</span><span class="p">(</span><span class="n">Point3d</span> <span class="n">southwest</span><span class="p">,</span> <span class="n">Point3d</span> <span class="n">southeast</span><span class="p">,</span> <span class="n">Point3d</span> <span class="n">northeast</span><span class="p">,</span> <span class="n">Point3d</span> <span class="n">northwest</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">ns</span> <span class="p">=</span> <span class="n">NurbsSurface</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">ns</span> <span class="p">=</span> <span class="n">NurbsSurface</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
 
     <span class="c1">// Corner CVs in counter clockwise order starting in the south west
 </span>    <span class="n">ns</span><span class="p">.</span><span class="n">Points</span><span class="p">.</span><span class="nf">SetControlPoint</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">southwest</span><span class="p">);</span>
@@ -457,7 +457,7 @@ $(document).ready(function()
     <span class="kt">int</span> <span class="n">eW_dir</span>   <span class="c1">// orientation of edge with respect to surface trim
 </span>    <span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">face</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="n">Faces</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">surfaceIndex</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">face</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="n">Faces</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">surfaceIndex</span><span class="p">);</span>
 
     <span class="nf">MakeTwistedCubeTrimmingLoop</span><span class="p">(</span>
       <span class="k">ref</span> <span class="n">brep</span><span class="p">,</span>
@@ -483,7 +483,7 @@ $(document).ready(function()
 </span>                               <span class="p">)</span>
   <span class="p">{</span>
     <span class="n">Surface</span> <span class="n">srf</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="n">Surfaces</span><span class="p">[</span><span class="n">face</span><span class="p">.</span><span class="n">SurfaceIndex</span><span class="p">];</span>
-    <span class="n">var</span> <span class="n">loop</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="n">Loops</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">BrepLoopType</span><span class="p">.</span><span class="n">Outer</span><span class="p">,</span> <span class="n">face</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">loop</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="n">Loops</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">BrepLoopType</span><span class="p">.</span><span class="n">Outer</span><span class="p">,</span> <span class="n">face</span><span class="p">);</span>
 
     <span class="c1">// Create trimming curves running counter clockwise around the surface's domain.
 </span>    <span class="c1">// Start at the south side
@@ -540,39 +540,39 @@ $(document).ready(function()
 </span>    <span class="c1">// The "active" portion of the surface is to the left of the trimming curve.
 </span>    <span class="c1">// An outer trimming loop consists of a simple closed curve running
 </span>    <span class="c1">// counter-clockwise around the region it trims.
-</span>    <span class="n">var</span> <span class="n">u_domain</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">Domain</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
-    <span class="n">var</span> <span class="n">v_domain</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">Domain</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+</span>    <span class="kt">var</span> <span class="n">u_domain</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">Domain</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">v_domain</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">Domain</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
     <span class="kt">double</span> <span class="n">u0</span> <span class="p">=</span> <span class="n">u_domain</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
     <span class="kt">double</span> <span class="n">u1</span> <span class="p">=</span> <span class="n">u_domain</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
     <span class="kt">double</span> <span class="n">v0</span> <span class="p">=</span> <span class="n">v_domain</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
     <span class="kt">double</span> <span class="n">v1</span> <span class="p">=</span> <span class="n">v_domain</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
 
-    <span class="n">Point2d</span> <span class="n">from</span><span class="p">;</span>
+    <span class="n">Point2d</span> <span class="k">from</span><span class="p">;</span>
     <span class="n">Point2d</span> <span class="n">to</span><span class="p">;</span>
 
     <span class="k">switch</span> <span class="p">(</span><span class="n">side</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="k">case</span> <span class="m">0</span><span class="p">:</span>  <span class="c1">// SW to SE
-</span>        <span class="n">from</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">v0</span><span class="p">);</span>
+</span>        <span class="k">from</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">v0</span><span class="p">);</span>
         <span class="n">to</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">v0</span><span class="p">);</span>
         <span class="k">break</span><span class="p">;</span>
       <span class="k">case</span> <span class="m">1</span><span class="p">:</span> <span class="c1">// SE to NE
-</span>        <span class="n">from</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">v0</span><span class="p">);</span>
+</span>        <span class="k">from</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">v0</span><span class="p">);</span>
         <span class="n">to</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">v1</span><span class="p">);</span>
         <span class="k">break</span><span class="p">;</span>
       <span class="k">case</span> <span class="m">2</span><span class="p">:</span> <span class="c1">// NE to NW
-</span>        <span class="n">from</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">v1</span><span class="p">);</span>
+</span>        <span class="k">from</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">v1</span><span class="p">);</span>
         <span class="n">to</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">v1</span><span class="p">);</span>
         <span class="k">break</span><span class="p">;</span>
       <span class="k">case</span> <span class="m">3</span><span class="p">:</span> <span class="c1">// NW to SW
-</span>        <span class="n">from</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">v1</span><span class="p">);</span>
+</span>        <span class="k">from</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">v1</span><span class="p">);</span>
         <span class="n">to</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Point2d</span><span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">v0</span><span class="p">);</span>
         <span class="k">break</span><span class="p">;</span>
       <span class="k">default</span><span class="p">:</span>
         <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">return</span> <span class="k">new</span> <span class="nf">LineCurve</span><span class="p">(</span><span class="n">from</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span> <span class="p">{</span> <span class="n">Domain</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Interval</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">LineCurve</span><span class="p">(</span><span class="k">from</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span> <span class="p">{</span> <span class="n">Domain</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Interval</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span> <span class="p">};</span>
   <span class="p">}</span>
 
 <span class="p">}</span>

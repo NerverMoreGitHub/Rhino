@@ -252,14 +252,14 @@ $(document).ready(function()
   <span class="k">public</span> <span class="k">static</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span> <span class="nf">ShowSurfaceDirection</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjRef</span> <span class="n">objref</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select surface or polysurface for direction display"</span><span class="p">,</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select surface or polysurface for direction display"</span><span class="p">,</span>
       <span class="k">false</span><span class="p">,</span>
       <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjectType</span><span class="p">.</span><span class="n">Surface</span> <span class="p">|</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjectType</span><span class="p">.</span><span class="n">PolysrfFilter</span><span class="p">,</span>
       <span class="k">out</span> <span class="n">objref</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">brep</span> <span class="p">=</span> <span class="n">objref</span><span class="p">.</span><span class="nf">Brep</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">brep</span> <span class="p">=</span> <span class="n">objref</span><span class="p">.</span><span class="nf">Brep</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">brep</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
@@ -269,7 +269,7 @@ $(document).ready(function()
     <span class="n">conduit</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
     <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
 
-    <span class="n">var</span> <span class="n">gf</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetOption</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gf</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetOption</span><span class="p">();</span>
     <span class="n">gf</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Press enter when done"</span><span class="p">);</span>
     <span class="n">gf</span><span class="p">.</span><span class="nf">AcceptNothing</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(!</span><span class="n">bIsSolid</span><span class="p">)</span>
@@ -277,7 +277,7 @@ $(document).ready(function()
 
     <span class="k">for</span> <span class="p">(;</span> <span class="p">;</span> <span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">res</span> <span class="p">=</span> <span class="n">gf</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
+      <span class="kt">var</span> <span class="n">res</span> <span class="p">=</span> <span class="n">gf</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">res</span> <span class="p">==</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">GetResult</span><span class="p">.</span><span class="n">Option</span><span class="p">)</span>
       <span class="p">{</span>
         <span class="n">conduit</span><span class="p">.</span><span class="n">Flip</span> <span class="p">=</span> <span class="p">!</span><span class="n">conduit</span><span class="p">.</span><span class="n">Flip</span><span class="p">;</span>
@@ -320,14 +320,14 @@ $(document).ready(function()
 
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">face_count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">face</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="n">Faces</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-      <span class="n">var</span> <span class="n">loop</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="n">OuterLoop</span><span class="p">;</span>
+      <span class="kt">var</span> <span class="n">face</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="n">Faces</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="kt">var</span> <span class="n">loop</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="n">OuterLoop</span><span class="p">;</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">loop</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
         <span class="k">continue</span><span class="p">;</span>
 
-      <span class="n">var</span> <span class="n">udomain</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">Domain</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
-      <span class="n">var</span> <span class="n">vdomain</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">Domain</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
-      <span class="n">var</span> <span class="n">loop_bbox</span> <span class="p">=</span> <span class="n">loop</span><span class="p">.</span><span class="nf">GetBoundingBox</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">udomain</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">Domain</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">vdomain</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">Domain</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">loop_bbox</span> <span class="p">=</span> <span class="n">loop</span><span class="p">.</span><span class="nf">GetBoundingBox</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">loop_bbox</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
       <span class="p">{</span>
         <span class="n">Interval</span> <span class="n">domain</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Interval</span><span class="p">(</span><span class="n">loop_bbox</span><span class="p">.</span><span class="n">Min</span><span class="p">.</span><span class="n">X</span><span class="p">,</span> <span class="n">loop_bbox</span><span class="p">.</span><span class="n">Max</span><span class="p">.</span><span class="n">X</span><span class="p">);</span>
@@ -347,7 +347,7 @@ $(document).ready(function()
         <span class="kt">double</span> <span class="n">d</span> <span class="p">=</span> <span class="n">u</span> <span class="p">/</span> <span class="p">(</span><span class="n">SURFACE_ARROW_COUNT</span> <span class="p">-</span> <span class="m">1.0</span><span class="p">);</span>
         <span class="kt">double</span> <span class="n">s</span> <span class="p">=</span> <span class="n">udomain</span><span class="p">.</span><span class="nf">ParameterAt</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
 
-        <span class="n">var</span> <span class="n">intervals</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">TrimAwareIsoIntervals</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">intervals</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">TrimAwareIsoIntervals</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">bUntrimmed</span> <span class="p">||</span> <span class="n">intervals</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
         <span class="p">{</span>
           <span class="k">for</span> <span class="p">(</span><span class="kt">double</span> <span class="n">v</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">v</span> <span class="p">&lt;</span> <span class="n">SURFACE_ARROW_COUNT</span><span class="p">;</span> <span class="n">v</span> <span class="p">+=</span> <span class="m">1.0</span><span class="p">)</span>
@@ -362,8 +362,8 @@ $(document).ready(function()
             <span class="p">}</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">bAdd</span><span class="p">)</span>
             <span class="p">{</span>
-              <span class="n">var</span> <span class="n">pt</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
-              <span class="n">var</span> <span class="n">vec</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">NormalAt</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+              <span class="kt">var</span> <span class="n">pt</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+              <span class="kt">var</span> <span class="n">vec</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">NormalAt</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
               <span class="n">m_points</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
               <span class="k">if</span> <span class="p">(</span><span class="n">bRev</span><span class="p">)</span>
                 <span class="n">vec</span><span class="p">.</span><span class="nf">Reverse</span><span class="p">();</span>
@@ -381,14 +381,14 @@ $(document).ready(function()
   <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">m_points</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">color</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">TrackingColor</span><span class="p">;</span>
+      <span class="kt">var</span> <span class="n">color</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">ApplicationSettings</span><span class="p">.</span><span class="n">AppearanceSettings</span><span class="p">.</span><span class="n">TrackingColor</span><span class="p">;</span>
       <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">m_points</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
       <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="p">%</span> <span class="m">100</span> <span class="p">==</span> <span class="m">0</span> <span class="p">&amp;&amp;</span> <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">InterruptDrawing</span><span class="p">())</span>
           <span class="k">break</span><span class="p">;</span>
 
-        <span class="n">var</span> <span class="n">pt</span> <span class="p">=</span> <span class="n">m_points</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-        <span class="n">var</span> <span class="n">dir</span> <span class="p">=</span> <span class="n">m_normals</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="kt">var</span> <span class="n">pt</span> <span class="p">=</span> <span class="n">m_points</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="kt">var</span> <span class="n">dir</span> <span class="p">=</span> <span class="n">m_normals</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">Flip</span><span class="p">)</span>
           <span class="n">dir</span><span class="p">.</span><span class="nf">Reverse</span><span class="p">();</span>
         <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">DrawDirectionArrow</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">dir</span><span class="p">,</span> <span class="n">color</span><span class="p">);</span>

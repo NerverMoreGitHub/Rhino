@@ -242,7 +242,7 @@ $(document).ready(function()
 
 <p style="color:#337ab7; padding-left:10px">C/C++</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">bool</span> <span class="nf">CreateSurfacesExample</span><span class="p">(</span> <span class="n">CRhinoDoc</span><span class="o">&amp;</span> <span class="n">doc</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="kt">bool</span> <span class="nf">CreateSurfacesExample</span><span class="p">(</span> <span class="n">CRhinoDoc</span><span class="o">&amp;</span> <span class="n">doc</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="k">const</span> <span class="kt">int</span> <span class="n">bIsRational</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
   <span class="k">const</span> <span class="kt">int</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
@@ -297,7 +297,7 @@ $(document).ready(function()
     <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="n">bool</span> <span class="n">ok</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">ok</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span> <span class="n">nurbs_surface</span><span class="p">.</span><span class="n">IsValid</span><span class="p">()</span> <span class="p">)</span>
   <span class="p">{</span>
     <span class="n">doc</span><span class="p">.</span><span class="n">AddSurfaceObject</span><span class="p">(</span> <span class="n">nurbs_surface</span> <span class="p">);</span>

@@ -368,7 +368,7 @@ $(document).ready(function()
 <p>It is probably best not to call <code class="highlighter-rouge">ON_Curve::Write</code> for this very reason.  When serializing anything derived from <code class="highlighter-rouge">ON_Object</code>, just use <code class="highlighter-rouge">ON_BinaryArchive::WriteObject</code> and <code class="highlighter-rouge">ON_BinaryArchive::ReadObject</code>…</p>
 
 <h3 id="write">Write</h3>
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">bool</span> <span class="nf">WriteCurveFile</span><span class="p">(</span> <span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_Curve</span><span class="o">*</span> <span class="n">curve</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="kt">bool</span> <span class="nf">WriteCurveFile</span><span class="p">(</span> <span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_Curve</span><span class="o">*</span> <span class="n">curve</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">fp</span> <span class="o">||</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">curve</span> <span class="p">)</span>
     <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
@@ -377,7 +377,7 @@ $(document).ready(function()
 
   <span class="kt">int</span> <span class="n">major_version</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="kt">int</span> <span class="n">minor_version</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">archive</span><span class="p">.</span><span class="n">BeginWrite3dmChunk</span><span class="p">(</span> <span class="n">TCODE_ANONYMOUS_CHUNK</span><span class="p">,</span> <span class="n">major_version</span><span class="p">,</span> <span class="n">minor_version</span> <span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">archive</span><span class="p">.</span><span class="n">BeginWrite3dmChunk</span><span class="p">(</span> <span class="n">TCODE_ANONYMOUS_CHUNK</span><span class="p">,</span> <span class="n">major_version</span><span class="p">,</span> <span class="n">minor_version</span> <span class="p">);</span>
   <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">rc</span> <span class="p">)</span>
     <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
 
@@ -402,7 +402,7 @@ $(document).ready(function()
 
 <h3 id="read">Read</h3>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">bool</span> <span class="nf">ReadCurveFile</span><span class="p">(</span> <span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span><span class="p">,</span> <span class="n">ON_Curve</span><span class="o">*&amp;</span> <span class="n">curve</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="kt">bool</span> <span class="nf">ReadCurveFile</span><span class="p">(</span> <span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span><span class="p">,</span> <span class="n">ON_Curve</span><span class="o">*&amp;</span> <span class="n">curve</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">fp</span> <span class="p">)</span>
     <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
@@ -411,7 +411,7 @@ $(document).ready(function()
 
   <span class="kt">int</span> <span class="n">major_version</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="kt">int</span> <span class="n">minor_version</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">archive</span><span class="p">.</span><span class="n">BeginRead3dmChunk</span><span class="p">(</span> <span class="n">TCODE_ANONYMOUS_CHUNK</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">major_version</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">minor_version</span> <span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">archive</span><span class="p">.</span><span class="n">BeginRead3dmChunk</span><span class="p">(</span> <span class="n">TCODE_ANONYMOUS_CHUNK</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">major_version</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">minor_version</span> <span class="p">);</span>
   <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">rc</span> <span class="p">)</span>
     <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
 
@@ -444,7 +444,7 @@ $(document).ready(function()
 
 <p>To use the above functions, you could do the following:</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
 
 <span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">ON</span><span class="o">::</span><span class="n">OpenFile</span><span class="p">(</span> <span class="n">filename</span><span class="p">,</span> <span class="s">L"wb"</span> <span class="p">);</span>
 <span class="k">if</span><span class="p">(</span> <span class="n">fp</span> <span class="p">)</span>
@@ -462,7 +462,7 @@ $(document).ready(function()
 
 <p>and</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
 <span class="n">ON_Curve</span><span class="o">*</span> <span class="n">curve</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">ON</span><span class="o">::</span><span class="n">OpenFile</span><span class="p">(</span> <span class="n">filename</span><span class="p">,</span> <span class="s">L"rb"</span> <span class="p">);</span>

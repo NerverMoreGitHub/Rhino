@@ -251,7 +251,7 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">DrawMesh</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">gs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">gs</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"select sphere"</span><span class="p">);</span>
     <span class="n">gs</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Surface</span><span class="p">;</span>
     <span class="n">gs</span><span class="p">.</span><span class="nf">DisablePreSelect</span><span class="p">();</span>
@@ -264,14 +264,14 @@ $(document).ready(function()
     <span class="n">gs</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="nf">Surface</span><span class="p">().</span><span class="nf">TryGetSphere</span><span class="p">(</span><span class="k">out</span> <span class="n">sphere</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">sphere</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">mesh</span> <span class="p">=</span> <span class="n">Mesh</span><span class="p">.</span><span class="nf">CreateFromSphere</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">mesh</span> <span class="p">=</span> <span class="n">Mesh</span><span class="p">.</span><span class="nf">CreateFromSphere</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">mesh</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
-      <span class="n">var</span> <span class="n">conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DrawBlueMeshConduit</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span> <span class="p">{</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">};</span>
+      <span class="kt">var</span> <span class="n">conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DrawBlueMeshConduit</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span> <span class="p">{</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">};</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
 
-      <span class="n">var</span> <span class="n">in_str</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
+      <span class="kt">var</span> <span class="n">in_str</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
       <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"press &lt;Enter&gt; to continue"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">ref</span> <span class="n">in_str</span><span class="p">);</span>
 
       <span class="n">conduit</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
@@ -319,7 +319,7 @@ $(document).ready(function()
   <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">DrawEventArgs</span> <span class="n">e</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="k">base</span><span class="p">.</span><span class="nf">PreDrawObjects</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
-    <span class="n">var</span> <span class="n">vp</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">Viewport</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">vp</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="n">Viewport</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">vp</span><span class="p">.</span><span class="n">DisplayMode</span><span class="p">.</span><span class="n">EnglishName</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">()</span> <span class="p">==</span> <span class="s">"wireframe"</span><span class="p">)</span>
       <span class="n">e</span><span class="p">.</span><span class="n">Display</span><span class="p">.</span><span class="nf">DrawMeshWires</span><span class="p">(</span><span class="n">m_mesh</span><span class="p">,</span> <span class="n">m_color</span><span class="p">);</span>
     <span class="k">else</span>

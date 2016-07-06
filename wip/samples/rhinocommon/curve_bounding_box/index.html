@@ -253,23 +253,23 @@ $(document).ready(function()
   <span class="p">{</span>
     <span class="c1">// Select a curve object
 </span>    <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjRef</span> <span class="n">rhObject</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select curve"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">rhObject</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select curve"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">rhObject</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
 
     <span class="c1">// Validate selection
-</span>    <span class="n">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">rhObject</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">rhObject</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">curve</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
     <span class="c1">// Get the active view's construction plane
-</span>    <span class="n">var</span> <span class="n">view</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="n">ActiveView</span><span class="p">;</span>
+</span>    <span class="kt">var</span> <span class="n">view</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="n">ActiveView</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">view</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">plane</span> <span class="p">=</span> <span class="n">view</span><span class="p">.</span><span class="n">ActiveViewport</span><span class="p">.</span><span class="nf">ConstructionPlane</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">plane</span> <span class="p">=</span> <span class="n">view</span><span class="p">.</span><span class="n">ActiveViewport</span><span class="p">.</span><span class="nf">ConstructionPlane</span><span class="p">();</span>
 
     <span class="c1">// Compute the tight bounding box of the curve in world coordinates
-</span>    <span class="n">var</span> <span class="n">bbox</span> <span class="p">=</span> <span class="n">curve</span><span class="p">.</span><span class="nf">GetBoundingBox</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+</span>    <span class="kt">var</span> <span class="n">bbox</span> <span class="p">=</span> <span class="n">curve</span><span class="p">.</span><span class="nf">GetBoundingBox</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(!</span><span class="n">bbox</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 

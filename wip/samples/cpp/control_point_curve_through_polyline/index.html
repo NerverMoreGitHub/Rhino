@@ -256,7 +256,7 @@ $(document).ready(function()
   <span class="n">ON_NurbsCurve</span><span class="o">*</span> <span class="n">curve</span> <span class="o">=</span> <span class="n">ON_NurbsCurve</span><span class="o">::</span><span class="n">New</span><span class="p">();</span>
   <span class="k">if</span><span class="p">(</span> <span class="n">curve</span> <span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
     <span class="k">if</span><span class="p">(</span> <span class="n">polyline</span><span class="p">.</span><span class="n">IsClosed</span><span class="p">()</span> <span class="p">)</span>
       <span class="n">rc</span> <span class="o">=</span> <span class="n">curve</span><span class="o">-&gt;</span><span class="n">CreatePeriodicUniformNurbs</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="n">degree</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">polyline</span> <span class="p">);</span>
     <span class="k">else</span>

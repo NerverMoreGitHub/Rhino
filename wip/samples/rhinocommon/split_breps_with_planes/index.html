@@ -253,7 +253,7 @@ $(document).ready(function()
   <span class="p">{</span>
     <span class="c1">//First, collect all the breps to split
 </span>    <span class="n">ObjRef</span><span class="p">[]</span> <span class="n">obj_refs</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetMultipleObjects</span><span class="p">(</span><span class="s">"Select breps to split"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Brep</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_refs</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetMultipleObjects</span><span class="p">(</span><span class="s">"Select breps to split"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Brep</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_refs</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span> <span class="p">||</span> <span class="n">obj_refs</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
 
@@ -264,26 +264,26 @@ $(document).ready(function()
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
 
     <span class="c1">//Iterate over all object references
-</span>    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">obj_ref</span> <span class="k">in</span> <span class="n">obj_refs</span><span class="p">)</span>
+</span>    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">obj_ref</span> <span class="k">in</span> <span class="n">obj_refs</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">brep</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Brep</span><span class="p">();</span>
-      <span class="n">var</span> <span class="n">bbox</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="nf">GetBoundingBox</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">brep</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Brep</span><span class="p">();</span>
+      <span class="kt">var</span> <span class="n">bbox</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="nf">GetBoundingBox</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 
       <span class="c1">//Grow the boundingbox in all directions
 </span>      <span class="c1">//If the boundingbox is flat (zero volume or even zero area)
 </span>      <span class="c1">//then the CreateThroughBox method will fail.
-</span>      <span class="n">var</span> <span class="n">min_point</span> <span class="p">=</span> <span class="n">bbox</span><span class="p">.</span><span class="n">Min</span><span class="p">;</span>
+</span>      <span class="kt">var</span> <span class="n">min_point</span> <span class="p">=</span> <span class="n">bbox</span><span class="p">.</span><span class="n">Min</span><span class="p">;</span>
       <span class="n">min_point</span><span class="p">.</span><span class="n">X</span> <span class="p">-=</span> <span class="m">1.0</span><span class="p">;</span>
       <span class="n">min_point</span><span class="p">.</span><span class="n">Y</span> <span class="p">-=</span> <span class="m">1.0</span><span class="p">;</span>
       <span class="n">min_point</span><span class="p">.</span><span class="n">Z</span> <span class="p">-=</span> <span class="m">1.0</span><span class="p">;</span>
       <span class="n">bbox</span><span class="p">.</span><span class="n">Min</span> <span class="p">=</span> <span class="n">min_point</span><span class="p">;</span>
-      <span class="n">var</span> <span class="n">max_point</span> <span class="p">=</span> <span class="n">bbox</span><span class="p">.</span><span class="n">Max</span><span class="p">;</span>
+      <span class="kt">var</span> <span class="n">max_point</span> <span class="p">=</span> <span class="n">bbox</span><span class="p">.</span><span class="n">Max</span><span class="p">;</span>
       <span class="n">max_point</span><span class="p">.</span><span class="n">X</span> <span class="p">+=</span> <span class="m">1.0</span><span class="p">;</span>
       <span class="n">max_point</span><span class="p">.</span><span class="n">Y</span> <span class="p">+=</span> <span class="m">1.0</span><span class="p">;</span>
       <span class="n">max_point</span><span class="p">.</span><span class="n">Z</span> <span class="p">+=</span> <span class="m">1.0</span><span class="p">;</span>
       <span class="n">bbox</span><span class="p">.</span><span class="n">Max</span> <span class="p">=</span> <span class="n">max_point</span><span class="p">;</span>
 
-      <span class="n">var</span> <span class="n">plane_surface</span> <span class="p">=</span> <span class="n">PlaneSurface</span><span class="p">.</span><span class="nf">CreateThroughBox</span><span class="p">(</span><span class="n">plane</span><span class="p">,</span> <span class="n">bbox</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">plane_surface</span> <span class="p">=</span> <span class="n">PlaneSurface</span><span class="p">.</span><span class="nf">CreateThroughBox</span><span class="p">(</span><span class="n">plane</span><span class="p">,</span> <span class="n">bbox</span><span class="p">);</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">plane_surface</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="p">{</span>
         <span class="c1">//This is rare, it will most likely not happen unless either the plane or the boundingbox are invalid
@@ -291,13 +291,13 @@ $(document).ready(function()
       <span class="p">}</span>
       <span class="k">else</span>
       <span class="p">{</span>
-        <span class="n">var</span> <span class="n">breps</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="n">plane_surface</span><span class="p">.</span><span class="nf">ToBrep</span><span class="p">(),</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">breps</span> <span class="p">=</span> <span class="n">brep</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="n">plane_surface</span><span class="p">.</span><span class="nf">ToBrep</span><span class="p">(),</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">breps</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">breps</span><span class="p">.</span><span class="n">Length</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
         <span class="p">{</span>
           <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="s">"Plane does not intersect brep (id:{0})"</span><span class="p">,</span> <span class="n">obj_ref</span><span class="p">.</span><span class="n">ObjectId</span><span class="p">);</span>
           <span class="k">continue</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">brep_piece</span> <span class="k">in</span> <span class="n">breps</span><span class="p">)</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">brep_piece</span> <span class="k">in</span> <span class="n">breps</span><span class="p">)</span>
         <span class="p">{</span>
           <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">AddBrep</span><span class="p">(</span><span class="n">brep_piece</span><span class="p">);</span>
         <span class="p">}</span>

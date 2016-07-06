@@ -251,24 +251,24 @@ $(document).ready(function()
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">ExtendSurface</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">go</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Input</span><span class="p">.</span><span class="n">Custom</span><span class="p">.</span><span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Select edge of surface to extend"</span><span class="p">);</span>
     <span class="n">go</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">EdgeFilter</span><span class="p">;</span>
     <span class="n">go</span><span class="p">.</span><span class="n">GeometryAttributeFilter</span> <span class="p">=</span> <span class="n">GeometryAttributeFilter</span><span class="p">.</span><span class="n">EdgeCurve</span><span class="p">;</span>
     <span class="n">go</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">go</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-    <span class="n">var</span> <span class="n">obj_ref</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">obj_ref</span> <span class="p">=</span> <span class="n">go</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
 
-    <span class="n">var</span> <span class="n">surface</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Surface</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">surface</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Surface</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">surface</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Unable to extend polysurfaces."</span><span class="p">);</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">var</span> <span class="n">brep</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Brep</span><span class="p">();</span>
-    <span class="n">var</span> <span class="n">face</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Face</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">brep</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Brep</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">face</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Face</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">brep</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">face</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">face</span><span class="p">.</span><span class="n">FaceIndex</span> <span class="p">&lt;</span> <span class="m">0</span><span class="p">)</span>
@@ -280,9 +280,9 @@ $(document).ready(function()
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
 
-    <span class="n">var</span> <span class="n">trim</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Trim</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">trim</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Trim</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">trim</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
@@ -292,10 +292,10 @@ $(document).ready(function()
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">var</span> <span class="n">extended_surface</span> <span class="p">=</span> <span class="n">surface</span><span class="p">.</span><span class="nf">Extend</span><span class="p">(</span><span class="n">trim</span><span class="p">.</span><span class="n">IsoStatus</span><span class="p">,</span> <span class="m">5.0</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">extended_surface</span> <span class="p">=</span> <span class="n">surface</span><span class="p">.</span><span class="nf">Extend</span><span class="p">(</span><span class="n">trim</span><span class="p">.</span><span class="n">IsoStatus</span><span class="p">,</span> <span class="m">5.0</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">extended_surface</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">mybrep</span> <span class="p">=</span> <span class="n">Brep</span><span class="p">.</span><span class="nf">CreateFromSurface</span><span class="p">(</span><span class="n">extended_surface</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">mybrep</span> <span class="p">=</span> <span class="n">Brep</span><span class="p">.</span><span class="nf">CreateFromSurface</span><span class="p">(</span><span class="n">extended_surface</span><span class="p">);</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">.</span><span class="n">ObjectId</span><span class="p">,</span> <span class="n">mybrep</span><span class="p">);</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
     <span class="p">}</span>

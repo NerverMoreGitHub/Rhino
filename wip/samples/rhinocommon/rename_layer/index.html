@@ -252,7 +252,7 @@ $(document).ready(function()
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">RenameLayer</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="kt">string</span> <span class="n">layer_name</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Name of layer to rename"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">ref</span> <span class="n">layer_name</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Name of layer to rename"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">ref</span> <span class="n">layer_name</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="nf">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">layer_name</span><span class="p">))</span>
@@ -261,9 +261,9 @@ $(document).ready(function()
     <span class="c1">// because of sublayers it's possible that more than one layer has the same name
 </span>    <span class="c1">// so simply calling doc.Layers.Find(layerName) isn't good enough.  If "layerName" returns
 </span>    <span class="c1">// more than one layer then present them to the user and let him decide.
-</span>    <span class="n">var</span> <span class="n">matching_layers</span> <span class="p">=</span> <span class="p">(</span><span class="n">from</span> <span class="n">layer</span> <span class="k">in</span> <span class="n">doc</span><span class="p">.</span><span class="n">Layers</span>
-                           <span class="n">where</span> <span class="n">layer</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="n">layer_name</span>
-                           <span class="n">select</span> <span class="n">layer</span><span class="p">).</span><span class="n">ToList</span><span class="p">&lt;</span><span class="n">Layer</span><span class="p">&gt;();</span>
+</span>    <span class="kt">var</span> <span class="n">matching_layers</span> <span class="p">=</span> <span class="p">(</span><span class="k">from</span> <span class="n">layer</span> <span class="k">in</span> <span class="n">doc</span><span class="p">.</span><span class="n">Layers</span>
+                           <span class="k">where</span> <span class="n">layer</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="n">layer_name</span>
+                           <span class="k">select</span> <span class="n">layer</span><span class="p">).</span><span class="n">ToList</span><span class="p">&lt;</span><span class="n">Layer</span><span class="p">&gt;();</span>
 
     <span class="n">Layer</span> <span class="n">layer_to_rename</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">matching_layers</span><span class="p">.</span><span class="n">Count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
