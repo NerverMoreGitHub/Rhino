@@ -331,10 +331,10 @@
 <span class="k">public</span><span class="o">:</span>
               <span class="n">CCameraTrackingConduit</span><span class="p">();</span>
 
-  <span class="n">bool</span>        <span class="n">ExecConduit</span><span class="p">(</span>
+  <span class="kt">bool</span>        <span class="n">ExecConduit</span><span class="p">(</span>
                   <span class="n">CRhinoDisplayPipeline</span><span class="o">&amp;</span><span class="p">,</span> <span class="c1">// pipeline executing this conduit
 </span>                  <span class="n">UINT</span><span class="p">,</span>                   <span class="c1">// current channel within the pipeline
-</span>                  <span class="n">bool</span><span class="o">&amp;</span>                   <span class="c1">// channel termination flag
+</span>                  <span class="kt">bool</span><span class="o">&amp;</span>                   <span class="c1">// channel termination flag
 </span>                  <span class="p">);</span>  
 
   <span class="kt">void</span>        <span class="n">NotifyConduit</span><span class="p">(</span><span class="n">EConduitNotifiers</span><span class="p">,</span> <span class="n">CRhinoDisplayPipeline</span><span class="o">&amp;</span><span class="p">);</span>
@@ -360,7 +360,7 @@
   <span class="n">CRhinoUiDib</span>   <span class="n">m_HUD</span><span class="p">;</span>
 
   <span class="kt">void</span> <span class="n">CreateHUD</span><span class="p">(</span><span class="k">const</span> <span class="n">CRhinoDisplayPipeline</span><span class="o">*</span><span class="p">);</span>
-  <span class="n">bool</span> <span class="n">BuildHUD</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">BuildHUD</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
 
 <span class="p">};</span>
 
@@ -387,10 +387,10 @@
 
 <span class="c1">/////////////////////////////////////////////////////////////////////////////
 //
-</span><span class="n">bool</span> <span class="n">CCameraTrackingConduit</span><span class="o">::</span><span class="n">BuildHUD</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span class="kt">bool</span> <span class="n">CCameraTrackingConduit</span><span class="o">::</span><span class="n">BuildHUD</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">LPBYTE</span>    <span class="n">HudBits</span> <span class="o">=</span> <span class="n">m_HUD</span><span class="p">.</span><span class="n">FindDIBBits</span><span class="p">();</span>
-  <span class="n">bool</span>      <span class="n">success</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="kt">bool</span>      <span class="n">success</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
 
   <span class="k">if</span> <span class="p">(</span> <span class="n">HudBits</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="p">)</span>
   <span class="p">{</span>
@@ -442,9 +442,9 @@
 
 <span class="c1">/////////////////////////////////////////////////////////////////////////////
 //
-</span><span class="n">bool</span> <span class="n">CCameraTrackingConduit</span><span class="o">::</span><span class="n">ExecConduit</span><span class="p">(</span><span class="n">CRhinoDisplayPipeline</span><span class="o">&amp;</span>    <span class="n">dp</span><span class="p">,</span>
+</span><span class="kt">bool</span> <span class="n">CCameraTrackingConduit</span><span class="o">::</span><span class="n">ExecConduit</span><span class="p">(</span><span class="n">CRhinoDisplayPipeline</span><span class="o">&amp;</span>    <span class="n">dp</span><span class="p">,</span>
                                          <span class="n">UINT</span>                      <span class="n">nChannel</span><span class="p">,</span>
-                                         <span class="n">bool</span><span class="o">&amp;</span>                     <span class="n">bTerminate</span><span class="p">)</span>
+                                         <span class="kt">bool</span><span class="o">&amp;</span>                     <span class="n">bTerminate</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="c1">// Is this is not viewport/pipeline we're currently tracking, then bail out now ...
 </span>  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">IsBound</span><span class="p">(</span> <span class="n">dp</span> <span class="p">)</span> <span class="p">)</span>

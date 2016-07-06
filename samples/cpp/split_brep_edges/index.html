@@ -227,9 +227,9 @@ Parameters:
 Returns:
   True if successful, false otherwise.
 */</span>
-<span class="k">static</span> <span class="n">bool</span> <span class="nf">SplitBrepEdge</span><span class="p">(</span> <span class="n">ON_Brep</span><span class="o">&amp;</span> <span class="n">brep</span><span class="p">,</span> <span class="kt">int</span> <span class="n">edge_index</span><span class="p">,</span> <span class="kt">double</span> <span class="n">edge_t</span> <span class="p">)</span>
+<span class="k">static</span> <span class="kt">bool</span> <span class="nf">SplitBrepEdge</span><span class="p">(</span> <span class="n">ON_Brep</span><span class="o">&amp;</span> <span class="n">brep</span><span class="p">,</span> <span class="kt">int</span> <span class="n">edge_index</span><span class="p">,</span> <span class="kt">double</span> <span class="n">edge_t</span> <span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
   <span class="k">const</span> <span class="n">ON_BrepEdge</span><span class="o">&amp;</span> <span class="n">edge</span> <span class="o">=</span> <span class="n">brep</span><span class="p">.</span><span class="n">m_E</span><span class="p">[</span><span class="n">edge_index</span><span class="p">];</span>
 
   <span class="kt">int</span> <span class="n">trim_count</span> <span class="o">=</span> <span class="n">edge</span><span class="p">.</span><span class="n">TrimCount</span><span class="p">();</span>

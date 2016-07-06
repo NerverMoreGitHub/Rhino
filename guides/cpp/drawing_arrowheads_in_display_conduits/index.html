@@ -318,14 +318,14 @@
 <span class="k">public</span><span class="o">:</span>
   <span class="n">CSampleDrawArrowheadConduit</span><span class="p">(</span><span class="n">ON_Plane</span> <span class="n">plane</span><span class="p">,</span> <span class="n">ON_Line</span> <span class="n">line</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">);</span>
 
-  <span class="n">bool</span> <span class="n">ExecConduit</span><span class="p">(</span><span class="n">CRhinoDisplayPipeline</span><span class="o">&amp;</span> <span class="n">dp</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">channel</span><span class="p">,</span> <span class="n">bool</span><span class="o">&amp;</span> <span class="n">terminate</span><span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">ExecConduit</span><span class="p">(</span><span class="n">CRhinoDisplayPipeline</span><span class="o">&amp;</span> <span class="n">dp</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">channel</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&amp;</span> <span class="n">terminate</span><span class="p">);</span>
 
 <span class="k">protected</span><span class="o">:</span>
-  <span class="n">bool</span> <span class="n">GetArrowHead</span><span class="p">(</span><span class="n">ON_2dVector</span> <span class="n">dir</span><span class="p">,</span> <span class="n">ON_2dPoint</span> <span class="n">tip</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">,</span> <span class="n">ON_3dPointArray</span><span class="o">&amp;</span> <span class="n">triangle</span><span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">GetArrowHead</span><span class="p">(</span><span class="n">ON_2dVector</span> <span class="n">dir</span><span class="p">,</span> <span class="n">ON_2dPoint</span> <span class="n">tip</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">,</span> <span class="n">ON_3dPointArray</span><span class="o">&amp;</span> <span class="n">triangle</span><span class="p">);</span>
 
 <span class="k">protected</span><span class="o">:</span>
   <span class="k">static</span> <span class="kt">double</span> <span class="n">m_default_arrow_size</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">m_bDraw</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">m_bDraw</span><span class="p">;</span>
   <span class="n">ON_Line</span> <span class="n">m_line</span><span class="p">;</span>
   <span class="n">ON_Plane</span> <span class="n">m_plane</span><span class="p">;</span>
   <span class="n">ON_3dPointArray</span> <span class="n">m_arrowhead</span><span class="p">;</span>
@@ -354,7 +354,7 @@
   <span class="n">m_bDraw</span> <span class="o">=</span> <span class="n">GetArrowHead</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span> <span class="n">from</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">m_arrowhead</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="n">bool</span> <span class="n">CSampleDrawArrowheadConduit</span><span class="o">::</span><span class="n">ExecConduit</span><span class="p">(</span><span class="n">CRhinoDisplayPipeline</span><span class="o">&amp;</span> <span class="n">dp</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">channel</span><span class="p">,</span> <span class="n">bool</span><span class="o">&amp;</span> <span class="n">terminate</span><span class="p">)</span>
+<span class="kt">bool</span> <span class="n">CSampleDrawArrowheadConduit</span><span class="o">::</span><span class="n">ExecConduit</span><span class="p">(</span><span class="n">CRhinoDisplayPipeline</span><span class="o">&amp;</span> <span class="n">dp</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">channel</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&amp;</span> <span class="n">terminate</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">channel</span> <span class="o">==</span> <span class="n">CSupportChannels</span><span class="o">::</span><span class="n">SC_CALCBOUNDINGBOX</span><span class="p">)</span>
   <span class="p">{</span>
@@ -369,7 +369,7 @@
   <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">bool</span> <span class="n">CSampleDrawArrowheadConduit</span><span class="o">::</span><span class="n">GetArrowHead</span><span class="p">(</span><span class="n">ON_2dVector</span> <span class="n">dir</span><span class="p">,</span> <span class="n">ON_2dPoint</span> <span class="n">tip</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">,</span> <span class="n">ON_3dPointArray</span><span class="o">&amp;</span> <span class="n">triangle</span><span class="p">)</span>
+<span class="kt">bool</span> <span class="n">CSampleDrawArrowheadConduit</span><span class="o">::</span><span class="n">GetArrowHead</span><span class="p">(</span><span class="n">ON_2dVector</span> <span class="n">dir</span><span class="p">,</span> <span class="n">ON_2dPoint</span> <span class="n">tip</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">,</span> <span class="n">ON_3dPointArray</span><span class="o">&amp;</span> <span class="n">triangle</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="kt">double</span> <span class="n">arrow_size</span> <span class="o">=</span> <span class="n">CSampleDrawArrowheadConduit</span><span class="o">::</span><span class="n">m_default_arrow_size</span> <span class="o">*</span> <span class="n">scale</span><span class="p">;</span>
 

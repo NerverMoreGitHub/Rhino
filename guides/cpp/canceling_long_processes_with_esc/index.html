@@ -363,26 +363,26 @@
 <span class="k">class</span> <span class="nc">CRhinoEscapeKey</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
-  <span class="n">CRhinoEscapeKey</span><span class="p">(</span> <span class="n">bool</span> <span class="n">bHookNow</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">);</span>
+  <span class="n">CRhinoEscapeKey</span><span class="p">(</span> <span class="kt">bool</span> <span class="n">bHookNow</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">);</span>
   <span class="o">~</span><span class="n">CRhinoEscapeKey</span><span class="p">();</span>
-  <span class="n">bool</span> <span class="n">Start</span><span class="p">();</span>
+  <span class="kt">bool</span> <span class="n">Start</span><span class="p">();</span>
   <span class="kt">void</span> <span class="n">Stop</span><span class="p">();</span>
-  <span class="n">bool</span> <span class="n">EscapeKeyPressed</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">EscapeKeyPressed</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
   <span class="kt">void</span> <span class="n">ClearEscapeKeyPressedFlag</span><span class="p">();</span>
 <span class="k">protected</span><span class="o">:</span>
   <span class="k">static</span> <span class="n">LRESULT</span> <span class="n">CALLBACK</span> <span class="n">HookProc</span><span class="p">(</span> <span class="kt">int</span> <span class="n">code</span><span class="p">,</span> <span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span> <span class="p">);</span>
   <span class="k">static</span> <span class="n">HHOOK</span> <span class="n">m_KeyboardHookProc</span><span class="p">;</span>
-  <span class="k">static</span> <span class="n">bool</span> <span class="n">m_escape_pressed</span><span class="p">;</span>
+  <span class="k">static</span> <span class="kt">bool</span> <span class="n">m_escape_pressed</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="c1">//
 // rhinoEscapeKey.cpp
 //
 </span>
-<span class="n">bool</span> <span class="n">CRhinoEscapeKey</span><span class="o">::</span><span class="n">m_escape_pressed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">CRhinoEscapeKey</span><span class="o">::</span><span class="n">m_escape_pressed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
 <span class="n">HHOOK</span> <span class="n">CRhinoEscapeKey</span><span class="o">::</span><span class="n">m_KeyboardHookProc</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 
-<span class="n">CRhinoEscapeKey</span><span class="o">::</span><span class="n">CRhinoEscapeKey</span><span class="p">(</span> <span class="n">bool</span> <span class="n">bStartNow</span> <span class="p">)</span>
+<span class="n">CRhinoEscapeKey</span><span class="o">::</span><span class="n">CRhinoEscapeKey</span><span class="p">(</span> <span class="kt">bool</span> <span class="n">bStartNow</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span> <span class="n">bStartNow</span> <span class="p">)</span>
     <span class="n">Start</span><span class="p">();</span>
@@ -393,7 +393,7 @@
   <span class="n">Stop</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="n">bool</span> <span class="n">CRhinoEscapeKey</span><span class="o">::</span><span class="n">Start</span><span class="p">()</span>
+<span class="kt">bool</span> <span class="n">CRhinoEscapeKey</span><span class="o">::</span><span class="n">Start</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span> <span class="nb">NULL</span> <span class="o">==</span> <span class="n">m_KeyboardHookProc</span> <span class="p">)</span>
     <span class="n">m_KeyboardHookProc</span> <span class="o">=</span> <span class="o">::</span><span class="n">SetWindowsHookEx</span><span class="p">(</span>
@@ -413,7 +413,7 @@
   <span class="n">m_KeyboardHookProc</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">bool</span> <span class="n">CRhinoEscapeKey</span><span class="o">::</span><span class="n">EscapeKeyPressed</span><span class="p">()</span> <span class="k">const</span>
+<span class="kt">bool</span> <span class="n">CRhinoEscapeKey</span><span class="o">::</span><span class="n">EscapeKeyPressed</span><span class="p">()</span> <span class="k">const</span>
 <span class="p">{</span>
   <span class="n">RhinoApp</span><span class="p">().</span><span class="n">Wait</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
   <span class="k">return</span> <span class="n">m_escape_pressed</span><span class="p">;</span>

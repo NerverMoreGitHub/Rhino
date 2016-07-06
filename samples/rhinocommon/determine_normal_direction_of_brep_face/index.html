@@ -227,7 +227,7 @@
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">DetermineNormalDirectionOfBrepFace</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="c1">// select a surface
-</span>    <span class="n">var</span> <span class="n">gs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">gs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">gs</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"select surface"</span><span class="p">);</span>
     <span class="n">gs</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Surface</span><span class="p">;</span>
     <span class="n">gs</span><span class="p">.</span><span class="nf">DisablePreSelect</span><span class="p">();</span>
@@ -236,13 +236,13 @@
     <span class="k">if</span> <span class="p">(</span><span class="n">gs</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gs</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
     <span class="c1">// get the selected face
-</span>    <span class="n">var</span> <span class="n">face</span> <span class="p">=</span> <span class="n">gs</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="nf">Face</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">face</span> <span class="p">=</span> <span class="n">gs</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">).</span><span class="nf">Face</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">face</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
     <span class="c1">// pick a point on the surface.  Constain
 </span>    <span class="c1">// picking to the face.
-</span>    <span class="n">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetPoint</span><span class="p">();</span>
+</span>    <span class="kt">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetPoint</span><span class="p">();</span>
     <span class="n">gp</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"select point on surface"</span><span class="p">);</span>
     <span class="n">gp</span><span class="p">.</span><span class="nf">Constrain</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
     <span class="n">gp</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
@@ -254,7 +254,7 @@
 </span>    <span class="kt">double</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">face</span><span class="p">.</span><span class="nf">ClosestPoint</span><span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">(),</span> <span class="k">out</span> <span class="n">u</span><span class="p">,</span> <span class="k">out</span> <span class="n">v</span><span class="p">))</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">direction</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">NormalAt</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">direction</span> <span class="p">=</span> <span class="n">face</span><span class="p">.</span><span class="nf">NormalAt</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">face</span><span class="p">.</span><span class="n">OrientationIsReversed</span><span class="p">)</span>
         <span class="n">direction</span><span class="p">.</span><span class="nf">Reverse</span><span class="p">();</span>
       <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span>

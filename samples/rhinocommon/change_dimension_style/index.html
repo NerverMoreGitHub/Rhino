@@ -226,12 +226,12 @@
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">ChangeDimensionStyle</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">rhino_object</span> <span class="k">in</span> <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">GetObjectList</span><span class="p">(</span><span class="n">ObjectType</span><span class="p">.</span><span class="n">Annotation</span><span class="p">))</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">rhino_object</span> <span class="k">in</span> <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">GetObjectList</span><span class="p">(</span><span class="n">ObjectType</span><span class="p">.</span><span class="n">Annotation</span><span class="p">))</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">annotation_object</span> <span class="p">=</span> <span class="n">rhino_object</span> <span class="k">as</span> <span class="n">AnnotationObjectBase</span><span class="p">;</span>
+      <span class="kt">var</span> <span class="n">annotation_object</span> <span class="p">=</span> <span class="n">rhino_object</span> <span class="k">as</span> <span class="n">AnnotationObjectBase</span><span class="p">;</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">annotation_object</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
 
-      <span class="n">var</span> <span class="n">annotation</span> <span class="p">=</span> <span class="n">annotation_object</span><span class="p">.</span><span class="n">Geometry</span> <span class="k">as</span> <span class="n">AnnotationBase</span><span class="p">;</span>
+      <span class="kt">var</span> <span class="n">annotation</span> <span class="p">=</span> <span class="n">annotation_object</span><span class="p">.</span><span class="n">Geometry</span> <span class="k">as</span> <span class="n">AnnotationBase</span><span class="p">;</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">annotation</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
 
       <span class="k">if</span> <span class="p">(</span><span class="n">annotation</span><span class="p">.</span><span class="n">Index</span> <span class="p">==</span> <span class="n">doc</span><span class="p">.</span><span class="n">DimStyles</span><span class="p">.</span><span class="n">CurrentDimensionStyleIndex</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>

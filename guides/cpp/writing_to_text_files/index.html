@@ -339,9 +339,9 @@ Parameters:
 Returns:
   true if successful, false otherwise.
 */</span>
-<span class="n">bool</span> <span class="nf">WriteStringToFile</span><span class="p">(</span> <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">text</span><span class="p">,</span> <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">filename</span> <span class="p">)</span>
+<span class="kt">bool</span> <span class="nf">WriteStringToFile</span><span class="p">(</span> <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">text</span><span class="p">,</span> <span class="k">const</span> <span class="kt">wchar_t</span><span class="o">*</span> <span class="n">filename</span> <span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
   <span class="k">if</span><span class="p">(</span> <span class="p">(</span><span class="n">text</span> <span class="o">&amp;&amp;</span> <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">filename</span> <span class="o">&amp;&amp;</span> <span class="n">filename</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
   <span class="p">{</span>
     <span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">_wfopen</span><span class="p">(</span> <span class="n">filename</span><span class="p">,</span> <span class="s">L"w"</span> <span class="p">);</span>

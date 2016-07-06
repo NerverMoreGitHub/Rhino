@@ -227,11 +227,11 @@
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">OffsetCurve</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">ObjRef</span> <span class="n">obj_ref</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rs</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span>
+    <span class="kt">var</span> <span class="n">rs</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span>
       <span class="s">"Select Curve"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rs</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rs</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">curve</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
 
@@ -242,10 +242,10 @@
     <span class="k">if</span> <span class="p">(</span><span class="n">point</span> <span class="p">==</span> <span class="n">Point3d</span><span class="p">.</span><span class="n">Unset</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">curves</span> <span class="p">=</span> <span class="n">curve</span><span class="p">.</span><span class="nf">Offset</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">Vector3d</span><span class="p">.</span><span class="n">ZAxis</span><span class="p">,</span> <span class="m">1.0</span><span class="p">,</span>
+    <span class="kt">var</span> <span class="n">curves</span> <span class="p">=</span> <span class="n">curve</span><span class="p">.</span><span class="nf">Offset</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">Vector3d</span><span class="p">.</span><span class="n">ZAxis</span><span class="p">,</span> <span class="m">1.0</span><span class="p">,</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">,</span> <span class="n">CurveOffsetCornerStyle</span><span class="p">.</span><span class="n">None</span><span class="p">);</span>
 
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">offset_curve</span> <span class="k">in</span> <span class="n">curves</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">offset_curve</span> <span class="k">in</span> <span class="n">curves</span><span class="p">)</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">AddCurve</span><span class="p">(</span><span class="n">offset_curve</span><span class="p">);</span>
 
     <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>

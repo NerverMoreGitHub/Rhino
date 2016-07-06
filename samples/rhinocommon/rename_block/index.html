@@ -227,15 +227,15 @@
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">RenameBlock</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="c1">// Get the name of the insance definition to rename
-</span>    <span class="n">var</span> <span class="n">instance_definition_name</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Name of block to rename"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">ref</span> <span class="n">instance_definition_name</span><span class="p">);</span>
+</span>    <span class="kt">var</span> <span class="n">instance_definition_name</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Name of block to rename"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">ref</span> <span class="n">instance_definition_name</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">instance_definition_name</span><span class="p">))</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
 
     <span class="c1">// Verify instance definition exists
-</span>    <span class="n">var</span> <span class="n">instance_definition</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">InstanceDefinitions</span><span class="p">.</span><span class="nf">Find</span><span class="p">(</span><span class="n">instance_definition_name</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</span>    <span class="kt">var</span> <span class="n">instance_definition</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">InstanceDefinitions</span><span class="p">.</span><span class="nf">Find</span><span class="p">(</span><span class="n">instance_definition_name</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">instance_definition</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
       <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Block \"{0}\" not found."</span><span class="p">,</span> <span class="n">instance_definition_name</span><span class="p">);</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
@@ -256,7 +256,7 @@
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
 
     <span class="c1">// Verify the new instance definition name is not already in use
-</span>    <span class="n">var</span> <span class="n">existing_instance_definition</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">InstanceDefinitions</span><span class="p">.</span><span class="nf">Find</span><span class="p">(</span><span class="n">instance_definition_new_name</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</span>    <span class="kt">var</span> <span class="n">existing_instance_definition</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">InstanceDefinitions</span><span class="p">.</span><span class="nf">Find</span><span class="p">(</span><span class="n">instance_definition_new_name</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">existing_instance_definition</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">existing_instance_definition</span><span class="p">.</span><span class="n">IsDeleted</span><span class="p">)</span> <span class="p">{</span>
       <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Block \"{0}\" already exists."</span><span class="p">,</span> <span class="n">existing_instance_definition</span><span class="p">);</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>

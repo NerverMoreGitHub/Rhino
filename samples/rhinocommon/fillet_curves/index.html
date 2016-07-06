@@ -226,7 +226,7 @@
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">FilletCurves</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">gc1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gc1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">gc1</span><span class="p">.</span><span class="nf">DisablePreSelect</span><span class="p">();</span>
     <span class="n">gc1</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Select first curve to fillet (close to the end you want to fillet)"</span><span class="p">);</span>
     <span class="n">gc1</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">;</span>
@@ -234,14 +234,14 @@
     <span class="n">gc1</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">gc1</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gc1</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-    <span class="n">var</span> <span class="n">curve1_obj_ref</span> <span class="p">=</span> <span class="n">gc1</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
-    <span class="n">var</span> <span class="n">curve1</span> <span class="p">=</span> <span class="n">curve1_obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve1_obj_ref</span> <span class="p">=</span> <span class="n">gc1</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">curve1</span> <span class="p">=</span> <span class="n">curve1_obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">curve1</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">curve1_point_near_end</span> <span class="p">=</span> <span class="n">curve1_obj_ref</span><span class="p">.</span><span class="nf">SelectionPoint</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve1_point_near_end</span> <span class="p">=</span> <span class="n">curve1_obj_ref</span><span class="p">.</span><span class="nf">SelectionPoint</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">curve1_point_near_end</span> <span class="p">==</span> <span class="n">Point3d</span><span class="p">.</span><span class="n">Unset</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">gc2</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gc2</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetObject</span><span class="p">();</span>
     <span class="n">gc2</span><span class="p">.</span><span class="nf">DisablePreSelect</span><span class="p">();</span>
     <span class="n">gc2</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Select second curve to fillet (close to the end you want to fillet)"</span><span class="p">);</span>
     <span class="n">gc2</span><span class="p">.</span><span class="n">GeometryFilter</span> <span class="p">=</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">;</span>
@@ -249,26 +249,26 @@
     <span class="n">gc2</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">gc2</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gc2</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-    <span class="n">var</span> <span class="n">curve2_obj_ref</span> <span class="p">=</span> <span class="n">gc2</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
-    <span class="n">var</span> <span class="n">curve2</span> <span class="p">=</span> <span class="n">curve2_obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve2_obj_ref</span> <span class="p">=</span> <span class="n">gc2</span><span class="p">.</span><span class="nf">Object</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">curve2</span> <span class="p">=</span> <span class="n">curve2_obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">curve2</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">curve2_point_near_end</span> <span class="p">=</span> <span class="n">curve2_obj_ref</span><span class="p">.</span><span class="nf">SelectionPoint</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve2_point_near_end</span> <span class="p">=</span> <span class="n">curve2_obj_ref</span><span class="p">.</span><span class="nf">SelectionPoint</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">curve2_point_near_end</span> <span class="p">==</span> <span class="n">Point3d</span><span class="p">.</span><span class="n">Unset</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
     <span class="kt">double</span> <span class="n">radius</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetNumber</span><span class="p">(</span><span class="s">"fillet radius"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">ref</span> <span class="n">radius</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetNumber</span><span class="p">(</span><span class="s">"fillet radius"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">ref</span> <span class="n">radius</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span> <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">join</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">trim</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">arc_extension</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">fillet_curves</span> <span class="p">=</span> <span class="n">Curve</span><span class="p">.</span><span class="nf">CreateFilletCurves</span><span class="p">(</span><span class="n">curve1</span><span class="p">,</span> <span class="n">curve1_point_near_end</span><span class="p">,</span> <span class="n">curve2</span><span class="p">,</span> <span class="n">curve2_point_near_end</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span>
-      <span class="n">join</span><span class="p">,</span> <span class="n">trim</span><span class="p">,</span> <span class="n">arc_extension</span><span class="p">,</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">,</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAngleToleranceDegrees</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="k">join</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">trim</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">arc_extension</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">fillet_curves</span> <span class="p">=</span> <span class="n">Curve</span><span class="p">.</span><span class="nf">CreateFilletCurves</span><span class="p">(</span><span class="n">curve1</span><span class="p">,</span> <span class="n">curve1_point_near_end</span><span class="p">,</span> <span class="n">curve2</span><span class="p">,</span> <span class="n">curve2_point_near_end</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span>
+      <span class="k">join</span><span class="p">,</span> <span class="n">trim</span><span class="p">,</span> <span class="n">arc_extension</span><span class="p">,</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">,</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAngleToleranceDegrees</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">fillet_curves</span> <span class="p">==</span> <span class="k">null</span> <span class="cm">/*|| fillet_curves.Length != 3*/</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
-    <span class="k">foreach</span><span class="p">(</span><span class="n">var</span> <span class="n">fillet_curve</span> <span class="k">in</span> <span class="n">fillet_curves</span><span class="p">)</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">fillet_curve</span> <span class="k">in</span> <span class="n">fillet_curves</span><span class="p">)</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">AddCurve</span><span class="p">(</span><span class="n">fillet_curve</span><span class="p">);</span>
     <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
     <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>

@@ -226,13 +226,13 @@
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">ObjectIterator</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">object_enumerator_settings</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ObjectEnumeratorSettings</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">object_enumerator_settings</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ObjectEnumeratorSettings</span><span class="p">();</span>
     <span class="n">object_enumerator_settings</span><span class="p">.</span><span class="n">IncludeLights</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
     <span class="n">object_enumerator_settings</span><span class="p">.</span><span class="n">IncludeGrips</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rhino_objects</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">GetObjectList</span><span class="p">(</span><span class="n">object_enumerator_settings</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rhino_objects</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">GetObjectList</span><span class="p">(</span><span class="n">object_enumerator_settings</span><span class="p">);</span>
 
     <span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">rhino_object</span> <span class="k">in</span> <span class="n">rhino_objects</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">rhino_object</span> <span class="k">in</span> <span class="n">rhino_objects</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">rhino_object</span><span class="p">.</span><span class="nf">IsSelectable</span><span class="p">()</span> <span class="p">&amp;&amp;</span> <span class="n">rhino_object</span><span class="p">.</span><span class="nf">IsSelected</span><span class="p">(</span><span class="k">false</span><span class="p">)</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
       <span class="p">{</span>

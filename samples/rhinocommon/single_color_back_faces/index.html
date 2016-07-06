@@ -226,12 +226,12 @@
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">SingleColorBackfaces</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">display_mode_descs</span> <span class="p">=</span> <span class="c1">//DisplayModeDescription.GetDisplayModes();
-</span>      <span class="n">from</span> <span class="n">dm</span> <span class="k">in</span> <span class="n">DisplayModeDescription</span><span class="p">.</span><span class="nf">GetDisplayModes</span><span class="p">()</span>
-      <span class="n">where</span> <span class="n">dm</span><span class="p">.</span><span class="n">EnglishName</span> <span class="p">==</span> <span class="s">"Shaded"</span>
-      <span class="n">select</span> <span class="n">dm</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">display_mode_descs</span> <span class="p">=</span> <span class="c1">//DisplayModeDescription.GetDisplayModes();
+</span>      <span class="k">from</span> <span class="n">dm</span> <span class="k">in</span> <span class="n">DisplayModeDescription</span><span class="p">.</span><span class="nf">GetDisplayModes</span><span class="p">()</span>
+      <span class="k">where</span> <span class="n">dm</span><span class="p">.</span><span class="n">EnglishName</span> <span class="p">==</span> <span class="s">"Shaded"</span>
+      <span class="k">select</span> <span class="n">dm</span><span class="p">;</span>
 
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">dmd</span> <span class="k">in</span> <span class="n">display_mode_descs</span><span class="p">)</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">dmd</span> <span class="k">in</span> <span class="n">display_mode_descs</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"CurveColor {0}"</span><span class="p">,</span> <span class="n">dmd</span><span class="p">.</span><span class="n">DisplayAttributes</span><span class="p">.</span><span class="n">CurveColor</span><span class="p">.</span><span class="nf">ToKnownColor</span><span class="p">());</span>
       <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"ObjectColor {0}"</span><span class="p">,</span> <span class="n">dmd</span><span class="p">.</span><span class="n">DisplayAttributes</span><span class="p">.</span><span class="n">ObjectColor</span><span class="p">.</span><span class="nf">ToKnownColor</span><span class="p">());</span>

@@ -227,10 +227,10 @@
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">ReparameterizeCurve</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">ObjRef</span> <span class="n">obj_ref</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select curve to reparameterize"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select curve to reparameterize"</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">curve</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
@@ -248,7 +248,7 @@
         <span class="n">Math</span><span class="p">.</span><span class="nf">Abs</span><span class="p">(</span><span class="n">curve</span><span class="p">.</span><span class="n">Domain</span><span class="p">.</span><span class="n">T1</span> <span class="p">-</span> <span class="n">domain_end</span><span class="p">)</span> <span class="p">&lt;</span> <span class="n">RhinoMath</span><span class="p">.</span><span class="n">ZeroTolerance</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">curve_copy</span> <span class="p">=</span> <span class="n">curve</span><span class="p">.</span><span class="nf">DuplicateCurve</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve_copy</span> <span class="p">=</span> <span class="n">curve</span><span class="p">.</span><span class="nf">DuplicateCurve</span><span class="p">();</span>
     <span class="n">curve_copy</span><span class="p">.</span><span class="n">Domain</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Interval</span><span class="p">(</span><span class="n">domain_start</span><span class="p">,</span> <span class="n">domain_end</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(!</span><span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="n">obj_ref</span><span class="p">,</span> <span class="n">curve_copy</span><span class="p">))</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>

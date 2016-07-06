@@ -388,7 +388,7 @@
 
       <span class="c1">// Do the transformation. In this example,
 </span>      <span class="c1">// we will copy the original objects
-</span>      <span class="n">bool</span> <span class="n">bDeleteOriginal</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span>      <span class="kt">bool</span> <span class="n">bDeleteOriginal</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
       <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
       <span class="k">for</span><span class="p">(</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">go</span><span class="p">.</span><span class="n">ObjectCount</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span>
         <span class="n">context</span><span class="p">.</span><span class="n">m_doc</span><span class="p">.</span><span class="n">TransformObject</span><span class="p">(</span> <span class="n">go</span><span class="p">.</span><span class="n">Object</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">xform</span><span class="p">,</span> <span class="n">bDeleteOriginal</span> <span class="p">);</span>

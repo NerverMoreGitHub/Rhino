@@ -262,7 +262,7 @@
     <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">UnselectAll</span><span class="p">();</span>
 
     <span class="n">ObjRef</span> <span class="n">obj_ref1</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc1</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"first curve"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref1</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc1</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"first curve"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref1</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc1</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc1</span><span class="p">;</span>
     <span class="n">Curve</span> <span class="n">curve_a</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
@@ -279,7 +279,7 @@
 </span>    <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">UnselectAll</span><span class="p">();</span>
 
     <span class="n">ObjRef</span> <span class="n">obj_ref2</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc2</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"second curve"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref2</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc2</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"second curve"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref2</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc2</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc2</span><span class="p">;</span>
     <span class="n">Curve</span> <span class="n">curve_b</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
@@ -288,7 +288,7 @@
     <span class="k">if</span> <span class="p">(</span><span class="n">curve_b</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">tolerance</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">tolerance</span> <span class="p">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelAbsoluteTolerance</span><span class="p">;</span>
 
     <span class="kt">double</span> <span class="n">max_distance</span><span class="p">;</span>
     <span class="kt">double</span> <span class="n">max_distance_parameter_a</span><span class="p">;</span>
@@ -309,10 +309,10 @@
     <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">min_distance</span> <span class="p">&lt;=</span> <span class="n">RhinoMath</span><span class="p">.</span><span class="n">ZeroTolerance</span><span class="p">)</span>
         <span class="n">min_distance</span> <span class="p">=</span> <span class="m">0.0</span><span class="p">;</span>
-      <span class="n">var</span> <span class="n">max_dist_pt_a</span> <span class="p">=</span> <span class="n">curve_a</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">max_distance_parameter_a</span><span class="p">);</span>
-      <span class="n">var</span> <span class="n">max_dist_pt_b</span> <span class="p">=</span> <span class="n">curve_b</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">max_distance_parameter_b</span><span class="p">);</span>
-      <span class="n">var</span> <span class="n">min_dist_pt_a</span> <span class="p">=</span> <span class="n">curve_a</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">min_distance_parameter_a</span><span class="p">);</span>
-      <span class="n">var</span> <span class="n">min_dist_pt_b</span> <span class="p">=</span> <span class="n">curve_b</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">min_distance_parameter_b</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">max_dist_pt_a</span> <span class="p">=</span> <span class="n">curve_a</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">max_distance_parameter_a</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">max_dist_pt_b</span> <span class="p">=</span> <span class="n">curve_b</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">max_distance_parameter_b</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">min_dist_pt_a</span> <span class="p">=</span> <span class="n">curve_a</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">min_distance_parameter_a</span><span class="p">);</span>
+      <span class="kt">var</span> <span class="n">min_dist_pt_b</span> <span class="p">=</span> <span class="n">curve_b</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">min_distance_parameter_b</span><span class="p">);</span>
 
       <span class="n">conduit</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DeviationConduit</span><span class="p">(</span><span class="n">curve_a</span><span class="p">,</span> <span class="n">curve_b</span><span class="p">,</span> <span class="n">min_dist_pt_a</span><span class="p">,</span> <span class="n">min_dist_pt_b</span><span class="p">,</span> <span class="n">max_dist_pt_a</span><span class="p">,</span> <span class="n">max_dist_pt_b</span><span class="p">)</span> <span class="p">{</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">};</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>
@@ -321,7 +321,7 @@
       <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Maximum deviation = {0}   pointA({1}), pointB({2})"</span><span class="p">,</span> <span class="n">max_distance</span><span class="p">,</span> <span class="n">max_dist_pt_a</span><span class="p">,</span> <span class="n">max_dist_pt_b</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">var</span> <span class="n">str</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">str</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
     <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Press Enter when done"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">ref</span> <span class="n">str</span><span class="p">);</span>
     <span class="n">conduit</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
 

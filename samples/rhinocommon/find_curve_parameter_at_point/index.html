@@ -227,21 +227,21 @@
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">FindCurveParameterAtPoint</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">ObjRef</span> <span class="n">objref</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select curve"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span><span class="k">out</span> <span class="n">objref</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select curve"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span><span class="k">out</span> <span class="n">objref</span><span class="p">);</span>
     <span class="k">if</span><span class="p">(</span><span class="n">rc</span><span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">objref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">objref</span><span class="p">.</span><span class="nf">Curve</span><span class="p">();</span>
     <span class="k">if</span><span class="p">(</span> <span class="n">curve</span><span class="p">==</span><span class="k">null</span> <span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
-    <span class="n">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetPoint</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gp</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetPoint</span><span class="p">();</span>
     <span class="n">gp</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"Pick a location on the curve"</span><span class="p">);</span>
     <span class="n">gp</span><span class="p">.</span><span class="nf">Constrain</span><span class="p">(</span><span class="n">curve</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
     <span class="n">gp</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gp</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
 
-    <span class="n">var</span> <span class="n">point</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">point</span> <span class="p">=</span> <span class="n">gp</span><span class="p">.</span><span class="nf">Point</span><span class="p">();</span>
     <span class="kt">double</span> <span class="n">closest_point_param</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">curve</span><span class="p">.</span><span class="nf">ClosestPoint</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="k">out</span> <span class="n">closest_point_param</span><span class="p">))</span>
     <span class="p">{</span>

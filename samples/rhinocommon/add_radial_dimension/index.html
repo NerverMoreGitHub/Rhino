@@ -227,12 +227,12 @@
   <span class="k">public</span> <span class="k">static</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">Commands</span><span class="p">.</span><span class="n">Result</span> <span class="nf">AddRadialDimension</span><span class="p">(</span><span class="n">Rhino</span><span class="p">.</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">ObjRef</span> <span class="n">obj_ref</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select curve for radius dimension"</span><span class="p">,</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetOneObject</span><span class="p">(</span><span class="s">"Select curve for radius dimension"</span><span class="p">,</span>
       <span class="k">true</span><span class="p">,</span> <span class="n">ObjectType</span><span class="p">.</span><span class="n">Curve</span><span class="p">,</span> <span class="k">out</span> <span class="n">obj_ref</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
     <span class="kt">double</span> <span class="n">curve_parameter</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">CurveParameter</span><span class="p">(</span><span class="k">out</span> <span class="n">curve_parameter</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">curve</span> <span class="p">=</span> <span class="n">obj_ref</span><span class="p">.</span><span class="nf">CurveParameter</span><span class="p">(</span><span class="k">out</span> <span class="n">curve_parameter</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">curve</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Failure</span><span class="p">;</span>
 
@@ -249,19 +249,19 @@
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">var</span> <span class="n">point_on_curve</span> <span class="p">=</span> <span class="n">curve</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">curve_parameter</span><span class="p">);</span>
-    <span class="n">var</span> <span class="n">curvature_vector</span> <span class="p">=</span> <span class="n">curve</span><span class="p">.</span><span class="nf">CurvatureAt</span><span class="p">(</span><span class="n">curve_parameter</span><span class="p">);</span>
-    <span class="n">var</span> <span class="n">len</span> <span class="p">=</span> <span class="n">curvature_vector</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">point_on_curve</span> <span class="p">=</span> <span class="n">curve</span><span class="p">.</span><span class="nf">PointAt</span><span class="p">(</span><span class="n">curve_parameter</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">curvature_vector</span> <span class="p">=</span> <span class="n">curve</span><span class="p">.</span><span class="nf">CurvatureAt</span><span class="p">(</span><span class="n">curve_parameter</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">len</span> <span class="p">=</span> <span class="n">curvature_vector</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="p">&lt;</span> <span class="n">RhinoMath</span><span class="p">.</span><span class="n">SqrtEpsilon</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Curve is almost linear and therefore has no curvature."</span><span class="p">);</span>
       <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Nothing</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">var</span> <span class="n">center</span> <span class="p">=</span> <span class="n">point_on_curve</span> <span class="p">+</span> <span class="p">(</span><span class="n">curvature_vector</span><span class="p">/(</span><span class="n">len</span><span class="p">*</span><span class="n">len</span><span class="p">));</span>
+    <span class="kt">var</span> <span class="n">center</span> <span class="p">=</span> <span class="n">point_on_curve</span> <span class="p">+</span> <span class="p">(</span><span class="n">curvature_vector</span><span class="p">/(</span><span class="n">len</span><span class="p">*</span><span class="n">len</span><span class="p">));</span>
     <span class="n">Plane</span> <span class="n">plane</span><span class="p">;</span>
     <span class="n">curve</span><span class="p">.</span><span class="nf">TryGetPlane</span><span class="p">(</span><span class="k">out</span> <span class="n">plane</span><span class="p">);</span>
-    <span class="n">var</span> <span class="n">radial_dimension</span> <span class="p">=</span>
+    <span class="kt">var</span> <span class="n">radial_dimension</span> <span class="p">=</span>
       <span class="k">new</span> <span class="nf">RadialDimension</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">point_on_curve</span><span class="p">,</span> <span class="n">plane</span><span class="p">.</span><span class="n">XAxis</span><span class="p">,</span> <span class="n">plane</span><span class="p">.</span><span class="n">Normal</span><span class="p">,</span> <span class="m">5.0</span><span class="p">);</span>
     <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">AddRadialDimension</span><span class="p">(</span><span class="n">radial_dimension</span><span class="p">);</span>
     <span class="n">doc</span><span class="p">.</span><span class="n">Views</span><span class="p">.</span><span class="nf">Redraw</span><span class="p">();</span>

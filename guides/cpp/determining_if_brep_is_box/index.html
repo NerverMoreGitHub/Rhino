@@ -326,12 +326,12 @@
 
 <p>The following sample functions demonstrate how to determine whether or not a polysurface is a box.</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">bool</span> <span class="nf">IsBrepBox</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Brep</span><span class="o">&amp;</span> <span class="n">brep</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">bool</span> <span class="nf">IsBrepBox</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_Brep</span><span class="o">&amp;</span> <span class="n">brep</span> <span class="p">)</span>
 <span class="p">{</span>
   <span class="kt">double</span> <span class="n">zero_tolerance</span> <span class="o">=</span> <span class="mf">1.0e-6</span><span class="p">;</span> <span class="c1">// or whatever
 </span>  <span class="n">ON_3dVector</span> <span class="n">N</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
 
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">brep</span><span class="p">.</span><span class="n">IsSolid</span><span class="p">();</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">brep</span><span class="p">.</span><span class="n">IsSolid</span><span class="p">();</span>
 
   <span class="k">if</span> <span class="p">(</span><span class="n">rc</span><span class="p">)</span>
     <span class="n">rc</span> <span class="o">=</span> <span class="p">(</span><span class="n">brep</span><span class="p">.</span><span class="n">m_F</span><span class="p">.</span><span class="n">Count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">6</span><span class="p">);</span>

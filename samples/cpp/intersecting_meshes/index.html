@@ -230,7 +230,7 @@ Parameters:
 Returns:
   True if successful, false otherwise.
 */</span>
-<span class="k">static</span> <span class="n">bool</span> <span class="nf">MeshMeshIntersection</span><span class="p">(</span>
+<span class="k">static</span> <span class="kt">bool</span> <span class="nf">MeshMeshIntersection</span><span class="p">(</span>
         <span class="k">const</span> <span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">meshA</span><span class="p">,</span>
         <span class="k">const</span> <span class="n">ON_Mesh</span><span class="o">*</span> <span class="n">meshB</span><span class="p">,</span>
         <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_Curve</span><span class="o">*&gt;&amp;</span> <span class="n">OutCurves</span><span class="p">,</span>
@@ -242,7 +242,7 @@ Returns:
 
   <span class="n">ON_ClassArray</span><span class="o">&lt;</span><span class="n">ON_MMX_Polyline</span><span class="o">&gt;</span> <span class="n">transverse</span><span class="p">;</span>
   <span class="n">ON_ClassArray</span><span class="o">&lt;</span><span class="n">ON_MMX_Polyline</span><span class="o">&gt;</span> <span class="n">overlap</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">ON_MeshMeshIntersect</span><span class="p">(</span> <span class="n">meshA</span><span class="p">,</span> <span class="n">meshB</span><span class="p">,</span> <span class="n">transverse</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">tolerance</span> <span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">ON_MeshMeshIntersect</span><span class="p">(</span> <span class="n">meshA</span><span class="p">,</span> <span class="n">meshB</span><span class="p">,</span> <span class="n">transverse</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">tolerance</span> <span class="p">);</span>
   <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="n">rc</span> <span class="p">)</span>
     <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
 
@@ -298,7 +298,7 @@ Returns:
     <span class="k">return</span> <span class="n">failure</span><span class="p">;</span>
 
   <span class="n">ON_SimpleArray</span><span class="o">&lt;</span><span class="n">ON_Curve</span><span class="o">*&gt;</span> <span class="n">OutCurves</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">MeshMeshIntersection</span><span class="p">(</span> <span class="n">meshA</span><span class="p">,</span> <span class="n">meshB</span><span class="p">,</span> <span class="n">OutCurves</span> <span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">MeshMeshIntersection</span><span class="p">(</span> <span class="n">meshA</span><span class="p">,</span> <span class="n">meshB</span><span class="p">,</span> <span class="n">OutCurves</span> <span class="p">);</span>
   <span class="k">if</span><span class="p">(</span> <span class="n">rc</span> <span class="p">)</span>
   <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>

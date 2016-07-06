@@ -305,7 +305,7 @@
 
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">rhinoObjectAdded</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">var</span> <span class="n">msg</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
+  <span class="kt">var</span> <span class="n">msg</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
         <span class="n">Thread</span><span class="p">.</span><span class="n">CurrentThread</span><span class="p">.</span><span class="n">ManagedThreadId</span><span class="p">,</span>
         <span class="n">e</span><span class="p">.</span><span class="n">ObjectId</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
 
@@ -329,7 +329,7 @@
 
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">rhinoObjectAddedSafe</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">var</span> <span class="n">msg</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
+  <span class="kt">var</span> <span class="n">msg</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
         <span class="n">Thread</span><span class="p">.</span><span class="n">CurrentThread</span><span class="p">.</span><span class="n">ManagedThreadId</span><span class="p">,</span>
         <span class="n">e</span><span class="p">.</span><span class="n">ObjectId</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
 
@@ -343,7 +343,7 @@
   <span class="k">else</span>
   <span class="p">{</span>
     <span class="c1">// invoke the setLabelTextDelegate on the thread the dispatcher is associated with, i.e., the UI thread
-</span>    <span class="n">var</span> <span class="n">setLabelTextDelegate</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">txt</span> <span class="p">=&gt;</span> <span class="n">_label</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">txt</span><span class="p">);</span>
+</span>    <span class="kt">var</span> <span class="n">setLabelTextDelegate</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">txt</span> <span class="p">=&gt;</span> <span class="n">_label</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">txt</span><span class="p">);</span>
     <span class="n">_label</span><span class="p">.</span><span class="n">Dispatcher</span><span class="p">.</span><span class="nf">Invoke</span><span class="p">(</span><span class="n">setLabelTextDelegate</span><span class="p">,</span> <span class="k">new</span> <span class="n">String</span><span class="p">[]</span> <span class="p">{</span> <span class="n">msg</span> <span class="p">});</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -354,14 +354,14 @@
 
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">rhinoObjectAddedSafe</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">DocObjects</span><span class="p">.</span><span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">var</span> <span class="n">msg</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
+  <span class="kt">var</span> <span class="n">msg</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
         <span class="n">Thread</span><span class="p">.</span><span class="n">CurrentThread</span><span class="p">.</span><span class="n">ManagedThreadId</span><span class="p">,</span>
         <span class="n">e</span><span class="p">.</span><span class="n">ObjectId</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
 
   <span class="n">RhinoApp</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
 
   <span class="c1">// invoke the setLabelTextDelegate on the thread the dispatcher is associated with, i.e., the UI thread
-</span>  <span class="n">var</span> <span class="n">setLabelTextDelegate</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">txt</span> <span class="p">=&gt;</span> <span class="n">_label</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">txt</span><span class="p">);</span>
+</span>  <span class="kt">var</span> <span class="n">setLabelTextDelegate</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">txt</span> <span class="p">=&gt;</span> <span class="n">_label</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">txt</span><span class="p">);</span>
   <span class="n">_label</span><span class="p">.</span><span class="n">Dispatcher</span><span class="p">.</span><span class="nf">Invoke</span><span class="p">(</span><span class="n">setLabelTextDelegate</span><span class="p">,</span> <span class="k">new</span> <span class="n">String</span><span class="p">[]</span> <span class="p">{</span> <span class="n">msg</span> <span class="p">});</span>
 <span class="p">}</span>
 </code></pre>
@@ -409,7 +409,7 @@
 
       <span class="c1">// add a sphere from a secondary thread. Not good: the rhinoObjectAdded method
 </span>      <span class="c1">// doesn't work well when called from another thread
-</span>      <span class="n">var</span> <span class="n">addSphereDelegate</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Action</span><span class="p">&lt;</span><span class="n">Point3d</span><span class="p">&gt;(</span><span class="n">AddSphere</span><span class="p">);</span>
+</span>      <span class="kt">var</span> <span class="n">addSphereDelegate</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Action</span><span class="p">&lt;</span><span class="n">Point3d</span><span class="p">&gt;(</span><span class="n">AddSphere</span><span class="p">);</span>
       <span class="n">addSphereDelegate</span><span class="p">.</span><span class="nf">BeginInvoke</span><span class="p">(</span><span class="k">new</span> <span class="nf">Point3d</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
 
       <span class="c1">// handle the AddRhinoObject event with rhinoObjectAddedSafe which is
@@ -431,7 +431,7 @@
 
     <span class="k">private</span> <span class="k">void</span> <span class="nf">RhinoObjectAdded</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">message</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
+      <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
             <span class="n">Thread</span><span class="p">.</span><span class="n">CurrentThread</span><span class="p">.</span><span class="n">ManagedThreadId</span><span class="p">,</span>
             <span class="n">e</span><span class="p">.</span><span class="n">ObjectId</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
 
@@ -447,7 +447,7 @@
 
     <span class="k">private</span> <span class="k">void</span> <span class="nf">RhinoObjectAddedSafe</span><span class="p">(</span><span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RhinoObjectEventArgs</span> <span class="n">e</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">var</span> <span class="n">message</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
+      <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"thread id = {0}, obj id = {1}"</span><span class="p">,</span>
             <span class="n">Thread</span><span class="p">.</span><span class="n">CurrentThread</span><span class="p">.</span><span class="n">ManagedThreadId</span><span class="p">,</span>
             <span class="n">e</span><span class="p">.</span><span class="n">ObjectId</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
 
@@ -461,7 +461,7 @@
       <span class="k">else</span>
       <span class="p">{</span>
         <span class="c1">// invoke the setLabelTextDelegate on the thread the dispatcher is associated with, i.e., the UI thread
-</span>        <span class="n">var</span> <span class="n">setLabelTextDelegate</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">txt</span> <span class="p">=&gt;</span> <span class="n">_label</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">txt</span><span class="p">);</span>
+</span>        <span class="kt">var</span> <span class="n">setLabelTextDelegate</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">txt</span> <span class="p">=&gt;</span> <span class="n">_label</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">txt</span><span class="p">);</span>
         <span class="n">_label</span><span class="p">.</span><span class="n">Dispatcher</span><span class="p">.</span><span class="nf">BeginInvoke</span><span class="p">(</span><span class="n">setLabelTextDelegate</span><span class="p">,</span> <span class="k">new</span> <span class="n">String</span><span class="p">[]</span> <span class="p">{</span> <span class="n">message</span> <span class="p">});</span>
       <span class="p">}</span>
     <span class="p">}</span>

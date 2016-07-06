@@ -320,12 +320,12 @@
 </span>  <span class="kt">void</span> <span class="n">OnMouseMove</span><span class="p">(</span> <span class="n">CRhinoViewport</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">UINT</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">CPoint</span><span class="o">*</span> <span class="p">);</span>
   <span class="kt">void</span> <span class="n">DynamicDraw</span><span class="p">(</span> <span class="n">HDC</span><span class="p">,</span> <span class="n">CRhinoViewport</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="p">);</span>
 
-  <span class="n">bool</span> <span class="n">CalculateTransform</span><span class="p">(</span> <span class="n">CRhinoViewport</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">CalculateTransform</span><span class="p">(</span> <span class="n">CRhinoViewport</span><span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="p">);</span>
 
 <span class="k">private</span><span class="o">:</span>
   <span class="k">const</span> <span class="n">CRhinoInstanceDefinition</span><span class="o">*</span> <span class="n">m_idef</span><span class="p">;</span>
   <span class="n">ON_Xform</span> <span class="n">m_xform</span><span class="p">;</span>
-  <span class="n">bool</span> <span class="n">m_bDraw</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">m_bDraw</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="n">CGetBlockInsertPoint</span><span class="o">::</span><span class="n">CGetBlockInsertPoint</span><span class="p">(</span> <span class="k">const</span> <span class="n">CRhinoInstanceDefinition</span><span class="o">*</span> <span class="n">idef</span> <span class="p">)</span>
@@ -365,13 +365,13 @@
   <span class="n">CRhinoGetPoint</span><span class="o">::</span><span class="n">DynamicDraw</span><span class="p">(</span> <span class="n">hdc</span><span class="p">,</span> <span class="n">vp</span><span class="p">,</span> <span class="n">pt</span> <span class="p">);</span>
 <span class="p">}</span>
 
-<span class="n">bool</span> <span class="n">CGetBlockInsertPoint</span><span class="o">::</span><span class="n">CalculateTransform</span><span class="p">(</span>
+<span class="kt">bool</span> <span class="n">CGetBlockInsertPoint</span><span class="o">::</span><span class="n">CalculateTransform</span><span class="p">(</span>
     <span class="n">CRhinoViewport</span><span class="o">&amp;</span> <span class="n">vp</span><span class="p">,</span>
     <span class="k">const</span> <span class="n">ON_3dPoint</span><span class="o">&amp;</span> <span class="n">pt</span><span class="p">,</span>
     <span class="n">ON_Xform</span><span class="o">&amp;</span> <span class="n">xform</span>
     <span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
   <span class="n">ON_3dVector</span> <span class="n">v</span> <span class="o">=</span> <span class="n">pt</span> <span class="o">-</span> <span class="n">BasePoint</span><span class="p">();</span>
   <span class="k">if</span><span class="p">(</span> <span class="n">v</span><span class="p">.</span><span class="n">IsTiny</span><span class="p">()</span> <span class="p">)</span>
     <span class="n">xform</span><span class="p">.</span><span class="n">Identity</span><span class="p">();</span>

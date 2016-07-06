@@ -325,9 +325,9 @@
 
 <p>The following example code can be used to detect an object’s true visibility when using the openNURBS toolkit:</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="n">bool</span> <span class="nf">IsLayerVisible</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_ObjectArray</span><span class="o">&lt;</span><span class="n">ON_Layer</span><span class="o">&gt;&amp;</span> <span class="n">layer_table</span><span class="p">,</span> <span class="kt">int</span> <span class="n">layer_index</span> <span class="p">)</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsLayerVisible</span><span class="p">(</span> <span class="k">const</span> <span class="n">ON_ObjectArray</span><span class="o">&lt;</span><span class="n">ON_Layer</span><span class="o">&gt;&amp;</span> <span class="n">layer_table</span><span class="p">,</span> <span class="kt">int</span> <span class="n">layer_index</span> <span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
   <span class="c1">// Validate the layer index
 </span>  <span class="k">if</span><span class="p">(</span> <span class="n">layer_index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">layer_index</span> <span class="o">&lt;</span> <span class="n">layer_table</span><span class="p">.</span><span class="n">Count</span><span class="p">()</span> <span class="p">)</span>
   <span class="p">{</span>
@@ -351,9 +351,9 @@
   <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">static</span> <span class="n">bool</span> <span class="nf">IsModelObjectVisible</span><span class="p">(</span> <span class="k">const</span> <span class="n">ONX_Model</span><span class="o">&amp;</span> <span class="n">model</span><span class="p">,</span> <span class="k">const</span> <span class="n">ONX_Model_Object</span><span class="o">&amp;</span> <span class="n">model_object</span> <span class="p">)</span>
+<span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsModelObjectVisible</span><span class="p">(</span> <span class="k">const</span> <span class="n">ONX_Model</span><span class="o">&amp;</span> <span class="n">model</span><span class="p">,</span> <span class="k">const</span> <span class="n">ONX_Model_Object</span><span class="o">&amp;</span> <span class="n">model_object</span> <span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">rc</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
   <span class="k">switch</span><span class="p">(</span> <span class="n">model_object</span><span class="p">.</span><span class="n">m_attributes</span><span class="p">.</span><span class="n">Mode</span><span class="p">()</span> <span class="p">)</span>
   <span class="p">{</span>
   <span class="k">case</span> <span class="n">ON</span><span class="p">:</span><span class="o">:</span><span class="n">normal_object</span><span class="o">:</span>
@@ -387,7 +387,7 @@
     <span class="k">const</span> <span class="n">ONX_Model_Object</span><span class="o">&amp;</span> <span class="n">model_object</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">m_object_table</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
     <span class="k">if</span><span class="p">(</span> <span class="n">model_object</span><span class="p">.</span><span class="n">m_object</span> <span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">bool</span> <span class="n">bVisible</span> <span class="o">=</span> <span class="n">IsModelObjectVisible</span><span class="p">(</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_object</span> <span class="p">);</span>
+      <span class="kt">bool</span> <span class="n">bVisible</span> <span class="o">=</span> <span class="n">IsModelObjectVisible</span><span class="p">(</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_object</span> <span class="p">);</span>
       <span class="n">dump</span><span class="o">-&gt;</span><span class="n">Print</span><span class="p">(</span><span class="s">"Object uuid: "</span><span class="p">);</span>
       <span class="n">dump</span><span class="o">-&gt;</span><span class="n">Print</span><span class="p">(</span> <span class="n">model_object</span><span class="p">.</span><span class="n">m_attributes</span><span class="p">.</span><span class="n">m_uuid</span> <span class="p">);</span>
       <span class="n">dump</span><span class="o">-&gt;</span><span class="n">Print</span><span class="p">(</span><span class="s">", visible: %s"</span><span class="p">,</span> <span class="n">bVisible</span> <span class="o">?</span> <span class="s">"true"</span> <span class="o">:</span> <span class="s">"false"</span> <span class="p">);</span>

@@ -226,7 +226,7 @@
 <span class="p">{</span>
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">DisplayPrecision</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="n">var</span> <span class="n">gi</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetInteger</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">gi</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">GetInteger</span><span class="p">();</span>
     <span class="n">gi</span><span class="p">.</span><span class="nf">SetCommandPrompt</span><span class="p">(</span><span class="s">"New display precision"</span><span class="p">);</span>
     <span class="n">gi</span><span class="p">.</span><span class="nf">SetDefaultInteger</span><span class="p">(</span><span class="n">doc</span><span class="p">.</span><span class="n">ModelDistanceDisplayPrecision</span><span class="p">);</span>
     <span class="n">gi</span><span class="p">.</span><span class="nf">SetLowerLimit</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
@@ -234,7 +234,7 @@
     <span class="n">gi</span><span class="p">.</span><span class="nf">Get</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">gi</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">()</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">gi</span><span class="p">.</span><span class="nf">CommandResult</span><span class="p">();</span>
-    <span class="n">var</span> <span class="n">distance_display_precision</span> <span class="p">=</span> <span class="n">gi</span><span class="p">.</span><span class="nf">Number</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">distance_display_precision</span> <span class="p">=</span> <span class="n">gi</span><span class="p">.</span><span class="nf">Number</span><span class="p">();</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">distance_display_precision</span> <span class="p">!=</span> <span class="n">doc</span><span class="p">.</span><span class="n">ModelDistanceDisplayPrecision</span><span class="p">)</span>
       <span class="n">doc</span><span class="p">.</span><span class="n">ModelDistanceDisplayPrecision</span> <span class="p">=</span> <span class="n">distance_display_precision</span><span class="p">;</span>

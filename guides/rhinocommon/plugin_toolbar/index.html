@@ -33,7 +33,7 @@
   
   
   <meta name="twitter:label2" value="Language(s)" />
-  <meta name="twitter:data2" value="C#" />
+  <meta name="twitter:data2" value="C#, C/C++" />
   
 
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
@@ -341,7 +341,7 @@
 </span><span class="k">protected</span> <span class="k">override</span> <span class="n">LoadReturnCode</span> <span class="nf">OnLoad</span><span class="p">(</span><span class="k">ref</span> <span class="kt">string</span> <span class="n">errorMessage</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="c1">// Get the version number of our plug-in, that was last used, from our settings file.
-</span>  <span class="n">var</span> <span class="n">plugin_version</span> <span class="p">=</span> <span class="n">Settings</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"PlugInVersion"</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+</span>  <span class="kt">var</span> <span class="n">plugin_version</span> <span class="p">=</span> <span class="n">Settings</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"PlugInVersion"</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
 
   <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">plugin_version</span><span class="p">))</span>
   <span class="p">{</span>
@@ -350,14 +350,14 @@
 </span>    <span class="k">if</span> <span class="p">(</span><span class="m">0</span> <span class="p">!=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Compare</span><span class="p">(</span><span class="n">Version</span><span class="p">,</span> <span class="n">plugin_version</span><span class="p">,</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">))</span>
     <span class="p">{</span>
       <span class="c1">// Build a path to the user's staged RUI file.
-</span>      <span class="n">var</span> <span class="n">sb</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="p">();</span>
+</span>      <span class="kt">var</span> <span class="n">sb</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="p">();</span>
       <span class="n">sb</span><span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">Environment</span><span class="p">.</span><span class="nf">GetFolderPath</span><span class="p">(</span><span class="n">Environment</span><span class="p">.</span><span class="n">SpecialFolder</span><span class="p">.</span><span class="n">ApplicationData</span><span class="p">));</span>
       <span class="n">sb</span><span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="s">"\\McNeel\\Rhinoceros\\5.0\\Plug-ins\\"</span><span class="p">);</span>
       <span class="n">sb</span><span class="p">.</span><span class="nf">AppendFormat</span><span class="p">(</span><span class="s">"{0} ({1})"</span><span class="p">,</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Id</span><span class="p">);</span>
       <span class="n">sb</span><span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="s">"\\settings\\"</span><span class="p">);</span>
       <span class="n">sb</span><span class="p">.</span><span class="nf">AppendFormat</span><span class="p">(</span><span class="s">"{0}.rui"</span><span class="p">,</span> <span class="n">Assembly</span><span class="p">.</span><span class="nf">GetName</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span>
 
-      <span class="n">var</span> <span class="n">path</span> <span class="p">=</span> <span class="n">sb</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+      <span class="kt">var</span> <span class="n">path</span> <span class="p">=</span> <span class="n">sb</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
 
       <span class="c1">// Verify the RUI file exists.
 </span>      <span class="k">if</span> <span class="p">(</span><span class="n">File</span><span class="p">.</span><span class="nf">Exists</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>

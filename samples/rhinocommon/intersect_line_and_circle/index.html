@@ -227,7 +227,7 @@
   <span class="k">public</span> <span class="k">static</span> <span class="n">Result</span> <span class="nf">IntersectLineCircle</span><span class="p">(</span><span class="n">RhinoDoc</span> <span class="n">doc</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">Circle</span> <span class="n">circle</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetCircle</span><span class="p">(</span><span class="k">out</span> <span class="n">circle</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">rc</span> <span class="p">=</span> <span class="n">RhinoGet</span><span class="p">.</span><span class="nf">GetCircle</span><span class="p">(</span><span class="k">out</span> <span class="n">circle</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="p">!=</span> <span class="n">Result</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
     <span class="n">doc</span><span class="p">.</span><span class="n">Objects</span><span class="p">.</span><span class="nf">AddCircle</span><span class="p">(</span><span class="n">circle</span><span class="p">);</span>
@@ -242,7 +242,7 @@
 
     <span class="kt">double</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">;</span>
     <span class="n">Point3d</span> <span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">;</span>
-    <span class="n">var</span> <span class="n">line_circle_intersect</span> <span class="p">=</span> <span class="n">Intersection</span><span class="p">.</span><span class="nf">LineCircle</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">circle</span><span class="p">,</span> <span class="k">out</span> <span class="n">t1</span><span class="p">,</span> <span class="k">out</span> <span class="n">point1</span><span class="p">,</span> <span class="k">out</span> <span class="n">t2</span><span class="p">,</span> <span class="k">out</span> <span class="n">point2</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">line_circle_intersect</span> <span class="p">=</span> <span class="n">Intersection</span><span class="p">.</span><span class="nf">LineCircle</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">circle</span><span class="p">,</span> <span class="k">out</span> <span class="n">t1</span><span class="p">,</span> <span class="k">out</span> <span class="n">point1</span><span class="p">,</span> <span class="k">out</span> <span class="n">t2</span><span class="p">,</span> <span class="k">out</span> <span class="n">point2</span><span class="p">);</span>
     <span class="kt">string</span> <span class="n">msg</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">line_circle_intersect</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">case</span> <span class="n">LineCircleIntersection</span><span class="p">.</span><span class="n">None</span><span class="p">:</span>
