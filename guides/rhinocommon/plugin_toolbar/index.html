@@ -6,21 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Creating and deploying plugin toolbars</title>
-  <meta name="description" content="Creating and deploying plugin toolbars">
+  <title>Creating and deploying plug-in toolbars</title>
+  <meta name="description" content="Creating and deploying plug-in toolbars">
 
   <!-- OpenGraph for Facebook, Twitter, Slack unfurling -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/guides/rhinocommon/plugin_toolbar/" />
-  <meta property="og:title" content="Creating and deploying plugin toolbars" />
-  <meta property="og:description" content="This guide covers the creation and deployment of plugin toolbars." />
+  <meta property="og:title" content="Creating and deploying plug-in toolbars" />
+  <meta property="og:description" content="This guide covers the creation and deployment of plug-in toolbars." />
   <meta property=”og:site_name” content="developer.rhino3d.com"/>
   <meta property=”og:image” content="/images/rhinodev_logo_unfurl.png"/>
 
   <!-- twitter card tags additive with the og: tags -->
   <meta name="twitter:domain" value="developer.rhino3d.com" />
-  <meta name="twitter:title" value="Creating and deploying plugin toolbars" />
-  <meta name="twitter:description" value="This guide covers the creation and deployment of plugin toolbars." />
+  <meta name="twitter:title" value="Creating and deploying plug-in toolbars" />
+  <meta name="twitter:description" value="This guide covers the creation and deployment of plug-in toolbars." />
   
     
       <meta name="twitter:image" content="/images/rhinodev_logo_unfurl.png" />
@@ -239,7 +239,7 @@
                   
                   
                   <li>
-                    <a href="#creating-and-deploying-plugin-toolbars">Creating and deploying pl...</a>
+                    <a href="#creating-and-deploying-plug-in-toolbars">Creating and deploying pl...</a>
 
                     <ul class="nav nav-stacked">
 
@@ -315,19 +315,19 @@
       <!--<div class="post">-->
 
         <article class="post-content">
-          <h1 id="creating-and-deploying-plugin-toolbars">Creating and deploying plugin toolbars</h1>
+          <h1 id="creating-and-deploying-plug-in-toolbars">Creating and deploying plug-in toolbars</h1>
 
-<p>This guide covers the creation and deployment of plugin toolbars.</p>
+<p>This guide covers the creation and deployment of plug-in toolbars.</p>
 
 <h2 id="question">Question</h2>
 
-<p>How can I create one or more toolbars for my plugin, and how can I deploy these toolbars with my plugin?</p>
+<p>How can I create one or more toolbars for my plug-in, and how can I deploy these toolbars with my plug-in?</p>
 
 <h2 id="answer">Answer</h2>
 
 <p>If you want to create Rhino-style toolbars, then use Rhino’s <strong>Toolbar</strong> command. You can save your custom toolbars in your own Rhino User Interface (RUI) file. For details on creating toolbars, see the Rhino help file.</p>
 
-<p>If you give your custom RUI file the exact same name as the plug-in RHP file and install it in the folder containing the RHP file, then Rhino will automatically stage it to a writable location and open it the first time your plugin loads.</p>
+<p>If you give your custom RUI file the exact same name as the plug-in RHP file and install it in the folder containing the RHP file, then Rhino will automatically stage it to a writable location and open it the first time your plug-in loads.</p>
 
 <h2 id="more-information">More Information</h2>
 
@@ -341,9 +341,9 @@ It is copied, or staged, to ensure that the file is writable and to provide a wa
 
 <p>Note, there is additional code in Rhino that saves the name of RUI files closed by the user. If a user closes an RUI and the RUI file is associated with a plug-in, the file name goes on a list so that Rhino does not automatically open the RUI file in the future. The logic is if the user closed the file, we don’t want to keep loading it every time Rhino starts.</p>
 
-<p>Also note, if you uninstall upir plugin and manually close the RUI file, within Rhino, you are telling Rhino you no longer want to auto-load the RUI file. Thus, the RUI file will not load if you re-install your plugin. If you were to uninstall your plug-in and delete the RUI file from the <strong>%APPDATA%</strong> folder, then the RUI file will load if you re-install your plugin.</p>
+<p>Also note, if you uninstall your plugin and manually close the RUI file, within Rhino, you are telling Rhino you no longer want to auto-load the RUI file. Thus, the RUI file will not load if you re-install your plug-in. If you were to uninstall your plug-in and delete the RUI file from the <strong>%APPDATA%</strong> folder, then the RUI file will load if you re-install your plug-in.</p>
 
-<p>Finally, if you update your plug-in, Rhino will not re-stage the RUI file because it already exists. You can get Rhino to re-stage the RUI file by deleting it in %APPDATA% and restarting which will cause Rhino to copy the file again since it no longer exists. This can be done prograqmatically by adding the following code to your plugin object’s <strong>OnLoad</strong> override.</p>
+<p>Finally, if you update your plug-in, Rhino will not re-stage the RUI file because it already exists. You can get Rhino to re-stage the RUI file by deleting it in %APPDATA% and restarting which will cause Rhino to copy the file again since it no longer exists. This can be done prograqmatically by adding the following code to your plug-in object’s <strong>OnLoad</strong> override.</p>
 
 <h2 id="example">Example</h2>
 
