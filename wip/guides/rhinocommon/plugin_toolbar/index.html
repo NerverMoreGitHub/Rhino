@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Creating and Deploying Plug-in Toolbars</title>
+  <meta name="description" content="Creating and Deploying Plug-in Toolbars">
+
+  <!-- OpenGraph for Facebook, Twitter, Slack unfurling -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/guides/rhinocommon/plugin_toolbar/" />
+  <meta property="og:title" content="Creating and Deploying Plug-in Toolbars" />
+  <meta property="og:description" content="This guide covers the creation and deployment of plug-in toolbars." />
+  <meta property=”og:site_name” content="developer.rhino3d.com"/>
+  <meta property=”og:image” content="/wip/images/rhinodev_logo_unfurl.png"/>
+
+  <!-- twitter card tags additive with the og: tags -->
+  <meta name="twitter:domain" value="developer.rhino3d.com" />
+  <meta name="twitter:title" value="Creating and Deploying Plug-in Toolbars" />
+  <meta name="twitter:description" value="This guide covers the creation and deployment of plug-in toolbars." />
+  
+    
+      <meta name="twitter:image" content="/wip/images/rhinodev_logo_unfurl.png" />
+    
+  
+  <meta name="twitter:url" value="http://developer.rhino3d.com" />
+  
+  <meta name="twitter:label1" value="Platform(s)" />
+  <meta name="twitter:data1" value="Windows" />
+  
+  
+  <meta name="twitter:label2" value="Language(s)" />
+  <meta name="twitter:data2" value="C#" />
+  
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/vbnet.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- Overridden theme -->
+  <link rel="stylesheet" href="/wip/css/main.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <!-- Bootstrap override -->
+  <link rel="stylesheet" href="/wip/css/bootstrap-override.css">
+
+  <link rel="canonical" href="http://developer.rhino3d.com/wip/guides/rhinocommon/plugin_toolbar/">
+  <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/wip/feed.xml" />
+
+  <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
+  <!-- Saving bookmarks to mobile devices -->
+  <!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/wip/images/apple-touch-icon-precomposed.png"><!-- 57×57px -->
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wip/images/apple-touch-icon-72x72-precomposed.png">
+  <!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/wip/images/apple-touch-icon-76x76-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wip/images/apple-touch-icon-114x114-precomposed.png">
+  <!-- For iPhone with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/wip/images/apple-touch-icon-120x120-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wip/images/apple-touch-icon-144x144-precomposed.png">
+  <!-- For iPad with @2× display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/wip/images/apple-touch-icon-152x152-precomposed.png">
+  <!-- For iPhone 6 Plus with @3× display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/wip/images/apple-touch-icon-180x180-precomposed.png">
+  <!-- For Chrome for Android: -->
+  <link rel="icon" sizes="192x192" href="images/touch-icon-192x192.png">
+
+  <!-- Diable crawling until this version is the stable version -->
+  <meta name="robots" content="noindex" />
+</head>
+
+
+  <body>
+
+    <!-- Google Tag Manager **This belongs right after the <body> tag**-->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWMDKN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWMDKN');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    
+<div class="version-banner">
+    Hey, you're viewing the <strong>wip</strong> version of this page!
+    <a href="/guides/rhinocommon/plugin_toolbar/">View the current version instead.</a>
+</div>
+
+<!-- Check the version banner for broken links and remove the link if found -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function()
+{
+  var splitPath = window.location.pathname.split("/");
+  var nonWipURL = "/" + splitPath.splice(2,splitPath.length-2).join("/");
+
+  $.get(nonWipURL).fail(function ()
+  {
+    var $aTag = $("div.version-banner > a");
+    $aTag.text("View the current site instead.");
+    $aTag.attr("href", "/");
+  });
+});
+</script>
+
+
+
+
+    <div class="container">
+
+      <header class="site-header">
+
+
+    <a class="site-title" href="/wip/"><img src="/wip/images/rhinodevlogo148x128.png" alt="Rhino Developer Docs" height="48" width="56"></a><a class="site-title" href="/wip/">Rhino Developer Docs</a>
+
+    <nav class="site-nav">
+      <img class="menu-icon" src="/wip/images/gi.svg">
+      
+      <div class="trigger">
+      	<!--<a class="page-link" href="/wip/">Welcome</a>-->
+        <!-- get current page title and "collection" to figure out which nav
+             link should be "active" -->
+        
+        
+        
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+            
+              
+            
+          
+        
+          
+        
+          
+            
+              
+                
+                  <a class="page-link active" href="/wip/guides/">Guides</a>
+                
+              
+            
+          
+        
+          
+            
+              
+                
+                  <a class="page-link" href="/wip/api/">API</a>
+                
+              
+            
+          
+        
+          
+            
+              
+                
+                  <a class="page-link" href="/wip/samples/">Samples</a>
+                
+              
+            
+          
+        
+          
+            
+          
+        
+        <a class="page-link" href="http://discourse.mcneel.com/c/rhino-developer">Forums</a>
+        <!-- Google Search Engine -->
+        <!-- TODO Move to this site back into the Mcneel search, or use a simple site only search for results -->
+        <div id="sitesearch">
+            <!-- Google CSE Search Box Begins  -->
+            <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+            <!-- The terms of service are available at https://www.google.com/cse/docs/tos.html -->
+            <form id="cref" action="/wip/search-results.html">
+                <input type="hidden" name="cref" value="007988927381198593803:mcq6pshqsn8" />
+                <input id="searchtext" type="text" name="q" size="24" value="" placeholder="search" />
+                <input class="searchBox" type="submit" name="sa" size="2" value=" " />
+            </form>
+        <!-- Google CSE Search Box Ends -->
+        </div>
+        <!--End of Google Search Engine -->
+      </div>
+    </nav>
+
+</header>
+
+
+      <div class="page-content">
+        <!--div class="wrapper"-->
+          <div class="container-fluid">
+
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
+
+          <li>
+            <a href="/wip/guides/">Guides</a>
+
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/wip/guides/#rhinocommon">RhinoCommon</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#creating-and-deploying-plug-in-toolbars">Creating and Deploying Pl...</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#question">Question</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#answer">Answer</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#more-information">More Information</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="creating-and-deploying-plug-in-toolbars">Creating and Deploying Plug-in Toolbars</h1>
+
+<p>This guide covers the creation and deployment of plug-in toolbars.</p>
+
+<h2 id="question">Question</h2>
+
+<p>How can I create one or more toolbars for my plug-in, and how can I deploy these toolbars with my plug-in?</p>
+
+<h2 id="answer">Answer</h2>
+
+<p>If you want to create Rhino-style toolbars, then use Rhino’s <strong>Toolbar</strong> command. You can save your custom toolbars in your own Rhino User Interface (RUI) file. For details on creating toolbars, see the Rhino help file.</p>
+
+<p>If you give your custom RUI file the exact same name as the plug-in RHP file and install it in the folder containing the RHP file, then Rhino will automatically stage it to a writable location and open it the first time your plug-in loads.</p>
+
+<h2 id="more-information">More Information</h2>
+
+<p>The first time a plug-in is loaded, Rhino looks for an RUI file with the same name as the plug-in. If it is found, it is copied to the following location and opened:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>%APPDATA%\McNeel\Rhinoceros\&lt;version&gt;\Plug-ins\[plug-in name] ([plug-in UUID)\settings
+</code></pre>
+</div>
+
+<p>It is copied, or staged, to ensure that the file is writable and to provide a way to revert to the original, or default, RUI file if needed.</p>
+
+<p>You can revert to the original, or default, RUI file by deleting the RUI file in the <strong>%APPDATA%</strong> folder and then and restarting Rhino, which will cause the file to be staged again, as the file no longer exists.</p>
+
+<p>Note, there is additional code in Rhino that saves the name of RUI files closed by the user. If a user closes an RUI and the RUI file is associated with a plug-in, the file name goes on a list so that Rhino does not automatically open the RUI file in the future. The logic is if the user closed the file, we don’t want to keep loading it every time Rhino starts.</p>
+
+<p>Also note, if you uninstall your plug-in and manually close the RUI file, within Rhino, you are telling Rhino you no longer want to auto-load the RUI file. Thus, the RUI file will not load if you re-install your plug-in. If you were to uninstall your plug-in and delete the RUI file from the <strong>%APPDATA%</strong> folder, then the RUI file will load if you re-install your plug-in.</p>
+
+<p>Finally, if you update your plug-in, Rhino will not re-stage the RUI file because it already exists. You can get Rhino to re-stage the RUI file by deleting it in <strong>%APPDATA%</strong> and restarting which will cause Rhino to copy the file again since it no longer exists. This can be done programmatically by adding the following code to your plug-in object’s <strong>OnLoad</strong> override.</p>
+
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="c1">/// &lt;summary&gt;
+/// Called when the plug-in is being loaded.
+/// &lt;/summary&gt;
+</span><span class="k">protected</span> <span class="k">override</span> <span class="n">LoadReturnCode</span> <span class="nf">OnLoad</span><span class="p">(</span><span class="k">ref</span> <span class="kt">string</span> <span class="n">errorMessage</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Get the version number of our plug-in, that was last used, from our settings file.
+</span>  <span class="n">var</span> <span class="n">plugin_version</span> <span class="p">=</span> <span class="n">Settings</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"PlugInVersion"</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">plugin_version</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="c1">// If the version number of the plug-in that was last used does not match the
+</span>    <span class="c1">// version number of this plug-in, proceed.
+</span>    <span class="k">if</span> <span class="p">(</span><span class="m">0</span> <span class="p">!=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Compare</span><span class="p">(</span><span class="n">Version</span><span class="p">,</span> <span class="n">plugin_version</span><span class="p">,</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">))</span>
+    <span class="p">{</span>
+      <span class="c1">// Build a path to the user's staged RUI file.
+</span>      <span class="n">var</span> <span class="n">sb</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="p">();</span>
+      <span class="n">sb</span><span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">Environment</span><span class="p">.</span><span class="nf">GetFolderPath</span><span class="p">(</span><span class="n">Environment</span><span class="p">.</span><span class="n">SpecialFolder</span><span class="p">.</span><span class="n">ApplicationData</span><span class="p">));</span>
+      <span class="n">sb</span><span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="s">"\\McNeel\\Rhinoceros\\5.0\\Plug-ins\\"</span><span class="p">);</span>
+      <span class="n">sb</span><span class="p">.</span><span class="nf">AppendFormat</span><span class="p">(</span><span class="s">"{0} ({1})"</span><span class="p">,</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Id</span><span class="p">);</span>
+      <span class="n">sb</span><span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="s">"\\settings\\"</span><span class="p">);</span>
+      <span class="n">sb</span><span class="p">.</span><span class="nf">AppendFormat</span><span class="p">(</span><span class="s">"{0}.rui"</span><span class="p">,</span> <span class="n">Assembly</span><span class="p">.</span><span class="nf">GetName</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span>
+
+      <span class="n">var</span> <span class="n">path</span> <span class="p">=</span> <span class="n">sb</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+
+      <span class="c1">// Verify the RUI file exists.
+</span>      <span class="k">if</span> <span class="p">(</span><span class="n">File</span><span class="p">.</span><span class="nf">Exists</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+          <span class="c1">// Delete the RUI file.
+</span>          <span class="n">File</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span>
+        <span class="p">{</span>
+          <span class="c1">// ignored
+</span>        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Save the version number of this plug-in to our settings file.
+</span>      <span class="n">Settings</span><span class="p">.</span><span class="nf">SetString</span><span class="p">(</span><span class="s">"PlugInVersion"</span><span class="p">,</span> <span class="n">Version</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// After successfully loading the plug-in, if Rhino detects a plug-in RUI
+</span>  <span class="c1">// file, it will automatically stage it, if it doesn't already exist.
+</span>
+  <span class="k">return</span> <span class="n">LoadReturnCode</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
+</div>
+
+        <!--/div-->
+      </div>
+
+      <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+
+      
+        <div class="row">
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
+          </div>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/wip/_guide_topics/rhinocommon/plugin_toolbar.md" target="_blank">Edit page on GitHub</a>
+          </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/wip/admin">Admin</a>
+              </span>
+            </div>
+        </div>
+
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
+        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <script>
+    if (navigator.appVersion.indexOf("Win")!=-1)
+    {
+      var body = document.getElementsByTagName("body");
+      body[0].style.fontWeight = '400';
+    }
+  </script>
+
+</footer>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript">
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar',
+        offset: 150 /* fixed header is about 40px high */
+    });
+    </script>
+  </body>
+
+</html>
