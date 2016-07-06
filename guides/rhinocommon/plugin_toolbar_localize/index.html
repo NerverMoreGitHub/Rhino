@@ -6,29 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>General Guides</title>
-  <meta name="description" content="                                                                                                                                                             ...">
+  <title>Localizing Plug-in Toolbars</title>
+  <meta name="description" content="Localizing Plug-in Toolbars">
 
   <!-- OpenGraph for Facebook, Twitter, Slack unfurling -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/guides/general/" />
-  <meta property="og:title" content="General Guides" />
-  <meta property="og:description" content="Guides that apply across platforms and SDKs." />
+  <meta property="og:url" content="/guides/rhinocommon/plugin_toolbar_localize/" />
+  <meta property="og:title" content="Localizing Plug-in Toolbars" />
+  <meta property="og:description" content="This guide covers the localization of plug-in toolbars." />
   <meta property=”og:site_name” content="developer.rhino3d.com"/>
   <meta property=”og:image” content="/images/rhinodev_logo_unfurl.png"/>
 
   <!-- twitter card tags additive with the og: tags -->
   <meta name="twitter:domain" value="developer.rhino3d.com" />
-  <meta name="twitter:title" value="General Guides" />
-  <meta name="twitter:description" value="Guides that apply across platforms and SDKs." />
+  <meta name="twitter:title" value="Localizing Plug-in Toolbars" />
+  <meta name="twitter:description" value="This guide covers the localization of plug-in toolbars." />
   
-    <meta name="twitter:image" content="/images/rhinodev_logo_unfurl.png" />
+    
+      <meta name="twitter:image" content="/images/rhinodev_logo_unfurl.png" />
+    
   
   <meta name="twitter:url" value="http://developer.rhino3d.com" />
   
   <meta name="twitter:label1" value="Platform(s)" />
-  <meta name="twitter:data1" value="Windows, Mac" />
+  <meta name="twitter:data1" value="Windows" />
   
+  
+  <meta name="twitter:label2" value="Language(s)" />
+  <meta name="twitter:data2" value="C#, C/C++" />
   
 
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
@@ -46,7 +51,7 @@
   <!-- Bootstrap override -->
   <link rel="stylesheet" href="/css/bootstrap-override.css">
 
-  <link rel="canonical" href="http://developer.rhino3d.com/guides/general/">
+  <link rel="canonical" href="http://developer.rhino3d.com/guides/rhinocommon/plugin_toolbar_localize/">
   <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
 
   <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
@@ -208,622 +213,165 @@
         <!--div class="wrapper"-->
           <div class="container-fluid">
 
-  <h1>General Guides
-  
-    <img src="/images/win_logo_small.png" alt="Windows" class="guide_icon">
-  
-  
-    <img src="/images/mac_logo_small.png" alt="OS X" class="guide_icon">
-  
-  
-  
-  </h1>
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
 
-  <p>Guides that apply across platforms and SDKs.</p>
-  
+          <li>
+            <a href="/guides/">Guides</a>
 
-  <div class="row-fluid">
-    <div class="col-md-4">
-      <div class="trigger">
-  
-  <ul>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/rhino_developer_prerequisites/" title="This guide describes the main requirements to develop for Rhino.">Developer Prerequisites</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/what_is_a_rhino_plugin/" title="This guide outlines what a Rhino plugin is and what forms it comes in.">What is a Rhino Plugin?</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/frequently_asked_questions/" title="This guide is a list of Frequently Asked Questions (FAQ).">Frequently Asked Questions</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/developer_training/" title="This guide describes our Rhino Developer Training.">Developer Training</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/rhino_installer_engine/" title="This guide is a brief introduction to the Rhino Installer Engine.">Rhino Installer Engine</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/contributing/" title="Hey, make yourself useful!">Contributing</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/how_this_site_works/" title="A guide to how this very developer document site works.">How This Site Works</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/developer_docs_style_guide/" title="This guide serves as an example and quick reference for the syntax and structure of this site.">Developer Docs Style Guide</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  </ul>
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/guides/#rhinocommon">RhinoCommon</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#localizing-plug-in-toolbars">Localizing Plug-in Toolbars</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#question">Question</a>
+
+                          
+
+                        </li>
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#answer">Answer</a>
+
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="localizing-plug-in-toolbars">Localizing Plug-in Toolbars</h1>
+
+<p>This guide covers the localization of plug-in toolbars.</p>
+
+<h2 id="question">Question</h2>
+
+<p>What is the best way to prepare a Rhino toolbar for multi-language support?</p>
+
+<h2 id="answer">Answer</h2>
+
+<p>If you want to create Rhino-style toolbars, then use Rhino’s <strong>Toolbar</strong> command. You can save your custom toolbars in your own Rhino User Interface (RUI) file. For details on creating toolbars, see the Rhino help file.</p>
+
+<p>An RUI file is an XML file that can be viewed and edited in an ordinary text editor.</p>
+
+<p>If you open an RUI file, that contains a toolbar that contains a button, you might see a block of XML that looks similar to the following:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;macro_item guid="49b72876-5dcb-4b8c-89df-365e22627986" bitmap_id="ed060e4e-e092-4dfd-92f9-e20f4c688ba3"&gt;
+  &lt;text&gt;
+    &lt;locale_1033&gt;RenderSettings&lt;/locale_1033&gt;
+  &lt;/text&gt;
+  &lt;tooltip&gt;
+    &lt;locale_1033&gt;Render settings&lt;/locale_1033&gt;
+  &lt;/tooltip&gt;
+  &lt;button_text&gt;
+    &lt;locale_1033&gt;Render&lt;/locale_1033&gt;
+  &lt;/button_text&gt;
+  &lt;script&gt;! _DocumentPropertiesPage _Render&lt;/script&gt;
+&lt;/macro_item&gt;
+</code></pre>
 </div>
 
-    </div>
+<p>Notice the **<locale_1033>** tag, which denotes the text used by Rhino when its configured for English (United States).</locale_1033></p>
 
-    <div class="col-md-4">
-      
-    </div>
+<p>Its possible to add additional locale tags for each supported language.</p>
 
-    <div class="col-md-4">
-      
-    </div>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;macro_item guid="49b72876-5dcb-4b8c-89df-365e22627986" bitmap_id="ed060e4e-e092-4dfd-92f9-e20f4c688ba3"&gt;
+  &lt;text&gt;
+    &lt;locale_1033&gt;RenderSettings&lt;/locale_1033&gt;
+    &lt;locale_1031&gt;Rendereinstellungen&lt;/locale_1031&gt;
+    &lt;locale_1034&gt;RenderizadoOpciones&lt;/locale_1034&gt;
+    &lt;locale_1036&gt;ParamètresRendu&lt;/locale_1036&gt;
+    &lt;locale_1040&gt;RenderingImpostazioni&lt;/locale_1040&gt;
+    &lt;locale_1042&gt;렌더링_설정&lt;/locale_1042&gt;
+    &lt;locale_2052&gt;渲染设置&lt;/locale_2052&gt;
+    &lt;locale_1028&gt;彩現設定&lt;/locale_1028&gt;
+  &lt;/text&gt;
+  &lt;tooltip&gt;
+    &lt;locale_1033&gt;Render settings&lt;/locale_1033&gt;
+    &lt;locale_1031&gt;Rendereinstellungen&lt;/locale_1031&gt;
+    &lt;locale_1034&gt;Opciones de renderizado&lt;/locale_1034&gt;
+    &lt;locale_1036&gt;Paramètres du rendu&lt;/locale_1036&gt;
+    &lt;locale_1040&gt;Impostazioni rendering&lt;/locale_1040&gt;
+    &lt;locale_1041&gt;ﾚﾝﾀﾞﾘﾝｸﾞ設定&lt;/locale_1041&gt;
+    &lt;locale_1042&gt;렌더링 설정&lt;/locale_1042&gt;
+    &lt;locale_2052&gt;渲染设置&lt;/locale_2052&gt;
+    &lt;locale_1028&gt;彩現設定&lt;/locale_1028&gt;
+  &lt;/tooltip&gt;
+  &lt;button_text&gt;
+    &lt;locale_1033&gt;Render&lt;/locale_1033&gt;
+    &lt;locale_1031&gt;Rendern&lt;/locale_1031&gt;
+    &lt;locale_1034&gt;Renderizar&lt;/locale_1034&gt;
+    &lt;locale_1036&gt;Rendu&lt;/locale_1036&gt;
+    &lt;locale_1040&gt;Rendering&lt;/locale_1040&gt;
+    &lt;locale_1041&gt;ﾚﾝﾀﾞﾘﾝｸﾞ&lt;/locale_1041&gt;
+    &lt;locale_1042&gt;렌더링&lt;/locale_1042&gt;
+    &lt;locale_2052&gt;渲染&lt;/locale_2052&gt;
+    &lt;locale_1028&gt;彩現&lt;/locale_1028&gt;
+  &lt;/button_text&gt;
+  &lt;script&gt;! _DocumentPropertiesPage _Render&lt;/script&gt;
+&lt;/macro_item&gt;
+</code></pre>
+</div>
 
-  </div>
+<p>Note, it is not possible to localize toolbar bitmaps.</p>
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
+</div>
 </div>
 
         <!--/div-->
@@ -836,27 +384,27 @@
     <div class="footer-col-wrapper">
 
       
-
         <div class="row">
-          <div class="col-md-3">
-              <span class="icon  icon--github">
-                <svg viewBox="0 0 16 16">
-                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
-                </svg>
-              </span>
-              <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/general.md" target="_blank">Edit on GitHub</a>
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
           </div>
-
-          <div class="col-md-6 text-center">
-            © 1997 - 2016 Robert McNeel &amp; Associates
-          </div>
-
-          <div class="col-md-3">
-            <span class="pull-right">
-              <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
             </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/rhinocommon/plugin_toolbar_localize.md" target="_blank">Edit page on GitHub</a>
           </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+              </span>
+            </div>
+        </div>
 
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
         </div>
 
       
