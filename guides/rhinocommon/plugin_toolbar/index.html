@@ -319,11 +319,13 @@
 
 <h2 id="more-information">More Information</h2>
 
-<p>The first time a plug-in is loaded, Rhino looks for an RUI file with the same name as the plug-in. If it is found, it is copied to the following location and opened:
-<code class="highlighter-rouge">
-%APPDATA%\McNeel\Rhinoceros\&lt;version&gt;\Plug-ins\[plug-in name] ([plug-in UUID)\settings
-</code>
-It is copied, or staged, to ensure that the file is writable and to provide a way to revert to the original, or default, RUI file if needed.</p>
+<p>The first time a plug-in is loaded, Rhino looks for an RUI file with the same name as the plug-in. If it is found, it is copied to the following location and opened:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>%APPDATA%\McNeel\Rhinoceros\&lt;version&gt;\Plug-ins\[plug-in name] ([plug-in UUID)\settings
+</code></pre>
+</div>
+
+<p>It is copied, or staged, to ensure that the file is writable and to provide a way to revert to the original, or default, RUI file if needed.</p>
 
 <p>You can revert to the original, or default, RUI file by deleting the RUI file in the <strong>%APPDATA%</strong> folder and then and restarting Rhino, which will cause the file to be staged again, as the file no longer exists.</p>
 
