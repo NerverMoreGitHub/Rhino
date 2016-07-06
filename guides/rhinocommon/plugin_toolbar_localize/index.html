@@ -307,7 +307,7 @@
 
 <p>If you open an RUI file, that contains a toolbar that contains a button, you might see a block of XML that looks similar to the following:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;macro_item guid="49b72876-5dcb-4b8c-89df-365e22627986" bitmap_id="ed060e4e-e092-4dfd-92f9-e20f4c688ba3"&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;macro_item guid="some_unique_guid" bitmap_id="some_unique_guid"&gt;
   &lt;text&gt;
     &lt;locale_1033&gt;RenderSettings&lt;/locale_1033&gt;
   &lt;/text&gt;
@@ -317,7 +317,7 @@
   &lt;button_text&gt;
     &lt;locale_1033&gt;Render&lt;/locale_1033&gt;
   &lt;/button_text&gt;
-  &lt;script&gt;! _DocumentPropertiesPage _Render&lt;/script&gt;
+  &lt;script&gt;_DocumentPropertiesPage _Render&lt;/script&gt;
 &lt;/macro_item&gt;
 </code></pre>
 </div>
@@ -326,7 +326,7 @@
 
 <p>Its possible to add additional locale tags for each supported language.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;macro_item guid="49b72876-5dcb-4b8c-89df-365e22627986" bitmap_id="ed060e4e-e092-4dfd-92f9-e20f4c688ba3"&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;macro_item guid="some_unique_guid" bitmap_id="some_unique_guid"&gt;
   &lt;text&gt;
     &lt;locale_1033&gt;RenderSettings&lt;/locale_1033&gt;
     &lt;locale_1031&gt;Rendereinstellungen&lt;/locale_1031&gt;
@@ -359,7 +359,7 @@
     &lt;locale_2052&gt;渲染&lt;/locale_2052&gt;
     &lt;locale_1028&gt;彩現&lt;/locale_1028&gt;
   &lt;/button_text&gt;
-  &lt;script&gt;! _DocumentPropertiesPage _Render&lt;/script&gt;
+  &lt;script&gt;_DocumentPropertiesPage _Render&lt;/script&gt;
 &lt;/macro_item&gt;
 </code></pre>
 </div>
