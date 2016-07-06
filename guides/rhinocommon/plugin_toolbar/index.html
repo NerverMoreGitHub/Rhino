@@ -341,24 +341,24 @@ It is copied, or staged, to ensure that the file is writable and to provide a wa
 
 <p>Note, there is additional code in Rhino that saves the name of RUI files closed by the user. If a user closes an RUI and the RUI file is associated with a plug-in, the file name goes on a list so that Rhino does not automatically open the RUI file in the future. The logic is if the user closed the file, we don’t want to keep loading it every time Rhino starts.</p>
 
-<p>Also note, if you uninstall your plugin and manually close the RUI file, within Rhino, you are telling Rhino you no longer want to auto-load the RUI file. Thus, the RUI file will not load if you re-install your plug-in. If you were to uninstall your plug-in and delete the RUI file from the <strong>%APPDATA%</strong> folder, then the RUI file will load if you re-install your plug-in.</p>
+<p>Also note, if you uninstall your plug-in and manually close the RUI file, within Rhino, you are telling Rhino you no longer want to auto-load the RUI file. Thus, the RUI file will not load if you re-install your plug-in. If you were to uninstall your plug-in and delete the RUI file from the <strong>%APPDATA%</strong> folder, then the RUI file will load if you re-install your plug-in.</p>
 
 <p>Finally, if you update your plug-in, Rhino will not re-stage the RUI file because it already exists. You can get Rhino to re-stage the RUI file by deleting it in %APPDATA% and restarting which will cause Rhino to copy the file again since it no longer exists. This can be done prograqmatically by adding the following code to your plug-in object’s <strong>OnLoad</strong> override.</p>
 
 <h2 id="example">Example</h2>
 
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="c1">/// &lt;summary&gt;
-/// Called when the plugin is being loaded.
+/// Called when the plug-in is being loaded.
 /// &lt;/summary&gt;
 </span><span class="k">protected</span> <span class="k">override</span> <span class="n">LoadReturnCode</span> <span class="nf">OnLoad</span><span class="p">(</span><span class="k">ref</span> <span class="kt">string</span> <span class="n">errorMessage</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="c1">// Get the version number of our plugin, that was last used, from our settings file.
+  <span class="c1">// Get the version number of our plug-in, that was last used, from our settings file.
 </span>  <span class="n">var</span> <span class="n">plugin_version</span> <span class="p">=</span> <span class="n">Settings</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"PlugInVersion"</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
 
   <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">plugin_version</span><span class="p">))</span>
   <span class="p">{</span>
-    <span class="c1">// If the version number of the plugin that was last used does not match the
-</span>    <span class="c1">// version number of this plugin, proceed.
+    <span class="c1">// If the version number of the plug-in that was last used does not match the
+</span>    <span class="c1">// version number of this plug-in, proceed.
 </span>    <span class="k">if</span> <span class="p">(</span><span class="m">0</span> <span class="p">!=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Compare</span><span class="p">(</span><span class="n">Version</span><span class="p">,</span> <span class="n">plugin_version</span><span class="p">,</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">))</span>
     <span class="p">{</span>
       <span class="c1">// Build a path to the user's staged RUI file.
@@ -390,7 +390,7 @@ It is copied, or staged, to ensure that the file is writable and to provide a wa
     <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="c1">// After successfully loading the plugin, if Rhino detects a plugin RUI
+  <span class="c1">// After successfully loading the plug-in, if Rhino detects a plug-in RUI
 </span>  <span class="c1">// file, it will automatically stage it, if it doesn't already exist.
 </span>
   <span class="k">return</span> <span class="n">LoadReturnCode</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
