@@ -307,18 +307,18 @@
 
 <p>If you open an RUI file, that contains a toolbar that contains a button, you might see a block of XML that looks similar to the following:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;macro_item guid="some_unique_guid" bitmap_id="some_unique_guid"&gt;
-  &lt;text&gt;
-    &lt;locale_1033&gt;RenderSettings&lt;/locale_1033&gt;
-  &lt;/text&gt;
-  &lt;tooltip&gt;
-    &lt;locale_1033&gt;Render settings&lt;/locale_1033&gt;
-  &lt;/tooltip&gt;
-  &lt;button_text&gt;
-    &lt;locale_1033&gt;Render&lt;/locale_1033&gt;
-  &lt;/button_text&gt;
-  &lt;script&gt;_DocumentPropertiesPage _Render&lt;/script&gt;
-&lt;/macro_item&gt;
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;macro_item</span> <span class="na">guid=</span><span class="s">"some_unique_guid"</span> <span class="na">bitmap_id=</span><span class="s">"some_unique_guid"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;text&gt;</span>
+    <span class="nt">&lt;locale_1033&gt;</span>RenderSettings<span class="nt">&lt;/locale_1033&gt;</span>
+  <span class="nt">&lt;/text&gt;</span>
+  <span class="nt">&lt;tooltip&gt;</span>
+    <span class="nt">&lt;locale_1033&gt;</span>Render settings<span class="nt">&lt;/locale_1033&gt;</span>
+  <span class="nt">&lt;/tooltip&gt;</span>
+  <span class="nt">&lt;button_text&gt;</span>
+    <span class="nt">&lt;locale_1033&gt;</span>Render<span class="nt">&lt;/locale_1033&gt;</span>
+  <span class="nt">&lt;/button_text&gt;</span>
+  <span class="nt">&lt;script&gt;</span>_DocumentPropertiesPage _Render<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/macro_item&gt;</span>
 </code></pre>
 </div>
 
@@ -326,41 +326,41 @@
 
 <p>It is possible to add additional locale tags for supported language.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;macro_item guid="some_unique_guid" bitmap_id="some_unique_guid"&gt;
-  &lt;text&gt;
-    &lt;locale_1033&gt;RenderSettings&lt;/locale_1033&gt;
-    &lt;locale_1031&gt;Rendereinstellungen&lt;/locale_1031&gt;
-    &lt;locale_1034&gt;RenderizadoOpciones&lt;/locale_1034&gt;
-    &lt;locale_1036&gt;ParamètresRendu&lt;/locale_1036&gt;
-    &lt;locale_1040&gt;RenderingImpostazioni&lt;/locale_1040&gt;
-    &lt;locale_1042&gt;렌더링_설정&lt;/locale_1042&gt;
-    &lt;locale_2052&gt;渲染设置&lt;/locale_2052&gt;
-    &lt;locale_1028&gt;彩現設定&lt;/locale_1028&gt;
-  &lt;/text&gt;
-  &lt;tooltip&gt;
-    &lt;locale_1033&gt;Render settings&lt;/locale_1033&gt;
-    &lt;locale_1031&gt;Rendereinstellungen&lt;/locale_1031&gt;
-    &lt;locale_1034&gt;Opciones de renderizado&lt;/locale_1034&gt;
-    &lt;locale_1036&gt;Paramètres du rendu&lt;/locale_1036&gt;
-    &lt;locale_1040&gt;Impostazioni rendering&lt;/locale_1040&gt;
-    &lt;locale_1041&gt;ﾚﾝﾀﾞﾘﾝｸﾞ設定&lt;/locale_1041&gt;
-    &lt;locale_1042&gt;렌더링 설정&lt;/locale_1042&gt;
-    &lt;locale_2052&gt;渲染设置&lt;/locale_2052&gt;
-    &lt;locale_1028&gt;彩現設定&lt;/locale_1028&gt;
-  &lt;/tooltip&gt;
-  &lt;button_text&gt;
-    &lt;locale_1033&gt;Render&lt;/locale_1033&gt;
-    &lt;locale_1031&gt;Rendern&lt;/locale_1031&gt;
-    &lt;locale_1034&gt;Renderizar&lt;/locale_1034&gt;
-    &lt;locale_1036&gt;Rendu&lt;/locale_1036&gt;
-    &lt;locale_1040&gt;Rendering&lt;/locale_1040&gt;
-    &lt;locale_1041&gt;ﾚﾝﾀﾞﾘﾝｸﾞ&lt;/locale_1041&gt;
-    &lt;locale_1042&gt;렌더링&lt;/locale_1042&gt;
-    &lt;locale_2052&gt;渲染&lt;/locale_2052&gt;
-    &lt;locale_1028&gt;彩現&lt;/locale_1028&gt;
-  &lt;/button_text&gt;
-  &lt;script&gt;_DocumentPropertiesPage _Render&lt;/script&gt;
-&lt;/macro_item&gt;
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;macro_item</span> <span class="na">guid=</span><span class="s">"some_unique_guid"</span> <span class="na">bitmap_id=</span><span class="s">"some_unique_guid"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;text&gt;</span>
+    <span class="nt">&lt;locale_1033&gt;</span>RenderSettings<span class="nt">&lt;/locale_1033&gt;</span>
+    <span class="nt">&lt;locale_1031&gt;</span>Rendereinstellungen<span class="nt">&lt;/locale_1031&gt;</span>
+    <span class="nt">&lt;locale_1034&gt;</span>RenderizadoOpciones<span class="nt">&lt;/locale_1034&gt;</span>
+    <span class="nt">&lt;locale_1036&gt;</span>ParamètresRendu<span class="nt">&lt;/locale_1036&gt;</span>
+    <span class="nt">&lt;locale_1040&gt;</span>RenderingImpostazioni<span class="nt">&lt;/locale_1040&gt;</span>
+    <span class="nt">&lt;locale_1042&gt;</span>렌더링_설정<span class="nt">&lt;/locale_1042&gt;</span>
+    <span class="nt">&lt;locale_2052&gt;</span>渲染设置<span class="nt">&lt;/locale_2052&gt;</span>
+    <span class="nt">&lt;locale_1028&gt;</span>彩現設定<span class="nt">&lt;/locale_1028&gt;</span>
+  <span class="nt">&lt;/text&gt;</span>
+  <span class="nt">&lt;tooltip&gt;</span>
+    <span class="nt">&lt;locale_1033&gt;</span>Render settings<span class="nt">&lt;/locale_1033&gt;</span>
+    <span class="nt">&lt;locale_1031&gt;</span>Rendereinstellungen<span class="nt">&lt;/locale_1031&gt;</span>
+    <span class="nt">&lt;locale_1034&gt;</span>Opciones de renderizado<span class="nt">&lt;/locale_1034&gt;</span>
+    <span class="nt">&lt;locale_1036&gt;</span>Paramètres du rendu<span class="nt">&lt;/locale_1036&gt;</span>
+    <span class="nt">&lt;locale_1040&gt;</span>Impostazioni rendering<span class="nt">&lt;/locale_1040&gt;</span>
+    <span class="nt">&lt;locale_1041&gt;</span>ﾚﾝﾀﾞﾘﾝｸﾞ設定<span class="nt">&lt;/locale_1041&gt;</span>
+    <span class="nt">&lt;locale_1042&gt;</span>렌더링 설정<span class="nt">&lt;/locale_1042&gt;</span>
+    <span class="nt">&lt;locale_2052&gt;</span>渲染设置<span class="nt">&lt;/locale_2052&gt;</span>
+    <span class="nt">&lt;locale_1028&gt;</span>彩現設定<span class="nt">&lt;/locale_1028&gt;</span>
+  <span class="nt">&lt;/tooltip&gt;</span>
+  <span class="nt">&lt;button_text&gt;</span>
+    <span class="nt">&lt;locale_1033&gt;</span>Render<span class="nt">&lt;/locale_1033&gt;</span>
+    <span class="nt">&lt;locale_1031&gt;</span>Rendern<span class="nt">&lt;/locale_1031&gt;</span>
+    <span class="nt">&lt;locale_1034&gt;</span>Renderizar<span class="nt">&lt;/locale_1034&gt;</span>
+    <span class="nt">&lt;locale_1036&gt;</span>Rendu<span class="nt">&lt;/locale_1036&gt;</span>
+    <span class="nt">&lt;locale_1040&gt;</span>Rendering<span class="nt">&lt;/locale_1040&gt;</span>
+    <span class="nt">&lt;locale_1041&gt;</span>ﾚﾝﾀﾞﾘﾝｸﾞ<span class="nt">&lt;/locale_1041&gt;</span>
+    <span class="nt">&lt;locale_1042&gt;</span>렌더링<span class="nt">&lt;/locale_1042&gt;</span>
+    <span class="nt">&lt;locale_2052&gt;</span>渲染<span class="nt">&lt;/locale_2052&gt;</span>
+    <span class="nt">&lt;locale_1028&gt;</span>彩現<span class="nt">&lt;/locale_1028&gt;</span>
+  <span class="nt">&lt;/button_text&gt;</span>
+  <span class="nt">&lt;script&gt;</span>_DocumentPropertiesPage _Render<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/macro_item&gt;</span>
 </code></pre>
 </div>
 
