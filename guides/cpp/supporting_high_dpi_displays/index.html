@@ -324,6 +324,60 @@
                                     <a href="#icons">Icons</a>
                                 </li>
                               
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#cursors">Cursors</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#list-controls-with-image-lists">List Controls with Image ...</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#list-boxes">List Boxes</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#check-list-boxes">Check List Boxes</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#combo-boxes">Combo Boxes</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#check-boxes">Check Boxes</a>
+                                </li>
+                              
 
                             </ul>
                           
@@ -427,6 +481,116 @@
 </div>
 
 <p>Note, if the requested icon is not a standard size, the <code class="highlighter-rouge">CRhinoDpi::LoadIcon</code> function scales down a larger image.</p>
+
+<h3 id="cursors">Cursors</h3>
+
+<p>All of the cursors files (CUR) used by Rhino have been updated to support all of the sizes used by Windows 10.</p>
+
+<p>When loading cursor resources, you should so in this manner:</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">HCURSOR</span> <span class="n">hCursor</span> <span class="o">=</span> <span class="p">(</span><span class="n">HCURSOR</span><span class="p">)</span><span class="o">::</span><span class="n">LoadImage</span><span class="p">(</span><span class="n">AfxGetInstanceHandle</span><span class="p">(),</span> <span class="n">MAKEINTRESOURCE</span><span class="p">(</span><span class="n">IDC_CURSOR</span><span class="p">),</span> <span class="n">IMAGE_CURSOR</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">LR_DEFAULTSIZE</span> <span class="o">|</span> <span class="n">LR_SHARED</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>By not specifying a size and by using the <code class="highlighter-rouge">LR_DEFAULTSIZE</code> flag, Windows will automatically load the cursor size that is appropriate for the current DPI setting.</p>
+
+<h3 id="list-controls-with-image-lists">List Controls with Image Lists</h3>
+
+<p>The problem with list controls is that the bitmaps, used by their image lists, do not scale very well. The solution is to convert the bitmap strip into individual icon files and then use <code class="highlighter-rouge">CRhinoDpi::CreateImageList</code> to create the image list.</p>
+
+<p>For list controls that use an image list that has a single bitmap, you can do this:</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">BOOL</span> <span class="n">CMyDialog</span><span class="o">::</span><span class="n">OnInitDialog</span><span class="p">()</span> 
+<span class="p">{</span>
+  <span class="c1">// ...
+</span>  <span class="k">const</span> <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">CRhinoDpi</span><span class="o">::</span><span class="n">IconSize</span><span class="p">(</span><span class="n">CRhinoDpi</span><span class="o">::</span><span class="n">IconType</span><span class="o">::</span><span class="n">SmallIcon</span><span class="p">);</span>
+  <span class="n">CRhinoDpi</span><span class="o">::</span><span class="n">CreateImageList</span><span class="p">(</span><span class="n">m_image_list</span><span class="p">,</span> <span class="n">AfxGetInstanceHandle</span><span class="p">(),</span> <span class="n">IDI_MYICON</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+  <span class="n">m_list_ctrl</span><span class="p">.</span><span class="n">SetImageList</span><span class="p">(</span><span class="o">&amp;</span><span class="n">m_image_list</span><span class="p">,</span> <span class="n">LVSIL_SMALL</span><span class="p">);</span>
+  <span class="c1">// ...
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<p>For an image list that contains multiple bitmaps, you can do this:</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">BOOL</span> <span class="n">CMyDialog</span><span class="o">::</span><span class="n">OnInitDialog</span><span class="p">()</span> 
+<span class="p">{</span>
+  <span class="c1">// ...
+</span>  <span class="k">const</span> <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">CRhinoDpi</span><span class="o">::</span><span class="n">IconSize</span><span class="p">(</span><span class="n">CRhinoDpi</span><span class="o">::</span><span class="n">IconType</span><span class="o">::</span><span class="n">SmallIcon</span><span class="p">);</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">image_ids</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">IDI_MYICON0</span><span class="p">,</span> <span class="n">IDI_MYICON1</span><span class="p">,</span> <span class="n">IDI_MYICON2</span><span class="p">,</span> <span class="n">IDI_MYICON3</span> <span class="p">};</span>
+  <span class="n">CRhinoDpi</span><span class="o">::</span><span class="n">CreateImageList</span><span class="p">(</span><span class="n">m_image_list</span><span class="p">,</span> <span class="n">AfxGetInstanceHandle</span><span class="p">(),</span> <span class="mi">4</span><span class="p">,</span> <span class="n">image_ids</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+  <span class="n">m_list_ctrl</span><span class="p">.</span><span class="n">SetImageList</span><span class="p">(</span><span class="o">&amp;</span><span class="n">m_image_list</span><span class="p">,</span> <span class="n">LVSIL_SMALL</span><span class="p">);</span>
+  <span class="c1">// ...
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="list-boxes">List Boxes</h3>
+
+<p>If you’ve derived your own list boxes, for the sake of owner drawing, then will need to make sure you are setting the item height for each item in the list. Otherwise, items will be scrunched together at higher DPI settings. Use <code class="highlighter-rouge">CRhinoDpi::ListBoxItemHeight</code> to determine this.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="n">CMyListBox</span><span class="o">::</span><span class="n">PreSubclassWindow</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">// If the control was created with the LBS_OWNERDRAWFIXED style,
+</span>  <span class="c1">// then this will set the item height for all items.
+</span>  <span class="k">if</span> <span class="p">(</span><span class="n">GetStyle</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">LBS_OWNERDRAWFIXED</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">itemHeight</span> <span class="o">=</span> <span class="n">CRhinoDpi</span><span class="o">::</span><span class="n">ListBoxItemHeight</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+    <span class="n">SetItemHeight</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">itemHeight</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">CListBox</span><span class="o">::</span><span class="n">PreSubclassWindow</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">CMyListBox</span><span class="o">::</span><span class="n">MeasureItem</span><span class="p">(</span><span class="n">LPMEASUREITEMSTRUCT</span> <span class="n">lpMeasureItemStruct</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// CListBox::MeasureItem is only called if the control was created
+</span>  <span class="c1">// with the LBS_OWNERDRAWVARIABLE style.
+</span>  <span class="k">static</span> <span class="kt">int</span> <span class="n">itemHeight</span> <span class="o">=</span> <span class="n">CRhinoDpi</span><span class="o">::</span><span class="n">ListBoxItemHeight</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">nullptr</span> <span class="o">!=</span> <span class="n">lpMeasureItemStruct</span><span class="p">)</span>
+    <span class="n">lpMeasureItemStruct</span><span class="o">-&gt;</span><span class="n">itemHeight</span> <span class="o">=</span> <span class="n">itemHeight</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>There is also a new <code class="highlighter-rouge">CRhinoUiListBox</code> control that you can use in place of <code class="highlighter-rouge">CListBox</code>, that will perform the above calculations for you. See <code class="highlighter-rouge">RhinoSdkUiCheckListbox.h</code> for details.</p>
+
+<h3 id="check-list-boxes">Check List Boxes</h3>
+
+<p>The standard MFC <code class="highlighter-rouge">CCheckListBox</code> class does correctly handle mouse events at high DPI settings. If you are using this class, then modify your code to use <code class="highlighter-rouge">CRhinoUiCheckListBox</code>.  See <code class="highlighter-rouge">RhinoSdkUiCheckListbox.h</code> for details.</p>
+
+<h3 id="combo-boxes">Combo Boxes</h3>
+
+<p>If you’ve derived your own combo boxes, for the sake of owner drawing, then will need to make sure you are setting the item height for each item in the list. Otherwise, items will be scrunched together at higher DPI settings. Use <code class="highlighter-rouge">CRhinoDpi::ComboBoxItemHeight</code> to determine this.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="n">CMyComboBox</span><span class="o">::</span><span class="n">PreSubclassWindow</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">// If the control was created with the CBS_OWNERDRAWFIXED style,
+</span>  <span class="c1">// then this will set the item height for all items.
+</span>  <span class="k">if</span> <span class="p">(</span><span class="n">GetStyle</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">CBS_OWNERDRAWFIXED</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">itemHeight</span> <span class="o">=</span> <span class="n">CRhinoDpi</span><span class="o">::</span><span class="n">ComboBoxItemHeight</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+    <span class="c1">// Set the height of all list items
+</span>    <span class="n">SetItemHeight</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">itemHeight</span><span class="p">);</span>
+    <span class="c1">// Set the height of the edit-control or static-text portion (Optional)
+</span>    <span class="n">SetItemHeight</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">itemHeight</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">CComboBox</span><span class="o">::</span><span class="n">PreSubclassWindow</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">CMyComboBox</span><span class="o">::</span><span class="n">MeasureItem</span><span class="p">(</span><span class="n">LPMEASUREITEMSTRUCT</span> <span class="n">lpMeasureItemStruct</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// CComboBox::MeasureItem is only called if the control was created
+</span>  <span class="c1">// with the CBS_OWNERDRAWVARIABLE style.
+</span>  <span class="k">static</span> <span class="kt">int</span> <span class="n">itemHeight</span> <span class="o">=</span> <span class="n">CRhinoDpi</span><span class="o">::</span><span class="n">ComboBoxItemHeight</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">nullptr</span> <span class="o">!=</span> <span class="n">lpMeasureItemStruct</span><span class="p">)</span>
+    <span class="n">lpMeasureItemStruct</span><span class="o">-&gt;</span><span class="n">itemHeight</span> <span class="o">=</span> <span class="n">itemHeight</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="check-boxes">Check Boxes</h3>
+
+<p>If you are owner-drawing check boxes, then there is a good chance their sizes are either hard-coded or they were obtained by calling an incorrect Windows API function. The <code class="highlighter-rouge">CRhinoDpi::CheckBoxSize</code> and <code class="highlighter-rouge">CRhinoDpi::MenuCheckSize</code> static functions will help with this.</p>
 
         </article>
 
