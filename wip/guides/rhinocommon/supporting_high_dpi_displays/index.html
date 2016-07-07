@@ -450,15 +450,23 @@ $(document).ready(function()
   <span class="kt">var</span> <span class="n">new_width</span> <span class="p">=</span> <span class="n">RhinoWindows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Dpi</span><span class="p">.</span><span class="nf">ScaleInt</span><span class="p">(</span><span class="n">m_standard_toolbar</span><span class="p">.</span><span class="n">ImageScalingSize</span><span class="p">.</span><span class="n">Width</span><span class="p">);</span>
   <span class="kt">var</span> <span class="n">new_height</span> <span class="p">=</span> <span class="n">RhinoWindows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Dpi</span><span class="p">.</span><span class="nf">ScaleInt</span><span class="p">(</span><span class="n">m_standard_toolbar</span><span class="p">.</span><span class="n">ImageScalingSize</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
   <span class="n">m_standard_toolbar</span><span class="p">.</span><span class="n">ImageScalingSize</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Size</span><span class="p">(</span><span class="n">new_width</span><span class="p">,</span> <span class="n">new_height</span><span class="p">);</span>
-</code></pre>
+  
+  <span class="c1">// ...
+</span></code></pre>
 </div>
 
 <p>Use the <code class="highlighter-rouge">DrawingUtilities::LoadBitmapWithScaleDown</code> and <code class="highlighter-rouge">DrawingUtilities::LoadIconWithScaleDown</code> static functions, found in the <code class="highlighter-rouge">Rhino.UI</code> assembly, to assist with loading bitmaps and icons from icon resources. For example:</p>
 
-<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">size</span> <span class="p">=</span> <span class="n">RhinoWindows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Dpi</span><span class="p">.</span><span class="nf">ScaleInt</span><span class="p">(</span><span class="m">32</span><span class="p">);</span>
-<span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">icon</span> <span class="p">=</span> <span class="n">Rhino</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">DrawingUtilities</span><span class="p">.</span><span class="nf">LoadIconWithScaleDown</span><span class="p">(</span><span class="s">"page_logo.ico"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">size</span><span class="p">,</span> <span class="nf">GetType</span><span class="p">().</span><span class="n">Assembly</span><span class="p">))</span>
+<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Rhino.UI</span><span class="p">;</span>
+
+<span class="c1">//...
+</span>
+<span class="kt">var</span> <span class="n">size</span> <span class="p">=</span> <span class="n">RhinoWindows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Dpi</span><span class="p">.</span><span class="nf">ScaleInt</span><span class="p">(</span><span class="m">32</span><span class="p">);</span>
+<span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">icon</span> <span class="p">=</span> <span class="n">DrawingUtilities</span><span class="p">.</span><span class="nf">LoadIconWithScaleDown</span><span class="p">(</span><span class="s">"page_logo.ico"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">size</span><span class="p">,</span> <span class="nf">GetType</span><span class="p">().</span><span class="n">Assembly</span><span class="p">))</span>
   <span class="n">m_page_logo</span> <span class="p">=</span> <span class="n">icon</span><span class="p">.</span><span class="nf">ToBitmap</span><span class="p">();</span>
-</code></pre>
+  
+<span class="c1">// ...
+</span></code></pre>
 </div>
 
 <p>If the icon is not a standard size, <code class="highlighter-rouge">DrawingUtilities::LoadIconWithScaleDown</code> scales down a larger image.</p>
