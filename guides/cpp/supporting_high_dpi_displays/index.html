@@ -6,29 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>General Guides</title>
-  <meta name="description" content="                                                                                                                                                             ...">
+  <title>Supporting High DPI Displays</title>
+  <meta name="description" content="Supporting High DPI Displays">
 
   <!-- OpenGraph for Facebook, Twitter, Slack unfurling -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/guides/general/" />
-  <meta property="og:title" content="General Guides" />
-  <meta property="og:description" content="Guides that apply across platforms and SDKs." />
+  <meta property="og:url" content="/guides/cpp/supporting_high_dpi_displays/" />
+  <meta property="og:title" content="Supporting High DPI Displays" />
+  <meta property="og:description" content="This guide discusses the support of high resolution monitors." />
   <meta property=”og:site_name” content="developer.rhino3d.com"/>
   <meta property=”og:image” content="/images/rhinodev_logo_unfurl.png"/>
 
   <!-- twitter card tags additive with the og: tags -->
   <meta name="twitter:domain" value="developer.rhino3d.com" />
-  <meta name="twitter:title" value="General Guides" />
-  <meta name="twitter:description" value="Guides that apply across platforms and SDKs." />
+  <meta name="twitter:title" value="Supporting High DPI Displays" />
+  <meta name="twitter:description" value="This guide discusses the support of high resolution monitors." />
   
-    <meta name="twitter:image" content="/images/rhinodev_logo_unfurl.png" />
+    
+      <meta name="twitter:image" content="/images/rhinodev_logo_unfurl.png" />
+    
   
   <meta name="twitter:url" value="http://developer.rhino3d.com" />
   
   <meta name="twitter:label1" value="Platform(s)" />
-  <meta name="twitter:data1" value="Windows, Mac" />
+  <meta name="twitter:data1" value="Windows" />
   
+  
+  <meta name="twitter:label2" value="Language(s)" />
+  <meta name="twitter:data2" value="C/C++" />
   
 
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
@@ -46,7 +51,7 @@
   <!-- Bootstrap override -->
   <link rel="stylesheet" href="/css/bootstrap-override.css">
 
-  <link rel="canonical" href="http://developer.rhino3d.com/guides/general/">
+  <link rel="canonical" href="http://developer.rhino3d.com/guides/cpp/supporting_high_dpi_displays/">
   <link rel="alternate" type="application/rss+xml" title="Rhino Developer Docs" href="http://developer.rhino3d.com/feed.xml" />
 
   <link rel="shortcut icon" href="http://developer.rhino3d.com/favicon.ico?v=2" />
@@ -208,624 +213,149 @@
         <!--div class="wrapper"-->
           <div class="container-fluid">
 
-  <h1>General Guides
-  
-    <img src="/images/win_logo_small.png" alt="Windows" class="guide_icon">
-  
-  
-    <img src="/images/mac_logo_small.png" alt="OS X" class="guide_icon">
-  
-  
-  
-  </h1>
+<div class="row-fluid">
+    <!--Nav Bar -->
+    <nav class="col-xs-0 col-md-3 bs-docs-sidebar">
+        <ul id="sidebar" class="nav nav-stacked fixed">
 
-  <p>Guides that apply across platforms and SDKs.</p>
-  
+          <li>
+            <a href="/guides/">Guides</a>
 
-  <div class="row-fluid">
-    <div class="col-md-4">
-      <div class="trigger">
-  
-  <ul>
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/rhino_developer_prerequisites/" title="This guide describes the main requirements to develop for Rhino.">Developer Prerequisites</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/what_is_a_rhino_plugin/" title="This guide outlines what a Rhino plugin is and what forms it comes in.">What is a Rhino Plugin?</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/frequently_asked_questions/" title="This guide is a list of Frequently Asked Questions (FAQ).">Frequently Asked Questions</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/developer_training/" title="This guide describes our Rhino Developer Training.">Developer Training</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/rhino_installer_engine/" title="This guide is a brief introduction to the Rhino Installer Engine.">Rhino Installer Engine</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/contributing/" title="Hey, make yourself useful!">Contributing</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/how_this_site_works/" title="A guide to how this very developer document site works.">How This Site Works</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-        <li><a class="page-link" href="/guides/general/developer_docs_style_guide/" title="This guide serves as an example and quick reference for the syntax and structure of this site.">Developer Docs Style Guide</a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  </ul>
+            <ul class="nav nav-stacked">
+
+              <li>
+
+                
+                  <a href="/guides/#cpp">C/C++</a>
+                
+                <ul class="nav nav-stacked">
+
+                  <!-- Find the h1 handle for title -->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                    <a href="#supporting-high-dpi-displays">Supporting High DPI Displays</a>
+
+                    <ul class="nav nav-stacked">
+
+                      <!-- Find the h2 group and any h3 subgroups -->
+                      
+
+                      
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                          <a href="#overview">Overview</a>
+
+                          
+                            <ul class="nav nav-stacked">
+                              
+
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#windows-10">Windows 10</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#windows-881">Windows 8/8.1</a>
+                                </li>
+                              
+                                
+                                
+                                
+                                
+                                
+                                <li>
+                                    <a href="#windows-7">Windows 7</a>
+                                </li>
+                              
+
+                            </ul>
+                          
+
+                        </li>
+                      
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+    </nav>
+    <!--Main Content -->
+    <div class="col-xs-12 col-md-9">
+      <!--<div class="post">-->
+
+        <article class="post-content">
+          <h1 id="supporting-high-dpi-displays">Supporting High DPI Displays</h1>
+
+<p>This guide discusses the support of high resolution monitors.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Super high resolution displays are now common on Windows-based systems, and those using Rhino expect it and 3rd party plug-ins to display correctly on them. Developers need to make sure their plug-in are DPI–aware. DPI-aware plug-in adjust UI elements to scale appropriately to the system DPI. Plug-ins that are not DPI–aware, but are running on a high-DPI display setting, can suffer from many visual artifacts, including incorrect scaling of UI elements, clipped text, and blurry images.</p>
+
+<p>Plug-in developers should run Rhino on high-DPI displays so they can find and fix display issues. Here is how you can configure Windows for high-DPI display:</p>
+
+<h3 id="windows-10">Windows 10</h3>
+
+<ol>
+  <li>Right-click on your desktop and click <strong>Display settings</strong>.</li>
+  <li>Use the slider to select the text scaling and click <strong>Apply</strong>.</li>
+  <li>Logout of Windows and log back in.</li>
+</ol>
+
+<h3 id="windows-881">Windows 8/8.1</h3>
+
+<ol>
+  <li>Right-click on your desktop and click <strong>Screen resolution</strong>.</li>
+  <li>Click the <strong>Make text and other items larger or smaller</strong>.</li>
+  <li>Use the slider to select the text scaling and click <strong>Apply</strong>.</li>
+  <li>Logout of Windows and log back in.</li>
+</ol>
+
+<h3 id="windows-7">Windows 7</h3>
+
+<ol>
+  <li>Right-click on your desktop and click *Screen resolution**.</li>
+  <li>Click <strong>Make text and other items larger or smaller</strong>.</li>
+  <li>Select the text scaling and click <strong>Apply</strong>.</li>
+  <li>Logout of Windows and log back in.</li>
+</ol>
+
+
+        </article>
+
+      <!--</div>-->
+
+    </div>
 </div>
-
-    </div>
-
-    <div class="col-md-4">
-      
-    </div>
-
-    <div class="col-md-4">
-      
-    </div>
-
-  </div>
 </div>
 
         <!--/div-->
@@ -838,27 +368,27 @@
     <div class="footer-col-wrapper">
 
       
-
         <div class="row">
-          <div class="col-md-3">
-              <span class="icon  icon--github">
-                <svg viewBox="0 0 16 16">
-                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
-                </svg>
-              </span>
-              <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/general.md" target="_blank">Edit on GitHub</a>
+          <div class="col-md-4">
+            <p class="text">Author: <a href="mailto:dale@mcneel.com">dale@mcneel.com</a></p>
           </div>
-
-          <div class="col-md-6 text-center">
-            © 1997 - 2016 Robert McNeel &amp; Associates
-          </div>
-
-          <div class="col-md-3">
-            <span class="pull-right">
-              <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+          <div class="col-md-4 text-center">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
             </span>
+            <a href="https://github.com/mcneel/developer-rhino3d-com/blob/master/_guide_topics/cpp/supporting_high_dpi_displays.md" target="_blank">Edit page on GitHub</a>
           </div>
+            <div class="col-md-4">
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="/admin">Admin</a>
+              </span>
+            </div>
+        </div>
 
+        <div class="row text-center">
+          © 1997 - 2016 Robert McNeel &amp; Associates
         </div>
 
       
