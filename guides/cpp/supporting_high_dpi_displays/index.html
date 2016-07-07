@@ -488,7 +488,13 @@
 
 <p>When loading cursor resources, you should so in this manner:</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">HCURSOR</span> <span class="n">hCursor</span> <span class="o">=</span> <span class="p">(</span><span class="n">HCURSOR</span><span class="p">)</span><span class="o">::</span><span class="n">LoadImage</span><span class="p">(</span><span class="n">AfxGetInstanceHandle</span><span class="p">(),</span> <span class="n">MAKEINTRESOURCE</span><span class="p">(</span><span class="n">IDC_CURSOR</span><span class="p">),</span> <span class="n">IMAGE_CURSOR</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">LR_DEFAULTSIZE</span> <span class="o">|</span> <span class="n">LR_SHARED</span><span class="p">);</span>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">HCURSOR</span> <span class="n">hCursor</span> <span class="o">=</span> <span class="p">(</span><span class="n">HCURSOR</span><span class="p">)</span><span class="o">::</span><span class="n">LoadImage</span><span class="p">(</span>
+    <span class="n">AfxGetInstanceHandle</span><span class="p">(),</span> 
+    <span class="n">MAKEINTRESOURCE</span><span class="p">(</span><span class="n">IDC_CURSOR</span><span class="p">),</span> 
+    <span class="n">IMAGE_CURSOR</span><span class="p">,</span> 
+    <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> 
+    <span class="n">LR_DEFAULTSIZE</span> <span class="o">|</span> <span class="n">LR_SHARED</span>
+    <span class="p">);</span>
 </code></pre>
 </div>
 
