@@ -339,7 +339,7 @@
                                 
                                 
                                 <li>
-                                    <a href="#list-controls-with-image-lists">List Controls with Image ...</a>
+                                    <a href="#list-controls">List Controls</a>
                                 </li>
                               
                                 
@@ -500,9 +500,9 @@
 
 <p>By not specifying a size and by using the <code class="highlighter-rouge">LR_DEFAULTSIZE</code> flag, Windows will automatically load the cursor size that is appropriate for the current DPI setting.</p>
 
-<h3 id="list-controls-with-image-lists">List Controls with Image Lists</h3>
+<h3 id="list-controls">List Controls</h3>
 
-<p>The problem with list controls is that the bitmaps, used by their image lists, do not scale very well. The solution is to convert the bitmap strip into individual icon files and then use <code class="highlighter-rouge">CRhinoDpi::CreateImageList</code> to create the image list.</p>
+<p>If you use a list control that displays item bitmaps, using an image lists, then you will find that the images do not scale properly. The solution is to convert the bitmap strip into individual icon files and then use <code class="highlighter-rouge">CRhinoDpi::CreateImageList</code> to create the image list.</p>
 
 <p>For list controls that use an image list that has a single bitmap, you can do this:</p>
 
