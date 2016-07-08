@@ -6,21 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Creating and Deploying Plug-in Toolbars</title>
-  <meta name="description" content="Creating and Deploying Plug-in Toolbars">
+  <title>Creating and Deploying Plugin Toolbars</title>
+  <meta name="description" content="Creating and Deploying Plugin Toolbars">
 
   <!-- OpenGraph for Facebook, Twitter, Slack unfurling -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/guides/rhinocommon/create_deploy_plugin_toolbar/" />
-  <meta property="og:title" content="Creating and Deploying Plug-in Toolbars" />
-  <meta property="og:description" content="This guide covers the creation and deployment of plug-in toolbars." />
+  <meta property="og:title" content="Creating and Deploying Plugin Toolbars" />
+  <meta property="og:description" content="This guide covers the creation and deployment of plugin toolbars." />
   <meta property=”og:site_name” content="developer.rhino3d.com"/>
   <meta property=”og:image” content="/wip/images/rhinodev_logo_unfurl.png"/>
 
   <!-- twitter card tags additive with the og: tags -->
   <meta name="twitter:domain" value="developer.rhino3d.com" />
-  <meta name="twitter:title" value="Creating and Deploying Plug-in Toolbars" />
-  <meta name="twitter:description" value="This guide covers the creation and deployment of plug-in toolbars." />
+  <meta name="twitter:title" value="Creating and Deploying Plugin Toolbars" />
+  <meta name="twitter:description" value="This guide covers the creation and deployment of plugin toolbars." />
   
     
       <meta name="twitter:image" content="/wip/images/rhinodev_logo_unfurl.png" />
@@ -264,7 +264,7 @@ $(document).ready(function()
                   
                   
                   <li>
-                    <a href="#creating-and-deploying-plug-in-toolbars">Creating and Deploying Pl...</a>
+                    <a href="#creating-and-deploying-plugin-toolbars">Creating and Deploying Pl...</a>
 
                     <ul class="nav nav-stacked">
 
@@ -328,25 +328,25 @@ $(document).ready(function()
       <!--<div class="post">-->
 
         <article class="post-content">
-          <h1 id="creating-and-deploying-plug-in-toolbars">Creating and Deploying Plug-in Toolbars</h1>
+          <h1 id="creating-and-deploying-plugin-toolbars">Creating and Deploying Plugin Toolbars</h1>
 
-<p>This guide covers the creation and deployment of plug-in toolbars.</p>
+<p>This guide covers the creation and deployment of plugin toolbars.</p>
 
 <h2 id="question">Question</h2>
 
-<p>How can I create one or more toolbars for my plug-in, and how can I deploy these toolbars with my plug-in?</p>
+<p>How can I create one or more toolbars for my plugin, and how can I deploy these toolbars with my plugin?</p>
 
 <h2 id="answer">Answer</h2>
 
 <p>If you want to create Rhino-style toolbars, then use Rhino’s <strong>Toolbar</strong> command. You can save your custom toolbars in your own Rhino User Interface (RUI) file. For details on creating toolbars, see the Rhino help file.</p>
 
-<p>If you give your custom RUI file the exact same name as the plug-in RHP file and install it in the folder containing the RHP file, then Rhino will automatically stage it to a writable location and open it the first time your plug-in loads.</p>
+<p>If you give your custom RUI file the exact same name as the plugin RHP file and install it in the folder containing the RHP file, then Rhino will automatically stage it to a writable location and open it the first time your plugin loads.</p>
 
 <h2 id="more-information">More Information</h2>
 
-<p>The first time a plug-in is loaded, Rhino looks for an RUI file with the same name as the plug-in. If it is found, it is copied to the following location and opened:</p>
+<p>The first time a plugin is loaded, Rhino looks for an RUI file with the same name as the plugin. If it is found, it is copied to the following location and opened:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>%APPDATA%\McNeel\Rhinoceros\&lt;version&gt;\Plug-ins\[plug-in name] ([plug-in UUID)\settings
+<div class="highlighter-rouge"><pre class="highlight"><code>%APPDATA%\McNeel\Rhinoceros\&lt;version&gt;\Plug-ins\&lt;plugin_name (plugin_uuid)&gt;\settings
 </code></pre>
 </div>
 
@@ -354,24 +354,24 @@ $(document).ready(function()
 
 <p>You can revert to the original, or default, RUI file by deleting the RUI file in the <strong>%APPDATA%</strong> folder and then and restarting Rhino, which will cause the file to be staged again, as the file no longer exists.</p>
 
-<p>Note, there is additional code in Rhino that saves the name of RUI files closed by the user. If a user closes an RUI and the RUI file is associated with a plug-in, the file name goes on a list so that Rhino does not automatically open the RUI file in the future. The logic is if the user closed the file, we don’t want to keep loading it every time Rhino starts.</p>
+<p>Note, there is additional code in Rhino that saves the name of RUI files closed by the user. If a user closes an RUI and the RUI file is associated with a plugin, the file name goes on a list so that Rhino does not automatically open the RUI file in the future. The logic is if the user closed the file, we don’t want to keep loading it every time Rhino starts.</p>
 
-<p>Also note, if you uninstall your plug-in and manually close the RUI file, within Rhino, you are telling Rhino you no longer want to auto-load the RUI file. Thus, the RUI file will not load if you re-install your plug-in. If you were to uninstall your plug-in and delete the RUI file from the <strong>%APPDATA%</strong> folder, then the RUI file will load if you re-install your plug-in.</p>
+<p>Also note, if you uninstall your plugin and manually close the RUI file, within Rhino, you are telling Rhino you no longer want to auto-load the RUI file. Thus, the RUI file will not load if you re-install your plugin. If you were to uninstall your plugin and delete the RUI file from the <strong>%APPDATA%</strong> folder, then the RUI file will load if you re-install your plugin.</p>
 
-<p>Finally, if you update your plug-in, Rhino will not re-stage the RUI file because it already exists. You can get Rhino to re-stage the RUI file by deleting it in <strong>%APPDATA%</strong> and restarting which will cause Rhino to copy the file again since it no longer exists. This can be done programmatically by adding the following code to your plug-in object’s <strong>OnLoad</strong> override.</p>
+<p>Finally, if you update your plugin, Rhino will not re-stage the RUI file because it already exists. You can get Rhino to re-stage the RUI file by deleting it in <strong>%APPDATA%</strong> and restarting which will cause Rhino to copy the file again since it no longer exists. This can be done programmatically by adding the following code to your plugin object’s <strong>OnLoad</strong> override.</p>
 
 <div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="c1">/// &lt;summary&gt;
-/// Called when the plug-in is being loaded.
+/// Called when the plugin is being loaded.
 /// &lt;/summary&gt;
 </span><span class="k">protected</span> <span class="k">override</span> <span class="n">LoadReturnCode</span> <span class="nf">OnLoad</span><span class="p">(</span><span class="k">ref</span> <span class="kt">string</span> <span class="n">errorMessage</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="c1">// Get the version number of our plug-in, that was last used, from our settings file.
+  <span class="c1">// Get the version number of our plugin, that was last used, from our settings file.
 </span>  <span class="kt">var</span> <span class="n">plugin_version</span> <span class="p">=</span> <span class="n">Settings</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"PlugInVersion"</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
 
   <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">plugin_version</span><span class="p">))</span>
   <span class="p">{</span>
-    <span class="c1">// If the version number of the plug-in that was last used does not match the
-</span>    <span class="c1">// version number of this plug-in, proceed.
+    <span class="c1">// If the version number of the plugin that was last used does not match the
+</span>    <span class="c1">// version number of this plugin, proceed.
 </span>    <span class="k">if</span> <span class="p">(</span><span class="m">0</span> <span class="p">!=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Compare</span><span class="p">(</span><span class="n">Version</span><span class="p">,</span> <span class="n">plugin_version</span><span class="p">,</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">))</span>
     <span class="p">{</span>
       <span class="c1">// Build a path to the user's staged RUI file.
@@ -398,12 +398,12 @@ $(document).ready(function()
 </span>        <span class="p">}</span>
       <span class="p">}</span>
 
-      <span class="c1">// Save the version number of this plug-in to our settings file.
+      <span class="c1">// Save the version number of this plugin to our settings file.
 </span>      <span class="n">Settings</span><span class="p">.</span><span class="nf">SetString</span><span class="p">(</span><span class="s">"PlugInVersion"</span><span class="p">,</span> <span class="n">Version</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="c1">// After successfully loading the plug-in, if Rhino detects a plug-in RUI
+  <span class="c1">// After successfully loading the plugin, if Rhino detects a plugin RUI
 </span>  <span class="c1">// file, it will automatically stage it, if it doesn't already exist.
 </span>
   <span class="k">return</span> <span class="n">LoadReturnCode</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
